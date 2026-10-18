@@ -1,0 +1,13 @@
+torch
+torchvision
+timm            # the ConvNeXt-Tiny backbone and its pretrained weights
+opencv-python
+numpy
+pillow          # also decodes AVIF, which OpenCV builds usually can't
+
+# Optional: lets the server accept HEIC/HEIF photos straight from an iPhone
+# pillow-heif
+
+# Optional: needed by scripts/export_mobile.py
+# onnx
+# onnxruntime

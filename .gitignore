@@ -1,0 +1,25 @@
+# Training data, models and logs (kept locally, not in the repository)
+/training/data/raw/
+/training/data/images/
+/training/data/annotations/
+/training/checkpoints/
+/training/logs/
+*.pt
+*.pth
+
+# The exported on-device model (about 51 MB); written by training/scripts/export_mobile.py
+/app/assets/model/ossia.onnx
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Editors and OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

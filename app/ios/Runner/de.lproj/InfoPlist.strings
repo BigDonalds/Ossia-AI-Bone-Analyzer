@@ -1,0 +1,6 @@
+/* Permission messages iOS shows, in German. */
+
+"NSCameraUsageDescription" = "Ossia nutzt die Kamera, um einen Knochen für die Analyse zu fotografieren. Die Fotos bleiben auf diesem Handy, außer du wählst die Online-Analyse.";
+"NSPhotoLibraryUsageDescription" = "Ossia öffnet deine Fotos, damit du einen Knochen analysieren kannst, den du schon fotografiert hast.";
+"NSPhotoLibraryAddUsageDescription" = "Ossia speichert Fotos nur dann in deiner Mediathek, wenn du darum bittest.";
+"NSLocalNetworkUsageDescription" = "Ossia verbindet sich mit dem Ossia-Computer in deinem Netzwerk, wenn du die Online-Analyse wählst.";

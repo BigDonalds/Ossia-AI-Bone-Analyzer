@@ -1,0 +1,427 @@
+{
+  "about": "Reference ranges for the greatest length of complete bones, used by models/length_check.py to re-rank identifications when the user measures the bone. Keys are 'human' or one of the model's mammal family groups (config.MAMMAL_FAMILIES), then BONE_TYPES names; each entry says which animals it was measured on. A taxon/bone pair that is missing is simply not checked. Birds span sparrows to ostriches, so they get only an upper bound ('upper_bound_only'): the femur and tibia (tibiotarsus) of the ostrich, the largest living bird. That rules a bird out for longer bones and says nothing about shorter ones. Bird wing bones are not covered.",
+  "units": "cm",
+  "measurement": {
+    "long_bones": "Greatest length, end to end, of a complete femur, humerus, tibia, radius or ulna.",
+    "cranium": "Greatest cranial length, glabella to opisthocranion (front of the brow ridge to the back of the skull)."
+  },
+  "confidence_levels": {
+    "high": "Measured specimen ranges agree with published population statistics.",
+    "medium": "Measured specimen ranges from one reference collection; the true range may be somewhat wider.",
+    "low": "Covers only part of what the class name includes (e.g. one wild species of a group with larger domestic forms)."
+  },
+  "sources": {
+    "osteoid": "OsteoID Bone Identification, 'Max Length' on each species/bone page, https://boneidentification.com/bones/<species>-<bone>/ (accessed 2026-09-14). Ranges appear to include juvenile specimens.",
+    "human_literature": "Adult population statistics used to check the human ranges: femur 39.2-49.0 cm (males) and 36.0-46.9 cm (females) in 200 Indian adults, https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8811676/ ; Southern Brazil means femur 46.4, humerus 33.5, radius 26.2, ulna 27.9, tibia 38.8 cm, https://www.bjfs.org/forensicjournal/download.php?arquivo=389 ; Spanish cadaver means, https://pubmed.ncbi.nlm.nih.gov/24611570/ ; female humerus 27.7 +/- 1.1 cm, https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7003718/ . Accessed 2026-09-14.",
+    "craniometric_literature": "Greatest cranial length (g-op) averages about 18-19.5 cm in adult males and slightly less in females, with population means as low as about 16.2 cm reported; standard deviations about 0.6-1.0 cm. Accessed 2026-09-14.",
+    "ostrich_morphometrics": "Kassem, Tahon, Khalil & El-Ayat 2023, \"Morphometric studies on the appendicular bony skeleton of the ostriches (Struthio camelus)\", BMC Veterinary Research, https://pmc.ncbi.nlm.nih.gov/articles/PMC10401756/ : 12 adult males, femur 30.00 +/- 0.23 cm, tibiotarsus 52.00 +/- 0.50 cm. Accessed 2026-10-01."
+  },
+  "ranges": {
+    "human": {
+      "femur": {
+        "min_cm": 34.4,
+        "max_cm": 55.0,
+        "confidence": "high",
+        "source": "osteoid + human_literature"
+      },
+      "humerus": {
+        "min_cm": 22.5,
+        "max_cm": 39.7,
+        "confidence": "high",
+        "source": "osteoid + human_literature"
+      },
+      "tibia": {
+        "min_cm": 28.0,
+        "max_cm": 47.2,
+        "confidence": "high",
+        "source": "osteoid + human_literature",
+        "note": "OsteoID's minimum of 15.9 cm is a juvenile or outlier; the minimum here is about 2.5 SD below adult female means."
+      },
+      "radius": {
+        "min_cm": 18.0,
+        "max_cm": 30.9,
+        "confidence": "high",
+        "source": "osteoid + human_literature"
+      },
+      "ulna": {
+        "min_cm": 20.5,
+        "max_cm": 33.4,
+        "confidence": "high",
+        "source": "osteoid + human_literature"
+      },
+      "cranium": {
+        "min_cm": 15.0,
+        "max_cm": 21.0,
+        "confidence": "medium",
+        "source": "craniometric_literature",
+        "note": "Adult; population means minus/plus about 2 SD."
+      }
+    },
+    "canid": {
+      "femur": {
+        "min_cm": 6.8,
+        "max_cm": 28.1,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "domestic dogs (all breeds) and red and gray fox",
+        "note": "All breeds, so length says little about dogs. Red and gray fox combined. Dog and fox ranges combined; wolves can run a little longer."
+      },
+      "humerus": {
+        "min_cm": 5.4,
+        "max_cm": 26.8,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "domestic dogs (all breeds) and red and gray fox",
+        "note": "Dog and fox ranges combined; wolves can run a little longer."
+      },
+      "radius": {
+        "min_cm": 5.1,
+        "max_cm": 26.7,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "domestic dogs (all breeds) and red and gray fox",
+        "note": "Dog and fox ranges combined; wolves can run a little longer."
+      },
+      "tibia": {
+        "min_cm": 6.5,
+        "max_cm": 29.2,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "domestic dogs (all breeds) and red and gray fox",
+        "note": "Dog and fox ranges combined; wolves can run a little longer."
+      },
+      "ulna": {
+        "min_cm": 6.2,
+        "max_cm": 31.4,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "domestic dogs (all breeds) and red and gray fox",
+        "note": "Dog and fox ranges combined; wolves can run a little longer."
+      }
+    },
+    "cervid": {
+      "femur": {
+        "min_cm": 18.1,
+        "max_cm": 30.4,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "white-tailed and mule deer",
+        "note": "White-tailed and mule deer combined; elk and moose are much larger and not covered. Elk, moose and reindeer run much longer and are not covered."
+      },
+      "humerus": {
+        "min_cm": 15.4,
+        "max_cm": 25.0,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "white-tailed and mule deer",
+        "note": "Elk, moose and reindeer run much longer and are not covered."
+      },
+      "radius": {
+        "min_cm": 16.8,
+        "max_cm": 26.3,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "white-tailed and mule deer",
+        "note": "Elk, moose and reindeer run much longer and are not covered."
+      },
+      "tibia": {
+        "min_cm": 18.9,
+        "max_cm": 34.8,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "white-tailed and mule deer",
+        "note": "Elk, moose and reindeer run much longer and are not covered."
+      },
+      "ulna": {
+        "min_cm": 19.0,
+        "max_cm": 33.2,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "white-tailed and mule deer",
+        "note": "Elk, moose and reindeer run much longer and are not covered."
+      }
+    },
+    "bovid": {
+      "femur": {
+        "min_cm": 19.9,
+        "max_cm": 55.2,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "cattle",
+        "note": "Sheep, goats and small antelope are much shorter and are not covered."
+      },
+      "humerus": {
+        "min_cm": 24.2,
+        "max_cm": 41.3,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "cattle",
+        "note": "Sheep, goats and small antelope are much shorter and are not covered."
+      },
+      "radius": {
+        "min_cm": 24.2,
+        "max_cm": 34.2,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "cattle",
+        "note": "No separate ulna page (fused to the radius). Sheep, goats and small antelope are much shorter and are not covered."
+      },
+      "tibia": {
+        "min_cm": 28.9,
+        "max_cm": 45.2,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "cattle",
+        "note": "Sheep, goats and small antelope are much shorter and are not covered."
+      }
+    },
+    "suid": {
+      "femur": {
+        "min_cm": 12.9,
+        "max_cm": 28.3,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "domestic pig and wild boar"
+      },
+      "humerus": {
+        "min_cm": 10.7,
+        "max_cm": 27.6,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "domestic pig and wild boar"
+      },
+      "radius": {
+        "min_cm": 11.8,
+        "max_cm": 21.6,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "domestic pig and wild boar"
+      },
+      "tibia": {
+        "min_cm": 11.4,
+        "max_cm": 25.7,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "domestic pig and wild boar"
+      },
+      "ulna": {
+        "min_cm": 17.2,
+        "max_cm": 27.3,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "domestic pig and wild boar"
+      }
+    },
+    "felid": {
+      "femur": {
+        "min_cm": 7.8,
+        "max_cm": 12.9,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "domestic cat",
+        "note": "Big cats run far longer and are not covered."
+      },
+      "humerus": {
+        "min_cm": 7.3,
+        "max_cm": 11.7,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "domestic cat",
+        "note": "Big cats run far longer and are not covered."
+      },
+      "radius": {
+        "min_cm": 6.1,
+        "max_cm": 11.4,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "domestic cat",
+        "note": "Big cats run far longer and are not covered."
+      },
+      "tibia": {
+        "min_cm": 8.1,
+        "max_cm": 13.2,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "domestic cat",
+        "note": "Big cats run far longer and are not covered."
+      },
+      "ulna": {
+        "min_cm": 7.2,
+        "max_cm": 13.5,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "domestic cat",
+        "note": "Big cats run far longer and are not covered."
+      }
+    },
+    "ursid": {
+      "femur": {
+        "min_cm": 26.7,
+        "max_cm": 51.5,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "black and brown bear",
+        "note": "Black and brown bear combined."
+      },
+      "humerus": {
+        "min_cm": 22.8,
+        "max_cm": 43.9,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "black and brown bear"
+      },
+      "radius": {
+        "min_cm": 14.5,
+        "max_cm": 35.1,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "black and brown bear"
+      },
+      "tibia": {
+        "min_cm": 22.1,
+        "max_cm": 34.9,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "black and brown bear"
+      },
+      "ulna": {
+        "min_cm": 25.0,
+        "max_cm": 40.7,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "black and brown bear"
+      }
+    },
+    "leporid": {
+      "femur": {
+        "min_cm": 5.8,
+        "max_cm": 9.0,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "eastern cottontail",
+        "note": "Eastern cottontail only; domestic breeds can be larger. Hares and large domestic rabbits run longer."
+      },
+      "humerus": {
+        "min_cm": 5.4,
+        "max_cm": 6.8,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "eastern cottontail",
+        "note": "Hares and large domestic rabbits run longer."
+      },
+      "radius": {
+        "min_cm": 4.7,
+        "max_cm": 6.7,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "eastern cottontail",
+        "note": "Hares and large domestic rabbits run longer."
+      },
+      "tibia": {
+        "min_cm": 7.9,
+        "max_cm": 10.0,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "eastern cottontail",
+        "note": "Hares and large domestic rabbits run longer."
+      },
+      "ulna": {
+        "min_cm": 6.1,
+        "max_cm": 7.6,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "eastern cottontail",
+        "note": "Hares and large domestic rabbits run longer."
+      }
+    },
+    "procyonid": {
+      "femur": {
+        "min_cm": 8.7,
+        "max_cm": 13.4,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "raccoon"
+      },
+      "humerus": {
+        "min_cm": 8.0,
+        "max_cm": 11.6,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "raccoon"
+      },
+      "radius": {
+        "min_cm": 8.4,
+        "max_cm": 11.5,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "raccoon"
+      },
+      "tibia": {
+        "min_cm": 9.1,
+        "max_cm": 14.0,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "raccoon"
+      },
+      "ulna": {
+        "min_cm": 8.7,
+        "max_cm": 13.5,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "raccoon"
+      }
+    },
+    "equid": {
+      "femur": {
+        "min_cm": 30.5,
+        "max_cm": 53.2,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "horse",
+        "note": "Donkeys and ponies are shorter and are not covered."
+      },
+      "humerus": {
+        "min_cm": 22.8,
+        "max_cm": 41.9,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "horse",
+        "note": "Donkeys and ponies are shorter and are not covered."
+      },
+      "radius": {
+        "min_cm": 33.1,
+        "max_cm": 41.3,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "horse",
+        "note": "No separate ulna page (fused to the radius). Donkeys and ponies are shorter and are not covered."
+      },
+      "tibia": {
+        "min_cm": 27.9,
+        "max_cm": 47.2,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "horse",
+        "note": "Donkeys and ponies are shorter and are not covered."
+      }
+    },
+    "bird": {
+      "femur": {
+        "min_cm": 0.3,
+        "max_cm": 31.0,
+        "confidence": "high",
+        "upper_bound_only": true,
+        "source": "ostrich_morphometrics",
+        "note": "Upper bound only: no living bird has a longer one (ostrich, the largest, averages 30.0 cm). Extinct moa and elephant birds were bigger."
+      },
+      "tibia": {
+        "min_cm": 0.3,
+        "max_cm": 53.5,
+        "confidence": "high",
+        "upper_bound_only": true,
+        "source": "ostrich_morphometrics",
+        "note": "Upper bound only: no living bird has a longer one (ostrich, the largest, averages 52.0 cm). Extinct moa and elephant birds were bigger. The bird tibia is the tibiotarsus."
+      }
+    }
+  }
+}

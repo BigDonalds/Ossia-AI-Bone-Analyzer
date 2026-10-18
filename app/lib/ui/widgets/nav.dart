@@ -1,0 +1,354 @@
+import 'package:flutter/material.dart';
+
+import '../../core/theme/motion.dart';
+import '../../core/theme/palette.dart';
+import '../../core/theme/typography.dart';
+import '../../l10n/l10n.dart';
+import '../language/language_picker.dart';
+import 'primitives.dart';
+
+/// A scroll view with a big chunky title that collapses into a solid bar as
+/// content scrolls under it. The bar carries the language globe unless
+/// [globe] is off.
+class LargeTitleScrollView extends StatelessWidget {
+  const LargeTitleScrollView({
+    super.key,
+    required this.title,
+    required this.slivers,
+    this.trailing,
+    this.leading,
+    this.subtitle,
+    this.controller,
+    this.globe = true,
+  });
+
+  final String title;
+  final List<Widget> slivers;
+  final Widget? trailing;
+  final Widget? leading;
+  final bool globe;
+
+  /// Optional line under the large title — a count, a status.
+  final String? subtitle;
+  final ScrollController? controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomScrollView(
+      controller: controller,
+      physics: const BouncingScrollPhysics(
+        parent: AlwaysScrollableScrollPhysics(),
+      ),
+      slivers: <Widget>[
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: _LargeTitleHeader(
+            title: title,
+            subtitle: subtitle,
+            trailing: trailing,
+            leading: leading,
+            globe: globe,
+            colors: context.colors,
+            topPadding: MediaQuery.paddingOf(context).top,
+          ),
+        ),
+        ...slivers,
+      ],
+    );
+  }
+}
+
+class _LargeTitleHeader extends SliverPersistentHeaderDelegate {
+  _LargeTitleHeader({
+    required this.title,
+    required this.subtitle,
+    required this.trailing,
+    required this.leading,
+    required this.globe,
+    required this.colors,
+    required this.topPadding,
+  });
+
+  final String title;
+  final String? subtitle;
+  final Widget? trailing;
+  final Widget? leading;
+  final bool globe;
+  final AppColors colors;
+  final double topPadding;
+
+  static const double _barHeight = 52;
+  double get _largeArea => subtitle == null ? 56 : 80;
+
+  @override
+  double get minExtent => topPadding + _barHeight;
+
+  @override
+  double get maxExtent => topPadding + _barHeight + _largeArea;
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    final double t = (shrinkOffset / _largeArea).clamp(0.0, 1.0);
+    final double largeOpacity = (1 - t * 1.6).clamp(0.0, 1.0);
+    final double smallOpacity = ((t - 0.6) / 0.4).clamp(0.0, 1.0);
+
+    return Container(
+      decoration: BoxDecoration(
+        color: Color.lerp(colors.canvas.withValues(alpha: 0), colors.canvas, t),
+        border: Border(
+          bottom: BorderSide(
+            color: colors.ink.withValues(alpha: smallOpacity),
+            width: Chunky.border,
+          ),
+        ),
+      ),
+      child: Stack(
+        children: <Widget>[
+          // Collapsed bar: title at the start, actions pinned to the top row.
+          Positioned(
+            top: topPadding,
+            left: 0,
+            right: 0,
+            height: _barHeight,
+            child: Row(
+              children: <Widget>[
+                const SizedBox(width: 12),
+                if (leading != null) ...<Widget>[
+                  leading!,
+                  const SizedBox(width: 8),
+                ] else
+                  const SizedBox(width: 8),
+                Expanded(
+                  child: Opacity(
+                    opacity: smallOpacity,
+                    child: Text(
+                      title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppType.title3.copyWith(color: colors.textPrimary),
+                    ),
+                  ),
+                ),
+                ?trailing,
+                if (globe) ...<Widget>[
+                  const SizedBox(width: 8),
+                  const GlobeButton(size: 40),
+                ],
+                const SizedBox(width: 16),
+              ],
+            ),
+          ),
+          // Expanded title, faded away as the header shrinks.
+          Positioned(
+            left: 20,
+            right: 20,
+            bottom: 10,
+            child: IgnorePointer(
+              child: Opacity(
+                opacity: largeOpacity,
+                child: Transform.translate(
+                  offset: Offset(0, 8 * t),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Text(
+                        title,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppType.largeTitle
+                            .copyWith(color: colors.textPrimary),
+                      ),
+                      if (subtitle != null) ...<Widget>[
+                        const SizedBox(height: 4),
+                        Text(
+                          subtitle!,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: AppType.subhead.copyWith(
+                            color: colors.textSecondary,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  bool shouldRebuild(_LargeTitleHeader old) =>
+      old.title != title ||
+      old.subtitle != subtitle ||
+      old.trailing != trailing ||
+      old.leading != leading ||
+      old.globe != globe ||
+      old.colors != colors ||
+      old.topPadding != topPadding;
+}
+
+/// Back button and title for pushed screens.
+///
+/// The back button is pinned to the start edge and the title is inset past it,
+/// so the two can never overlap however long the title is.
+class DetailBar extends StatelessWidget implements PreferredSizeWidget {
+  const DetailBar({super.key, this.title, this.trailing, this.transparent = false});
+
+  final String? title;
+  final Widget? trailing;
+
+  /// Used over photography, where a solid bar would fight the image.
+  final bool transparent;
+
+  static const double _height = 60;
+
+  @override
+  Size get preferredSize => const Size.fromHeight(_height);
+
+  @override
+  Widget build(BuildContext context) {
+    final AppColors c = context.colors;
+    final double top = MediaQuery.paddingOf(context).top;
+
+    return Container(
+      width: double.infinity,
+      height: top + _height,
+      padding: EdgeInsets.only(top: top),
+      decoration: BoxDecoration(
+        color: transparent ? Colors.transparent : c.canvas,
+        border: transparent
+            ? null
+            : Border(bottom: BorderSide(color: c.ink, width: Chunky.border)),
+      ),
+      child: Row(
+        children: <Widget>[
+          const SizedBox(width: 14),
+          RoundButton(
+            icon: Icons.arrow_back_rounded,
+            size: 42,
+            tooltip: context.l10n.back,
+            onTap: () => Navigator.of(context).maybePop(),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: title == null
+                ? const SizedBox.shrink()
+                : Text(
+                    title!,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppType.title3.copyWith(color: c.textPrimary),
+                  ),
+          ),
+          if (trailing != null) ...<Widget>[
+            const SizedBox(width: 8),
+            trailing!,
+          ],
+          const SizedBox(width: 14),
+        ],
+      ),
+    );
+  }
+}
+
+class TabDestination {
+  const TabDestination(this.icon, this.activeIcon, this.label);
+  final IconData icon;
+  final IconData activeIcon;
+  final String label;
+}
+
+/// Floating sticker tab bar. The active tab grows into an accent pill with its
+/// label; the rest stay as icons.
+class AppTabBar extends StatelessWidget {
+  const AppTabBar({
+    super.key,
+    required this.destinations,
+    required this.index,
+    required this.onChanged,
+  });
+
+  final List<TabDestination> destinations;
+  final int index;
+  final ValueChanged<int> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final AppColors c = context.colors;
+    final double bottom = MediaQuery.paddingOf(context).bottom;
+
+    return Padding(
+      padding: EdgeInsets.fromLTRB(14, 0, 14, bottom > 0 ? bottom : 12),
+      child: Chunk(
+        radius: 26,
+        color: c.surface,
+        clip: false,
+        padding: const EdgeInsets.all(6),
+        child: Row(
+          children: List<Widget>.generate(destinations.length, (int i) {
+            final TabDestination d = destinations[i];
+            final bool active = i == index;
+            return Expanded(
+              flex: active ? 6 : 3,
+              child: Pressable(
+                scale: 0.9,
+                onTap: () => onChanged(i),
+                child: AnimatedContainer(
+                  duration: Motion.base,
+                  curve: Curves.easeOutBack,
+                  height: 50,
+                  // Keeps a long label off the pill's outline.
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  decoration: BoxDecoration(
+                    color: active ? c.accent : Colors.transparent,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: active ? c.ink : Colors.transparent,
+                      width: 2,
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(
+                        active ? d.activeIcon : d.icon,
+                        size: 24,
+                        color: active ? c.onAccent : c.textSecondary,
+                      ),
+                      if (active) ...<Widget>[
+                        const SizedBox(width: 6),
+                        // A long label ("Einstellungen") shrinks a little
+                        // rather than losing its last letters.
+                        Flexible(
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              d.label,
+                              maxLines: 1,
+                              softWrap: false,
+                              style: AppType.button.copyWith(
+                                color: c.onAccent,
+                                fontSize: 14.5,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }),
+        ),
+      ),
+    );
+  }
+}

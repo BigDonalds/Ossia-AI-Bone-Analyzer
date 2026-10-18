@@ -1,0 +1,6 @@
+/* Permission messages iOS shows, in Arabic. */
+
+"NSCameraUsageDescription" = "يستخدم Ossia الكاميرا لتصوير العظمة وتحليلها. تبقى الصور على هذا الهاتف إلا إذا اخترت التحليل عبر الإنترنت.";
+"NSPhotoLibraryUsageDescription" = "يفتح Ossia صورك لتتمكن من تحليل عظمة صوّرتها من قبل.";
+"NSPhotoLibraryAddUsageDescription" = "لا يحفظ Ossia الصور في مكتبتك إلا عندما تطلب ذلك.";
+"NSLocalNetworkUsageDescription" = "يتصل Ossia بحاسوب Ossia على شبكتك عندما تختار التحليل عبر الإنترنت.";

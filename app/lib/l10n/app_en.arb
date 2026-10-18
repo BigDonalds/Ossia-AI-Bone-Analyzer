@@ -1,0 +1,2488 @@
+{
+  "@@locale": "en",
+  "appName": "Ossia",
+  "@appName": {
+    "description": "The app name. Keep it as it is"
+  },
+  "tabScan": "Scan",
+  "@tabScan": {
+    "description": "Tab: take or pick photos of a bone"
+  },
+  "tabStash": "Stash",
+  "@tabStash": {
+    "description": "Tab: every bone you have saved"
+  },
+  "tabAtlas": "Atlas",
+  "@tabAtlas": {
+    "description": "Tab: a guide to each bone the app knows"
+  },
+  "tabSettings": "Settings",
+  "@tabSettings": {
+    "description": "Tab"
+  },
+  "back": "Back",
+  "confirm": "Confirm",
+  "dismiss": "Dismiss",
+  "@dismiss": {
+    "description": "Read out by screen readers for the dimmed area behind a pop-up"
+  },
+  "nah": "Nah",
+  "@nah": {
+    "description": "Playful \"cancel\" on yes/no pop-ups"
+  },
+  "save": "Save",
+  "done": "Done",
+  "cancel": "Cancel",
+  "close": "Close",
+  "tryAgain": "Try again",
+  "engineOnDevice": "This phone",
+  "@engineOnDevice": {
+    "description": "Analyze photos on the phone itself, no internet needed"
+  },
+  "engineServer": "Online",
+  "@engineServer": {
+    "description": "Analyze photos on a computer over the internet"
+  },
+  "engineAnalyzeOn": "Analyze on",
+  "@engineAnalyzeOn": {
+    "description": "Read out by screen readers before the chosen engine"
+  },
+  "engineWorksOffline": "Works offline",
+  "engineUsesInternet": "Uses internet",
+  "dateAtTime": "{date} at {time}",
+  "@dateAtTime": {
+    "description": "A date and a time together, e.g. \"Oct 16, 2026 at 3:05 PM\"",
+    "placeholders": {
+      "date": {
+        "type": "String",
+        "example": "Oct 16, 2026"
+      },
+      "time": {
+        "type": "String",
+        "example": "3:05 PM"
+      }
+    }
+  },
+  "justNow": "Just now",
+  "minutesAgo": "{count} min ago",
+  "@minutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "5"
+      }
+    }
+  },
+  "hoursAgo": "{count} hr ago",
+  "@hoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "yesterday": "Yesterday",
+  "daysAgo": "{count} days ago",
+  "@daysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "4"
+      }
+    }
+  },
+  "accentSunny": "Sunny",
+  "@accentSunny": {
+    "description": "Accent colour name: bright yellow"
+  },
+  "accentLime": "Lime",
+  "@accentLime": {
+    "description": "Accent colour name: yellow-green"
+  },
+  "accentBubblegum": "Bubblegum",
+  "@accentBubblegum": {
+    "description": "Accent colour name: bright pink"
+  },
+  "accentTangerine": "Tangerine",
+  "@accentTangerine": {
+    "description": "Accent colour name: orange"
+  },
+  "accentGrape": "Grape",
+  "@accentGrape": {
+    "description": "Accent colour name: light purple"
+  },
+  "accentSky": "Sky",
+  "@accentSky": {
+    "description": "Accent colour name: light blue"
+  },
+  "welcomeTitle": "Which language should Ossia speak?",
+  "@welcomeTitle": {
+    "description": "Big title on the very first screen"
+  },
+  "welcomeSubtitle": "We picked your phone's language. Change it here, or any time with the globe at the top.",
+  "welcomeSubtitleNoMatch": "Pick one here. You can change it any time with the globe at the top.",
+  "@welcomeSubtitleNoMatch": {
+    "description": "Shown instead when the phone uses a language Ossia does not speak"
+  },
+  "welcomeContinue": "Let's go",
+  "@welcomeContinue": {
+    "description": "Button that saves the language and opens the app"
+  },
+  "languageCardLine": "Bones, explained in English",
+  "@languageCardLine": {
+    "description": "One line on each language card, always written in that card's own language"
+  },
+  "languageFromPhone": "From your phone",
+  "@languageFromPhone": {
+    "description": "Small tag on the language your phone uses"
+  },
+  "languageTitle": "Language",
+  "globeTooltip": "Change language",
+  "@globeTooltip": {
+    "description": "Read out by screen readers for the globe button"
+  },
+  "languageSheetTitle": "Pick a language",
+  "languageSheetMessage": "Everything switches straight away, saved finds too.",
+  "languageMatchPhone": "Match my phone",
+  "@languageMatchPhone": {
+    "description": "Option: always use the phone's own language"
+  },
+  "languageMatchPhoneHint": "Right now that's {language}",
+  "@languageMatchPhoneHint": {
+    "description": "Under \"Match my phone\". {language} is one of the three names below",
+    "placeholders": {
+      "language": {
+        "type": "String",
+        "example": "German"
+      }
+    }
+  },
+  "languageFollowingPhone": "Phone ({language})",
+  "@languageFollowingPhone": {
+    "description": "Settings value when the app follows the phone's language. {language} is one of the three names below",
+    "placeholders": {
+      "language": {
+        "type": "String",
+        "example": "German"
+      }
+    }
+  },
+  "languageNameEnglish": "English",
+  "@languageNameEnglish": {
+    "description": "The language's name inside a sentence, e.g. \"Right now that's English\""
+  },
+  "languageNameGerman": "German",
+  "@languageNameGerman": {
+    "description": "The language's name inside a sentence, e.g. \"Right now that's German\""
+  },
+  "languageNameArabic": "Arabic",
+  "@languageNameArabic": {
+    "description": "The language's name inside a sentence, e.g. \"Right now that's Arabic\""
+  },
+  "languageNowSpeaking": "Ossia speaks English now",
+  "@languageNowSpeaking": {
+    "description": "Little pop-up after switching, always in the new language"
+  },
+  "boneSkull": "Skull",
+  "@boneSkull": {
+    "description": "Bone type name"
+  },
+  "boneSkullMeaning": "the whole head",
+  "@boneSkullMeaning": {
+    "description": "What the bone is, in everyday words; shown after the name"
+  },
+  "boneCranium": "Cranium",
+  "@boneCranium": {
+    "description": "Bone type name: the skull without the lower jaw"
+  },
+  "boneCraniumMeaning": "the skull without the lower jaw",
+  "boneMandible": "Mandible",
+  "@boneMandible": {
+    "description": "Bone type name"
+  },
+  "boneMandibleMeaning": "the lower jaw",
+  "boneFemur": "Femur",
+  "@boneFemur": {
+    "description": "Bone type name"
+  },
+  "boneFemurMeaning": "the thigh bone",
+  "boneTibia": "Tibia",
+  "@boneTibia": {
+    "description": "Bone type name"
+  },
+  "boneTibiaMeaning": "the shin bone",
+  "boneHumerus": "Humerus",
+  "@boneHumerus": {
+    "description": "Bone type name"
+  },
+  "boneHumerusMeaning": "the upper arm or upper front-leg bone",
+  "boneRadius": "Radius",
+  "@boneRadius": {
+    "description": "Bone type name"
+  },
+  "boneRadiusMeaning": "a forearm or lower front-leg bone",
+  "boneUlna": "Ulna",
+  "@boneUlna": {
+    "description": "Bone type name"
+  },
+  "boneUlnaMeaning": "a forearm or lower front-leg bone, with the elbow point",
+  "boneScapula": "Scapula",
+  "@boneScapula": {
+    "description": "Bone type name"
+  },
+  "boneScapulaMeaning": "the shoulder blade",
+  "boneOsCoxa": "Os Coxa",
+  "@boneOsCoxa": {
+    "description": "Bone type name: the hip bone"
+  },
+  "boneOsCoxaMeaning": "the hip bone",
+  "boneRib12": "Ribs 1–2",
+  "@boneRib12": {
+    "description": "Bone type name: the first two ribs"
+  },
+  "boneRib12Meaning": "one of the top two ribs",
+  "boneTypicalRib": "Typical Rib",
+  "@boneTypicalRib": {
+    "description": "Bone type name: ribs 3 to 9"
+  },
+  "boneTypicalRibMeaning": "a rib from the middle of the chest",
+  "boneRib1112": "Ribs 11–12",
+  "@boneRib1112": {
+    "description": "Bone type name: the last two ribs"
+  },
+  "boneRib1112Meaning": "one of the bottom two ribs",
+  "boneCervical": "Cervical Vertebrae",
+  "@boneCervical": {
+    "description": "Bone type name"
+  },
+  "boneCervicalMeaning": "a neck bone",
+  "boneThoracic": "Thoracic Vertebrae",
+  "@boneThoracic": {
+    "description": "Bone type name"
+  },
+  "boneThoracicMeaning": "a bone from the upper back",
+  "boneLumbar": "Lumbar Vertebrae",
+  "@boneLumbar": {
+    "description": "Bone type name"
+  },
+  "boneLumbarMeaning": "a bone from the lower back",
+  "boneUnidentified": "Unidentified",
+  "@boneUnidentified": {
+    "description": "Headline when no bone type was found"
+  },
+  "noBoneDetected": "No bone detected",
+  "@noBoneDetected": {
+    "description": "Headline when the photo shows no bone"
+  },
+  "animalHuman": "Human",
+  "animalHumanMeaning": "a person",
+  "animalCanid": "Canid",
+  "@animalCanid": {
+    "description": "Animal family name (Canidae)"
+  },
+  "animalCanidMeaning": "the dog family (dogs, wolves, coyotes and foxes)",
+  "animalCervid": "Cervid",
+  "@animalCervid": {
+    "description": "Animal family name (Cervidae)"
+  },
+  "animalCervidMeaning": "the deer family (deer, elk, moose and caribou)",
+  "animalBovid": "Bovid",
+  "@animalBovid": {
+    "description": "Animal family name (Bovidae)"
+  },
+  "animalBovidMeaning": "the cattle family (cows, bison, sheep, goats and antelope)",
+  "animalSuid": "Suid",
+  "@animalSuid": {
+    "description": "Animal family name (Suidae)"
+  },
+  "animalSuidMeaning": "the pig family (pigs, wild boar and warthogs)",
+  "animalFelid": "Felid",
+  "@animalFelid": {
+    "description": "Animal family name (Felidae)"
+  },
+  "animalFelidMeaning": "the cat family (house cats, bobcats, cougars and lions)",
+  "animalUrsid": "Ursid",
+  "@animalUrsid": {
+    "description": "Animal family name (Ursidae)"
+  },
+  "animalUrsidMeaning": "bears",
+  "animalLeporid": "Leporid",
+  "@animalLeporid": {
+    "description": "Animal family name (Leporidae)"
+  },
+  "animalLeporidMeaning": "rabbits and hares",
+  "animalProcyonid": "Procyonid",
+  "@animalProcyonid": {
+    "description": "Animal family name (Procyonidae)"
+  },
+  "animalProcyonidMeaning": "the raccoon family (raccoons, coatis and ringtails)",
+  "animalEquid": "Equid",
+  "@animalEquid": {
+    "description": "Animal family name (Equidae)"
+  },
+  "animalEquidMeaning": "the horse family (horses, donkeys and zebras)",
+  "animalRodent": "Rodent",
+  "@animalRodent": {
+    "description": "Animal group name (Rodentia)"
+  },
+  "animalRodentMeaning": "rats, mice, squirrels, beavers and their kin",
+  "animalMammal": "Mammal",
+  "animalOtherMammalMeaning": "an animal with fur that feeds its young milk, from a family Ossia doesn't name, like a skunk or opossum",
+  "animalMammalMeaning": "an animal with fur that feeds its young milk. This bone doesn't show which family",
+  "animalBird": "Bird",
+  "animalBirdMeaning": "any bird, from sparrows to ostriches",
+  "animalReptile": "Reptile",
+  "animalReptileMeaning": "turtles, snakes, lizards and crocodiles",
+  "animalUnnamed": "Animal",
+  "@animalUnnamed": {
+    "description": "An animal bone with no animal group named"
+  },
+  "animalUnnamedMeaning": "an animal bone that no animal group stood out for",
+  "partComplete": "Whole bone",
+  "partShaft": "Middle (shaft)",
+  "partProximal": "Near end",
+  "@partProximal": {
+    "description": "The end of a limb bone nearer the body"
+  },
+  "partDistal": "Far end",
+  "@partDistal": {
+    "description": "The end of a limb bone further from the body"
+  },
+  "partFragment": "Broken piece",
+  "statusComplete": "Complete",
+  "@statusComplete": {
+    "description": "The bone is whole"
+  },
+  "statusFragment": "Broken",
+  "@statusFragment": {
+    "description": "The bone is only a fragment"
+  },
+  "conditionWholeButBroken": "Whole bone, but broken",
+  "conditionPartBroken": "{part}, broken",
+  "@conditionPartBroken": {
+    "description": "A part of the bone that is broken off, e.g. \"Near end, broken\"",
+    "placeholders": {
+      "part": {
+        "type": "String",
+        "example": "Near end"
+      }
+    }
+  },
+  "damageFracture": "Fracture",
+  "damageCutMarks": "Cut marks",
+  "damageBurnSigns": "Burn signs",
+  "ageAdult": "Adult",
+  "ageJuvenile": "Juvenile",
+  "@ageJuvenile": {
+    "description": "A child or teenager"
+  },
+  "sexMale": "Male",
+  "sexFemale": "Female",
+  "unknownValue": "Unknown",
+  "sourceOnDevice": "On this phone",
+  "sourceServer": "Your server",
+  "regionCranial": "Cranial",
+  "regionAxial": "Axial",
+  "regionThoracic": "Thoracic",
+  "regionUpperLimb": "Upper limb",
+  "regionLowerLimb": "Lower limb",
+  "regionGirdle": "Girdle",
+  "phaseFinding": "Finding the bone",
+  "phaseHumanOrAnimal": "Human or animal?",
+  "phaseWhichBone": "Which bone?",
+  "phaseWhichPart": "Which part?",
+  "phaseWholeOrBroken": "Whole or broken?",
+  "phaseMarks": "Looking for marks",
+  "phaseWhichAnimal": "Which animal?",
+  "phaseAgeSex": "Age and sex",
+  "phaseWriting": "Writing it up",
+  "unitCentimetres": "Centimetres",
+  "unitInches": "Inches",
+  "unitCm": "cm",
+  "@unitCm": {
+    "description": "Short symbol for centimetres"
+  },
+  "unitIn": "in",
+  "@unitIn": {
+    "description": "Short symbol for inches"
+  },
+  "atlasSkullBlurb": "Cranium and mandible together",
+  "@atlasSkullBlurb": {
+    "description": "Atlas: one line under the bone name in the list"
+  },
+  "atlasSkullSummary": "The complete bony head: the cranium together with the mandible. Twenty-two bones in all, joined by interlocking sutures; only the mandible articulates freely.",
+  "@atlasSkullSummary": {
+    "description": "Atlas, anatomy text for experts. Keep the Latin terms where your language uses them"
+  },
+  "atlasSkullLm1": "Coronal, sagittal and lambdoid sutures",
+  "@atlasSkullLm1": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasSkullLm2": "Orbits and the piriform (nasal) aperture",
+  "@atlasSkullLm2": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasSkullLm3": "Foramen magnum on the basicranium",
+  "@atlasSkullLm3": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasSkullLm4": "Mastoid processes behind the ear canals",
+  "@atlasSkullLm4": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasSkullSiding": "Symmetrical. Orientation comes from the frontal bone (anterior) and the occipital squama (posterior).",
+  "@atlasSkullSiding": {
+    "description": "Atlas: how to tell left from right, or the place in a series"
+  },
+  "atlasCraniumBlurb": "The skull without its jaw",
+  "@atlasCraniumBlurb": {
+    "description": "Atlas: one line under the bone name in the list"
+  },
+  "atlasCraniumSummary": "The skull with the mandible removed. Encloses and protects the brain; the vault is made of frontal, parietal, temporal and occipital bones.",
+  "@atlasCraniumSummary": {
+    "description": "Atlas, anatomy text for experts. Keep the Latin terms where your language uses them"
+  },
+  "atlasCraniumLm1": "Supraorbital ridges — heavier in male crania",
+  "@atlasCraniumLm1": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasCraniumLm2": "Nuchal lines on the occipital",
+  "@atlasCraniumLm2": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasCraniumLm3": "Temporal lines sweeping across the parietals",
+  "@atlasCraniumLm3": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasCraniumLm4": "External auditory meatus",
+  "@atlasCraniumLm4": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasCraniumSiding": "Symmetrical when complete. Isolated vault fragments are sided by suture direction and meningeal groove patterning.",
+  "@atlasCraniumSiding": {
+    "description": "Atlas: how to tell left from right, or the place in a series"
+  },
+  "atlasCraniumAka": "Calvarium (vault only)",
+  "@atlasCraniumAka": {
+    "description": "Atlas: another name for this bone"
+  },
+  "atlasMandibleBlurb": "Lower jaw; dense and durable",
+  "@atlasMandibleBlurb": {
+    "description": "Atlas: one line under the bone name in the list"
+  },
+  "atlasMandibleSummary": "The lower jaw — the only freely mobile bone of the skull. Dense and compact, so it survives burial and burning better than most.",
+  "@atlasMandibleSummary": {
+    "description": "Atlas, anatomy text for experts. Keep the Latin terms where your language uses them"
+  },
+  "atlasMandibleLm1": "Mental protuberance (the chin)",
+  "@atlasMandibleLm1": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasMandibleLm2": "Gonial angle where ramus meets body",
+  "@atlasMandibleLm2": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasMandibleLm3": "Mandibular condyle and coronoid process",
+  "@atlasMandibleLm3": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasMandibleLm4": "Mental foramen below the premolars",
+  "@atlasMandibleLm4": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasMandibleSiding": "Symmetrical when whole. A half-mandible is sided by the direction the ramus rises and by which way the tooth row curves.",
+  "@atlasMandibleSiding": {
+    "description": "Atlas: how to tell left from right, or the place in a series"
+  },
+  "atlasFemurBlurb": "Thigh bone; best stature indicator",
+  "@atlasFemurBlurb": {
+    "description": "Atlas: one line under the bone name in the list"
+  },
+  "atlasFemurSummary": "The thigh bone — the longest and strongest bone in the body. Its maximum length carries the tightest correlation with living stature.",
+  "@atlasFemurSummary": {
+    "description": "Atlas, anatomy text for experts. Keep the Latin terms where your language uses them"
+  },
+  "atlasFemurLm1": "Spherical head with the fovea capitis",
+  "@atlasFemurLm1": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasFemurLm2": "Greater and lesser trochanters",
+  "@atlasFemurLm2": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasFemurLm3": "Linea aspera ridging the posterior shaft",
+  "@atlasFemurLm3": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasFemurLm4": "Medial and lateral condyles at the knee",
+  "@atlasFemurLm4": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasFemurSiding": "Hold the bone upright: the head points medially and the linea aspera faces posteriorly. The side the head points to is the side of the body.",
+  "@atlasFemurSiding": {
+    "description": "Atlas: how to tell left from right, or the place in a series"
+  },
+  "atlasTibiaBlurb": "Shin bone; triangular shaft",
+  "@atlasTibiaBlurb": {
+    "description": "Atlas: one line under the bone name in the list"
+  },
+  "atlasTibiaSummary": "The shin bone, medial and weight-bearing in the lower leg. Its triangular shaft is distinctive even in fragments.",
+  "@atlasTibiaSummary": {
+    "description": "Atlas, anatomy text for experts. Keep the Latin terms where your language uses them"
+  },
+  "atlasTibiaLm1": "Tibial tuberosity on the anterior proximal shaft",
+  "@atlasTibiaLm1": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasTibiaLm2": "Sharp anterior crest",
+  "@atlasTibiaLm2": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasTibiaLm3": "Medial malleolus at the ankle",
+  "@atlasTibiaLm3": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasTibiaLm4": "Flat medial and lateral condyles",
+  "@atlasTibiaLm4": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasTibiaSiding": "The medial malleolus projects on the same side as the body it came from; the tibial tuberosity marks the front.",
+  "@atlasTibiaSiding": {
+    "description": "Atlas: how to tell left from right, or the place in a series"
+  },
+  "atlasHumerusBlurb": "Upper arm, shoulder to elbow",
+  "@atlasHumerusBlurb": {
+    "description": "Atlas: one line under the bone name in the list"
+  },
+  "atlasHumerusSummary": "The upper arm bone, running from the shoulder joint to the elbow. Second only to the femur in length.",
+  "@atlasHumerusSummary": {
+    "description": "Atlas, anatomy text for experts. Keep the Latin terms where your language uses them"
+  },
+  "atlasHumerusLm1": "Rounded head with greater and lesser tubercles",
+  "@atlasHumerusLm1": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasHumerusLm2": "Deltoid tuberosity mid-shaft",
+  "@atlasHumerusLm2": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasHumerusLm3": "Olecranon fossa on the posterior distal end",
+  "@atlasHumerusLm3": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasHumerusLm4": "Trochlea and capitulum forming the elbow",
+  "@atlasHumerusLm4": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasHumerusSiding": "Stand it upright with the head facing you: the olecranon fossa sits posteriorly, and the head turns medially toward the body midline.",
+  "@atlasHumerusSiding": {
+    "description": "Atlas: how to tell left from right, or the place in a series"
+  },
+  "atlasRadiusBlurb": "Lateral forearm, on the thumb side",
+  "@atlasRadiusBlurb": {
+    "description": "Atlas: one line under the bone name in the list"
+  },
+  "atlasRadiusSummary": "The lateral forearm bone, on the thumb side. It rotates over the ulna to turn the palm.",
+  "@atlasRadiusSummary": {
+    "description": "Atlas, anatomy text for experts. Keep the Latin terms where your language uses them"
+  },
+  "atlasRadiusLm1": "Disc-shaped proximal head",
+  "@atlasRadiusLm1": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasRadiusLm2": "Radial tuberosity just below the neck",
+  "@atlasRadiusLm2": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasRadiusLm3": "Broad, flared distal end",
+  "@atlasRadiusLm3": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasRadiusLm4": "Styloid process at the wrist",
+  "@atlasRadiusLm4": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasRadiusSiding": "The small head is proximal and the broad end distal; the styloid process points laterally, away from the midline.",
+  "@atlasRadiusSiding": {
+    "description": "Atlas: how to tell left from right, or the place in a series"
+  },
+  "atlasUlnaBlurb": "Medial forearm; point of the elbow",
+  "@atlasUlnaBlurb": {
+    "description": "Atlas: one line under the bone name in the list"
+  },
+  "atlasUlnaSummary": "The medial forearm bone, on the little-finger side. Forms the hinge of the elbow and is the stable partner the radius rotates around.",
+  "@atlasUlnaSummary": {
+    "description": "Atlas, anatomy text for experts. Keep the Latin terms where your language uses them"
+  },
+  "atlasUlnaLm1": "Olecranon process — the point of the elbow",
+  "@atlasUlnaLm1": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasUlnaLm2": "Trochlear notch gripping the humerus",
+  "@atlasUlnaLm2": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasUlnaLm3": "Coronoid process below the notch",
+  "@atlasUlnaLm3": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasUlnaLm4": "Slender distal head with styloid process",
+  "@atlasUlnaLm4": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasUlnaSiding": "The trochlear notch opens anteriorly; with the olecranon up and the notch facing you, the shaft curves toward the body side.",
+  "@atlasUlnaSiding": {
+    "description": "Atlas: how to tell left from right, or the place in a series"
+  },
+  "atlasScapulaBlurb": "Shoulder blade; thin triangular plate",
+  "@atlasScapulaBlurb": {
+    "description": "Atlas: one line under the bone name in the list"
+  },
+  "atlasScapulaSummary": "The shoulder blade — a thin triangular plate riding on the back of the ribcage. Thin enough that the blade often survives only as fragments.",
+  "@atlasScapulaSummary": {
+    "description": "Atlas, anatomy text for experts. Keep the Latin terms where your language uses them"
+  },
+  "atlasScapulaLm1": "Spine running across the posterior surface",
+  "@atlasScapulaLm1": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasScapulaLm2": "Acromion process at the shoulder tip",
+  "@atlasScapulaLm2": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasScapulaLm3": "Hooked coracoid process anteriorly",
+  "@atlasScapulaLm3": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasScapulaLm4": "Glenoid fossa receiving the humeral head",
+  "@atlasScapulaLm4": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasScapulaSiding": "The glenoid fossa faces laterally and the spine sits on the posterior surface; the side the fossa faces is the side of the body.",
+  "@atlasScapulaSiding": {
+    "description": "Atlas: how to tell left from right, or the place in a series"
+  },
+  "atlasOsCoxaBlurb": "Hip bone; best indicator of sex",
+  "@atlasOsCoxaBlurb": {
+    "description": "Atlas: one line under the bone name in the list"
+  },
+  "atlasOsCoxaSummary": "The hip bone: ilium, ischium and pubis fused at the acetabulum. The single most reliable element for estimating sex and adult age.",
+  "@atlasOsCoxaSummary": {
+    "description": "Atlas, anatomy text for experts. Keep the Latin terms where your language uses them"
+  },
+  "atlasOsCoxaLm1": "Greater sciatic notch — broad in females, narrow in males",
+  "@atlasOsCoxaLm1": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasOsCoxaLm2": "Subpubic angle and the ventral arc",
+  "@atlasOsCoxaLm2": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasOsCoxaLm3": "Auricular surface, used for age-at-death",
+  "@atlasOsCoxaLm3": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasOsCoxaLm4": "Acetabulum receiving the femoral head",
+  "@atlasOsCoxaLm4": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasOsCoxaSiding": "Point the iliac blade up and the acetabulum out: the pubis sits anteriorly and the sciatic notch opens posteriorly.",
+  "@atlasOsCoxaSiding": {
+    "description": "Atlas: how to tell left from right, or the place in a series"
+  },
+  "atlasOsCoxaAka": "Innominate, hip bone",
+  "@atlasOsCoxaAka": {
+    "description": "Atlas: another name for this bone"
+  },
+  "atlasRib12Blurb": "Atypical ribs; flat and sharply curved",
+  "@atlasRib12Blurb": {
+    "description": "Atlas: one line under the bone name in the list"
+  },
+  "atlasRib12Summary": "The first two ribs are atypical. Rib 1 is the shortest, broadest and most sharply curved; rib 2 is longer but keeps the same flattened set.",
+  "@atlasRib12Summary": {
+    "description": "Atlas, anatomy text for experts. Keep the Latin terms where your language uses them"
+  },
+  "atlasRib12Lm1": "Rib 1 lies flat, with superior and inferior surfaces",
+  "@atlasRib12Lm1": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasRib12Lm2": "Scalene tubercle with grooves for the subclavian vessels",
+  "@atlasRib12Lm2": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasRib12Lm3": "Rib 2 carries a tuberosity for serratus anterior",
+  "@atlasRib12Lm3": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasRib12Lm4": "Single articular facet on the head of rib 1",
+  "@atlasRib12Lm4": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasRib12Siding": "Lay the rib flat with the head backward: the concave inner surface faces the midline, giving the side.",
+  "@atlasRib12Siding": {
+    "description": "Atlas: how to tell left from right, or the place in a series"
+  },
+  "atlasTypicalRibBlurb": "Ribs 3–9; head, tubercle, costal groove",
+  "@atlasTypicalRibBlurb": {
+    "description": "Atlas: one line under the bone name in the list"
+  },
+  "atlasTypicalRibSummary": "Ribs 3 through 9 share one plan: a head, neck, tubercle and a long curving body that twists at the angle.",
+  "@atlasTypicalRibSummary": {
+    "description": "Atlas, anatomy text for experts. Keep the Latin terms where your language uses them"
+  },
+  "atlasTypicalRibLm1": "Two demifacets on the head",
+  "@atlasTypicalRibLm1": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasTypicalRibLm2": "Tubercle articulating with a transverse process",
+  "@atlasTypicalRibLm2": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasTypicalRibLm3": "Angle where the shaft changes direction",
+  "@atlasTypicalRibLm3": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasTypicalRibLm4": "Costal groove along the inner inferior border",
+  "@atlasTypicalRibLm4": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasTypicalRibSiding": "The costal groove runs on the internal inferior edge; with the groove down and inside, the head points to the back and gives the side.",
+  "@atlasTypicalRibSiding": {
+    "description": "Atlas: how to tell left from right, or the place in a series"
+  },
+  "atlasRib1112Blurb": "Floating ribs; short and unattached",
+  "@atlasRib1112Blurb": {
+    "description": "Atlas: one line under the bone name in the list"
+  },
+  "atlasRib1112Summary": "The floating ribs. Short, tapering and unattached at the front, which is why they lack most of the features a typical rib carries.",
+  "@atlasRib1112Summary": {
+    "description": "Atlas, anatomy text for experts. Keep the Latin terms where your language uses them"
+  },
+  "atlasRib1112Lm1": "Single articular facet on the head",
+  "@atlasRib1112Lm1": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasRib1112Lm2": "No neck and no tubercle",
+  "@atlasRib1112Lm2": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasRib1112Lm3": "Little or no costal groove",
+  "@atlasRib1112Lm3": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasRib1112Lm4": "Pointed, cartilage-tipped anterior end",
+  "@atlasRib1112Lm4": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasRib1112Siding": "Curvature alone gives the side: the concave surface faces the midline.",
+  "@atlasRib1112Siding": {
+    "description": "Atlas: how to tell left from right, or the place in a series"
+  },
+  "atlasCervicalBlurb": "C1–C7; the only ones with transverse foramina",
+  "@atlasCervicalBlurb": {
+    "description": "Atlas: one line under the bone name in the list"
+  },
+  "atlasCervicalSummary": "The seven neck vertebrae, C1–C7. Smallest bodies in the column and the only vertebrae with holes in the transverse processes.",
+  "@atlasCervicalSummary": {
+    "description": "Atlas, anatomy text for experts. Keep the Latin terms where your language uses them"
+  },
+  "atlasCervicalLm1": "Transverse foramina — diagnostic for the region",
+  "@atlasCervicalLm1": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasCervicalLm2": "C1 (atlas) has no body; C2 (axis) carries the dens",
+  "@atlasCervicalLm2": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasCervicalLm3": "Bifid spinous processes on C2–C6",
+  "@atlasCervicalLm3": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasCervicalLm4": "Large triangular vertebral foramen",
+  "@atlasCervicalLm4": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasCervicalSiding": "Symmetrical. Position in the series is read from the spinous process and body size; C7 has the long, unsplit \"prominens\" spine.",
+  "@atlasCervicalSiding": {
+    "description": "Atlas: how to tell left from right, or the place in a series"
+  },
+  "atlasThoracicBlurb": "T1–T12; carry the costal facets",
+  "@atlasThoracicBlurb": {
+    "description": "Atlas: one line under the bone name in the list"
+  },
+  "atlasThoracicSummary": "The twelve vertebrae of the upper back, T1–T12. Each one articulates with a pair of ribs, and the facets for those ribs identify the region.",
+  "@atlasThoracicSummary": {
+    "description": "Atlas, anatomy text for experts. Keep the Latin terms where your language uses them"
+  },
+  "atlasThoracicLm1": "Costal facets on the body and transverse processes",
+  "@atlasThoracicLm1": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasThoracicLm2": "Heart-shaped vertebral bodies",
+  "@atlasThoracicLm2": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasThoracicLm3": "Long spinous processes angled steeply downward",
+  "@atlasThoracicLm3": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasThoracicLm4": "Circular vertebral foramen",
+  "@atlasThoracicLm4": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasThoracicSiding": "Symmetrical. Sequence is judged from body size and how far the spinous process overlaps the vertebra below.",
+  "@atlasThoracicSiding": {
+    "description": "Atlas: how to tell left from right, or the place in a series"
+  },
+  "atlasLumbarBlurb": "L1–L5; the heaviest in the column",
+  "@atlasLumbarBlurb": {
+    "description": "Atlas: one line under the bone name in the list"
+  },
+  "atlasLumbarSummary": "The five vertebrae of the lower back, L1–L5. The largest and most robust in the column, built for load rather than movement.",
+  "@atlasLumbarSummary": {
+    "description": "Atlas, anatomy text for experts. Keep the Latin terms where your language uses them"
+  },
+  "atlasLumbarLm1": "Massive kidney-shaped bodies",
+  "@atlasLumbarLm1": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasLumbarLm2": "No transverse foramina and no costal facets",
+  "@atlasLumbarLm2": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasLumbarLm3": "Short, blunt, hatchet-shaped spinous processes",
+  "@atlasLumbarLm3": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasLumbarLm4": "Mammillary processes on the superior articular facets",
+  "@atlasLumbarLm4": {
+    "description": "Atlas: one thing an expert looks for on this bone"
+  },
+  "atlasLumbarSiding": "Symmetrical. L5 is recognised by its wedge shape, deeper in front than behind, where it meets the sacrum.",
+  "@atlasLumbarSiding": {
+    "description": "Atlas: how to tell left from right, or the place in a series"
+  },
+  "phaseDoc1Title": "Is there a bone?",
+  "@phaseDoc1Title": {
+    "description": "How analysis works: step title"
+  },
+  "phaseDoc1Detail": "First Ossia checks there's a bone in the photo at all, so a stick or a stone doesn't get a made-up answer.",
+  "@phaseDoc1Detail": {
+    "description": "How analysis works: what this step does"
+  },
+  "phaseDoc2Title": "Human or animal?",
+  "@phaseDoc2Title": {
+    "description": "How analysis works: step title"
+  },
+  "phaseDoc2Detail": "Next it decides whether the bone came from a person or an animal. Everything after depends on this step.",
+  "@phaseDoc2Detail": {
+    "description": "How analysis works: what this step does"
+  },
+  "phaseDoc3Title": "Which bone?",
+  "@phaseDoc3Title": {
+    "description": "How analysis works: step title"
+  },
+  "phaseDoc3Detail": "Sixteen kinds of bone, from the skull and jaw to the ribs, spine, hip and limbs. You see its top three guesses, not just the winner.",
+  "@phaseDoc3Detail": {
+    "description": "How analysis works: what this step does"
+  },
+  "phaseDoc4Title": "Which part?",
+  "@phaseDoc4Title": {
+    "description": "How analysis works: step title"
+  },
+  "phaseDoc4Detail": "Whether the photo shows the whole bone, its middle (the shaft), one end, or a broken piece.",
+  "@phaseDoc4Detail": {
+    "description": "How analysis works: what this step does"
+  },
+  "phaseDoc5Title": "Whole or broken?",
+  "@phaseDoc5Title": {
+    "description": "How analysis works: step title"
+  },
+  "phaseDoc5Detail": "A quick yes or no: is the bone complete, or only a fragment?",
+  "@phaseDoc5Detail": {
+    "description": "How analysis works: what this step does"
+  },
+  "phaseDoc6Title": "Marks and damage",
+  "@phaseDoc6Title": {
+    "description": "How analysis works: step title"
+  },
+  "phaseDoc6Detail": "Breaks, cut marks and burning are each checked on their own, so one bone can show all three.",
+  "@phaseDoc6Detail": {
+    "description": "How analysis works: what this step does"
+  },
+  "phaseDoc7Title": "Which animal?",
+  "@phaseDoc7Title": {
+    "description": "How analysis works: step title"
+  },
+  "phaseDoc7Detail": "For animal bones: mammal, bird or reptile. For mammals, also the family, like the dog, deer, cattle, pig, cat, bear, rabbit, raccoon or horse family, or a rodent. The family is only named when the bone can show it, such as a skull, a jaw or a whole leg bone.",
+  "@phaseDoc7Detail": {
+    "description": "How analysis works: what this step does"
+  },
+  "phaseDoc8Title": "Age and sex",
+  "@phaseDoc8Title": {
+    "description": "How analysis works: step title"
+  },
+  "phaseDoc8Detail": "For human bones only. Treat these as a hint to check, never as an answer on their own.",
+  "@phaseDoc8Detail": {
+    "description": "How analysis works: what this step does"
+  },
+  "phaseDoc9Title": "Putting it together",
+  "@phaseDoc9Title": {
+    "description": "How analysis works: step title"
+  },
+  "phaseDoc9Detail": "Photos of the same bone from different sides are read together, and the length you measured is checked against the bone's usual size. Both help when one photo alone is unclear.",
+  "@phaseDoc9Detail": {
+    "description": "How analysis works: what this step does"
+  },
+  "errNotReadyOnPhone": "Ossia couldn't get ready on this phone. Try again, or restart the app.",
+  "@errNotReadyOnPhone": {
+    "description": "Shown when a scan fails"
+  },
+  "errPhotoUnreadable": "Couldn't read that photo. Try a JPEG or PNG.",
+  "@errPhotoUnreadable": {
+    "description": "Shown when a scan fails"
+  },
+  "errPhotoNUnreadable": "Couldn't read photo {number}. Remove it and try again.",
+  "@errPhotoNUnreadable": {
+    "description": "Shown when a scan fails",
+    "placeholders": {
+      "number": {
+        "type": "int",
+        "example": "2"
+      }
+    }
+  },
+  "errReadingPhoto": "Something went wrong reading that photo. Please try again.",
+  "@errReadingPhoto": {
+    "description": "Shown when a scan fails"
+  },
+  "errPhotoTryAnother": "Couldn't read that photo. Try another one.",
+  "@errPhotoTryAnother": {
+    "description": "Shown when a scan fails"
+  },
+  "errBadOnlineAddress": "The online address doesn't look right. Check it in Settings.",
+  "@errBadOnlineAddress": {
+    "description": "Shown when a scan fails"
+  },
+  "errThisDevice": "That address points back at this phone. Type the address shown on the Ossia computer instead.",
+  "@errThisDevice": {
+    "description": "Someone typed \"localhost\" as the online address on a phone"
+  },
+  "errServerStatus": "Online analysis isn't working right now (error {code}).",
+  "@errServerStatus": {
+    "description": "Shown when a scan fails",
+    "placeholders": {
+      "code": {
+        "type": "int",
+        "example": "500"
+      }
+    }
+  },
+  "errServerTooBig": "The photos are too big to send. Try fewer photos.",
+  "@errServerTooBig": {
+    "description": "Shown when a scan fails"
+  },
+  "errServerRejected": "The online analysis didn't accept these photos. Try other photos.",
+  "@errServerRejected": {
+    "description": "Shown when a scan fails"
+  },
+  "errServerCouldntAnalyze": "The online analysis couldn't read these photos. Try other photos.",
+  "@errServerCouldntAnalyze": {
+    "description": "Shown when a scan fails"
+  },
+  "errTimeout": "Online analysis took too long to answer. Check your connection, or analyze on this phone.",
+  "@errTimeout": {
+    "description": "Shown when a scan fails"
+  },
+  "errUnreachable": "Couldn't connect for online analysis. Check your internet and the online address in Settings.",
+  "@errUnreachable": {
+    "description": "Shown when a scan fails"
+  },
+  "errNotAReport": "Something answered, but not with a report. Check the online address in Settings.",
+  "@errNotAReport": {
+    "description": "Shown when a scan fails"
+  },
+  "errGeneric": "Something went wrong. Please try again.",
+  "@errGeneric": {
+    "description": "Shown when a scan fails"
+  },
+  "checkAddress": "Address",
+  "@checkAddress": {
+    "description": "Connection checklist: one step"
+  },
+  "checkReach": "Reaching it",
+  "@checkReach": {
+    "description": "Connection checklist: one step"
+  },
+  "checkServer": "Ossia answering",
+  "@checkServer": {
+    "description": "Connection checklist: one step"
+  },
+  "checkModel": "Ready to analyze",
+  "@checkModel": {
+    "description": "Connection checklist: one step"
+  },
+  "checkSpeed": "Speed",
+  "@checkSpeed": {
+    "description": "Connection checklist: one step"
+  },
+  "checkBadAddress": "That isn't a valid address",
+  "@checkBadAddress": {
+    "description": "Connection checklist: result of a step"
+  },
+  "checkAnsweredIn": "Answered in {ms} ms",
+  "@checkAnsweredIn": {
+    "description": "Connection checklist: result of a step",
+    "placeholders": {
+      "ms": {
+        "type": "int",
+        "example": "120"
+      }
+    }
+  },
+  "checkRunningFor": "Running for {time}",
+  "@checkRunningFor": {
+    "description": "Connection checklist: result of a step",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "2h 5m"
+      }
+    }
+  },
+  "checkNotReady": "It's on, but not ready to analyze yet",
+  "@checkNotReady": {
+    "description": "Connection checklist: result of a step"
+  },
+  "checkReady": "Ready",
+  "@checkReady": {
+    "description": "Connection checklist: result of a step"
+  },
+  "checkLost": "Lost the connection",
+  "@checkLost": {
+    "description": "Connection checklist: result of a step"
+  },
+  "checkPing": "{ms} ms · {word}",
+  "@checkPing": {
+    "description": "Connection checklist: result of a step, e.g. \"120 ms · snappy\"",
+    "placeholders": {
+      "ms": {
+        "type": "int",
+        "example": "120"
+      },
+      "word": {
+        "type": "String",
+        "example": "snappy"
+      }
+    }
+  },
+  "pingSnappy": "snappy",
+  "@pingSnappy": {
+    "description": "How fast the connection is: very fast"
+  },
+  "pingGood": "good",
+  "@pingGood": {
+    "description": "How fast the connection is: fine"
+  },
+  "pingSluggish": "sluggish",
+  "@pingSluggish": {
+    "description": "How fast the connection is: a bit slow"
+  },
+  "pingSlow": "slow",
+  "@pingSlow": {
+    "description": "How fast the connection is: slow"
+  },
+  "uptimeSeconds": "{s}s",
+  "@uptimeSeconds": {
+    "description": "How long the server has run, very short units: seconds",
+    "placeholders": {
+      "s": {
+        "type": "int",
+        "example": "40"
+      }
+    }
+  },
+  "uptimeMinutes": "{m}m",
+  "@uptimeMinutes": {
+    "description": "Short units: minutes",
+    "placeholders": {
+      "m": {
+        "type": "int",
+        "example": "12"
+      }
+    }
+  },
+  "uptimeHours": "{h}h {m}m",
+  "@uptimeHours": {
+    "description": "Short units: hours and minutes",
+    "placeholders": {
+      "h": {
+        "type": "int",
+        "example": "2"
+      },
+      "m": {
+        "type": "int",
+        "example": "5"
+      }
+    }
+  },
+  "uptimeDays": "{d}d {h}h",
+  "@uptimeDays": {
+    "description": "Short units: days and hours",
+    "placeholders": {
+      "d": {
+        "type": "int",
+        "example": "3"
+      },
+      "h": {
+        "type": "int",
+        "example": "4"
+      }
+    }
+  },
+  "netBadAnswer": "Bad answer",
+  "@netBadAnswer": {
+    "description": "Connection checklist: result of a step"
+  },
+  "netNoAnswer": "No answer within {seconds} seconds",
+  "@netNoAnswer": {
+    "description": "Connection checklist: result of a step",
+    "placeholders": {
+      "seconds": {
+        "type": "int",
+        "example": "8"
+      }
+    }
+  },
+  "netNotFound": "That address wasn't found. Check it's typed right and still current",
+  "@netNotFound": {
+    "description": "Connection checklist: result of a step"
+  },
+  "netRefused": "Nothing answered at that address",
+  "@netRefused": {
+    "description": "Connection checklist: result of a step"
+  },
+  "netNoInternet": "No internet connection",
+  "@netNoInternet": {
+    "description": "Connection checklist: result of a step"
+  },
+  "netNotSecure": "Couldn't make a secure connection",
+  "@netNotSecure": {
+    "description": "Connection checklist: result of a step"
+  },
+  "netNotRunning": "The address works, but Ossia isn't running behind it",
+  "@netNotRunning": {
+    "description": "Connection checklist: result of a step"
+  },
+  "netExpired": "That address has expired",
+  "@netExpired": {
+    "description": "Connection checklist: result of a step"
+  },
+  "netHttpError": "It answered with an error ({code})",
+  "@netHttpError": {
+    "description": "Connection checklist: result of a step",
+    "placeholders": {
+      "code": {
+        "type": "int",
+        "example": "404"
+      }
+    }
+  },
+  "netNotOssia": "Something answered, but it isn't Ossia",
+  "@netNotOssia": {
+    "description": "Connection checklist: result of a step"
+  },
+  "lenThing": "\"{animal} {bone}\"",
+  "@lenThing": {
+    "description": "An animal and a bone named inside a length note, e.g. „Mensch · Femur“",
+    "placeholders": {
+      "animal": {
+        "type": "String",
+        "example": "Mensch"
+      },
+      "bone": {
+        "type": "String",
+        "example": "Femur"
+      }
+    }
+  },
+  "lenUsually": "{thing} (usually {min}–{max} cm)",
+  "@lenUsually": {
+    "description": "The usual length range after a bone name",
+    "placeholders": {
+      "thing": {
+        "type": "String",
+        "example": "„Mensch · Femur“"
+      },
+      "min": {
+        "type": "String",
+        "example": "34,4"
+      },
+      "max": {
+        "type": "String",
+        "example": "55"
+      }
+    }
+  },
+  "lenNeverOver": "{thing} (never over {max} cm)",
+  "@lenNeverOver": {
+    "description": "The longest a bone ever is, after its name",
+    "placeholders": {
+      "thing": {
+        "type": "String",
+        "example": "„Vogel · Femur“"
+      },
+      "max": {
+        "type": "String",
+        "example": "20"
+      }
+    }
+  },
+  "lenOrThing": "{first} or {second}",
+  "@lenOrThing": {
+    "description": "Two bone names",
+    "placeholders": {
+      "first": {
+        "type": "String",
+        "example": "„Mensch · Femur“"
+      },
+      "second": {
+        "type": "String",
+        "example": "„Hirsche · Femur“"
+      }
+    }
+  },
+  "lenNoBone": "No bone was found, so the length wasn't used.",
+  "@lenNoBone": {
+    "description": "A note on a report about the length the person measured"
+  },
+  "lenNoLength": "No length was entered.",
+  "@lenNoLength": {
+    "description": "A note on a report about the length the person measured"
+  },
+  "lenOnlyShaft": "This looks like the middle (shaft) of a bone, so its length can't be compared with whole bones.",
+  "@lenOnlyShaft": {
+    "description": "A note on a report about the length the person measured"
+  },
+  "lenOnlyEnd": "This looks like one end of a bone, so its length can't be compared with whole bones.",
+  "@lenOnlyEnd": {
+    "description": "A note on a report about the length the person measured"
+  },
+  "lenOnlyPiece": "This looks like a broken piece of bone, so its length can't be compared with whole bones.",
+  "@lenOnlyPiece": {
+    "description": "A note on a report about the length the person measured"
+  },
+  "lenOnlyPart": "This looks like only part of a bone, so its length can't be compared with whole bones.",
+  "@lenOnlyPart": {
+    "description": "A note on a report about the length the person measured"
+  },
+  "lenNoReference": "We don't have usual lengths for {things}, so the length wasn't used.",
+  "@lenNoReference": {
+    "description": "A note on a report about the length the person measured",
+    "placeholders": {
+      "things": {
+        "type": "String",
+        "example": "„Mensch · Femur“ (meist 34,4–55 cm)"
+      }
+    }
+  },
+  "lenNoFit": "{cm} cm doesn't fit {before} or the next closest option, {after}, so we kept the photo's answer. It could be from a young animal or person, or worth measuring again.",
+  "@lenNoFit": {
+    "description": "A note on a report about the length the person measured",
+    "placeholders": {
+      "cm": {
+        "type": "String",
+        "example": "45"
+      },
+      "before": {
+        "type": "String",
+        "example": "„Mensch · Femur“ (meist 34,4–55 cm)"
+      },
+      "after": {
+        "type": "String",
+        "example": "„Mensch · Femur“ (meist 34,4–55 cm)"
+      }
+    }
+  },
+  "lenChangedTooLong": "{cm} cm is too long for {before}.",
+  "@lenChangedTooLong": {
+    "description": "A note on a report about the length the person measured (first half; one of the next two follows it)",
+    "placeholders": {
+      "cm": {
+        "type": "String",
+        "example": "45"
+      },
+      "before": {
+        "type": "String",
+        "example": "„Mensch · Femur“ (meist 34,4–55 cm)"
+      }
+    }
+  },
+  "lenChangedTooShort": "{cm} cm is too short for {before}.",
+  "@lenChangedTooShort": {
+    "description": "A note on a report about the length the person measured (first half)",
+    "placeholders": {
+      "cm": {
+        "type": "String",
+        "example": "45"
+      },
+      "before": {
+        "type": "String",
+        "example": "„Mensch · Femur“ (meist 34,4–55 cm)"
+      }
+    }
+  },
+  "lenChangedFitsBut": "{cm} cm fits {before}, but ruling out other options shifted the answer.",
+  "@lenChangedFitsBut": {
+    "description": "A note on a report about the length the person measured (first half)",
+    "placeholders": {
+      "cm": {
+        "type": "String",
+        "example": "45"
+      },
+      "before": {
+        "type": "String",
+        "example": "„Mensch · Femur“ (meist 34,4–55 cm)"
+      }
+    }
+  },
+  "lenChangedUnchecked": "{cm} cm can't be checked against {before}.",
+  "@lenChangedUnchecked": {
+    "description": "A note on a report about the length the person measured (first half)",
+    "placeholders": {
+      "cm": {
+        "type": "String",
+        "example": "45"
+      },
+      "before": {
+        "type": "String",
+        "example": "„Mensch · Femur“ (meist 34,4–55 cm)"
+      }
+    }
+  },
+  "lenChangedNowFits": "It fits {after}, so the length changed the answer.",
+  "@lenChangedNowFits": {
+    "description": "A note on a report about the length the person measured (second half)",
+    "placeholders": {
+      "after": {
+        "type": "String",
+        "example": "„Mensch · Femur“ (meist 34,4–55 cm)"
+      }
+    }
+  },
+  "lenChangedNotRuledOut": "{after} can't be ruled out by length, so the length changed the answer.",
+  "@lenChangedNotRuledOut": {
+    "description": "A note on a report about the length the person measured (second half)",
+    "placeholders": {
+      "after": {
+        "type": "String",
+        "example": "„Mensch · Femur“ (meist 34,4–55 cm)"
+      }
+    }
+  },
+  "lenNoUsual": "We don't have a usual length for {before}, so the length couldn't confirm it. It only helped weigh up the other options.",
+  "@lenNoUsual": {
+    "description": "A note on a report about the length the person measured",
+    "placeholders": {
+      "before": {
+        "type": "String",
+        "example": "„Mensch · Femur“ (meist 34,4–55 cm)"
+      }
+    }
+  },
+  "lenNormal": "{cm} cm is a normal length for {before}, which backs up the answer.",
+  "@lenNormal": {
+    "description": "A note on a report about the length the person measured",
+    "placeholders": {
+      "cm": {
+        "type": "String",
+        "example": "45"
+      },
+      "before": {
+        "type": "String",
+        "example": "„Mensch · Femur“ (meist 34,4–55 cm)"
+      }
+    }
+  },
+  "lenShort": "{cm} cm is short for {before}, but the photo still points to it. It could be from a young animal or person, or worth measuring again.",
+  "@lenShort": {
+    "description": "A note on a report about the length the person measured",
+    "placeholders": {
+      "cm": {
+        "type": "String",
+        "example": "30"
+      },
+      "before": {
+        "type": "String",
+        "example": "„Mensch · Femur“ (meist 34,4–55 cm)"
+      }
+    }
+  },
+  "lenLong": "{cm} cm is long for {before}, but the photo still points to it. Worth measuring again.",
+  "@lenLong": {
+    "description": "A note on a report about the length the person measured",
+    "placeholders": {
+      "cm": {
+        "type": "String",
+        "example": "60"
+      },
+      "before": {
+        "type": "String",
+        "example": "„Mensch · Femur“ (meist 34,4–55 cm)"
+      }
+    }
+  },
+  "lenPhotoAlone": "From the photo alone, it was {headline}.",
+  "@lenPhotoAlone": {
+    "description": "After a length note, when the length changed the answer",
+    "placeholders": {
+      "headline": {
+        "type": "String",
+        "example": "Mensch · Femur"
+      }
+    }
+  },
+  "lenMeasuredOn": "{thing} (measured on {animals})",
+  "@lenMeasuredOn": {
+    "description": "Under \"Typical length\": which animals the range was measured on",
+    "placeholders": {
+      "thing": {
+        "type": "String",
+        "example": "Hirsche · Femur"
+      },
+      "animals": {
+        "type": "String",
+        "example": "Weißwedel- und Maultierhirschen"
+      }
+    }
+  },
+  "measuredBears": "black and brown bear",
+  "measuredCattle": "cattle",
+  "@measuredCattle": {
+    "description": "German: dative plural, after \"gemessen an\""
+  },
+  "measuredCat": "domestic cat",
+  "measuredDogsFoxes": "domestic dogs (all breeds) and red and gray fox",
+  "measuredPigBoar": "domestic pig and wild boar",
+  "measuredCottontail": "eastern cottontail",
+  "measuredHorse": "horse",
+  "measuredRaccoon": "raccoon",
+  "measuredDeer": "white-tailed and mule deer",
+  "scanHeroTitle": "Found a bone?\nLet’s ID it.",
+  "@scanHeroTitle": {
+    "description": "Big title on the yellow card on the home screen. Keep the line break."
+  },
+  "scanHeroBody": "Snap it or upload it. We’ll tell you what it is, whose it was and what happened to it.",
+  "scanSnap": "Snap a bone",
+  "@scanSnap": {
+    "description": "Main button: opens the camera"
+  },
+  "scanUpload": "Upload a pic",
+  "@scanUpload": {
+    "description": "Button: pick a photo from the phone"
+  },
+  "scanTipsHeader": "Pro tips for a clean read",
+  "tipBackgroundTitle": "Plain background",
+  "@tipBackgroundTitle": {
+    "description": "Tip card title. Keep it short, it is on one line."
+  },
+  "tipBackgroundBody": "A sheet or a table. No patterns, labels or writing.",
+  "tipLightTitle": "Soft light",
+  "@tipLightTitle": {
+    "description": "Tip card title. Keep it short, it is on one line."
+  },
+  "tipLightBody": "Daylight is best. Harsh shadows hide details.",
+  "tipLengthTitle": "Know the length?",
+  "@tipLengthTitle": {
+    "description": "Tip card title. Keep it short, it is on one line."
+  },
+  "tipLengthBody": "Add it before analyzing. It sharpens the guess.",
+  "tipAnglesTitle": "Try a few angles",
+  "@tipAnglesTitle": {
+    "description": "Tip card title. Keep it short, it is on one line."
+  },
+  "tipAnglesBody": "Front and back views solve tricky bones.",
+  "scanRecentFinds": "Recent finds",
+  "scanSavedCount": "{count} saved",
+  "@scanSavedCount": {
+    "description": "Small sticker next to \"Recent finds\"",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "12"
+      }
+    }
+  },
+  "scanNoFinds": "No finds yet",
+  "scanNoFindsBody": "Your scanned bones will pile up right here.",
+  "linkNotReady": "Not ready",
+  "@linkNotReady": {
+    "description": "Connection pill: the model on the phone failed to load"
+  },
+  "linkOnPhone": "On this phone",
+  "@linkOnPhone": {
+    "description": "Connection pill: scans run on the phone. A small pill: keep it short"
+  },
+  "linkConnecting": "Connecting…",
+  "@linkConnecting": {
+    "description": "Connection pill: checking the online server"
+  },
+  "linkOnline": "Online",
+  "@linkOnline": {
+    "description": "Connection pill: the online server answers"
+  },
+  "linkOnlineMs": "Online · {ms} ms",
+  "@linkOnlineMs": {
+    "description": "Connection pill with how fast the server answered",
+    "placeholders": {
+      "ms": {
+        "type": "int",
+        "example": "84"
+      }
+    }
+  },
+  "linkCantConnect": "Can’t connect",
+  "@linkCantConnect": {
+    "description": "Connection pill: the online server does not answer"
+  },
+  "toastLostConnection": "Lost the connection",
+  "@toastLostConnection": {
+    "description": "Pop-up when the online server stops answering"
+  },
+  "toastBackOnline": "Back online",
+  "@toastBackOnline": {
+    "description": "Pop-up when the online server answers again"
+  },
+  "guideLongBone": "Long bone",
+  "@guideLongBone": {
+    "description": "Camera outline choice: femur, humerus, tibia"
+  },
+  "guideSkull": "Skull",
+  "@guideSkull": {
+    "description": "Camera outline choice: cranium, jaw"
+  },
+  "guideFlat": "Flat bone",
+  "@guideFlat": {
+    "description": "Camera outline choice: shoulder blade, hip bone, rib"
+  },
+  "guideSmall": "Small bit",
+  "@guideSmall": {
+    "description": "Camera outline choice: vertebra, fragment"
+  },
+  "guideLongBoneTip": "Lay it flat and line it up with my knobby ends.",
+  "@guideLongBoneTip": {
+    "description": "The cartoon bone speaking; the long-bone outline is its own shape"
+  },
+  "guideSkullTip": "Face it straight on. Eye sockets in the dotted eyes.",
+  "guideFlatTip": "Lay it flat. Get the whole outline in, edge to edge.",
+  "guideSmallTip": "Tiny bone? Get up close till it fills the outline.",
+  "camHold": "Hold ~{cm} cm away · fill the outline",
+  "@camHold": {
+    "description": "Chip in the camera: how far to hold the phone",
+    "placeholders": {
+      "cm": {
+        "type": "int",
+        "example": "40"
+      }
+    }
+  },
+  "camTitle": "BONE CAM",
+  "@camTitle": {
+    "description": "Sticker at the top of the camera"
+  },
+  "camAngle": "ANGLE #{number}",
+  "@camAngle": {
+    "description": "Sticker at the top of the camera when adding another photo of the same bone",
+    "placeholders": {
+      "number": {
+        "type": "int",
+        "example": "2"
+      }
+    }
+  },
+  "camClose": "Close camera",
+  "@camClose": {
+    "description": "Read out by screen readers"
+  },
+  "camFlash": "Flash",
+  "@camFlash": {
+    "description": "Read out by screen readers"
+  },
+  "camZoom": "Zoom",
+  "@camZoom": {
+    "description": "Read out by screen readers"
+  },
+  "camSwitch": "Switch camera",
+  "@camSwitch": {
+    "description": "Read out by screen readers"
+  },
+  "camTakePhoto": "Take photo",
+  "@camTakePhoto": {
+    "description": "Read out by screen readers for the big shutter button"
+  },
+  "camUploadFromLibrary": "Upload from library",
+  "@camUploadFromLibrary": {
+    "description": "Read out by screen readers"
+  },
+  "camWarmingUp": "Warming up the camera…",
+  "camAnotherAngleTip": "Same bone, new side. Flip it over, or get one of the ends.",
+  "camShotFailed": "Couldn’t take that one. Try again?",
+  "camNoAccess": "No camera access",
+  "camNoAccessBody": "Allow camera access for Ossia in your phone settings, or upload a photo instead.",
+  "camNapping": "Camera is napping",
+  "@camNapping": {
+    "description": "Title when the camera could not start"
+  },
+  "camNappingBody": "Couldn’t start the camera here. Upload a photo instead?",
+  "reviewDropTitle": "Drop these photos?",
+  "@reviewDropTitle": {
+    "description": "Question when leaving the photo check screen after adding or removing photos"
+  },
+  "reviewDropNew": "{count, plural, =1{This bone’s photo hasn’t been analyzed yet.} other{The {count} photos of this bone haven’t been analyzed yet.}}",
+  "@reviewDropNew": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "reviewDropRevising": "The angles you added or removed won’t be analyzed. The saved report stays as it was.",
+  "@reviewDropRevising": {
+    "description": "Same question, when adding angles to a find that was already analysed"
+  },
+  "reviewDropConfirm": "Drop them",
+  "@reviewDropConfirm": {
+    "description": "Red button that leaves without analysing"
+  },
+  "reviewTypeLength": "Type the length",
+  "@reviewTypeLength": {
+    "description": "Title of the box for typing a length"
+  },
+  "reviewTypeLengthCm": "End to end, the longest straight line, in centimetres.",
+  "reviewTypeLengthIn": "End to end, the longest straight line, in inches.",
+  "reviewExample": "e.g. {example}",
+  "@reviewExample": {
+    "description": "Grey hint inside the empty length box",
+    "placeholders": {
+      "example": {
+        "type": "String",
+        "example": "23.5"
+      }
+    }
+  },
+  "reviewSetLength": "Set length",
+  "@reviewSetLength": {
+    "description": "Button that saves the typed length"
+  },
+  "reviewRetake": "Retake",
+  "@reviewRetake": {
+    "description": "Button: go back to the camera and take the photo again"
+  },
+  "reviewTitleRevising": "More angles",
+  "@reviewTitleRevising": {
+    "description": "Screen title when adding photos to a saved find"
+  },
+  "reviewTitleAngles": "One bone, {count} angles",
+  "@reviewTitleAngles": {
+    "description": "Screen title; count is always 2 or more",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "reviewNiceShot": "Nice shot!",
+  "@reviewNiceShot": {
+    "description": "Screen title right after taking a photo"
+  },
+  "reviewLookingGood": "Looking good?",
+  "@reviewLookingGood": {
+    "description": "Screen title after picking a photo from the phone"
+  },
+  "reviewMysteryBone": "mystery bone #{number}",
+  "@reviewMysteryBone": {
+    "description": "Playful caption under the photo, like a polaroid label",
+    "placeholders": {
+      "number": {
+        "type": "int",
+        "example": "417"
+      }
+    }
+  },
+  "reviewAnalyzeCount": "Analyze {count} photos",
+  "@reviewAnalyzeCount": {
+    "description": "Main button; count is always 2 or more",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "reviewSkipAnalyze": "Skip & analyze",
+  "@reviewSkipAnalyze": {
+    "description": "Main button when no length was given. Keep it short."
+  },
+  "reviewAnalyzeIt": "Analyze it",
+  "@reviewAnalyzeIt": {
+    "description": "Main button. Keep it short."
+  },
+  "reviewMoreAnglesQ": "More angles?",
+  "@reviewMoreAnglesQ": {
+    "description": "Card title when there is one photo"
+  },
+  "reviewAngles": "Angles",
+  "@reviewAngles": {
+    "description": "Card title when there are several photos"
+  },
+  "reviewOptional": "OPTIONAL",
+  "@reviewOptional": {
+    "description": "Small tilted sticker. Capitals where the language has them."
+  },
+  "reviewAnglesOf": "{count} OF {max}",
+  "@reviewAnglesOf": {
+    "description": "Small sticker: photos used out of the most allowed",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      },
+      "max": {
+        "type": "int",
+        "example": "8"
+      }
+    }
+  },
+  "reviewAnglesBodyOne": "Same bone, another side. The back, an end or a close-up can crack a tricky one. Every photo gets read together.",
+  "reviewAnglesBodyMany": "All {count} photos are read together as one bone. Tap one to look at it, or the cross to drop it.",
+  "@reviewAnglesBodyMany": {
+    "description": "count is always 2 or more",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "reviewSnap": "Snap",
+  "@reviewSnap": {
+    "description": "Tiny tile under the photos: take another photo. One short word."
+  },
+  "reviewUpload": "Upload",
+  "@reviewUpload": {
+    "description": "Tiny tile under the photos: add photos from the phone. One short word."
+  },
+  "reviewSnapHint": "Take another angle",
+  "@reviewSnapHint": {
+    "description": "Read out by screen readers"
+  },
+  "reviewUploadHint": "Add angles from the library",
+  "@reviewUploadHint": {
+    "description": "Read out by screen readers"
+  },
+  "reviewMaxPhotos": "That’s the most one analysis takes.",
+  "@reviewMaxPhotos": {
+    "description": "Shown when the most photos are already added"
+  },
+  "reviewRemovePhoto": "Remove photo {number}",
+  "@reviewRemovePhoto": {
+    "description": "Read out by screen readers for the small cross on a photo",
+    "placeholders": {
+      "number": {
+        "type": "int",
+        "example": "2"
+      }
+    }
+  },
+  "reviewHowLong": "How long is it?",
+  "@reviewHowLong": {
+    "description": "Card title about the bone’s length"
+  },
+  "reviewLengthBody": "Measured it end to end? Flick the tape. No ruler handy? Skip it, no biggie. The AI will guess.",
+  "reviewEndToEnd": "end to end",
+  "@reviewEndToEnd": {
+    "description": "Small caption above the cartoon bone that stretches"
+  },
+  "reviewWaitingNumber": "waiting for a number…",
+  "@reviewWaitingNumber": {
+    "description": "Small caption above the cartoon bone before a length is set"
+  },
+  "reviewTapToType": "Tap the number to type it exactly.",
+  "reviewFlickTape": "Flick the tape to set a length.",
+  "reviewClear": "Clear",
+  "@reviewClear": {
+    "description": "Small button that removes the length"
+  },
+  "analyzingStep": "Step {step}/{total}",
+  "@analyzingStep": {
+    "description": "Small sticker at the top while analysing",
+    "placeholders": {
+      "step": {
+        "type": "int",
+        "example": "3"
+      },
+      "total": {
+        "type": "int",
+        "example": "9"
+      }
+    }
+  },
+  "analyzingPhotos": "{count} photos",
+  "@analyzingPhotos": {
+    "description": "Sticker on the photo stack; count is always 2 or more",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "quipFinding": "Playing hide and seek with your bone…",
+  "@quipFinding": {
+    "description": "Joke line for the stage that finds the bone in the photo"
+  },
+  "quipHumanOrAnimal": "Human or not? Asking the big questions.",
+  "@quipHumanOrAnimal": {
+    "description": "Joke line for the human-or-animal stage"
+  },
+  "quipWhichBone": "Which bone is this? Consulting my inner skeleton.",
+  "@quipWhichBone": {
+    "description": "Joke line for the which-bone stage"
+  },
+  "quipWhichEnd": "Figuring out which end is which.",
+  "@quipWhichEnd": {
+    "description": "Joke line for the which-part stage"
+  },
+  "quipMissingBits": "Checking if any bits went missing.",
+  "@quipMissingBits": {
+    "description": "Joke line for the whole-or-broken stage"
+  },
+  "quipMarks": "Looking for cracks, cuts and crispy bits.",
+  "@quipMarks": {
+    "description": "Joke line for the marks stage (fractures, cut marks, burning)"
+  },
+  "quipWhose": "Narrowing down whose bone this was.",
+  "@quipWhose": {
+    "description": "Joke line for the which-animal stage"
+  },
+  "quipAgeSex": "Estimating age and sex, respectfully.",
+  "@quipAgeSex": {
+    "description": "Joke line for the age-and-sex stage"
+  },
+  "quipWriting": "Writing it all up. Almost there!",
+  "@quipWriting": {
+    "description": "Joke line for the last stage"
+  },
+  "analyzingFailedTitle": "Welp, that broke",
+  "@analyzingFailedTitle": {
+    "description": "Big title when the analysis failed"
+  },
+  "analyzingOnPhone": "Analyze on this phone",
+  "@analyzingOnPhone": {
+    "description": "Button offered when the online server cannot be reached"
+  },
+  "reportNameTitle": "Name this find",
+  "@reportNameTitle": {
+    "description": "Title of the box for naming a saved bone"
+  },
+  "reportNameBody": "Any name that helps you find it later, like where it turned up.",
+  "reportNameExample": "e.g. TR2-114",
+  "@reportNameExample": {
+    "description": "Grey hint inside the empty name box: a dig label like an archaeologist would write"
+  },
+  "reportRename": "Rename",
+  "reportAddNote": "Add a note",
+  "reportEditNote": "Edit note",
+  "reportNoteBody": "Anything the photo can’t show, like where you found it or how it felt in your hand.",
+  "reportNotePlaceholder": "Recovered from unit 4, spit 2…",
+  "@reportNotePlaceholder": {
+    "description": "Grey example inside the empty note box, in the style of a dig record"
+  },
+  "reportCopied": "Report copied",
+  "reportSavedToast": "Saved to Library",
+  "@reportSavedToast": {
+    "description": "Short message after saving; the Library is the Stash tab"
+  },
+  "reportDeleteTitle": "Delete this analysis?",
+  "reportDeleteBody": "{count, plural, =1{The report and its photograph are removed from this device.} other{The report and its {count} photos are removed from this device.}}",
+  "@reportDeleteBody": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "delete": "Delete",
+  "@delete": {
+    "description": "Red button that deletes"
+  },
+  "reportOptions": "More options",
+  "@reportOptions": {
+    "description": "Read out by screen readers for the ••• button"
+  },
+  "reportSheetTitle": "Report",
+  "@reportSheetTitle": {
+    "description": "Title of the options sheet"
+  },
+  "reportAddAngle": "Add another angle",
+  "reportCopy": "Copy report",
+  "reportDelete": "Delete analysis",
+  "reportSave": "Save to Library",
+  "@reportSave": {
+    "description": "Main button; the Library is the Stash tab"
+  },
+  "reportAnalyzeAnother": "Analyze Another",
+  "confStrong": "Strong",
+  "@confStrong": {
+    "description": "How sure the answer is. Arabic: describes الثقة"
+  },
+  "confGood": "Good",
+  "confModerate": "Moderate",
+  "confWeak": "Weak",
+  "confVeryWeak": "Very weak",
+  "resultBoneDetected": "Bone detected",
+  "@resultBoneDetected": {
+    "description": "Sticker above the answer"
+  },
+  "resultNoBoneFound": "No bone found",
+  "@resultNoBoneFound": {
+    "description": "Sticker above the answer"
+  },
+  "resultAngles": "{count} angles",
+  "@resultAngles": {
+    "description": "Sticker: how many photos of the bone were read; always 2 or more",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "resultHowSure": "How sure are we?",
+  "resultShakiest": "Only as sure as the shakiest step: finding the bone, telling human from animal, naming the bone and, for animals, which one.",
+  "resultCouldAlsoBe": "Not certain. It could also be:",
+  "@resultCouldAlsoBe": {
+    "description": "Above a few other possible answers with their chances"
+  },
+  "resultNoBoneTitle": "No bone spotted",
+  "resultNoBoneBody": "We couldn’t find a bone in this photo. Try a plain background, and get close enough that the bone fills most of the picture.",
+  "resultIdentification": "Identification",
+  "@resultIdentification": {
+    "description": "Section title"
+  },
+  "resultHumanOrAnimal": "Human or animal",
+  "@resultHumanOrAnimal": {
+    "description": "Row label"
+  },
+  "resultWhichBone": "Which bone",
+  "@resultWhichBone": {
+    "description": "Row label"
+  },
+  "resultTopGuesses": "Top {count} guesses",
+  "@resultTopGuesses": {
+    "description": "Small grey text beside \"Which bone\"; count is 2 or more",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "resultOnlyGuess": "Only guess",
+  "resultWhichPart": "Which part",
+  "@resultWhichPart": {
+    "description": "Row label"
+  },
+  "resultWholeOrBroken": "Whole or broken",
+  "@resultWholeOrBroken": {
+    "description": "Row label"
+  },
+  "resultCondition": "Condition",
+  "@resultCondition": {
+    "description": "Section title"
+  },
+  "resultNoMarks": "No marks flagged",
+  "@resultNoMarks": {
+    "description": "Sticker when no damage was found"
+  },
+  "resultMarksFooter": "Each kind of mark is checked on its own, so a bone can show more than one. Anything at {threshold} or more is flagged.",
+  "@resultMarksFooter": {
+    "placeholders": {
+      "threshold": {
+        "type": "String",
+        "example": "50%"
+      }
+    }
+  },
+  "resultAgeSex": "Age and sex",
+  "@resultAgeSex": {
+    "description": "Section title"
+  },
+  "resultAgeGroup": "Age group",
+  "@resultAgeGroup": {
+    "description": "Row label"
+  },
+  "resultSex": "Sex",
+  "@resultSex": {
+    "description": "Row label: male or female"
+  },
+  "resultAgeFooter": "Age and sex are the hardest things to read from a photo, and Ossia learned them from few examples. Treat them as a hint to check, not an answer.",
+  "resultWhichAnimal": "Which animal",
+  "@resultWhichAnimal": {
+    "description": "Section title"
+  },
+  "resultClosestMatch": "Closest match",
+  "@resultClosestMatch": {
+    "description": "Row label"
+  },
+  "resultUndetermined": "Undetermined",
+  "resultUndeterminedBody": "It looks like an animal bone, but no animal group stood out enough to name.",
+  "resultAnimalFooter": "For mammals, Ossia names the family (like the deer or dog family) when the bone shows it; otherwise it says mammal, bird or reptile. Compare with a known skeleton before relying on it.",
+  "resultMeasurements": "Measurements",
+  "@resultMeasurements": {
+    "description": "Section title"
+  },
+  "resultLengthChanged": "Length changed the answer",
+  "@resultLengthChanged": {
+    "description": "Sticker when the measured length changed which bone or animal was picked"
+  },
+  "resultTypicalLength": "Typical length",
+  "@resultTypicalLength": {
+    "description": "Row label: length range from books"
+  },
+  "resultAiEstimate": "AI estimate",
+  "@resultAiEstimate": {
+    "description": "Row label: length the AI guessed"
+  },
+  "resultTypicalFor": "For a {thing}",
+  "@resultTypicalFor": {
+    "description": "Under \"Typical length\": which bone the range belongs to",
+    "placeholders": {
+      "thing": {
+        "type": "String",
+        "example": "Hirsche · Femur"
+      }
+    }
+  },
+  "resultLengthAbout": "~{value} {unit}",
+  "@resultLengthAbout": {
+    "description": "A single estimated length",
+    "placeholders": {
+      "value": {
+        "type": "String",
+        "example": "23,5"
+      },
+      "unit": {
+        "type": "String",
+        "example": "cm"
+      }
+    }
+  },
+  "resultLengthRange": "{min}–{max} {unit}",
+  "@resultLengthRange": {
+    "description": "A length range",
+    "placeholders": {
+      "min": {
+        "type": "String",
+        "example": "34,4"
+      },
+      "max": {
+        "type": "String",
+        "example": "55,0"
+      },
+      "unit": {
+        "type": "String",
+        "example": "cm"
+      }
+    }
+  },
+  "resultYourMeasurement": "Your measurement",
+  "@resultYourMeasurement": {
+    "description": "Row label"
+  },
+  "resultInsideRange": "Right inside the typical range. Nice.",
+  "resultOutsideRange": "Outside the typical range. Worth a second look.",
+  "resultInsideEstimate": "Right inside the estimate. Nice.",
+  "resultOutsideEstimate": "Outside the estimate. Worth a second look.",
+  "resultReference": "Reference",
+  "@resultReference": {
+    "description": "Section title above a link to the bone’s Atlas page"
+  },
+  "resultAtlasSubtitle": "{region} · what to look for, and left or right",
+  "@resultAtlasSubtitle": {
+    "description": "Under the bone’s name in the Atlas link",
+    "placeholders": {
+      "region": {
+        "type": "String",
+        "example": "Bein"
+      }
+    }
+  },
+  "resultDisclaimer": "Ossia gives a best guess, not a final answer. Don’t rely on it for medical, legal or police decisions without a bone expert checking the bone in person.",
+  "@resultDisclaimer": {
+    "description": "Shown at the bottom of every report"
+  },
+  "libTitle": "Your stash",
+  "@libTitle": {
+    "description": "Big title at the top of the Stash tab"
+  },
+  "libEmptySubtitle": "Empty. For now.",
+  "@libEmptySubtitle": {
+    "description": "Line under the title when nothing is saved"
+  },
+  "libBonesCollected": "{count, plural, =1{1 bone collected} other{{count} bones collected}}",
+  "@libBonesCollected": {
+    "description": "Line under the title, followed by how many are human",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "12"
+      }
+    }
+  },
+  "libHumanCount": "{count} human",
+  "@libHumanCount": {
+    "description": "Follows the count of saved bones: how many of them are human",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "libSearchHint": "Search your bones",
+  "@libSearchHint": {
+    "description": "Grey hint in the empty search box"
+  },
+  "libClearSearch": "Clear search",
+  "@libClearSearch": {
+    "description": "Read out by screen readers for the small cross in the search box"
+  },
+  "libFilterAll": "All",
+  "@libFilterAll": {
+    "description": "Filter button. Keep it short."
+  },
+  "libFilterHuman": "Human",
+  "@libFilterHuman": {
+    "description": "Filter button: only human bones. Keep it short."
+  },
+  "libFilterAnimal": "Animal",
+  "@libFilterAnimal": {
+    "description": "Filter button: only animal bones. Keep it short."
+  },
+  "libFilterFlagged": "Flagged",
+  "@libFilterFlagged": {
+    "description": "Filter button: only bones with marks flagged (fracture, cut marks, burning). Keep it short."
+  },
+  "libToday": "Today",
+  "@libToday": {
+    "description": "Heading over finds saved today"
+  },
+  "libThisWeek": "This week",
+  "@libThisWeek": {
+    "description": "Heading over finds saved in the last 7 days"
+  },
+  "libThisMonth": "This month",
+  "@libThisMonth": {
+    "description": "Heading over finds saved in the last 30 days"
+  },
+  "libEarlier": "Earlier",
+  "@libEarlier": {
+    "description": "Heading over older finds"
+  },
+  "libEmptyTitle": "Your stash is empty",
+  "libEmptyBody": "Every bone you scan lands here with its photo and notes. No bones about it.",
+  "@libEmptyBody": {
+    "description": "Ends on a bone pun; a light joke in your language is welcome"
+  },
+  "libNoMatchTitle": "Nothing matches",
+  "libNoMatchBody": "Try a different filter or clear the search.",
+  "atlasSubtitle": "{count} bones the AI knows by heart",
+  "@atlasSubtitle": {
+    "description": "Line under the Atlas title",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "16"
+      }
+    }
+  },
+  "atlasHowCardTitle": "How the AI thinks",
+  "@atlasHowCardTitle": {
+    "description": "Card at the top of the Atlas that opens \"How analysis works\""
+  },
+  "atlasHowCardBody": "The nine passes every photo goes through, and which ones to trust.",
+  "atlasLookFor": "What to look for",
+  "@atlasLookFor": {
+    "description": "Heading on a bone page, over the list of features"
+  },
+  "atlasSidingTitle": "Left or right, and which way up",
+  "@atlasSidingTitle": {
+    "description": "Heading on a bone page"
+  },
+  "howTitle": "How analysis works",
+  "@howTitle": {
+    "description": "Screen title"
+  },
+  "howHeading": "One photo, nine questions",
+  "howIntro": "Ossia looks at your photo once and answers nine questions about it at the same time. Each answer comes with how sure it is, so one unsure answer doesn’t spoil the rest.",
+  "settingsAppLanguage": "App language",
+  "@settingsAppLanguage": {
+    "description": "Row in the Language group"
+  },
+  "settingsLanguageFooter": "You can also switch any time with the globe at the top of each tab.",
+  "settingsAppearance": "Appearance",
+  "@settingsAppearance": {
+    "description": "Group heading"
+  },
+  "settingsTheme": "Theme",
+  "@settingsTheme": {
+    "description": "Light or dark look"
+  },
+  "themeSystem": "System",
+  "@themeSystem": {
+    "description": "Theme option: follow the phone. Keep it short."
+  },
+  "themeLight": "Light",
+  "@themeLight": {
+    "description": "Theme option. Keep it short."
+  },
+  "themeDark": "Dark",
+  "@themeDark": {
+    "description": "Theme option. Keep it short."
+  },
+  "settingsAccent": "Accent",
+  "@settingsAccent": {
+    "description": "The app's highlight colour"
+  },
+  "settingsAnalysis": "Analysis",
+  "@settingsAnalysis": {
+    "description": "Group heading"
+  },
+  "settingsOnDeviceBody": "Ossia works right on your phone, even with no signal, and your photos stay on your phone.",
+  "settingsOnlineBody": "Photos are sent to the Ossia computer at the address below, and the report comes back to you.",
+  "settingsOnlineAddress": "Online address",
+  "@settingsOnlineAddress": {
+    "description": "The web address of the computer that analyses photos online"
+  },
+  "settingsOnlineAddressBody": "Type the address shown on the Ossia computer.",
+  "settingsStatus": "Analyzer status",
+  "@settingsStatus": {
+    "description": "Row that opens the status screen"
+  },
+  "settingsStatusSub": "Is it ready, and is it connected",
+  "settingsCutoff": "Confidence cutoff",
+  "@settingsCutoff": {
+    "description": "A percentage: guesses less sure than this are shown faded"
+  },
+  "settingsCutoffBody": "Guesses below this are shown faded.",
+  "settingsHideUnlikely": "Hide unlikely guesses",
+  "settingsHideUnlikelyBody": "Only show other possible bones when they are above the cutoff.",
+  "settingsCapture": "Capture",
+  "@settingsCapture": {
+    "description": "Group heading"
+  },
+  "settingsAutoSave": "Save analyses automatically",
+  "settingsAutoSaveBody": "Off means each report is kept only if you save it.",
+  "settingsUnits": "Measurement units",
+  "settingsHaptics": "Haptic feedback",
+  "@settingsHaptics": {
+    "description": "Little vibrations when tapping"
+  },
+  "settingsLibrary": "Library",
+  "@settingsLibrary": {
+    "description": "Group heading; it is the same thing as the Stash tab"
+  },
+  "settingsSavedCount": "Saved analyses",
+  "settingsCopyAll": "Copy all reports",
+  "settingsCopiedCount": "{count, plural, =1{1 report copied} other{{count} reports copied}}",
+  "@settingsCopiedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "12"
+      }
+    }
+  },
+  "settingsDeleteAll": "Delete all analyses",
+  "settingsDeleteAllTitle": "Delete everything?",
+  "settingsDeleteAllBody": "{count, plural, =1{The saved analysis and its photographs are removed from this device. This cannot be undone.} other{All {count} saved analyses and their photographs are removed from this device. This cannot be undone.}}",
+  "@settingsDeleteAllBody": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "12"
+      }
+    }
+  },
+  "settingsDeleteAllConfirm": "Delete All",
+  "@settingsDeleteAllConfirm": {
+    "description": "Red button"
+  },
+  "settingsLibraryCleared": "Library cleared",
+  "@settingsLibraryCleared": {
+    "description": "Short message after deleting everything"
+  },
+  "settingsPrivacyFooter": "Your reports stay on this phone. Photos are only sent out when you choose Online analysis.",
+  "settingsAbout": "About",
+  "@settingsAbout": {
+    "description": "Group heading, and the About screen's title"
+  },
+  "settingsAboutOssia": "About Ossia",
+  "settingsVersion": "Version",
+  "settingsDisclaimer": "Ossia helps you identify bones. It is not a replacement for an expert looking at the bone in person.",
+  "aboutVersion": "Version {version}",
+  "@aboutVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String",
+        "example": "1.0.0"
+      }
+    }
+  },
+  "aboutIntro": "Take a photo of a bone and Ossia tells you what it is: which bone, human or animal, which animal, and any marks on it. Every answer shows how sure it is, so you can judge it for yourself.",
+  "aboutKnows": "What Ossia knows",
+  "@aboutKnows": {
+    "description": "Group heading"
+  },
+  "aboutKindsOfBone": "Kinds of bone",
+  "aboutAnimalGroups": "Animal groups",
+  "aboutQuestions": "Questions per photo",
+  "aboutKnowsFooter": "Ossia learned from thousands of labelled photos, but some bones and animals had only a few. That is why it always tells you how sure it is.",
+  "aboutPrivacy": "Privacy",
+  "@aboutPrivacy": {
+    "description": "Group heading"
+  },
+  "aboutPhotos": "Photographs",
+  "aboutPhotosBody": "Kept on this phone. Only sent out when you choose Online analysis.",
+  "aboutAnalytics": "Analytics",
+  "@aboutAnalytics": {
+    "description": "Tracking of how the app is used"
+  },
+  "aboutAnalyticsBody": "None collected.",
+  "aboutWarning": "Results are a best guess, not a final answer. Don’t use them for medical, legal or police decisions without a bone expert checking the bone in person.",
+  "statusYou": "YOU",
+  "@statusYou": {
+    "description": "Small label in capitals under a drawing at the top of the status screen. Keep it very short. Under the phone."
+  },
+  "statusNapping": "NAPPING",
+  "@statusNapping": {
+    "description": "Small label in capitals under a drawing at the top of the status screen. Keep it very short. Under the computer, when online analysis is switched off."
+  },
+  "statusAllOnPhone": "ALL ON YOUR PHONE",
+  "@statusAllOnPhone": {
+    "description": "Small label in capitals under a drawing at the top of the status screen. Keep it very short. When analysing on the phone."
+  },
+  "msShort": "{ms} ms",
+  "@msShort": {
+    "description": "Milliseconds, in a small bubble",
+    "placeholders": {
+      "ms": {
+        "type": "int",
+        "example": "120"
+      }
+    }
+  },
+  "statusChecked": "checked {when}",
+  "@statusChecked": {
+    "description": "When the connection was last checked, e.g. \"checked 5 min ago\"",
+    "placeholders": {
+      "when": {
+        "type": "String",
+        "example": "just now"
+      }
+    }
+  },
+  "secondsAgo": "{count}s ago",
+  "@secondsAgo": {
+    "description": "Seconds ago, very short",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "12"
+      }
+    }
+  },
+  "statusConnected": "Connected",
+  "statusConnectedBody": "Online analysis is answering in {ms} ms. Your scans will be analyzed there.",
+  "@statusConnectedBody": {
+    "placeholders": {
+      "ms": {
+        "type": "String",
+        "example": "120"
+      }
+    }
+  },
+  "statusOfflineBody": "{reason}. Check the address, and that the Ossia computer is switched on.",
+  "@statusOfflineBody": {
+    "description": "The reason is one of the connection problems, e.g. \"Nothing answered at that address\"",
+    "placeholders": {
+      "reason": {
+        "type": "String",
+        "example": "No answer"
+      }
+    }
+  },
+  "statusNoAnswer": "No answer",
+  "statusFailedTitle": "Couldn’t get ready",
+  "statusFailedBody": "Something stopped Ossia from starting on this phone. Try again, or restart the app.",
+  "statusOnPhoneTitle": "Analyzing on this phone",
+  "statusOnPhoneBody": "Works anywhere, even with no signal, and your photos never leave your phone.",
+  "statusConnectingBody": "Checking that online analysis is awake.",
+  "statusChecking": "Checking…",
+  "@statusChecking": {
+    "description": "Button while a check runs"
+  },
+  "statusCheckNow": "Check connection",
+  "@statusCheckNow": {
+    "description": "Button"
+  },
+  "statusChangeAddress": "Change address",
+  "@statusChangeAddress": {
+    "description": "Button"
+  },
+  "statusRunningFor": "Running for",
+  "@statusRunningFor": {
+    "description": "Tile label; the value under it is e.g. \"2h 5m\""
+  },
+  "statusHistory": "Connection history",
+  "statusAutoPaused": "auto-check paused",
+  "statusNextIn": "next in {seconds}s",
+  "@statusNextIn": {
+    "description": "Countdown to the next automatic check",
+    "placeholders": {
+      "seconds": {
+        "type": "int",
+        "example": "25"
+      }
+    }
+  },
+  "statusNoChecks": "No checks yet",
+  "statusHistoryFooter": "Checked every {seconds}s while the app is open. Shorter bars mean a faster connection.",
+  "@statusHistoryFooter": {
+    "description": "The number is always 30",
+    "placeholders": {
+      "seconds": {
+        "type": "int",
+        "example": "30"
+      }
+    }
+  },
+  "statusRow": "Status",
+  "statusWakesUp": "Wakes up on your first scan",
+  "statusSleeping": "Sleeping",
+  "statusGettingReady": "Getting ready…",
+  "statusCouldntStart": "Couldn’t start",
+  "statusInternetNeeded": "Internet needed",
+  "statusNo": "No",
+  "statusPhotosSent": "Photos sent anywhere",
+  "statusNever": "Never",
+  "statusGetReady": "Get it ready now",
+  "@statusGetReady": {
+    "description": "Button"
+  }
+}

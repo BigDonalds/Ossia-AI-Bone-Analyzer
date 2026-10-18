@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bone_analyzer"
+version = "0.8.0"
+description = "Multi-task bone photo classifier behind the Ossia app"
+requires-python = ">=3.10"
+dependencies = [
+    "torch",
+    "torchvision",
+    "timm",
+    "opencv-python",
+    "numpy",
+    "pillow",
+]
+
+[project.optional-dependencies]
+export = ["onnx", "onnxruntime"]
+heif = ["pillow-heif"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"bone_analyzer.inference" = ["length_reference.json"]

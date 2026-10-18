@@ -1,0 +1,2555 @@
+{
+  "@@locale": "ar",
+  "appName": "Ossia",
+  "@appName": {
+    "description": "English: Ossia (The app name. Keep it as it is)"
+  },
+  "tabScan": "فحص",
+  "@tabScan": {
+    "description": "English: Scan (Tab: take or pick photos of a bone)"
+  },
+  "tabStash": "مجموعتي",
+  "@tabStash": {
+    "description": "English: Stash (Tab: every bone you have saved)"
+  },
+  "tabAtlas": "الأطلس",
+  "@tabAtlas": {
+    "description": "English: Atlas (Tab: a guide to each bone the app knows)"
+  },
+  "tabSettings": "الإعدادات",
+  "@tabSettings": {
+    "description": "English: Settings (Tab)"
+  },
+  "back": "رجوع",
+  "@back": {
+    "description": "English: Back"
+  },
+  "confirm": "تأكيد",
+  "@confirm": {
+    "description": "English: Confirm"
+  },
+  "dismiss": "إغلاق",
+  "@dismiss": {
+    "description": "English: Dismiss (Read out by screen readers for the dimmed area behind a pop-up)"
+  },
+  "nah": "لا، شكرًا",
+  "@nah": {
+    "description": "English: Nah (Playful \"cancel\" on yes/no pop-ups)"
+  },
+  "save": "حفظ",
+  "@save": {
+    "description": "English: Save"
+  },
+  "done": "تم",
+  "@done": {
+    "description": "English: Done"
+  },
+  "cancel": "إلغاء",
+  "@cancel": {
+    "description": "English: Cancel"
+  },
+  "close": "إغلاق",
+  "@close": {
+    "description": "English: Close"
+  },
+  "tryAgain": "حاول مجددًا",
+  "@tryAgain": {
+    "description": "English: Try again"
+  },
+  "engineOnDevice": "هذا الهاتف",
+  "@engineOnDevice": {
+    "description": "English: This phone (Analyze photos on the phone itself, no internet needed)"
+  },
+  "engineServer": "عبر الإنترنت",
+  "@engineServer": {
+    "description": "English: Online (Analyze photos on a computer over the internet)"
+  },
+  "engineAnalyzeOn": "التحليل على",
+  "@engineAnalyzeOn": {
+    "description": "English: Analyze on (Read out by screen readers before the chosen engine)"
+  },
+  "engineWorksOffline": "يعمل دون إنترنت",
+  "@engineWorksOffline": {
+    "description": "English: Works offline"
+  },
+  "engineUsesInternet": "يحتاج إلى إنترنت",
+  "@engineUsesInternet": {
+    "description": "English: Uses internet"
+  },
+  "dateAtTime": "{date} الساعة {time}",
+  "@dateAtTime": {
+    "description": "English: {date} at {time} (A date and a time together, e.g. \"Oct 16, 2026 at 3:05 PM\")"
+  },
+  "justNow": "الآن",
+  "@justNow": {
+    "description": "English: Just now"
+  },
+  "minutesAgo": "قبل {count, plural, =0{أقل من دقيقة} =1{دقيقة} =2{دقيقتين} few{{count} دقائق} many{{count} دقيقة} other{{count} دقيقة}}",
+  "@minutesAgo": {
+    "description": "English: {count} min ago"
+  },
+  "hoursAgo": "قبل {count, plural, =0{أقل من ساعة} =1{ساعة} =2{ساعتين} few{{count} ساعات} many{{count} ساعة} other{{count} ساعة}}",
+  "@hoursAgo": {
+    "description": "English: {count} hr ago"
+  },
+  "yesterday": "أمس",
+  "@yesterday": {
+    "description": "English: Yesterday"
+  },
+  "daysAgo": "قبل {count, plural, =0{يوم} =1{يوم} =2{يومين} few{{count} أيام} many{{count} يومًا} other{{count} يوم}}",
+  "@daysAgo": {
+    "description": "English: {count} days ago"
+  },
+  "accentSunny": "أصفر مشمس",
+  "@accentSunny": {
+    "description": "English: Sunny (Accent colour name: bright yellow)"
+  },
+  "accentLime": "أخضر ليموني",
+  "@accentLime": {
+    "description": "English: Lime (Accent colour name: yellow-green)"
+  },
+  "accentBubblegum": "وردي علكة",
+  "@accentBubblegum": {
+    "description": "English: Bubblegum (Accent colour name: bright pink)"
+  },
+  "accentTangerine": "برتقالي",
+  "@accentTangerine": {
+    "description": "English: Tangerine (Accent colour name: orange)"
+  },
+  "accentGrape": "بنفسجي",
+  "@accentGrape": {
+    "description": "English: Grape (Accent colour name: light purple)"
+  },
+  "accentSky": "أزرق سماوي",
+  "@accentSky": {
+    "description": "English: Sky (Accent colour name: light blue)"
+  },
+  "welcomeTitle": "بأي لغة تريد أن يتحدث Ossia؟",
+  "@welcomeTitle": {
+    "description": "English: Which language should Ossia speak? (Big title on the very first screen)"
+  },
+  "welcomeSubtitle": "اخترنا لغة هاتفك. غيّرها هنا، أو في أي وقت من زر الكرة الأرضية في الأعلى.",
+  "@welcomeSubtitle": {
+    "description": "English: We picked your phone's language. Change it here, or any time with the globe at the top."
+  },
+  "welcomeSubtitleNoMatch": "اختر لغة من هنا. يمكنك تغييرها في أي وقت من زر الكرة الأرضية في الأعلى.",
+  "@welcomeSubtitleNoMatch": {
+    "description": "English: Pick one here. You can change it any time with the globe at the top. (Shown instead when the phone uses a language Ossia does not speak)"
+  },
+  "welcomeContinue": "هيا بنا",
+  "@welcomeContinue": {
+    "description": "English: Let's go (Button that saves the language and opens the app)"
+  },
+  "languageCardLine": "العظام، مشروحة بالعربية",
+  "@languageCardLine": {
+    "description": "English: Bones, explained in English (One line on each language card, always written in that card's own language)"
+  },
+  "languageFromPhone": "من هاتفك",
+  "@languageFromPhone": {
+    "description": "English: From your phone (Small tag on the language your phone uses)"
+  },
+  "languageTitle": "اللغة",
+  "@languageTitle": {
+    "description": "English: Language"
+  },
+  "globeTooltip": "تغيير اللغة",
+  "@globeTooltip": {
+    "description": "English: Change language (Read out by screen readers for the globe button)"
+  },
+  "languageSheetTitle": "اختر لغة",
+  "@languageSheetTitle": {
+    "description": "English: Pick a language"
+  },
+  "languageSheetMessage": "يتغير كل شيء فورًا، حتى ما حفظته.",
+  "@languageSheetMessage": {
+    "description": "English: Everything switches straight away, saved finds too."
+  },
+  "languageMatchPhone": "مثل هاتفي",
+  "@languageMatchPhone": {
+    "description": "English: Match my phone (Option: always use the phone's own language)"
+  },
+  "languageMatchPhoneHint": "حاليًا: {language}",
+  "@languageMatchPhoneHint": {
+    "description": "English: Right now that's {language} (Under \"Match my phone\". {language} is one of the three names below)"
+  },
+  "languageFollowingPhone": "الهاتف ({language})",
+  "@languageFollowingPhone": {
+    "description": "English: Phone ({language}) (Settings value when the app follows the phone's language. {language} is one of the three names below)"
+  },
+  "languageNameEnglish": "الإنجليزية",
+  "@languageNameEnglish": {
+    "description": "English: English (The language's name inside a sentence, e.g. \"Right now that's English\")"
+  },
+  "languageNameGerman": "الألمانية",
+  "@languageNameGerman": {
+    "description": "English: German (The language's name inside a sentence, e.g. \"Right now that's German\")"
+  },
+  "languageNameArabic": "العربية",
+  "@languageNameArabic": {
+    "description": "English: Arabic (The language's name inside a sentence, e.g. \"Right now that's Arabic\")"
+  },
+  "languageNowSpeaking": "Ossia يتحدث العربية الآن",
+  "@languageNowSpeaking": {
+    "description": "English: Ossia speaks English now (Little pop-up after switching, always in the new language)"
+  },
+  "boneSkull": "الجمجمة",
+  "@boneSkull": {
+    "description": "English: Skull (Bone type name)"
+  },
+  "boneSkullMeaning": "الرأس كاملًا",
+  "@boneSkullMeaning": {
+    "description": "English: the whole head (What the bone is, in everyday words; shown after the name)"
+  },
+  "boneCranium": "القحف",
+  "@boneCranium": {
+    "description": "English: Cranium (Bone type name: the skull without the lower jaw)"
+  },
+  "boneCraniumMeaning": "الجمجمة من دون الفك السفلي",
+  "@boneCraniumMeaning": {
+    "description": "English: the skull without the lower jaw"
+  },
+  "boneMandible": "الفك السفلي",
+  "@boneMandible": {
+    "description": "English: Mandible (Bone type name)"
+  },
+  "boneMandibleMeaning": "عظم الفك الذي يتحرك عند المضغ",
+  "@boneMandibleMeaning": {
+    "description": "English: the lower jaw"
+  },
+  "boneFemur": "عظم الفخذ",
+  "@boneFemur": {
+    "description": "English: Femur (Bone type name)"
+  },
+  "boneFemurMeaning": "أطول عظم في الساق، من الورك إلى الركبة",
+  "@boneFemurMeaning": {
+    "description": "English: the thigh bone"
+  },
+  "boneTibia": "الظنبوب",
+  "@boneTibia": {
+    "description": "English: Tibia (Bone type name)"
+  },
+  "boneTibiaMeaning": "عظم القصبة في مقدمة الساق",
+  "@boneTibiaMeaning": {
+    "description": "English: the shin bone"
+  },
+  "boneHumerus": "عظم العضد",
+  "@boneHumerus": {
+    "description": "English: Humerus (Bone type name)"
+  },
+  "boneHumerusMeaning": "عظم أعلى الذراع أو أعلى الساق الأمامية",
+  "@boneHumerusMeaning": {
+    "description": "English: the upper arm or upper front-leg bone"
+  },
+  "boneRadius": "الكعبرة",
+  "@boneRadius": {
+    "description": "English: Radius (Bone type name)"
+  },
+  "boneRadiusMeaning": "أحد عظمي الساعد أو أسفل الساق الأمامية",
+  "@boneRadiusMeaning": {
+    "description": "English: a forearm or lower front-leg bone"
+  },
+  "boneUlna": "الزند",
+  "@boneUlna": {
+    "description": "English: Ulna (Bone type name)"
+  },
+  "boneUlnaMeaning": "أحد عظمي الساعد أو أسفل الساق الأمامية، وفيه رأس المرفق",
+  "@boneUlnaMeaning": {
+    "description": "English: a forearm or lower front-leg bone, with the elbow point"
+  },
+  "boneScapula": "لوح الكتف",
+  "@boneScapula": {
+    "description": "English: Scapula (Bone type name)"
+  },
+  "boneScapulaMeaning": "عظم الكتف العريض المسطح",
+  "@boneScapulaMeaning": {
+    "description": "English: the shoulder blade"
+  },
+  "boneOsCoxa": "عظم الورك",
+  "@boneOsCoxa": {
+    "description": "English: Os Coxa (Bone type name: the hip bone)"
+  },
+  "boneOsCoxaMeaning": "عظم الحوض على جانب الجسم",
+  "@boneOsCoxaMeaning": {
+    "description": "English: the hip bone"
+  },
+  "boneRib12": "الضلعان 1–2",
+  "@boneRib12": {
+    "description": "English: Ribs 1–2 (Bone type name: the first two ribs)"
+  },
+  "boneRib12Meaning": "أحد الضلعين العلويين",
+  "@boneRib12Meaning": {
+    "description": "English: one of the top two ribs"
+  },
+  "boneTypicalRib": "ضلع نموذجي",
+  "@boneTypicalRib": {
+    "description": "English: Typical Rib (Bone type name: ribs 3 to 9)"
+  },
+  "boneTypicalRibMeaning": "ضلع من وسط الصدر",
+  "@boneTypicalRibMeaning": {
+    "description": "English: a rib from the middle of the chest"
+  },
+  "boneRib1112": "الضلعان 11–12",
+  "@boneRib1112": {
+    "description": "English: Ribs 11–12 (Bone type name: the last two ribs)"
+  },
+  "boneRib1112Meaning": "أحد الضلعين السفليين",
+  "@boneRib1112Meaning": {
+    "description": "English: one of the bottom two ribs"
+  },
+  "boneCervical": "الفقرات العنقية",
+  "@boneCervical": {
+    "description": "English: Cervical Vertebrae (Bone type name)"
+  },
+  "boneCervicalMeaning": "عظم من الرقبة",
+  "@boneCervicalMeaning": {
+    "description": "English: a neck bone"
+  },
+  "boneThoracic": "الفقرات الصدرية",
+  "@boneThoracic": {
+    "description": "English: Thoracic Vertebrae (Bone type name)"
+  },
+  "boneThoracicMeaning": "عظم من أعلى الظهر",
+  "@boneThoracicMeaning": {
+    "description": "English: a bone from the upper back"
+  },
+  "boneLumbar": "الفقرات القطنية",
+  "@boneLumbar": {
+    "description": "English: Lumbar Vertebrae (Bone type name)"
+  },
+  "boneLumbarMeaning": "عظم من أسفل الظهر",
+  "@boneLumbarMeaning": {
+    "description": "English: a bone from the lower back"
+  },
+  "boneUnidentified": "غير محدد",
+  "@boneUnidentified": {
+    "description": "English: Unidentified (Headline when no bone type was found)"
+  },
+  "noBoneDetected": "لم يُكتشف عظم",
+  "@noBoneDetected": {
+    "description": "English: No bone detected (Headline when the photo shows no bone)"
+  },
+  "animalHuman": "إنسان",
+  "@animalHuman": {
+    "description": "English: Human"
+  },
+  "animalHumanMeaning": "شخص",
+  "@animalHumanMeaning": {
+    "description": "English: a person"
+  },
+  "animalCanid": "الكلبيات",
+  "@animalCanid": {
+    "description": "English: Canid (Animal family name (Canidae))"
+  },
+  "animalCanidMeaning": "فصيلة الكلاب (الكلاب والذئاب والقيوط والثعالب)",
+  "@animalCanidMeaning": {
+    "description": "English: the dog family (dogs, wolves, coyotes and foxes)"
+  },
+  "animalCervid": "الأيليات",
+  "@animalCervid": {
+    "description": "English: Cervid (Animal family name (Cervidae))"
+  },
+  "animalCervidMeaning": "فصيلة الأيائل (الأيائل والموظ والرنة)",
+  "@animalCervidMeaning": {
+    "description": "English: the deer family (deer, elk, moose and caribou)"
+  },
+  "animalBovid": "البقريات",
+  "@animalBovid": {
+    "description": "English: Bovid (Animal family name (Bovidae))"
+  },
+  "animalBovidMeaning": "فصيلة البقر (الأبقار والبيسون والأغنام والماعز والظباء)",
+  "@animalBovidMeaning": {
+    "description": "English: the cattle family (cows, bison, sheep, goats and antelope)"
+  },
+  "animalSuid": "الخنزيريات",
+  "@animalSuid": {
+    "description": "English: Suid (Animal family name (Suidae))"
+  },
+  "animalSuidMeaning": "فصيلة الخنازير (الخنازير الأليفة والبرية وخنازير الثآليل)",
+  "@animalSuidMeaning": {
+    "description": "English: the pig family (pigs, wild boar and warthogs)"
+  },
+  "animalFelid": "السنوريات",
+  "@animalFelid": {
+    "description": "English: Felid (Animal family name (Felidae))"
+  },
+  "animalFelidMeaning": "فصيلة القطط (القطط المنزلية والوشق وأسد الجبال والأسود)",
+  "@animalFelidMeaning": {
+    "description": "English: the cat family (house cats, bobcats, cougars and lions)"
+  },
+  "animalUrsid": "الدببة",
+  "@animalUrsid": {
+    "description": "English: Ursid (Animal family name (Ursidae))"
+  },
+  "animalUrsidMeaning": "الدببة بكل أنواعها",
+  "@animalUrsidMeaning": {
+    "description": "English: bears"
+  },
+  "animalLeporid": "الأرنبيات",
+  "@animalLeporid": {
+    "description": "English: Leporid (Animal family name (Leporidae))"
+  },
+  "animalLeporidMeaning": "الأرانب الأليفة والبرية",
+  "@animalLeporidMeaning": {
+    "description": "English: rabbits and hares"
+  },
+  "animalProcyonid": "الراكونيات",
+  "@animalProcyonid": {
+    "description": "English: Procyonid (Animal family name (Procyonidae))"
+  },
+  "animalProcyonidMeaning": "فصيلة الراكون (الراكون والكوتي والقط ذو الذيل الحلقي)",
+  "@animalProcyonidMeaning": {
+    "description": "English: the raccoon family (raccoons, coatis and ringtails)"
+  },
+  "animalEquid": "الخيليات",
+  "@animalEquid": {
+    "description": "English: Equid (Animal family name (Equidae))"
+  },
+  "animalEquidMeaning": "فصيلة الخيل (الخيول والحمير والحمر الوحشية)",
+  "@animalEquidMeaning": {
+    "description": "English: the horse family (horses, donkeys and zebras)"
+  },
+  "animalRodent": "القوارض",
+  "@animalRodent": {
+    "description": "English: Rodent (Animal group name (Rodentia))"
+  },
+  "animalRodentMeaning": "الجرذان والفئران والسناجب والقنادس وأقاربها",
+  "@animalRodentMeaning": {
+    "description": "English: rats, mice, squirrels, beavers and their kin"
+  },
+  "animalMammal": "ثديي",
+  "@animalMammal": {
+    "description": "English: Mammal"
+  },
+  "animalOtherMammalMeaning": "حيوان ذو فرو يُرضع صغاره، من فصيلة لا يسمّيها Ossia، مثل الظربان أو الأبوسوم",
+  "@animalOtherMammalMeaning": {
+    "description": "English: an animal with fur that feeds its young milk, from a family Ossia doesn't name, like a skunk or opossum"
+  },
+  "animalMammalMeaning": "حيوان ذو فرو يُرضع صغاره. هذا العظم لا يُظهر من أي فصيلة هو",
+  "@animalMammalMeaning": {
+    "description": "English: an animal with fur that feeds its young milk. This bone doesn't show which family"
+  },
+  "animalBird": "طائر",
+  "@animalBird": {
+    "description": "English: Bird"
+  },
+  "animalBirdMeaning": "أي طائر، من العصفور إلى النعامة",
+  "@animalBirdMeaning": {
+    "description": "English: any bird, from sparrows to ostriches"
+  },
+  "animalReptile": "زاحف",
+  "@animalReptile": {
+    "description": "English: Reptile"
+  },
+  "animalReptileMeaning": "السلاحف والثعابين والسحالي والتماسيح",
+  "@animalReptileMeaning": {
+    "description": "English: turtles, snakes, lizards and crocodiles"
+  },
+  "animalUnnamed": "حيوان",
+  "@animalUnnamed": {
+    "description": "English: Animal (An animal bone with no animal group named)"
+  },
+  "animalUnnamedMeaning": "عظم حيوان لم تبرز له أي مجموعة حيوانية",
+  "@animalUnnamedMeaning": {
+    "description": "English: an animal bone that no animal group stood out for"
+  },
+  "partComplete": "عظم كامل",
+  "@partComplete": {
+    "description": "English: Whole bone"
+  },
+  "partShaft": "الوسط (جسم العظم)",
+  "@partShaft": {
+    "description": "English: Middle (shaft)"
+  },
+  "partProximal": "الطرف القريب",
+  "@partProximal": {
+    "description": "English: Near end (The end of a limb bone nearer the body)"
+  },
+  "partDistal": "الطرف البعيد",
+  "@partDistal": {
+    "description": "English: Far end (The end of a limb bone further from the body)"
+  },
+  "partFragment": "قطعة مكسورة",
+  "@partFragment": {
+    "description": "English: Broken piece"
+  },
+  "statusComplete": "كامل",
+  "@statusComplete": {
+    "description": "English: Complete (The bone is whole)"
+  },
+  "statusFragment": "مكسور",
+  "@statusFragment": {
+    "description": "English: Broken (The bone is only a fragment)"
+  },
+  "conditionWholeButBroken": "عظم كامل لكنه مكسور",
+  "@conditionWholeButBroken": {
+    "description": "English: Whole bone, but broken"
+  },
+  "conditionPartBroken": "{part}، مكسور",
+  "@conditionPartBroken": {
+    "description": "English: {part}, broken (A part of the bone that is broken off, e.g. \"Near end, broken\")"
+  },
+  "damageFracture": "كسر",
+  "@damageFracture": {
+    "description": "English: Fracture"
+  },
+  "damageCutMarks": "آثار قطع",
+  "@damageCutMarks": {
+    "description": "English: Cut marks"
+  },
+  "damageBurnSigns": "آثار حرق",
+  "@damageBurnSigns": {
+    "description": "English: Burn signs"
+  },
+  "ageAdult": "بالغ",
+  "@ageAdult": {
+    "description": "English: Adult"
+  },
+  "ageJuvenile": "يافع",
+  "@ageJuvenile": {
+    "description": "English: Juvenile (A child or teenager)"
+  },
+  "sexMale": "ذكر",
+  "@sexMale": {
+    "description": "English: Male"
+  },
+  "sexFemale": "أنثى",
+  "@sexFemale": {
+    "description": "English: Female"
+  },
+  "unknownValue": "غير معروف",
+  "@unknownValue": {
+    "description": "English: Unknown"
+  },
+  "sourceOnDevice": "على هذا الهاتف",
+  "@sourceOnDevice": {
+    "description": "English: On this phone"
+  },
+  "sourceServer": "خادمك",
+  "@sourceServer": {
+    "description": "English: Your server"
+  },
+  "regionCranial": "الرأس",
+  "@regionCranial": {
+    "description": "English: Cranial"
+  },
+  "regionAxial": "العمود الفقري",
+  "@regionAxial": {
+    "description": "English: Axial"
+  },
+  "regionThoracic": "القفص الصدري",
+  "@regionThoracic": {
+    "description": "English: Thoracic"
+  },
+  "regionUpperLimb": "الطرف العلوي",
+  "@regionUpperLimb": {
+    "description": "English: Upper limb"
+  },
+  "regionLowerLimb": "الطرف السفلي",
+  "@regionLowerLimb": {
+    "description": "English: Lower limb"
+  },
+  "regionGirdle": "حزاما الكتف والحوض",
+  "@regionGirdle": {
+    "description": "English: Girdle"
+  },
+  "phaseFinding": "البحث عن العظم",
+  "@phaseFinding": {
+    "description": "English: Finding the bone"
+  },
+  "phaseHumanOrAnimal": "إنسان أم حيوان؟",
+  "@phaseHumanOrAnimal": {
+    "description": "English: Human or animal?"
+  },
+  "phaseWhichBone": "أي عظم؟",
+  "@phaseWhichBone": {
+    "description": "English: Which bone?"
+  },
+  "phaseWhichPart": "أي جزء؟",
+  "@phaseWhichPart": {
+    "description": "English: Which part?"
+  },
+  "phaseWholeOrBroken": "كامل أم مكسور؟",
+  "@phaseWholeOrBroken": {
+    "description": "English: Whole or broken?"
+  },
+  "phaseMarks": "البحث عن الآثار",
+  "@phaseMarks": {
+    "description": "English: Looking for marks"
+  },
+  "phaseWhichAnimal": "أي حيوان؟",
+  "@phaseWhichAnimal": {
+    "description": "English: Which animal?"
+  },
+  "phaseAgeSex": "العمر والجنس",
+  "@phaseAgeSex": {
+    "description": "English: Age and sex"
+  },
+  "phaseWriting": "كتابة التقرير",
+  "@phaseWriting": {
+    "description": "English: Writing it up"
+  },
+  "unitCentimetres": "سنتيمتر",
+  "@unitCentimetres": {
+    "description": "English: Centimetres"
+  },
+  "unitInches": "بوصة",
+  "@unitInches": {
+    "description": "English: Inches"
+  },
+  "unitCm": "سم",
+  "@unitCm": {
+    "description": "English: cm (Short symbol for centimetres)"
+  },
+  "unitIn": "بوصة",
+  "@unitIn": {
+    "description": "English: in (Short symbol for inches)"
+  },
+  "atlasSkullBlurb": "القحف والفك السفلي معًا",
+  "@atlasSkullBlurb": {
+    "description": "English: Cranium and mandible together (Atlas: one line under the bone name in the list)"
+  },
+  "atlasSkullSummary": "الرأس العظمي كاملًا: القحف مع الفك السفلي. اثنان وعشرون عظمًا في المجموع، تربطها دروز متشابكة؛ ولا يتحرك بحرية سوى الفك السفلي.",
+  "@atlasSkullSummary": {
+    "description": "English: The complete bony head: the cranium together with the mandible. Twenty-two bones in all, joined by interlocking sutures; only the mandible articulates freely. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+  },
+  "atlasSkullLm1": "الدروز الإكليلي والسهمي واللامي",
+  "@atlasSkullLm1": {
+    "description": "English: Coronal, sagittal and lambdoid sutures (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasSkullLm2": "محجرا العينين والفتحة الكمثرية (الأنفية)",
+  "@atlasSkullLm2": {
+    "description": "English: Orbits and the piriform (nasal) aperture (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasSkullLm3": "الثقبة العظمى في قاعدة الجمجمة",
+  "@atlasSkullLm3": {
+    "description": "English: Foramen magnum on the basicranium (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasSkullLm4": "الناتئان الخشائيان خلف قناتي الأذن",
+  "@atlasSkullLm4": {
+    "description": "English: Mastoid processes behind the ear canals (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasSkullSiding": "متناظرة. يُعرف الاتجاه من العظم الجبهي (في الأمام) وحرشفة العظم القذالي (في الخلف).",
+  "@atlasSkullSiding": {
+    "description": "English: Symmetrical. Orientation comes from the frontal bone (anterior) and the occipital squama (posterior). (Atlas: how to tell left from right, or the place in a series)"
+  },
+  "atlasCraniumBlurb": "الجمجمة من دون فكها",
+  "@atlasCraniumBlurb": {
+    "description": "English: The skull without its jaw (Atlas: one line under the bone name in the list)"
+  },
+  "atlasCraniumSummary": "الجمجمة بعد إزالة الفك السفلي. تحيط بالدماغ وتحميه؛ وتتكوّن القبة من العظام الجبهي والجداري والصدغي والقذالي.",
+  "@atlasCraniumSummary": {
+    "description": "English: The skull with the mandible removed. Encloses and protects the brain; the vault is made of frontal, parietal, temporal and occipital bones. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+  },
+  "atlasCraniumLm1": "الحافتان فوق الحجاجين — أبرز في جماجم الذكور",
+  "@atlasCraniumLm1": {
+    "description": "English: Supraorbital ridges — heavier in male crania (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasCraniumLm2": "الخطوط القفوية على العظم القذالي",
+  "@atlasCraniumLm2": {
+    "description": "English: Nuchal lines on the occipital (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasCraniumLm3": "الخطوط الصدغية الممتدة عبر العظمين الجداريين",
+  "@atlasCraniumLm3": {
+    "description": "English: Temporal lines sweeping across the parietals (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasCraniumLm4": "الصماخ السمعي الظاهر",
+  "@atlasCraniumLm4": {
+    "description": "English: External auditory meatus (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasCraniumSiding": "متناظرة حين تكون كاملة. تُحدَّد جهة قطع القبة المنفردة من اتجاه الدروز ونمط أخاديد الأوعية السحائية.",
+  "@atlasCraniumSiding": {
+    "description": "English: Symmetrical when complete. Isolated vault fragments are sided by suture direction and meningeal groove patterning. (Atlas: how to tell left from right, or the place in a series)"
+  },
+  "atlasCraniumAka": "القلنسوة (القبة فقط)",
+  "@atlasCraniumAka": {
+    "description": "English: Calvarium (vault only) (Atlas: another name for this bone)"
+  },
+  "atlasMandibleBlurb": "الفك السفلي؛ كثيف ومتين",
+  "@atlasMandibleBlurb": {
+    "description": "English: Lower jaw; dense and durable (Atlas: one line under the bone name in the list)"
+  },
+  "atlasMandibleSummary": "الفك السفلي — العظم الوحيد المتحرك بحرية في الجمجمة. كثيف ومتماسك، لذا يصمد أمام الدفن والحرق أكثر من معظم العظام.",
+  "@atlasMandibleSummary": {
+    "description": "English: The lower jaw — the only freely mobile bone of the skull. Dense and compact, so it survives burial and burning better than most. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+  },
+  "atlasMandibleLm1": "البروز الذقني (الذقن)",
+  "@atlasMandibleLm1": {
+    "description": "English: Mental protuberance (the chin) (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasMandibleLm2": "زاوية الفك حيث يلتقي الفرع بالجسم",
+  "@atlasMandibleLm2": {
+    "description": "English: Gonial angle where ramus meets body (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasMandibleLm3": "لقمة الفك والناتئ الإكليلي",
+  "@atlasMandibleLm3": {
+    "description": "English: Mandibular condyle and coronoid process (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasMandibleLm4": "الثقبة الذقنية أسفل الضواحك",
+  "@atlasMandibleLm4": {
+    "description": "English: Mental foramen below the premolars (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasMandibleSiding": "متناظر حين يكون كاملًا. يُحدَّد جانب نصف الفك من اتجاه صعود الفرع ومن جهة انحناء صف الأسنان.",
+  "@atlasMandibleSiding": {
+    "description": "English: Symmetrical when whole. A half-mandible is sided by the direction the ramus rises and by which way the tooth row curves. (Atlas: how to tell left from right, or the place in a series)"
+  },
+  "atlasFemurBlurb": "عظم الفخذ؛ أفضل مؤشر على طول القامة",
+  "@atlasFemurBlurb": {
+    "description": "English: Thigh bone; best stature indicator (Atlas: one line under the bone name in the list)"
+  },
+  "atlasFemurSummary": "عظم الفخذ — أطول عظام الجسم وأقواها. طوله الأقصى هو الأوثق ارتباطًا بطول القامة في الحياة.",
+  "@atlasFemurSummary": {
+    "description": "English: The thigh bone — the longest and strongest bone in the body. Its maximum length carries the tightest correlation with living stature. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+  },
+  "atlasFemurLm1": "رأس كروي فيه نُقرة الرأس",
+  "@atlasFemurLm1": {
+    "description": "English: Spherical head with the fovea capitis (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasFemurLm2": "المدوّران الكبير والصغير",
+  "@atlasFemurLm2": {
+    "description": "English: Greater and lesser trochanters (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasFemurLm3": "الخط الخشن على الوجه الخلفي لجسم العظم",
+  "@atlasFemurLm3": {
+    "description": "English: Linea aspera ridging the posterior shaft (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasFemurLm4": "اللقمتان الإنسية والوحشية عند الركبة",
+  "@atlasFemurLm4": {
+    "description": "English: Medial and lateral condyles at the knee (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasFemurSiding": "أمسك العظم عموديًا: يتجه الرأس نحو الداخل ويكون الخط الخشن إلى الخلف. الجهة التي يشير إليها الرأس هي جهة الجسم.",
+  "@atlasFemurSiding": {
+    "description": "English: Hold the bone upright: the head points medially and the linea aspera faces posteriorly. The side the head points to is the side of the body. (Atlas: how to tell left from right, or the place in a series)"
+  },
+  "atlasTibiaBlurb": "عظم الساق؛ جسم مثلث المقطع",
+  "@atlasTibiaBlurb": {
+    "description": "English: Shin bone; triangular shaft (Atlas: one line under the bone name in the list)"
+  },
+  "atlasTibiaSummary": "عظم القصبة، الإنسي والحامل للوزن في أسفل الساق. جسمه المثلث المقطع مميز حتى في القطع المكسورة.",
+  "@atlasTibiaSummary": {
+    "description": "English: The shin bone, medial and weight-bearing in the lower leg. Its triangular shaft is distinctive even in fragments. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+  },
+  "atlasTibiaLm1": "الحدبة الظنبوبية في مقدمة الجزء العلوي من الجسم",
+  "@atlasTibiaLm1": {
+    "description": "English: Tibial tuberosity on the anterior proximal shaft (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasTibiaLm2": "حافة أمامية حادة",
+  "@atlasTibiaLm2": {
+    "description": "English: Sharp anterior crest (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasTibiaLm3": "الكعب الإنسي عند الكاحل",
+  "@atlasTibiaLm3": {
+    "description": "English: Medial malleolus at the ankle (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasTibiaLm4": "لقمتان إنسية ووحشية مسطحتان",
+  "@atlasTibiaLm4": {
+    "description": "English: Flat medial and lateral condyles (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasTibiaSiding": "يبرز الكعب الإنسي في الجهة نفسها من الجسم التي جاء منها العظم؛ وتحدد الحدبة الظنبوبية الجهة الأمامية.",
+  "@atlasTibiaSiding": {
+    "description": "English: The medial malleolus projects on the same side as the body it came from; the tibial tuberosity marks the front. (Atlas: how to tell left from right, or the place in a series)"
+  },
+  "atlasHumerusBlurb": "أعلى الذراع، من الكتف إلى المرفق",
+  "@atlasHumerusBlurb": {
+    "description": "English: Upper arm, shoulder to elbow (Atlas: one line under the bone name in the list)"
+  },
+  "atlasHumerusSummary": "عظم أعلى الذراع، يمتد من مفصل الكتف إلى المرفق. لا يفوقه طولًا إلا عظم الفخذ.",
+  "@atlasHumerusSummary": {
+    "description": "English: The upper arm bone, running from the shoulder joint to the elbow. Second only to the femur in length. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+  },
+  "atlasHumerusLm1": "رأس مستدير مع الحديبتين الكبرى والصغرى",
+  "@atlasHumerusLm1": {
+    "description": "English: Rounded head with greater and lesser tubercles (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasHumerusLm2": "الحدبة الدالية في منتصف الجسم",
+  "@atlasHumerusLm2": {
+    "description": "English: Deltoid tuberosity mid-shaft (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasHumerusLm3": "الحفرة الزُّجّية في الخلف عند الطرف البعيد",
+  "@atlasHumerusLm3": {
+    "description": "English: Olecranon fossa on the posterior distal end (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasHumerusLm4": "البكرة والرُّؤيس تشكّلان مفصل المرفق",
+  "@atlasHumerusLm4": {
+    "description": "English: Trochlea and capitulum forming the elbow (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasHumerusSiding": "أوقفه عموديًا ورأسه مواجه لك: تقع الحفرة الزجية في الخلف، ويتجه الرأس نحو الداخل باتجاه خط منتصف الجسم.",
+  "@atlasHumerusSiding": {
+    "description": "English: Stand it upright with the head facing you: the olecranon fossa sits posteriorly, and the head turns medially toward the body midline. (Atlas: how to tell left from right, or the place in a series)"
+  },
+  "atlasRadiusBlurb": "العظم الوحشي في الساعد، في جهة الإبهام",
+  "@atlasRadiusBlurb": {
+    "description": "English: Lateral forearm, on the thumb side (Atlas: one line under the bone name in the list)"
+  },
+  "atlasRadiusSummary": "عظم الساعد الوحشي، في جهة الإبهام. يدور فوق الزند ليقلب راحة اليد.",
+  "@atlasRadiusSummary": {
+    "description": "English: The lateral forearm bone, on the thumb side. It rotates over the ulna to turn the palm. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+  },
+  "atlasRadiusLm1": "رأس قرصي الشكل في الطرف القريب",
+  "@atlasRadiusLm1": {
+    "description": "English: Disc-shaped proximal head (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasRadiusLm2": "الحدبة الكعبرية أسفل العنق مباشرة",
+  "@atlasRadiusLm2": {
+    "description": "English: Radial tuberosity just below the neck (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasRadiusLm3": "طرف بعيد عريض ومتسع",
+  "@atlasRadiusLm3": {
+    "description": "English: Broad, flared distal end (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasRadiusLm4": "الناتئ الإبري عند الرسغ",
+  "@atlasRadiusLm4": {
+    "description": "English: Styloid process at the wrist (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasRadiusSiding": "الرأس الصغير في الطرف القريب والطرف العريض في الطرف البعيد؛ ويتجه الناتئ الإبري نحو الخارج، بعيدًا عن خط المنتصف.",
+  "@atlasRadiusSiding": {
+    "description": "English: The small head is proximal and the broad end distal; the styloid process points laterally, away from the midline. (Atlas: how to tell left from right, or the place in a series)"
+  },
+  "atlasUlnaBlurb": "العظم الإنسي في الساعد؛ رأس المرفق",
+  "@atlasUlnaBlurb": {
+    "description": "English: Medial forearm; point of the elbow (Atlas: one line under the bone name in the list)"
+  },
+  "atlasUlnaSummary": "عظم الساعد الإنسي، في جهة الخنصر. يشكّل مفصل المرفق الرزّي، وهو الشريك الثابت الذي تدور حوله الكعبرة.",
+  "@atlasUlnaSummary": {
+    "description": "English: The medial forearm bone, on the little-finger side. Forms the hinge of the elbow and is the stable partner the radius rotates around. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+  },
+  "atlasUlnaLm1": "الناتئ الزُّجّي — رأس المرفق",
+  "@atlasUlnaLm1": {
+    "description": "English: Olecranon process — the point of the elbow (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasUlnaLm2": "الثلمة البكرية التي تمسك بعظم العضد",
+  "@atlasUlnaLm2": {
+    "description": "English: Trochlear notch gripping the humerus (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasUlnaLm3": "الناتئ المنقاري أسفل الثلمة",
+  "@atlasUlnaLm3": {
+    "description": "English: Coronoid process below the notch (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasUlnaLm4": "رأس بعيد نحيل مع ناتئ إبري",
+  "@atlasUlnaLm4": {
+    "description": "English: Slender distal head with styloid process (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasUlnaSiding": "تنفتح الثلمة البكرية نحو الأمام؛ وحين يكون الزُّج في الأعلى والثلمة مواجهة لك، ينحني جسم العظم نحو جهة الجسم.",
+  "@atlasUlnaSiding": {
+    "description": "English: The trochlear notch opens anteriorly; with the olecranon up and the notch facing you, the shaft curves toward the body side. (Atlas: how to tell left from right, or the place in a series)"
+  },
+  "atlasScapulaBlurb": "لوح الكتف؛ صفيحة رقيقة مثلثة",
+  "@atlasScapulaBlurb": {
+    "description": "English: Shoulder blade; thin triangular plate (Atlas: one line under the bone name in the list)"
+  },
+  "atlasScapulaSummary": "لوح الكتف — صفيحة مثلثة رقيقة تستقر على ظهر القفص الصدري. رقيقة لدرجة أنها كثيرًا ما تبقى على شكل قطع فقط.",
+  "@atlasScapulaSummary": {
+    "description": "English: The shoulder blade — a thin triangular plate riding on the back of the ribcage. Thin enough that the blade often survives only as fragments. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+  },
+  "atlasScapulaLm1": "الشوكة الممتدة عبر السطح الخلفي",
+  "@atlasScapulaLm1": {
+    "description": "English: Spine running across the posterior surface (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasScapulaLm2": "الناتئ الأخرمي عند طرف الكتف",
+  "@atlasScapulaLm2": {
+    "description": "English: Acromion process at the shoulder tip (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasScapulaLm3": "الناتئ الغرابي المعقوف في الأمام",
+  "@atlasScapulaLm3": {
+    "description": "English: Hooked coracoid process anteriorly (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasScapulaLm4": "الحفرة العنابية التي يستقر فيها رأس العضد",
+  "@atlasScapulaLm4": {
+    "description": "English: Glenoid fossa receiving the humeral head (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasScapulaSiding": "تتجه الحفرة العنابية نحو الخارج وتقع الشوكة على السطح الخلفي؛ والجهة التي تواجهها الحفرة هي جهة الجسم.",
+  "@atlasScapulaSiding": {
+    "description": "English: The glenoid fossa faces laterally and the spine sits on the posterior surface; the side the fossa faces is the side of the body. (Atlas: how to tell left from right, or the place in a series)"
+  },
+  "atlasOsCoxaBlurb": "عظم الورك؛ أفضل مؤشر على الجنس",
+  "@atlasOsCoxaBlurb": {
+    "description": "English: Hip bone; best indicator of sex (Atlas: one line under the bone name in the list)"
+  },
+  "atlasOsCoxaSummary": "عظم الورك: الحرقفة والإسك والعانة ملتحمة عند الحُق. أوثق عظم منفرد لتقدير الجنس وعمر البالغين.",
+  "@atlasOsCoxaSummary": {
+    "description": "English: The hip bone: ilium, ischium and pubis fused at the acetabulum. The single most reliable element for estimating sex and adult age. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+  },
+  "atlasOsCoxaLm1": "الثلمة الوركية الكبرى — عريضة عند الإناث وضيقة عند الذكور",
+  "@atlasOsCoxaLm1": {
+    "description": "English: Greater sciatic notch — broad in females, narrow in males (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasOsCoxaLm2": "الزاوية تحت العانة والقوس البطني",
+  "@atlasOsCoxaLm2": {
+    "description": "English: Subpubic angle and the ventral arc (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasOsCoxaLm3": "السطح الأذيني، يُستخدم لتقدير العمر عند الوفاة",
+  "@atlasOsCoxaLm3": {
+    "description": "English: Auricular surface, used for age-at-death (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasOsCoxaLm4": "الحُق الذي يستقر فيه رأس الفخذ",
+  "@atlasOsCoxaLm4": {
+    "description": "English: Acetabulum receiving the femoral head (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasOsCoxaSiding": "وجّه جناح الحرقفة إلى الأعلى والحُق إلى الخارج: تقع العانة في الأمام وتنفتح الثلمة الوركية نحو الخلف.",
+  "@atlasOsCoxaSiding": {
+    "description": "English: Point the iliac blade up and the acetabulum out: the pubis sits anteriorly and the sciatic notch opens posteriorly. (Atlas: how to tell left from right, or the place in a series)"
+  },
+  "atlasOsCoxaAka": "العظم الغُفل، عظم الورك",
+  "@atlasOsCoxaAka": {
+    "description": "English: Innominate, hip bone (Atlas: another name for this bone)"
+  },
+  "atlasRib12Blurb": "ضلوع غير نموذجية؛ مسطحة وشديدة الانحناء",
+  "@atlasRib12Blurb": {
+    "description": "English: Atypical ribs; flat and sharply curved (Atlas: one line under the bone name in the list)"
+  },
+  "atlasRib12Summary": "الضلعان الأولان غير نموذجيين. الضلع 1 هو الأقصر والأعرض والأشد انحناءً؛ والضلع 2 أطول لكنه يحتفظ بالشكل المسطح نفسه.",
+  "@atlasRib12Summary": {
+    "description": "English: The first two ribs are atypical. Rib 1 is the shortest, broadest and most sharply curved; rib 2 is longer but keeps the same flattened set. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+  },
+  "atlasRib12Lm1": "الضلع 1 مسطح، له سطح علوي وسطح سفلي",
+  "@atlasRib12Lm1": {
+    "description": "English: Rib 1 lies flat, with superior and inferior surfaces (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasRib12Lm2": "الحديبة الأخمعية مع أخاديد للأوعية تحت الترقوة",
+  "@atlasRib12Lm2": {
+    "description": "English: Scalene tubercle with grooves for the subclavian vessels (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasRib12Lm3": "يحمل الضلع 2 حدبة للعضلة المنشارية الأمامية",
+  "@atlasRib12Lm3": {
+    "description": "English: Rib 2 carries a tuberosity for serratus anterior (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasRib12Lm4": "وجيه مفصلي واحد على رأس الضلع 1",
+  "@atlasRib12Lm4": {
+    "description": "English: Single articular facet on the head of rib 1 (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasRib12Siding": "ضع الضلع مسطحًا ورأسه إلى الخلف: يتجه السطح الداخلي المقعّر نحو خط المنتصف، فيدلّ على الجهة.",
+  "@atlasRib12Siding": {
+    "description": "English: Lay the rib flat with the head backward: the concave inner surface faces the midline, giving the side. (Atlas: how to tell left from right, or the place in a series)"
+  },
+  "atlasTypicalRibBlurb": "الضلوع 3–9؛ رأس وحديبة وأخدود ضلعي",
+  "@atlasTypicalRibBlurb": {
+    "description": "English: Ribs 3–9; head, tubercle, costal groove (Atlas: one line under the bone name in the list)"
+  },
+  "atlasTypicalRibSummary": "تشترك الضلوع من 3 إلى 9 في تصميم واحد: رأس وعنق وحديبة وجسم طويل منحنٍ يلتوي عند الزاوية.",
+  "@atlasTypicalRibSummary": {
+    "description": "English: Ribs 3 through 9 share one plan: a head, neck, tubercle and a long curving body that twists at the angle. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+  },
+  "atlasTypicalRibLm1": "نصفا وجيه مفصلي على الرأس",
+  "@atlasTypicalRibLm1": {
+    "description": "English: Two demifacets on the head (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasTypicalRibLm2": "حديبة تتمفصل مع ناتئ مستعرض",
+  "@atlasTypicalRibLm2": {
+    "description": "English: Tubercle articulating with a transverse process (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasTypicalRibLm3": "زاوية يتغير عندها اتجاه جسم الضلع",
+  "@atlasTypicalRibLm3": {
+    "description": "English: Angle where the shaft changes direction (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasTypicalRibLm4": "الأخدود الضلعي على امتداد الحافة السفلية الداخلية",
+  "@atlasTypicalRibLm4": {
+    "description": "English: Costal groove along the inner inferior border (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasTypicalRibSiding": "يمتد الأخدود الضلعي على الحافة السفلية الداخلية؛ وحين يكون الأخدود في الأسفل والداخل، يشير الرأس إلى الخلف ويدلّ على الجهة.",
+  "@atlasTypicalRibSiding": {
+    "description": "English: The costal groove runs on the internal inferior edge; with the groove down and inside, the head points to the back and gives the side. (Atlas: how to tell left from right, or the place in a series)"
+  },
+  "atlasRib1112Blurb": "الضلوع العائمة؛ قصيرة وغير متصلة",
+  "@atlasRib1112Blurb": {
+    "description": "English: Floating ribs; short and unattached (Atlas: one line under the bone name in the list)"
+  },
+  "atlasRib1112Summary": "الضلوع العائمة. قصيرة ومستدقة وغير متصلة من الأمام، ولهذا تفتقر إلى معظم ملامح الضلع النموذجي.",
+  "@atlasRib1112Summary": {
+    "description": "English: The floating ribs. Short, tapering and unattached at the front, which is why they lack most of the features a typical rib carries. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+  },
+  "atlasRib1112Lm1": "وجيه مفصلي واحد على الرأس",
+  "@atlasRib1112Lm1": {
+    "description": "English: Single articular facet on the head (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasRib1112Lm2": "لا عنق ولا حديبة",
+  "@atlasRib1112Lm2": {
+    "description": "English: No neck and no tubercle (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasRib1112Lm3": "أخدود ضلعي ضعيف أو معدوم",
+  "@atlasRib1112Lm3": {
+    "description": "English: Little or no costal groove (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasRib1112Lm4": "طرف أمامي مدبب ينتهي بغضروف",
+  "@atlasRib1112Lm4": {
+    "description": "English: Pointed, cartilage-tipped anterior end (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasRib1112Siding": "الانحناء وحده يدلّ على الجهة: يتجه السطح المقعّر نحو خط المنتصف.",
+  "@atlasRib1112Siding": {
+    "description": "English: Curvature alone gives the side: the concave surface faces the midline. (Atlas: how to tell left from right, or the place in a series)"
+  },
+  "atlasCervicalBlurb": "C1–C7؛ الوحيدة ذات الثقوب المستعرضة",
+  "@atlasCervicalBlurb": {
+    "description": "English: C1–C7; the only ones with transverse foramina (Atlas: one line under the bone name in the list)"
+  },
+  "atlasCervicalSummary": "فقرات الرقبة السبع، C1–C7. أصغر أجسام في العمود الفقري، والفقرات الوحيدة التي في نواتئها المستعرضة ثقوب.",
+  "@atlasCervicalSummary": {
+    "description": "English: The seven neck vertebrae, C1–C7. Smallest bodies in the column and the only vertebrae with holes in the transverse processes. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+  },
+  "atlasCervicalLm1": "الثقوب المستعرضة — علامة مميزة لهذه المنطقة",
+  "@atlasCervicalLm1": {
+    "description": "English: Transverse foramina — diagnostic for the region (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasCervicalLm2": "ليس للفقرة C1 (الفهقة) جسم؛ وتحمل C2 (المحور) الناتئ السني",
+  "@atlasCervicalLm2": {
+    "description": "English: C1 (atlas) has no body; C2 (axis) carries the dens (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasCervicalLm3": "نواتئ شوكية مشقوقة في C2–C6",
+  "@atlasCervicalLm3": {
+    "description": "English: Bifid spinous processes on C2–C6 (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasCervicalLm4": "ثقبة فقرية كبيرة مثلثة",
+  "@atlasCervicalLm4": {
+    "description": "English: Large triangular vertebral foramen (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasCervicalSiding": "متناظرة. يُعرف موقعها في السلسلة من الناتئ الشوكي وحجم الجسم؛ وللفقرة C7 شوكة طويلة غير مشقوقة تُعرف بـ«البارزة».",
+  "@atlasCervicalSiding": {
+    "description": "English: Symmetrical. Position in the series is read from the spinous process and body size; C7 has the long, unsplit \"prominens\" spine. (Atlas: how to tell left from right, or the place in a series)"
+  },
+  "atlasThoracicBlurb": "T1–T12؛ تحمل الوجيهات الضلعية",
+  "@atlasThoracicBlurb": {
+    "description": "English: T1–T12; carry the costal facets (Atlas: one line under the bone name in the list)"
+  },
+  "atlasThoracicSummary": "فقرات أعلى الظهر الاثنتا عشرة، T1–T12. تتمفصل كل واحدة مع زوج من الضلوع، والوجيهات الخاصة بتلك الضلوع تميّز هذه المنطقة.",
+  "@atlasThoracicSummary": {
+    "description": "English: The twelve vertebrae of the upper back, T1–T12. Each one articulates with a pair of ribs, and the facets for those ribs identify the region. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+  },
+  "atlasThoracicLm1": "وجيهات ضلعية على الجسم والنواتئ المستعرضة",
+  "@atlasThoracicLm1": {
+    "description": "English: Costal facets on the body and transverse processes (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasThoracicLm2": "أجسام فقرية على شكل قلب",
+  "@atlasThoracicLm2": {
+    "description": "English: Heart-shaped vertebral bodies (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasThoracicLm3": "نواتئ شوكية طويلة مائلة بشدة نحو الأسفل",
+  "@atlasThoracicLm3": {
+    "description": "English: Long spinous processes angled steeply downward (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasThoracicLm4": "ثقبة فقرية دائرية",
+  "@atlasThoracicLm4": {
+    "description": "English: Circular vertebral foramen (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasThoracicSiding": "متناظرة. يُستدل على الترتيب من حجم الجسم ومن مدى تراكب الناتئ الشوكي على الفقرة التي تحته.",
+  "@atlasThoracicSiding": {
+    "description": "English: Symmetrical. Sequence is judged from body size and how far the spinous process overlaps the vertebra below. (Atlas: how to tell left from right, or the place in a series)"
+  },
+  "atlasLumbarBlurb": "L1–L5؛ الأثقل في العمود الفقري",
+  "@atlasLumbarBlurb": {
+    "description": "English: L1–L5; the heaviest in the column (Atlas: one line under the bone name in the list)"
+  },
+  "atlasLumbarSummary": "فقرات أسفل الظهر الخمس، L1–L5. الأكبر والأمتن في العمود الفقري، مصممة لتحمّل الوزن لا للحركة.",
+  "@atlasLumbarSummary": {
+    "description": "English: The five vertebrae of the lower back, L1–L5. The largest and most robust in the column, built for load rather than movement. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+  },
+  "atlasLumbarLm1": "أجسام ضخمة على شكل كلية",
+  "@atlasLumbarLm1": {
+    "description": "English: Massive kidney-shaped bodies (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasLumbarLm2": "لا ثقوب مستعرضة ولا وجيهات ضلعية",
+  "@atlasLumbarLm2": {
+    "description": "English: No transverse foramina and no costal facets (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasLumbarLm3": "نواتئ شوكية قصيرة كليلة على شكل فأس",
+  "@atlasLumbarLm3": {
+    "description": "English: Short, blunt, hatchet-shaped spinous processes (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasLumbarLm4": "نواتئ حلمية على الوجيهات المفصلية العلوية",
+  "@atlasLumbarLm4": {
+    "description": "English: Mammillary processes on the superior articular facets (Atlas: one thing an expert looks for on this bone)"
+  },
+  "atlasLumbarSiding": "متناظرة. تُعرف الفقرة L5 بشكلها الإسفيني، فهي أعمق من الأمام منها من الخلف، حيث تلتقي بالعجز.",
+  "@atlasLumbarSiding": {
+    "description": "English: Symmetrical. L5 is recognised by its wedge shape, deeper in front than behind, where it meets the sacrum. (Atlas: how to tell left from right, or the place in a series)"
+  },
+  "phaseDoc1Title": "هل يوجد عظم؟",
+  "@phaseDoc1Title": {
+    "description": "English: Is there a bone? (How analysis works: step title)"
+  },
+  "phaseDoc1Detail": "يتحقق Ossia أولًا من وجود عظم في الصورة أصلًا، حتى لا يحصل غصن أو حجر على إجابة مختلَقة.",
+  "@phaseDoc1Detail": {
+    "description": "English: First Ossia checks there's a bone in the photo at all, so a stick or a stone doesn't get a made-up answer. (How analysis works: what this step does)"
+  },
+  "phaseDoc2Title": "إنسان أم حيوان؟",
+  "@phaseDoc2Title": {
+    "description": "English: Human or animal? (How analysis works: step title)"
+  },
+  "phaseDoc2Detail": "ثم يقرر إن كان العظم من إنسان أم من حيوان. كل ما يلي يعتمد على هذه الخطوة.",
+  "@phaseDoc2Detail": {
+    "description": "English: Next it decides whether the bone came from a person or an animal. Everything after depends on this step. (How analysis works: what this step does)"
+  },
+  "phaseDoc3Title": "أي عظم؟",
+  "@phaseDoc3Title": {
+    "description": "English: Which bone? (How analysis works: step title)"
+  },
+  "phaseDoc3Detail": "ستة عشر نوعًا من العظام، من الجمجمة والفك إلى الضلوع والعمود الفقري والورك والأطراف. ترى أفضل ثلاثة تخمينات، لا الفائز وحده.",
+  "@phaseDoc3Detail": {
+    "description": "English: Sixteen kinds of bone, from the skull and jaw to the ribs, spine, hip and limbs. You see its top three guesses, not just the winner. (How analysis works: what this step does)"
+  },
+  "phaseDoc4Title": "أي جزء؟",
+  "@phaseDoc4Title": {
+    "description": "English: Which part? (How analysis works: step title)"
+  },
+  "phaseDoc4Detail": "هل تُظهر الصورة العظم كاملًا، أم وسطه (جسم العظم)، أم أحد طرفيه، أم قطعة مكسورة.",
+  "@phaseDoc4Detail": {
+    "description": "English: Whether the photo shows the whole bone, its middle (the shaft), one end, or a broken piece. (How analysis works: what this step does)"
+  },
+  "phaseDoc5Title": "كامل أم مكسور؟",
+  "@phaseDoc5Title": {
+    "description": "English: Whole or broken? (How analysis works: step title)"
+  },
+  "phaseDoc5Detail": "نعم أو لا بسرعة: هل العظم كامل، أم مجرد قطعة منه؟",
+  "@phaseDoc5Detail": {
+    "description": "English: A quick yes or no: is the bone complete, or only a fragment? (How analysis works: what this step does)"
+  },
+  "phaseDoc6Title": "الآثار والأضرار",
+  "@phaseDoc6Title": {
+    "description": "English: Marks and damage (How analysis works: step title)"
+  },
+  "phaseDoc6Detail": "يُفحص كل من الكسور وآثار القطع والحرق على حدة، لذا قد يُظهر عظم واحد الثلاثة معًا.",
+  "@phaseDoc6Detail": {
+    "description": "English: Breaks, cut marks and burning are each checked on their own, so one bone can show all three. (How analysis works: what this step does)"
+  },
+  "phaseDoc7Title": "أي حيوان؟",
+  "@phaseDoc7Title": {
+    "description": "English: Which animal? (How analysis works: step title)"
+  },
+  "phaseDoc7Detail": "لعظام الحيوانات: ثديي أو طائر أو زاحف. وللثدييات أيضًا الفصيلة، مثل فصيلة الكلاب أو الأيائل أو البقر أو الخنازير أو القطط أو الدببة أو الأرانب أو الراكون أو الخيل، أو القوارض. ولا تُسمّى الفصيلة إلا حين يستطيع العظم إظهارها، كالجمجمة أو الفك أو عظم ساق كامل.",
+  "@phaseDoc7Detail": {
+    "description": "English: For animal bones: mammal, bird or reptile. For mammals, also the family, like the dog, deer, cattle, pig, cat, bear, rabbit, raccoon or horse family, or a rodent. The family is only named when the bone can show it, such as a skull, a jaw or a whole leg bone. (How analysis works: what this step does)"
+  },
+  "phaseDoc8Title": "العمر والجنس",
+  "@phaseDoc8Title": {
+    "description": "English: Age and sex (How analysis works: step title)"
+  },
+  "phaseDoc8Detail": "للعظام البشرية فقط. اعتبرها تلميحًا يجب التحقق منه، لا إجابة قائمة بذاتها.",
+  "@phaseDoc8Detail": {
+    "description": "English: For human bones only. Treat these as a hint to check, never as an answer on their own. (How analysis works: what this step does)"
+  },
+  "phaseDoc9Title": "جمع النتائج",
+  "@phaseDoc9Title": {
+    "description": "English: Putting it together (How analysis works: step title)"
+  },
+  "phaseDoc9Detail": "تُقرأ صور العظم نفسه من جهات مختلفة معًا، ويُقارن الطول الذي قسته بالحجم المعتاد لهذا العظم. وكلاهما يساعد حين تكون صورة واحدة غير واضحة.",
+  "@phaseDoc9Detail": {
+    "description": "English: Photos of the same bone from different sides are read together, and the length you measured is checked against the bone's usual size. Both help when one photo alone is unclear. (How analysis works: what this step does)"
+  },
+  "errNotReadyOnPhone": "تعذّر تجهيز Ossia على هذا الهاتف. حاول مجددًا، أو أعد تشغيل التطبيق.",
+  "@errNotReadyOnPhone": {
+    "description": "English: Ossia couldn't get ready on this phone. Try again, or restart the app. (Shown when a scan fails)"
+  },
+  "errPhotoUnreadable": "تعذّرت قراءة هذه الصورة. جرّب صورة بصيغة JPEG أو PNG.",
+  "@errPhotoUnreadable": {
+    "description": "English: Couldn't read that photo. Try a JPEG or PNG. (Shown when a scan fails)"
+  },
+  "errPhotoNUnreadable": "تعذّرت قراءة الصورة رقم {number}. احذفها وحاول مجددًا.",
+  "@errPhotoNUnreadable": {
+    "description": "English: Couldn't read photo {number}. Remove it and try again. (Shown when a scan fails)"
+  },
+  "errReadingPhoto": "حدث خطأ أثناء قراءة الصورة. يُرجى المحاولة مجددًا.",
+  "@errReadingPhoto": {
+    "description": "English: Something went wrong reading that photo. Please try again. (Shown when a scan fails)"
+  },
+  "errPhotoTryAnother": "تعذّرت قراءة هذه الصورة. جرّب صورة أخرى.",
+  "@errPhotoTryAnother": {
+    "description": "English: Couldn't read that photo. Try another one. (Shown when a scan fails)"
+  },
+  "errBadOnlineAddress": "لا يبدو عنوان التحليل عبر الإنترنت صحيحًا. تحقّق منه في الإعدادات.",
+  "@errBadOnlineAddress": {
+    "description": "English: The online address doesn't look right. Check it in Settings. (Shown when a scan fails)"
+  },
+  "errThisDevice": "هذا العنوان يشير إلى هذا الهاتف نفسه. اكتب بدلًا منه العنوان الظاهر على حاسوب Ossia.",
+  "@errThisDevice": {
+    "description": "English: That address points back at this phone. Type the address shown on the Ossia computer instead. (Someone typed \"localhost\" as the online address on a phone)"
+  },
+  "errServerStatus": "التحليل عبر الإنترنت لا يعمل الآن (الخطأ {code}).",
+  "@errServerStatus": {
+    "description": "English: Online analysis isn't working right now (error {code}). (Shown when a scan fails)"
+  },
+  "errServerTooBig": "الصور كبيرة جدًا لإرسالها. جرّب عددًا أقل من الصور.",
+  "@errServerTooBig": {
+    "description": "English: The photos are too big to send. Try fewer photos. (Shown when a scan fails)"
+  },
+  "errServerRejected": "لم يقبل التحليل عبر الإنترنت هذه الصور. جرّب صورًا أخرى.",
+  "@errServerRejected": {
+    "description": "English: The online analysis didn't accept these photos. Try other photos. (Shown when a scan fails)"
+  },
+  "errServerCouldntAnalyze": "تعذّر على التحليل عبر الإنترنت قراءة هذه الصور. جرّب صورًا أخرى.",
+  "@errServerCouldntAnalyze": {
+    "description": "English: The online analysis couldn't read these photos. Try other photos. (Shown when a scan fails)"
+  },
+  "errTimeout": "استغرق التحليل عبر الإنترنت وقتًا طويلًا للرد. تحقّق من اتصالك، أو حلّل على هذا الهاتف.",
+  "@errTimeout": {
+    "description": "English: Online analysis took too long to answer. Check your connection, or analyze on this phone. (Shown when a scan fails)"
+  },
+  "errUnreachable": "تعذّر الاتصال للتحليل عبر الإنترنت. تحقّق من الإنترنت ومن عنوان التحليل في الإعدادات.",
+  "@errUnreachable": {
+    "description": "English: Couldn't connect for online analysis. Check your internet and the online address in Settings. (Shown when a scan fails)"
+  },
+  "errNotAReport": "ردّ شيء ما، لكن ليس بتقرير. تحقّق من عنوان التحليل في الإعدادات.",
+  "@errNotAReport": {
+    "description": "English: Something answered, but not with a report. Check the online address in Settings. (Shown when a scan fails)"
+  },
+  "errGeneric": "حدث خطأ ما. يُرجى المحاولة مجددًا.",
+  "@errGeneric": {
+    "description": "English: Something went wrong. Please try again. (Shown when a scan fails)"
+  },
+  "checkAddress": "العنوان",
+  "@checkAddress": {
+    "description": "English: Address (Connection checklist: one step)"
+  },
+  "checkReach": "الوصول إليه",
+  "@checkReach": {
+    "description": "English: Reaching it (Connection checklist: one step)"
+  },
+  "checkServer": "استجابة Ossia",
+  "@checkServer": {
+    "description": "English: Ossia answering (Connection checklist: one step)"
+  },
+  "checkModel": "جاهز للتحليل",
+  "@checkModel": {
+    "description": "English: Ready to analyze (Connection checklist: one step)"
+  },
+  "checkSpeed": "السرعة",
+  "@checkSpeed": {
+    "description": "English: Speed (Connection checklist: one step)"
+  },
+  "checkBadAddress": "هذا ليس عنوانًا صالحًا",
+  "@checkBadAddress": {
+    "description": "English: That isn't a valid address (Connection checklist: result of a step)"
+  },
+  "checkAnsweredIn": "ردّ خلال {ms} ملّي ثانية",
+  "@checkAnsweredIn": {
+    "description": "English: Answered in {ms} ms (Connection checklist: result of a step)"
+  },
+  "checkRunningFor": "يعمل منذ {time}",
+  "@checkRunningFor": {
+    "description": "English: Running for {time} (Connection checklist: result of a step)"
+  },
+  "checkNotReady": "يعمل، لكنه ليس جاهزًا للتحليل بعد",
+  "@checkNotReady": {
+    "description": "English: It's on, but not ready to analyze yet (Connection checklist: result of a step)"
+  },
+  "checkReady": "جاهز",
+  "@checkReady": {
+    "description": "English: Ready (Connection checklist: result of a step)"
+  },
+  "checkLost": "انقطع الاتصال",
+  "@checkLost": {
+    "description": "English: Lost the connection (Connection checklist: result of a step)"
+  },
+  "checkPing": "{ms} ms · {word}",
+  "@checkPing": {
+    "description": "English: {ms} ms · {word} (Connection checklist: result of a step, e.g. \"120 ms · snappy\")"
+  },
+  "pingSnappy": "سريع جدًا",
+  "@pingSnappy": {
+    "description": "English: snappy (How fast the connection is: very fast)"
+  },
+  "pingGood": "جيد",
+  "@pingGood": {
+    "description": "English: good (How fast the connection is: fine)"
+  },
+  "pingSluggish": "بطيء نوعًا ما",
+  "@pingSluggish": {
+    "description": "English: sluggish (How fast the connection is: a bit slow)"
+  },
+  "pingSlow": "بطيء",
+  "@pingSlow": {
+    "description": "English: slow (How fast the connection is: slow)"
+  },
+  "uptimeSeconds": "{s} ث",
+  "@uptimeSeconds": {
+    "description": "English: {s}s (How long the server has run, very short units: seconds)"
+  },
+  "uptimeMinutes": "{m} د",
+  "@uptimeMinutes": {
+    "description": "English: {m}m (Short units: minutes)"
+  },
+  "uptimeHours": "{h} س {m} د",
+  "@uptimeHours": {
+    "description": "English: {h}h {m}m (Short units: hours and minutes)"
+  },
+  "uptimeDays": "{d} ي {h} س",
+  "@uptimeDays": {
+    "description": "English: {d}d {h}h (Short units: days and hours)"
+  },
+  "netBadAnswer": "ردّ غير صالح",
+  "@netBadAnswer": {
+    "description": "English: Bad answer (Connection checklist: result of a step)"
+  },
+  "netNoAnswer": "لا ردّ خلال {seconds} ثوانٍ",
+  "@netNoAnswer": {
+    "description": "English: No answer within {seconds} seconds (Connection checklist: result of a step)"
+  },
+  "netNotFound": "لم يُعثر على هذا العنوان. تأكّد من كتابته بشكل صحيح ومن أنه ما زال صالحًا",
+  "@netNotFound": {
+    "description": "English: That address wasn't found. Check it's typed right and still current (Connection checklist: result of a step)"
+  },
+  "netRefused": "لم يردّ شيء على هذا العنوان",
+  "@netRefused": {
+    "description": "English: Nothing answered at that address (Connection checklist: result of a step)"
+  },
+  "netNoInternet": "لا يوجد اتصال بالإنترنت",
+  "@netNoInternet": {
+    "description": "English: No internet connection (Connection checklist: result of a step)"
+  },
+  "netNotSecure": "تعذّر إنشاء اتصال آمن",
+  "@netNotSecure": {
+    "description": "English: Couldn't make a secure connection (Connection checklist: result of a step)"
+  },
+  "netNotRunning": "العنوان يعمل، لكن Ossia لا يعمل خلفه",
+  "@netNotRunning": {
+    "description": "English: The address works, but Ossia isn't running behind it (Connection checklist: result of a step)"
+  },
+  "netExpired": "انتهت صلاحية هذا العنوان",
+  "@netExpired": {
+    "description": "English: That address has expired (Connection checklist: result of a step)"
+  },
+  "netHttpError": "ردّ بخطأ ({code})",
+  "@netHttpError": {
+    "description": "English: It answered with an error ({code}) (Connection checklist: result of a step)"
+  },
+  "netNotOssia": "ردّ شيء ما، لكنه ليس Ossia",
+  "@netNotOssia": {
+    "description": "English: Something answered, but it isn't Ossia (Connection checklist: result of a step)"
+  },
+  "lenThing": "«{animal} · {bone}»",
+  "@lenThing": {
+    "description": "English: \"{animal} {bone}\" (An animal and a bone named inside a length note, e.g. „Mensch · Femur“)"
+  },
+  "lenUsually": "{thing} (عادةً {min}–{max} سم)",
+  "@lenUsually": {
+    "description": "English: {thing} (usually {min}–{max} cm) (The usual length range after a bone name)"
+  },
+  "lenNeverOver": "{thing} (لا يتجاوز {max} سم)",
+  "@lenNeverOver": {
+    "description": "English: {thing} (never over {max} cm) (The longest a bone ever is, after its name)"
+  },
+  "lenOrThing": "{first} أو {second}",
+  "@lenOrThing": {
+    "description": "English: {first} or {second} (Two bone names)"
+  },
+  "lenNoBone": "لم يُعثر على عظم، لذا لم يُستخدم الطول.",
+  "@lenNoBone": {
+    "description": "English: No bone was found, so the length wasn't used. (A note on a report about the length the person measured)"
+  },
+  "lenNoLength": "لم يُدخَل أي طول.",
+  "@lenNoLength": {
+    "description": "English: No length was entered. (A note on a report about the length the person measured)"
+  },
+  "lenOnlyShaft": "يبدو هذا وسط عظم (جسم العظم)، لذا لا يمكن مقارنة طوله بالعظام الكاملة.",
+  "@lenOnlyShaft": {
+    "description": "English: This looks like the middle (shaft) of a bone, so its length can't be compared with whole bones. (A note on a report about the length the person measured)"
+  },
+  "lenOnlyEnd": "يبدو هذا أحد طرفي عظم، لذا لا يمكن مقارنة طوله بالعظام الكاملة.",
+  "@lenOnlyEnd": {
+    "description": "English: This looks like one end of a bone, so its length can't be compared with whole bones. (A note on a report about the length the person measured)"
+  },
+  "lenOnlyPiece": "يبدو هذا قطعة مكسورة من عظم، لذا لا يمكن مقارنة طولها بالعظام الكاملة.",
+  "@lenOnlyPiece": {
+    "description": "English: This looks like a broken piece of bone, so its length can't be compared with whole bones. (A note on a report about the length the person measured)"
+  },
+  "lenOnlyPart": "يبدو هذا جزءًا من عظم فقط، لذا لا يمكن مقارنة طوله بالعظام الكاملة.",
+  "@lenOnlyPart": {
+    "description": "English: This looks like only part of a bone, so its length can't be compared with whole bones. (A note on a report about the length the person measured)"
+  },
+  "lenNoReference": "ليست لدينا أطوال معتادة لـ{things}، لذا لم يُستخدم الطول.",
+  "@lenNoReference": {
+    "description": "English: We don't have usual lengths for {things}, so the length wasn't used. (A note on a report about the length the person measured)"
+  },
+  "lenNoFit": "{cm} سم لا يناسب {before} ولا الخيار الأقرب التالي، {after}، لذا أبقينا على إجابة الصورة. قد يكون من حيوان أو إنسان صغير السن، أو يستحق القياس مجددًا.",
+  "@lenNoFit": {
+    "description": "English: {cm} cm doesn't fit {before} or the next closest option, {after}, so we kept the photo's answer. It could be from a young animal or person, or worth measuring again. (A note on a report about the length the person measured)"
+  },
+  "lenChangedTooLong": "{cm} سم أطول من اللازم بالنسبة إلى {before}.",
+  "@lenChangedTooLong": {
+    "description": "English: {cm} cm is too long for {before}. (A note on a report about the length the person measured (first half; one of the next two follows it))"
+  },
+  "lenChangedTooShort": "{cm} سم أقصر من اللازم بالنسبة إلى {before}.",
+  "@lenChangedTooShort": {
+    "description": "English: {cm} cm is too short for {before}. (A note on a report about the length the person measured (first half))"
+  },
+  "lenChangedFitsBut": "{cm} سم يناسب {before}، لكن استبعاد الخيارات الأخرى غيّر الإجابة.",
+  "@lenChangedFitsBut": {
+    "description": "English: {cm} cm fits {before}, but ruling out other options shifted the answer. (A note on a report about the length the person measured (first half))"
+  },
+  "lenChangedUnchecked": "لا يمكن مقارنة {cm} سم بـ{before}.",
+  "@lenChangedUnchecked": {
+    "description": "English: {cm} cm can't be checked against {before}. (A note on a report about the length the person measured (first half))"
+  },
+  "lenChangedNowFits": "وهو يناسب {after}، لذا غيّر الطول الإجابة.",
+  "@lenChangedNowFits": {
+    "description": "English: It fits {after}, so the length changed the answer. (A note on a report about the length the person measured (second half))"
+  },
+  "lenChangedNotRuledOut": "لا يمكن استبعاد {after} بالطول، لذا غيّر الطول الإجابة.",
+  "@lenChangedNotRuledOut": {
+    "description": "English: {after} can't be ruled out by length, so the length changed the answer. (A note on a report about the length the person measured (second half))"
+  },
+  "lenNoUsual": "ليس لدينا طول معتاد لـ{before}، لذا لم يستطع الطول تأكيده. لقد ساعد فقط في الموازنة بين الخيارات الأخرى.",
+  "@lenNoUsual": {
+    "description": "English: We don't have a usual length for {before}, so the length couldn't confirm it. It only helped weigh up the other options. (A note on a report about the length the person measured)"
+  },
+  "lenNormal": "{cm} سم طول طبيعي لـ{before}، وهذا يدعم الإجابة.",
+  "@lenNormal": {
+    "description": "English: {cm} cm is a normal length for {before}, which backs up the answer. (A note on a report about the length the person measured)"
+  },
+  "lenShort": "{cm} سم قصير بالنسبة إلى {before}، لكن الصورة ما زالت تشير إليه. قد يكون من حيوان أو إنسان صغير السن، أو يستحق القياس مجددًا.",
+  "@lenShort": {
+    "description": "English: {cm} cm is short for {before}, but the photo still points to it. It could be from a young animal or person, or worth measuring again. (A note on a report about the length the person measured)"
+  },
+  "lenLong": "{cm} سم طويل بالنسبة إلى {before}، لكن الصورة ما زالت تشير إليه. يستحق القياس مجددًا.",
+  "@lenLong": {
+    "description": "English: {cm} cm is long for {before}, but the photo still points to it. Worth measuring again. (A note on a report about the length the person measured)"
+  },
+  "lenPhotoAlone": "بحسب الصورة وحدها، كان {headline}.",
+  "@lenPhotoAlone": {
+    "description": "English: From the photo alone, it was {headline}. (After a length note, when the length changed the answer)"
+  },
+  "lenMeasuredOn": "{thing} (قيس على {animals})",
+  "@lenMeasuredOn": {
+    "description": "English: {thing} (measured on {animals}) (Under \"Typical length\": which animals the range was measured on)"
+  },
+  "measuredBears": "الدب الأسود والدب البني",
+  "@measuredBears": {
+    "description": "English: black and brown bear"
+  },
+  "measuredCattle": "الأبقار",
+  "@measuredCattle": {
+    "description": "English: cattle (German: dative plural, after \"gemessen an\")"
+  },
+  "measuredCat": "القطط المنزلية",
+  "@measuredCat": {
+    "description": "English: domestic cat"
+  },
+  "measuredDogsFoxes": "الكلاب المنزلية (كل السلالات) والثعلب الأحمر والثعلب الرمادي",
+  "@measuredDogsFoxes": {
+    "description": "English: domestic dogs (all breeds) and red and gray fox"
+  },
+  "measuredPigBoar": "الخنزير الأليف والخنزير البري",
+  "@measuredPigBoar": {
+    "description": "English: domestic pig and wild boar"
+  },
+  "measuredCottontail": "أرنب الذيل القطني الشرقي",
+  "@measuredCottontail": {
+    "description": "English: eastern cottontail"
+  },
+  "measuredHorse": "الخيول",
+  "@measuredHorse": {
+    "description": "English: horse"
+  },
+  "measuredRaccoon": "الراكون",
+  "@measuredRaccoon": {
+    "description": "English: raccoon"
+  },
+  "measuredDeer": "الأيل أبيض الذيل وأيل البغل",
+  "@measuredDeer": {
+    "description": "English: white-tailed and mule deer"
+  },
+  "scanHeroTitle": "وجدت عظمة؟\nلنتعرّف عليها.",
+  "@scanHeroTitle": {
+    "description": "English: Found a bone?\nLet’s ID it. (Big title on the yellow card on the home screen. Keep the line break.)"
+  },
+  "scanHeroBody": "صوّرها أو ارفع صورتها، وسنخبرك ما هي، ولمن كانت، وماذا حدث لها.",
+  "@scanHeroBody": {
+    "description": "English: Snap it or upload it. We’ll tell you what it is, whose it was and what happened to it."
+  },
+  "scanSnap": "صوّر عظمة",
+  "@scanSnap": {
+    "description": "English: Snap a bone (Main button: opens the camera)"
+  },
+  "scanUpload": "ارفع صورة",
+  "@scanUpload": {
+    "description": "English: Upload a pic (Button: pick a photo from the phone)"
+  },
+  "scanTipsHeader": "نصائح لنتيجة واضحة",
+  "@scanTipsHeader": {
+    "description": "English: Pro tips for a clean read"
+  },
+  "tipBackgroundTitle": "خلفية سادة",
+  "@tipBackgroundTitle": {
+    "description": "English: Plain background (Tip card title. Keep it short, it is on one line.)"
+  },
+  "tipBackgroundBody": "ملاءة أو طاولة، بلا نقوش أو ملصقات أو كتابة.",
+  "@tipBackgroundBody": {
+    "description": "English: A sheet or a table. No patterns, labels or writing."
+  },
+  "tipLightTitle": "إضاءة ناعمة",
+  "@tipLightTitle": {
+    "description": "English: Soft light (Tip card title. Keep it short, it is on one line.)"
+  },
+  "tipLightBody": "ضوء النهار هو الأفضل، فالظلال الحادة تخفي التفاصيل.",
+  "@tipLightBody": {
+    "description": "English: Daylight is best. Harsh shadows hide details."
+  },
+  "tipLengthTitle": "تعرف الطول؟",
+  "@tipLengthTitle": {
+    "description": "English: Know the length? (Tip card title. Keep it short, it is on one line.)"
+  },
+  "tipLengthBody": "أضفه قبل التحليل ليصبح التخمين أدق.",
+  "@tipLengthBody": {
+    "description": "English: Add it before analyzing. It sharpens the guess."
+  },
+  "tipAnglesTitle": "جرّب عدة زوايا",
+  "@tipAnglesTitle": {
+    "description": "English: Try a few angles (Tip card title. Keep it short, it is on one line.)"
+  },
+  "tipAnglesBody": "صور الأمام والخلف تحل لغز العظام الصعبة.",
+  "@tipAnglesBody": {
+    "description": "English: Front and back views solve tricky bones."
+  },
+  "scanRecentFinds": "آخر الاكتشافات",
+  "@scanRecentFinds": {
+    "description": "English: Recent finds"
+  },
+  "scanSavedCount": "المحفوظ: {count}",
+  "@scanSavedCount": {
+    "description": "English: {count} saved (Small sticker next to \"Recent finds\")"
+  },
+  "scanNoFinds": "لا اكتشافات بعد",
+  "@scanNoFinds": {
+    "description": "English: No finds yet"
+  },
+  "scanNoFindsBody": "ستتجمع هنا العظام التي تفحصها.",
+  "@scanNoFindsBody": {
+    "description": "English: Your scanned bones will pile up right here."
+  },
+  "linkNotReady": "غير جاهز",
+  "@linkNotReady": {
+    "description": "English: Not ready (Connection pill: the model on the phone failed to load)"
+  },
+  "linkOnPhone": "على هذا الهاتف",
+  "@linkOnPhone": {
+    "description": "English: On this phone (Connection pill: scans run on the phone. A small pill: keep it short)"
+  },
+  "linkConnecting": "جارٍ الاتصال…",
+  "@linkConnecting": {
+    "description": "English: Connecting… (Connection pill: checking the online server)"
+  },
+  "linkOnline": "متصل",
+  "@linkOnline": {
+    "description": "English: Online (Connection pill: the online server answers)"
+  },
+  "linkOnlineMs": "متصل · {ms} ms",
+  "@linkOnlineMs": {
+    "description": "English: Online · {ms} ms (Connection pill with how fast the server answered)"
+  },
+  "linkCantConnect": "تعذّر الاتصال",
+  "@linkCantConnect": {
+    "description": "English: Can’t connect (Connection pill: the online server does not answer)"
+  },
+  "toastLostConnection": "انقطع الاتصال",
+  "@toastLostConnection": {
+    "description": "English: Lost the connection (Pop-up when the online server stops answering)"
+  },
+  "toastBackOnline": "عاد الاتصال",
+  "@toastBackOnline": {
+    "description": "English: Back online (Pop-up when the online server answers again)"
+  },
+  "guideLongBone": "عظمة طويلة",
+  "@guideLongBone": {
+    "description": "English: Long bone (Camera outline choice: femur, humerus, tibia)"
+  },
+  "guideSkull": "جمجمة",
+  "@guideSkull": {
+    "description": "English: Skull (Camera outline choice: cranium, jaw)"
+  },
+  "guideFlat": "عظمة مسطحة",
+  "@guideFlat": {
+    "description": "English: Flat bone (Camera outline choice: shoulder blade, hip bone, rib)"
+  },
+  "guideSmall": "قطعة صغيرة",
+  "@guideSmall": {
+    "description": "English: Small bit (Camera outline choice: vertebra, fragment)"
+  },
+  "guideLongBoneTip": "ضعها مسطحة وطابقها مع طرفيّ المنتفخين.",
+  "@guideLongBoneTip": {
+    "description": "English: Lay it flat and line it up with my knobby ends. (The cartoon bone speaking; the long-bone outline is its own shape)"
+  },
+  "guideSkullTip": "صوّرها من الأمام مباشرة، ومحجرا العينين داخل العينين المنقطتين.",
+  "@guideSkullTip": {
+    "description": "English: Face it straight on. Eye sockets in the dotted eyes."
+  },
+  "guideFlatTip": "ضعها مسطحة، وأدخل حدودها كلها من طرف إلى طرف.",
+  "@guideFlatTip": {
+    "description": "English: Lay it flat. Get the whole outline in, edge to edge."
+  },
+  "guideSmallTip": "عظمة صغيرة؟ اقترب حتى تملأ الإطار.",
+  "@guideSmallTip": {
+    "description": "English: Tiny bone? Get up close till it fills the outline."
+  },
+  "camHold": "ابتعد نحو {cm} سم · واملأ الإطار",
+  "@camHold": {
+    "description": "English: Hold ~{cm} cm away · fill the outline (Chip in the camera: how far to hold the phone)"
+  },
+  "camTitle": "كاميرا العظام",
+  "@camTitle": {
+    "description": "English: BONE CAM (Sticker at the top of the camera)"
+  },
+  "camAngle": "الزاوية {number}",
+  "@camAngle": {
+    "description": "English: ANGLE #{number} (Sticker at the top of the camera when adding another photo of the same bone)"
+  },
+  "camClose": "إغلاق الكاميرا",
+  "@camClose": {
+    "description": "English: Close camera (Read out by screen readers)"
+  },
+  "camFlash": "الفلاش",
+  "@camFlash": {
+    "description": "English: Flash (Read out by screen readers)"
+  },
+  "camZoom": "تكبير",
+  "@camZoom": {
+    "description": "English: Zoom (Read out by screen readers)"
+  },
+  "camSwitch": "تبديل الكاميرا",
+  "@camSwitch": {
+    "description": "English: Switch camera (Read out by screen readers)"
+  },
+  "camTakePhoto": "التقط صورة",
+  "@camTakePhoto": {
+    "description": "English: Take photo (Read out by screen readers for the big shutter button)"
+  },
+  "camUploadFromLibrary": "ارفع من المعرض",
+  "@camUploadFromLibrary": {
+    "description": "English: Upload from library (Read out by screen readers)"
+  },
+  "camWarmingUp": "جارٍ تشغيل الكاميرا…",
+  "@camWarmingUp": {
+    "description": "English: Warming up the camera…"
+  },
+  "camAnotherAngleTip": "العظمة نفسها من جهة أخرى. اقلبها أو صوّر أحد طرفيها.",
+  "@camAnotherAngleTip": {
+    "description": "English: Same bone, new side. Flip it over, or get one of the ends."
+  },
+  "camShotFailed": "تعذّر التقاط الصورة. تحاول مجددًا؟",
+  "@camShotFailed": {
+    "description": "English: Couldn’t take that one. Try again?"
+  },
+  "camNoAccess": "لا إذن للكاميرا",
+  "@camNoAccess": {
+    "description": "English: No camera access"
+  },
+  "camNoAccessBody": "اسمح لـ Ossia باستخدام الكاميرا من إعدادات هاتفك، أو ارفع صورة بدلًا من ذلك.",
+  "@camNoAccessBody": {
+    "description": "English: Allow camera access for Ossia in your phone settings, or upload a photo instead."
+  },
+  "camNapping": "الكاميرا نائمة",
+  "@camNapping": {
+    "description": "English: Camera is napping (Title when the camera could not start)"
+  },
+  "camNappingBody": "تعذّر تشغيل الكاميرا هنا. هل ترفع صورة بدلًا من ذلك؟",
+  "@camNappingBody": {
+    "description": "English: Couldn’t start the camera here. Upload a photo instead?"
+  },
+  "reviewDropTitle": "هل تتخلى عن هذه الصور؟",
+  "@reviewDropTitle": {
+    "description": "English: Drop these photos? (Question when leaving the photo check screen after adding or removing photos)"
+  },
+  "reviewDropNew": "{count, plural, =0{لم تُحلَّل صور هذه العظمة بعد.} =1{لم تُحلَّل صورة هذه العظمة بعد.} =2{لم تُحلَّل صورتا هذه العظمة بعد.} few{لم تُحلَّل {count} صور لهذه العظمة بعد.} many{لم تُحلَّل {count} صورة لهذه العظمة بعد.} other{لم تُحلَّل {count} صورة لهذه العظمة بعد.}}",
+  "@reviewDropNew": {
+    "description": "English: {count, plural, =1{This bone’s photo hasn’t been analyzed yet.} other{The {count} photos of this bone haven’t been analyzed yet.}}"
+  },
+  "reviewDropRevising": "لن تُحلَّل الزوايا التي أضفتها أو حذفتها، وسيبقى التقرير المحفوظ كما هو.",
+  "@reviewDropRevising": {
+    "description": "English: The angles you added or removed won’t be analyzed. The saved report stays as it was. (Same question, when adding angles to a find that was already analysed)"
+  },
+  "reviewDropConfirm": "تخلَّ عنها",
+  "@reviewDropConfirm": {
+    "description": "English: Drop them (Red button that leaves without analysing)"
+  },
+  "reviewTypeLength": "اكتب الطول",
+  "@reviewTypeLength": {
+    "description": "English: Type the length (Title of the box for typing a length)"
+  },
+  "reviewTypeLengthCm": "من طرف إلى طرف، على أطول خط مستقيم، بالسنتيمتر.",
+  "@reviewTypeLengthCm": {
+    "description": "English: End to end, the longest straight line, in centimetres."
+  },
+  "reviewTypeLengthIn": "من طرف إلى طرف، على أطول خط مستقيم، بالبوصة.",
+  "@reviewTypeLengthIn": {
+    "description": "English: End to end, the longest straight line, in inches."
+  },
+  "reviewExample": "مثلًا {example}",
+  "@reviewExample": {
+    "description": "English: e.g. {example} (Grey hint inside the empty length box)"
+  },
+  "reviewSetLength": "اعتمد الطول",
+  "@reviewSetLength": {
+    "description": "English: Set length (Button that saves the typed length)"
+  },
+  "reviewRetake": "أعد التصوير",
+  "@reviewRetake": {
+    "description": "English: Retake (Button: go back to the camera and take the photo again)"
+  },
+  "reviewTitleRevising": "زوايا إضافية",
+  "@reviewTitleRevising": {
+    "description": "English: More angles (Screen title when adding photos to a saved find)"
+  },
+  "reviewTitleAngles": "{count, plural, =0{عظمة واحدة} =1{عظمة واحدة، زاوية واحدة} =2{عظمة واحدة، زاويتان} few{عظمة واحدة، {count} زوايا} many{عظمة واحدة، {count} زاوية} other{عظمة واحدة، {count} زاوية}}",
+  "@reviewTitleAngles": {
+    "description": "English: One bone, {count} angles (Screen title; count is always 2 or more)"
+  },
+  "reviewNiceShot": "لقطة رائعة!",
+  "@reviewNiceShot": {
+    "description": "English: Nice shot! (Screen title right after taking a photo)"
+  },
+  "reviewLookingGood": "هل تبدو جيدة؟",
+  "@reviewLookingGood": {
+    "description": "English: Looking good? (Screen title after picking a photo from the phone)"
+  },
+  "reviewMysteryBone": "عظمة غامضة رقم {number}",
+  "@reviewMysteryBone": {
+    "description": "English: mystery bone #{number} (Playful caption under the photo, like a polaroid label)"
+  },
+  "reviewAnalyzeCount": "{count, plural, =0{حلّل} =1{حلّل الصورة} =2{حلّل الصورتين} few{حلّل {count} صور} many{حلّل {count} صورة} other{حلّل {count} صورة}}",
+  "@reviewAnalyzeCount": {
+    "description": "English: Analyze {count} photos (Main button; count is always 2 or more)"
+  },
+  "reviewSkipAnalyze": "تخطَّ وحلّل",
+  "@reviewSkipAnalyze": {
+    "description": "English: Skip & analyze (Main button when no length was given. Keep it short.)"
+  },
+  "reviewAnalyzeIt": "حلّلها",
+  "@reviewAnalyzeIt": {
+    "description": "English: Analyze it (Main button. Keep it short.)"
+  },
+  "reviewMoreAnglesQ": "زوايا أخرى؟",
+  "@reviewMoreAnglesQ": {
+    "description": "English: More angles? (Card title when there is one photo)"
+  },
+  "reviewAngles": "الزوايا",
+  "@reviewAngles": {
+    "description": "English: Angles (Card title when there are several photos)"
+  },
+  "reviewOptional": "اختياري",
+  "@reviewOptional": {
+    "description": "English: OPTIONAL (Small tilted sticker. Capitals where the language has them.)"
+  },
+  "reviewAnglesOf": "{count} من {max}",
+  "@reviewAnglesOf": {
+    "description": "English: {count} OF {max} (Small sticker: photos used out of the most allowed)"
+  },
+  "reviewAnglesBodyOne": "العظمة نفسها من جهة أخرى. قد يحل الظهر أو أحد الطرفين أو لقطة قريبة لغز عظمة صعبة، وتُقرأ كل الصور معًا.",
+  "@reviewAnglesBodyOne": {
+    "description": "English: Same bone, another side. The back, an end or a close-up can crack a tricky one. Every photo gets read together."
+  },
+  "reviewAnglesBodyMany": "{count, plural, =0{تُقرأ الصور معًا كعظمة واحدة.} =1{تُقرأ الصورة كعظمة واحدة.} =2{تُقرأ الصورتان معًا كعظمة واحدة. اضغط على صورة لتراها، أو على علامة × لحذفها.} few{تُقرأ الصور الـ{count} معًا كعظمة واحدة. اضغط على صورة لتراها، أو على علامة × لحذفها.} many{تُقرأ الصور الـ{count} معًا كعظمة واحدة. اضغط على صورة لتراها، أو على علامة × لحذفها.} other{تُقرأ الصور الـ{count} معًا كعظمة واحدة. اضغط على صورة لتراها، أو على علامة × لحذفها.}}",
+  "@reviewAnglesBodyMany": {
+    "description": "English: All {count} photos are read together as one bone. Tap one to look at it, or the cross to drop it. (count is always 2 or more)"
+  },
+  "reviewSnap": "التقط",
+  "@reviewSnap": {
+    "description": "English: Snap (Tiny tile under the photos: take another photo. One short word.)"
+  },
+  "reviewUpload": "ارفع",
+  "@reviewUpload": {
+    "description": "English: Upload (Tiny tile under the photos: add photos from the phone. One short word.)"
+  },
+  "reviewSnapHint": "التقط زاوية أخرى",
+  "@reviewSnapHint": {
+    "description": "English: Take another angle (Read out by screen readers)"
+  },
+  "reviewUploadHint": "أضف زوايا من المعرض",
+  "@reviewUploadHint": {
+    "description": "English: Add angles from the library (Read out by screen readers)"
+  },
+  "reviewMaxPhotos": "هذا أقصى ما يقبله التحليل الواحد.",
+  "@reviewMaxPhotos": {
+    "description": "English: That’s the most one analysis takes. (Shown when the most photos are already added)"
+  },
+  "reviewRemovePhoto": "احذف الصورة {number}",
+  "@reviewRemovePhoto": {
+    "description": "English: Remove photo {number} (Read out by screen readers for the small cross on a photo)"
+  },
+  "reviewHowLong": "كم طولها؟",
+  "@reviewHowLong": {
+    "description": "English: How long is it? (Card title about the bone’s length)"
+  },
+  "reviewLengthBody": "قستها من طرف إلى طرف؟ حرّك الشريط. لا مسطرة معك؟ لا بأس، تخطَّ هذه الخطوة وسيخمّن الذكاء الاصطناعي.",
+  "@reviewLengthBody": {
+    "description": "English: Measured it end to end? Flick the tape. No ruler handy? Skip it, no biggie. The AI will guess."
+  },
+  "reviewEndToEnd": "من طرف إلى طرف",
+  "@reviewEndToEnd": {
+    "description": "English: end to end (Small caption above the cartoon bone that stretches)"
+  },
+  "reviewWaitingNumber": "بانتظار رقم…",
+  "@reviewWaitingNumber": {
+    "description": "English: waiting for a number… (Small caption above the cartoon bone before a length is set)"
+  },
+  "reviewTapToType": "اضغط على الرقم لتكتبه بدقة.",
+  "@reviewTapToType": {
+    "description": "English: Tap the number to type it exactly."
+  },
+  "reviewFlickTape": "حرّك الشريط لتحديد الطول.",
+  "@reviewFlickTape": {
+    "description": "English: Flick the tape to set a length."
+  },
+  "reviewClear": "مسح",
+  "@reviewClear": {
+    "description": "English: Clear (Small button that removes the length)"
+  },
+  "analyzingStep": "الخطوة {step} من {total}",
+  "@analyzingStep": {
+    "description": "English: Step {step}/{total} (Small sticker at the top while analysing)"
+  },
+  "analyzingPhotos": "{count, plural, =0{لا صور} =1{صورة واحدة} =2{صورتان} few{{count} صور} many{{count} صورة} other{{count} صورة}}",
+  "@analyzingPhotos": {
+    "description": "English: {count} photos (Sticker on the photo stack; count is always 2 or more)"
+  },
+  "quipFinding": "ألعب الغميضة مع عظمتك…",
+  "@quipFinding": {
+    "description": "English: Playing hide and seek with your bone… (Joke line for the stage that finds the bone in the photo)"
+  },
+  "quipHumanOrAnimal": "إنسان أم لا؟ أطرح الأسئلة الكبرى.",
+  "@quipHumanOrAnimal": {
+    "description": "English: Human or not? Asking the big questions. (Joke line for the human-or-animal stage)"
+  },
+  "quipWhichBone": "أي عظمة هذه؟ أستشير هيكلي العظمي الداخلي.",
+  "@quipWhichBone": {
+    "description": "English: Which bone is this? Consulting my inner skeleton. (Joke line for the which-bone stage)"
+  },
+  "quipWhichEnd": "أفرّق بين الطرفين.",
+  "@quipWhichEnd": {
+    "description": "English: Figuring out which end is which. (Joke line for the which-part stage)"
+  },
+  "quipMissingBits": "أتحقق إن كانت هناك أجزاء ناقصة.",
+  "@quipMissingBits": {
+    "description": "English: Checking if any bits went missing. (Joke line for the whole-or-broken stage)"
+  },
+  "quipMarks": "أبحث عن الكسور والجروح والأجزاء المحروقة.",
+  "@quipMarks": {
+    "description": "English: Looking for cracks, cuts and crispy bits. (Joke line for the marks stage (fractures, cut marks, burning))"
+  },
+  "quipWhose": "أضيّق الاحتمالات: لمن كانت هذه العظمة؟",
+  "@quipWhose": {
+    "description": "English: Narrowing down whose bone this was. (Joke line for the which-animal stage)"
+  },
+  "quipAgeSex": "أقدّر العمر والجنس، باحترام.",
+  "@quipAgeSex": {
+    "description": "English: Estimating age and sex, respectfully. (Joke line for the age-and-sex stage)"
+  },
+  "quipWriting": "أكتب النتائج. اقتربنا!",
+  "@quipWriting": {
+    "description": "English: Writing it all up. Almost there! (Joke line for the last stage)"
+  },
+  "analyzingFailedTitle": "أوه، حدث خلل",
+  "@analyzingFailedTitle": {
+    "description": "English: Welp, that broke (Big title when the analysis failed)"
+  },
+  "analyzingOnPhone": "حلّل على هذا الهاتف",
+  "@analyzingOnPhone": {
+    "description": "English: Analyze on this phone (Button offered when the online server cannot be reached)"
+  },
+  "reportNameTitle": "سمِّ هذه العظمة",
+  "@reportNameTitle": {
+    "description": "English: Name this find (Title of the box for naming a saved bone)"
+  },
+  "reportNameBody": "أي اسم يساعدك على إيجادها لاحقًا، مثل المكان الذي عُثر عليها فيه.",
+  "@reportNameBody": {
+    "description": "English: Any name that helps you find it later, like where it turned up."
+  },
+  "reportNameExample": "مثلًا TR2-114",
+  "@reportNameExample": {
+    "description": "English: e.g. TR2-114 (Grey hint inside the empty name box: a dig label like an archaeologist would write)"
+  },
+  "reportRename": "إعادة التسمية",
+  "@reportRename": {
+    "description": "English: Rename"
+  },
+  "reportAddNote": "أضف ملاحظة",
+  "@reportAddNote": {
+    "description": "English: Add a note"
+  },
+  "reportEditNote": "عدّل الملاحظة",
+  "@reportEditNote": {
+    "description": "English: Edit note"
+  },
+  "reportNoteBody": "أي شيء لا تُظهره الصورة، مثل مكان العثور عليها أو ملمسها في يدك.",
+  "@reportNoteBody": {
+    "description": "English: Anything the photo can’t show, like where you found it or how it felt in your hand."
+  },
+  "reportNotePlaceholder": "استُخرجت من المربع 4، الطبقة 2…",
+  "@reportNotePlaceholder": {
+    "description": "English: Recovered from unit 4, spit 2… (Grey example inside the empty note box, in the style of a dig record)"
+  },
+  "reportCopied": "نُسخ التقرير",
+  "@reportCopied": {
+    "description": "English: Report copied"
+  },
+  "reportSavedToast": "حُفظت في مجموعتي",
+  "@reportSavedToast": {
+    "description": "English: Saved to Library (Short message after saving; the Library is the Stash tab)"
+  },
+  "reportDeleteTitle": "هل تحذف هذا التحليل؟",
+  "@reportDeleteTitle": {
+    "description": "English: Delete this analysis?"
+  },
+  "reportDeleteBody": "{count, plural, =0{سيُحذف التقرير من هذا الجهاز.} =1{سيُحذف التقرير وصورته من هذا الجهاز.} =2{سيُحذف التقرير وصورتاه من هذا الجهاز.} few{سيُحذف التقرير وصوره الـ{count} من هذا الجهاز.} many{سيُحذف التقرير وصوره الـ{count} من هذا الجهاز.} other{سيُحذف التقرير وصوره الـ{count} من هذا الجهاز.}}",
+  "@reportDeleteBody": {
+    "description": "English: {count, plural, =1{The report and its photograph are removed from this device.} other{The report and its {count} photos are removed from this device.}}"
+  },
+  "delete": "احذف",
+  "@delete": {
+    "description": "English: Delete (Red button that deletes)"
+  },
+  "reportOptions": "خيارات أخرى",
+  "@reportOptions": {
+    "description": "English: More options (Read out by screen readers for the ••• button)"
+  },
+  "reportSheetTitle": "التقرير",
+  "@reportSheetTitle": {
+    "description": "English: Report (Title of the options sheet)"
+  },
+  "reportAddAngle": "أضف زاوية أخرى",
+  "@reportAddAngle": {
+    "description": "English: Add another angle"
+  },
+  "reportCopy": "انسخ التقرير",
+  "@reportCopy": {
+    "description": "English: Copy report"
+  },
+  "reportDelete": "احذف التحليل",
+  "@reportDelete": {
+    "description": "English: Delete analysis"
+  },
+  "reportSave": "احفظ في مجموعتي",
+  "@reportSave": {
+    "description": "English: Save to Library (Main button; the Library is the Stash tab)"
+  },
+  "reportAnalyzeAnother": "حلّل عظمة أخرى",
+  "@reportAnalyzeAnother": {
+    "description": "English: Analyze Another"
+  },
+  "confStrong": "قوية",
+  "@confStrong": {
+    "description": "English: Strong (How sure the answer is. Arabic: describes الثقة)"
+  },
+  "confGood": "جيدة",
+  "@confGood": {
+    "description": "English: Good"
+  },
+  "confModerate": "متوسطة",
+  "@confModerate": {
+    "description": "English: Moderate"
+  },
+  "confWeak": "ضعيفة",
+  "@confWeak": {
+    "description": "English: Weak"
+  },
+  "confVeryWeak": "ضعيفة جدًا",
+  "@confVeryWeak": {
+    "description": "English: Very weak"
+  },
+  "resultBoneDetected": "عُثر على عظمة",
+  "@resultBoneDetected": {
+    "description": "English: Bone detected (Sticker above the answer)"
+  },
+  "resultNoBoneFound": "لم يُعثر على عظمة",
+  "@resultNoBoneFound": {
+    "description": "English: No bone found (Sticker above the answer)"
+  },
+  "resultAngles": "{count, plural, =0{لا زوايا} =1{زاوية واحدة} =2{زاويتان} few{{count} زوايا} many{{count} زاوية} other{{count} زاوية}}",
+  "@resultAngles": {
+    "description": "English: {count} angles (Sticker: how many photos of the bone were read; always 2 or more)"
+  },
+  "resultHowSure": "ما مدى ثقتنا؟",
+  "@resultHowSure": {
+    "description": "English: How sure are we?"
+  },
+  "resultShakiest": "الثقة لا تتجاوز أضعف خطوة: إيجاد العظمة، والتمييز بين الإنسان والحيوان، وتسمية العظمة، ومعرفة الحيوان إن كانت لحيوان.",
+  "@resultShakiest": {
+    "description": "English: Only as sure as the shakiest step: finding the bone, telling human from animal, naming the bone and, for animals, which one."
+  },
+  "resultCouldAlsoBe": "غير مؤكد. قد تكون أيضًا:",
+  "@resultCouldAlsoBe": {
+    "description": "English: Not certain. It could also be: (Above a few other possible answers with their chances)"
+  },
+  "resultNoBoneTitle": "لم نرصد أي عظمة",
+  "@resultNoBoneTitle": {
+    "description": "English: No bone spotted"
+  },
+  "resultNoBoneBody": "لم نجد عظمة في هذه الصورة. جرّب خلفية سادة، واقترب حتى تملأ العظمة معظم الصورة.",
+  "@resultNoBoneBody": {
+    "description": "English: We couldn’t find a bone in this photo. Try a plain background, and get close enough that the bone fills most of the picture."
+  },
+  "resultIdentification": "التعرّف",
+  "@resultIdentification": {
+    "description": "English: Identification (Section title)"
+  },
+  "resultHumanOrAnimal": "إنسان أم حيوان",
+  "@resultHumanOrAnimal": {
+    "description": "English: Human or animal (Row label)"
+  },
+  "resultWhichBone": "أي عظمة",
+  "@resultWhichBone": {
+    "description": "English: Which bone (Row label)"
+  },
+  "resultTopGuesses": "{count, plural, =0{لا تخمينات} =1{أفضل تخمين} =2{أفضل تخمينين} few{أفضل {count} تخمينات} many{أفضل {count} تخمينًا} other{أفضل {count} تخمين}}",
+  "@resultTopGuesses": {
+    "description": "English: Top {count} guesses (Small grey text beside \"Which bone\"; count is 2 or more)"
+  },
+  "resultOnlyGuess": "التخمين الوحيد",
+  "@resultOnlyGuess": {
+    "description": "English: Only guess"
+  },
+  "resultWhichPart": "أي جزء",
+  "@resultWhichPart": {
+    "description": "English: Which part (Row label)"
+  },
+  "resultWholeOrBroken": "كاملة أم مكسورة",
+  "@resultWholeOrBroken": {
+    "description": "English: Whole or broken (Row label)"
+  },
+  "resultCondition": "الحالة",
+  "@resultCondition": {
+    "description": "English: Condition (Section title)"
+  },
+  "resultNoMarks": "لا آثار لافتة",
+  "@resultNoMarks": {
+    "description": "English: No marks flagged (Sticker when no damage was found)"
+  },
+  "resultMarksFooter": "يُفحص كل نوع من الآثار على حدة، فقد تظهر على العظمة أكثر من أثر. يُنبَّه إلى كل ما يبلغ {threshold} أو أكثر.",
+  "@resultMarksFooter": {
+    "description": "English: Each kind of mark is checked on its own, so a bone can show more than one. Anything at {threshold} or more is flagged."
+  },
+  "resultAgeSex": "العمر والجنس",
+  "@resultAgeSex": {
+    "description": "English: Age and sex (Section title)"
+  },
+  "resultAgeGroup": "الفئة العمرية",
+  "@resultAgeGroup": {
+    "description": "English: Age group (Row label)"
+  },
+  "resultSex": "الجنس",
+  "@resultSex": {
+    "description": "English: Sex (Row label: male or female)"
+  },
+  "resultAgeFooter": "العمر والجنس أصعب ما يُقرأ من صورة، وقد تعلّمهما Ossia من أمثلة قليلة. اعتبرهما تلميحًا يحتاج إلى تحقق، لا جوابًا.",
+  "@resultAgeFooter": {
+    "description": "English: Age and sex are the hardest things to read from a photo, and Ossia learned them from few examples. Treat them as a hint to check, not an answer."
+  },
+  "resultWhichAnimal": "أي حيوان",
+  "@resultWhichAnimal": {
+    "description": "English: Which animal (Section title)"
+  },
+  "resultClosestMatch": "الأقرب شبهًا",
+  "@resultClosestMatch": {
+    "description": "English: Closest match (Row label)"
+  },
+  "resultUndetermined": "غير محدد",
+  "@resultUndetermined": {
+    "description": "English: Undetermined"
+  },
+  "resultUndeterminedBody": "تبدو عظمة حيوان، لكن لم تبرز أي مجموعة حيوانية بما يكفي لتسميتها.",
+  "@resultUndeterminedBody": {
+    "description": "English: It looks like an animal bone, but no animal group stood out enough to name."
+  },
+  "resultAnimalFooter": "في الثدييات يسمّي Ossia الفصيلة (مثل فصيلة الأيائل أو الكلاب) حين تُظهرها العظمة، وإلا فيقول ثديي أو طائر أو زاحف. قارن مع هيكل عظمي معروف قبل الاعتماد عليه.",
+  "@resultAnimalFooter": {
+    "description": "English: For mammals, Ossia names the family (like the deer or dog family) when the bone shows it; otherwise it says mammal, bird or reptile. Compare with a known skeleton before relying on it."
+  },
+  "resultMeasurements": "القياسات",
+  "@resultMeasurements": {
+    "description": "English: Measurements (Section title)"
+  },
+  "resultLengthChanged": "غيّر الطول الجواب",
+  "@resultLengthChanged": {
+    "description": "English: Length changed the answer (Sticker when the measured length changed which bone or animal was picked)"
+  },
+  "resultTypicalLength": "الطول المعتاد",
+  "@resultTypicalLength": {
+    "description": "English: Typical length (Row label: length range from books)"
+  },
+  "resultAiEstimate": "تقدير الذكاء الاصطناعي",
+  "@resultAiEstimate": {
+    "description": "English: AI estimate (Row label: length the AI guessed)"
+  },
+  "resultTypicalFor": "المرجع: {thing}",
+  "@resultTypicalFor": {
+    "description": "English: For a {thing} (Under \"Typical length\": which bone the range belongs to)"
+  },
+  "resultLengthAbout": "نحو {value} {unit}",
+  "@resultLengthAbout": {
+    "description": "English: ~{value} {unit} (A single estimated length)"
+  },
+  "resultLengthRange": "{min}–{max} {unit}",
+  "@resultLengthRange": {
+    "description": "English: {min}–{max} {unit} (A length range)"
+  },
+  "resultYourMeasurement": "قياسك",
+  "@resultYourMeasurement": {
+    "description": "English: Your measurement (Row label)"
+  },
+  "resultInsideRange": "ضمن النطاق المعتاد تمامًا. رائع.",
+  "@resultInsideRange": {
+    "description": "English: Right inside the typical range. Nice."
+  },
+  "resultOutsideRange": "خارج النطاق المعتاد. تستحق نظرة ثانية.",
+  "@resultOutsideRange": {
+    "description": "English: Outside the typical range. Worth a second look."
+  },
+  "resultInsideEstimate": "ضمن التقدير تمامًا. رائع.",
+  "@resultInsideEstimate": {
+    "description": "English: Right inside the estimate. Nice."
+  },
+  "resultOutsideEstimate": "خارج التقدير. تستحق نظرة ثانية.",
+  "@resultOutsideEstimate": {
+    "description": "English: Outside the estimate. Worth a second look."
+  },
+  "resultReference": "المرجع",
+  "@resultReference": {
+    "description": "English: Reference (Section title above a link to the bone’s Atlas page)"
+  },
+  "resultAtlasSubtitle": "{region} · ما تبحث عنه، وأيمن أم أيسر",
+  "@resultAtlasSubtitle": {
+    "description": "English: {region} · what to look for, and left or right (Under the bone’s name in the Atlas link)"
+  },
+  "resultDisclaimer": "يقدّم Ossia أفضل تخمين، لا جوابًا نهائيًا. لا تعتمد عليه في قرارات طبية أو قانونية أو أمنية من دون أن يفحص خبير العظمة بنفسه.",
+  "@resultDisclaimer": {
+    "description": "English: Ossia gives a best guess, not a final answer. Don’t rely on it for medical, legal or police decisions without a bone expert checking the bone in person. (Shown at the bottom of every report)"
+  },
+  "libTitle": "مجموعتي",
+  "@libTitle": {
+    "description": "English: Your stash (Big title at the top of the Stash tab)"
+  },
+  "libEmptySubtitle": "فارغة… حتى الآن.",
+  "@libEmptySubtitle": {
+    "description": "English: Empty. For now. (Line under the title when nothing is saved)"
+  },
+  "libBonesCollected": "{count, plural, =0{لا عظام بعد} =1{عظمة واحدة} =2{عظمتان} few{{count} عظام} many{{count} عظمة} other{{count} عظمة}}",
+  "@libBonesCollected": {
+    "description": "English: {count, plural, =1{1 bone collected} other{{count} bones collected}} (Line under the title, followed by how many are human)"
+  },
+  "libHumanCount": "البشرية منها: {count}",
+  "@libHumanCount": {
+    "description": "English: {count} human (Follows the count of saved bones: how many of them are human)"
+  },
+  "libSearchHint": "ابحث في عظامك",
+  "@libSearchHint": {
+    "description": "English: Search your bones (Grey hint in the empty search box)"
+  },
+  "libClearSearch": "امسح البحث",
+  "@libClearSearch": {
+    "description": "English: Clear search (Read out by screen readers for the small cross in the search box)"
+  },
+  "libFilterAll": "الكل",
+  "@libFilterAll": {
+    "description": "English: All (Filter button. Keep it short.)"
+  },
+  "libFilterHuman": "بشري",
+  "@libFilterHuman": {
+    "description": "English: Human (Filter button: only human bones. Keep it short.)"
+  },
+  "libFilterAnimal": "حيواني",
+  "@libFilterAnimal": {
+    "description": "English: Animal (Filter button: only animal bones. Keep it short.)"
+  },
+  "libFilterFlagged": "مُعلَّمة",
+  "@libFilterFlagged": {
+    "description": "English: Flagged (Filter button: only bones with marks flagged (fracture, cut marks, burning). Keep it short.)"
+  },
+  "libToday": "اليوم",
+  "@libToday": {
+    "description": "English: Today (Heading over finds saved today)"
+  },
+  "libThisWeek": "هذا الأسبوع",
+  "@libThisWeek": {
+    "description": "English: This week (Heading over finds saved in the last 7 days)"
+  },
+  "libThisMonth": "هذا الشهر",
+  "@libThisMonth": {
+    "description": "English: This month (Heading over finds saved in the last 30 days)"
+  },
+  "libEarlier": "أقدم",
+  "@libEarlier": {
+    "description": "English: Earlier (Heading over older finds)"
+  },
+  "libEmptyTitle": "مجموعتك فارغة",
+  "@libEmptyTitle": {
+    "description": "English: Your stash is empty"
+  },
+  "libEmptyBody": "كل عظمة تفحصها تُحفظ هنا مع صورتها وملاحظاتك. بلا عناء.",
+  "@libEmptyBody": {
+    "description": "English: Every bone you scan lands here with its photo and notes. No bones about it. (Ends on a bone pun; a light joke in your language is welcome)"
+  },
+  "libNoMatchTitle": "لا نتائج مطابقة",
+  "@libNoMatchTitle": {
+    "description": "English: Nothing matches"
+  },
+  "libNoMatchBody": "جرّب تصفية أخرى أو امسح البحث.",
+  "@libNoMatchBody": {
+    "description": "English: Try a different filter or clear the search."
+  },
+  "atlasSubtitle": "{count, plural, =0{لا عظام بعد} =1{عظمة واحدة يعرفها الذكاء الاصطناعي جيدًا} =2{عظمتان يعرفهما الذكاء الاصطناعي جيدًا} few{{count} عظام يعرفها الذكاء الاصطناعي جيدًا} many{{count} عظمة يعرفها الذكاء الاصطناعي جيدًا} other{{count} عظمة يعرفها الذكاء الاصطناعي جيدًا}}",
+  "@atlasSubtitle": {
+    "description": "English: {count} bones the AI knows by heart (Line under the Atlas title)"
+  },
+  "atlasHowCardTitle": "كيف يفكر الذكاء الاصطناعي",
+  "@atlasHowCardTitle": {
+    "description": "English: How the AI thinks (Card at the top of the Atlas that opens \"How analysis works\")"
+  },
+  "atlasHowCardBody": "المراحل التسع التي تمر بها كل صورة، وأيّها يمكنك الوثوق به.",
+  "@atlasHowCardBody": {
+    "description": "English: The nine passes every photo goes through, and which ones to trust."
+  },
+  "atlasLookFor": "ما الذي تبحث عنه",
+  "@atlasLookFor": {
+    "description": "English: What to look for (Heading on a bone page, over the list of features)"
+  },
+  "atlasSidingTitle": "يمين أم يسار، وأي جهة إلى الأعلى",
+  "@atlasSidingTitle": {
+    "description": "English: Left or right, and which way up (Heading on a bone page)"
+  },
+  "howTitle": "كيف يعمل التحليل",
+  "@howTitle": {
+    "description": "English: How analysis works (Screen title)"
+  },
+  "howHeading": "صورة واحدة، تسعة أسئلة",
+  "@howHeading": {
+    "description": "English: One photo, nine questions"
+  },
+  "howIntro": "ينظر Ossia إلى صورتك مرة واحدة ويجيب عن تسعة أسئلة حولها في الوقت نفسه. وتأتي كل إجابة مع مدى ثقته بها، حتى لا تُفسد إجابة غير مؤكدة بقية الإجابات.",
+  "@howIntro": {
+    "description": "English: Ossia looks at your photo once and answers nine questions about it at the same time. Each answer comes with how sure it is, so one unsure answer doesn’t spoil the rest."
+  },
+  "settingsAppLanguage": "لغة التطبيق",
+  "@settingsAppLanguage": {
+    "description": "English: App language (Row in the Language group)"
+  },
+  "settingsLanguageFooter": "يمكنك أيضًا التبديل في أي وقت من زر الكرة الأرضية أعلى كل تبويب.",
+  "@settingsLanguageFooter": {
+    "description": "English: You can also switch any time with the globe at the top of each tab."
+  },
+  "settingsAppearance": "المظهر",
+  "@settingsAppearance": {
+    "description": "English: Appearance (Group heading)"
+  },
+  "settingsTheme": "السمة",
+  "@settingsTheme": {
+    "description": "English: Theme (Light or dark look)"
+  },
+  "themeSystem": "النظام",
+  "@themeSystem": {
+    "description": "English: System (Theme option: follow the phone. Keep it short.)"
+  },
+  "themeLight": "فاتح",
+  "@themeLight": {
+    "description": "English: Light (Theme option. Keep it short.)"
+  },
+  "themeDark": "داكن",
+  "@themeDark": {
+    "description": "English: Dark (Theme option. Keep it short.)"
+  },
+  "settingsAccent": "اللون المميز",
+  "@settingsAccent": {
+    "description": "English: Accent (The app's highlight colour)"
+  },
+  "settingsAnalysis": "التحليل",
+  "@settingsAnalysis": {
+    "description": "English: Analysis (Group heading)"
+  },
+  "settingsOnDeviceBody": "يعمل Ossia على هاتفك مباشرة، حتى من دون إشارة، وتبقى صورك على هاتفك.",
+  "@settingsOnDeviceBody": {
+    "description": "English: Ossia works right on your phone, even with no signal, and your photos stay on your phone."
+  },
+  "settingsOnlineBody": "تُرسل الصور إلى حاسوب Ossia على العنوان أدناه، ويعود إليك التقرير.",
+  "@settingsOnlineBody": {
+    "description": "English: Photos are sent to the Ossia computer at the address below, and the report comes back to you."
+  },
+  "settingsOnlineAddress": "العنوان على الإنترنت",
+  "@settingsOnlineAddress": {
+    "description": "English: Online address (The web address of the computer that analyses photos online)"
+  },
+  "settingsOnlineAddressBody": "اكتب العنوان الظاهر على حاسوب Ossia.",
+  "@settingsOnlineAddressBody": {
+    "description": "English: Type the address shown on the Ossia computer."
+  },
+  "settingsStatus": "حالة المحلّل",
+  "@settingsStatus": {
+    "description": "English: Analyzer status (Row that opens the status screen)"
+  },
+  "settingsStatusSub": "هل هو جاهز ومتصل؟",
+  "@settingsStatusSub": {
+    "description": "English: Is it ready, and is it connected"
+  },
+  "settingsCutoff": "حد الثقة",
+  "@settingsCutoff": {
+    "description": "English: Confidence cutoff (A percentage: guesses less sure than this are shown faded)"
+  },
+  "settingsCutoffBody": "تظهر التخمينات الأقل من هذا الحد باهتة.",
+  "@settingsCutoffBody": {
+    "description": "English: Guesses below this are shown faded."
+  },
+  "settingsHideUnlikely": "أخفِ التخمينات المستبعدة",
+  "@settingsHideUnlikely": {
+    "description": "English: Hide unlikely guesses"
+  },
+  "settingsHideUnlikelyBody": "لا تعرض العظام المحتملة الأخرى إلا إذا تجاوزت الحد.",
+  "@settingsHideUnlikelyBody": {
+    "description": "English: Only show other possible bones when they are above the cutoff."
+  },
+  "settingsCapture": "التصوير",
+  "@settingsCapture": {
+    "description": "English: Capture (Group heading)"
+  },
+  "settingsAutoSave": "احفظ التحليلات تلقائيًا",
+  "@settingsAutoSave": {
+    "description": "English: Save analyses automatically"
+  },
+  "settingsAutoSaveBody": "عند الإيقاف، لا يُحفظ التقرير إلا إذا حفظته بنفسك.",
+  "@settingsAutoSaveBody": {
+    "description": "English: Off means each report is kept only if you save it."
+  },
+  "settingsUnits": "وحدة القياس",
+  "@settingsUnits": {
+    "description": "English: Measurement units"
+  },
+  "settingsHaptics": "الاهتزاز عند اللمس",
+  "@settingsHaptics": {
+    "description": "English: Haptic feedback (Little vibrations when tapping)"
+  },
+  "settingsLibrary": "المجموعة",
+  "@settingsLibrary": {
+    "description": "English: Library (Group heading; it is the same thing as the Stash tab)"
+  },
+  "settingsSavedCount": "التحليلات المحفوظة",
+  "@settingsSavedCount": {
+    "description": "English: Saved analyses"
+  },
+  "settingsCopyAll": "انسخ كل التقارير",
+  "@settingsCopyAll": {
+    "description": "English: Copy all reports"
+  },
+  "settingsCopiedCount": "{count, plural, =0{لم يُنسخ أي تقرير} =1{نُسخ تقرير واحد} =2{نُسخ تقريران} few{نُسخت {count} تقارير} many{نُسخ {count} تقريرًا} other{نُسخ {count} تقرير}}",
+  "@settingsCopiedCount": {
+    "description": "English: {count, plural, =1{1 report copied} other{{count} reports copied}}"
+  },
+  "settingsDeleteAll": "احذف كل التحليلات",
+  "@settingsDeleteAll": {
+    "description": "English: Delete all analyses"
+  },
+  "settingsDeleteAllTitle": "هل تحذف كل شيء؟",
+  "@settingsDeleteAllTitle": {
+    "description": "English: Delete everything?"
+  },
+  "settingsDeleteAllBody": "{count, plural, =0{ستُحذف كل التحليلات المحفوظة من هذا الجهاز، ولا يمكن التراجع عن ذلك.} =1{سيُحذف التحليل المحفوظ وصوره من هذا الجهاز، ولا يمكن التراجع عن ذلك.} =2{سيُحذف التحليلان المحفوظان وصورهما من هذا الجهاز، ولا يمكن التراجع عن ذلك.} few{ستُحذف التحليلات المحفوظة الـ{count} وصورها من هذا الجهاز، ولا يمكن التراجع عن ذلك.} many{ستُحذف التحليلات المحفوظة الـ{count} وصورها من هذا الجهاز، ولا يمكن التراجع عن ذلك.} other{ستُحذف التحليلات المحفوظة الـ{count} وصورها من هذا الجهاز، ولا يمكن التراجع عن ذلك.}}",
+  "@settingsDeleteAllBody": {
+    "description": "English: {count, plural, =1{The saved analysis and its photographs are removed from this device. This cannot be undone.} other{All {count} saved analyses and their photographs are removed from this device. This cannot be undone.}}"
+  },
+  "settingsDeleteAllConfirm": "احذف الكل",
+  "@settingsDeleteAllConfirm": {
+    "description": "English: Delete All (Red button)"
+  },
+  "settingsLibraryCleared": "أُفرغت المجموعة",
+  "@settingsLibraryCleared": {
+    "description": "English: Library cleared (Short message after deleting everything)"
+  },
+  "settingsPrivacyFooter": "تبقى تقاريرك على هذا الهاتف، ولا تُرسل الصور إلا إذا اخترت التحليل عبر الإنترنت.",
+  "@settingsPrivacyFooter": {
+    "description": "English: Your reports stay on this phone. Photos are only sent out when you choose Online analysis."
+  },
+  "settingsAbout": "حول",
+  "@settingsAbout": {
+    "description": "English: About (Group heading, and the About screen's title)"
+  },
+  "settingsAboutOssia": "حول Ossia",
+  "@settingsAboutOssia": {
+    "description": "English: About Ossia"
+  },
+  "settingsVersion": "الإصدار",
+  "@settingsVersion": {
+    "description": "English: Version"
+  },
+  "settingsDisclaimer": "يساعدك Ossia على التعرف على العظام، لكنه لا يغني عن خبير يفحص العظمة بنفسه.",
+  "@settingsDisclaimer": {
+    "description": "English: Ossia helps you identify bones. It is not a replacement for an expert looking at the bone in person."
+  },
+  "aboutVersion": "الإصدار {version}",
+  "@aboutVersion": {
+    "description": "English: Version {version}"
+  },
+  "aboutIntro": "صوّر عظمة وسيخبرك Ossia بما هي: أي عظمة، وهل هي لإنسان أم لحيوان، وأي حيوان، وما عليها من آثار. وتُظهر كل إجابة مدى الثقة بها، لتحكم عليها بنفسك.",
+  "@aboutIntro": {
+    "description": "English: Take a photo of a bone and Ossia tells you what it is: which bone, human or animal, which animal, and any marks on it. Every answer shows how sure it is, so you can judge it for yourself."
+  },
+  "aboutKnows": "ما يعرفه Ossia",
+  "@aboutKnows": {
+    "description": "English: What Ossia knows (Group heading)"
+  },
+  "aboutKindsOfBone": "أنواع العظام",
+  "@aboutKindsOfBone": {
+    "description": "English: Kinds of bone"
+  },
+  "aboutAnimalGroups": "مجموعات الحيوانات",
+  "@aboutAnimalGroups": {
+    "description": "English: Animal groups"
+  },
+  "aboutQuestions": "الأسئلة لكل صورة",
+  "@aboutQuestions": {
+    "description": "English: Questions per photo"
+  },
+  "aboutKnowsFooter": "تعلّم Ossia من آلاف الصور الموسومة، لكن بعض العظام والحيوانات لم يكن لها إلا القليل. ولهذا يخبرك دائمًا بمدى ثقته.",
+  "@aboutKnowsFooter": {
+    "description": "English: Ossia learned from thousands of labelled photos, but some bones and animals had only a few. That is why it always tells you how sure it is."
+  },
+  "aboutPrivacy": "الخصوصية",
+  "@aboutPrivacy": {
+    "description": "English: Privacy (Group heading)"
+  },
+  "aboutPhotos": "الصور",
+  "@aboutPhotos": {
+    "description": "English: Photographs"
+  },
+  "aboutPhotosBody": "تبقى على هذا الهاتف، ولا تُرسل إلا إذا اخترت التحليل عبر الإنترنت.",
+  "@aboutPhotosBody": {
+    "description": "English: Kept on this phone. Only sent out when you choose Online analysis."
+  },
+  "aboutAnalytics": "بيانات الاستخدام",
+  "@aboutAnalytics": {
+    "description": "English: Analytics (Tracking of how the app is used)"
+  },
+  "aboutAnalyticsBody": "لا نجمع أي بيانات.",
+  "@aboutAnalyticsBody": {
+    "description": "English: None collected."
+  },
+  "aboutWarning": "النتائج أفضل تخمين، وليست إجابة نهائية. لا تعتمد عليها في قرارات طبية أو قانونية أو شُرَطية من دون أن يفحص خبير العظام العظمة بنفسه.",
+  "@aboutWarning": {
+    "description": "English: Results are a best guess, not a final answer. Don’t use them for medical, legal or police decisions without a bone expert checking the bone in person."
+  },
+  "statusYou": "أنت",
+  "@statusYou": {
+    "description": "English: YOU (Small label in capitals under a drawing at the top of the status screen. Keep it very short. Under the phone.)"
+  },
+  "statusNapping": "نائم",
+  "@statusNapping": {
+    "description": "English: NAPPING (Small label in capitals under a drawing at the top of the status screen. Keep it very short. Under the computer, when online analysis is switched off.)"
+  },
+  "statusAllOnPhone": "كل شيء على هاتفك",
+  "@statusAllOnPhone": {
+    "description": "English: ALL ON YOUR PHONE (Small label in capitals under a drawing at the top of the status screen. Keep it very short. When analysing on the phone.)"
+  },
+  "msShort": "{ms} ms",
+  "@msShort": {
+    "description": "English: {ms} ms (Milliseconds, in a small bubble)"
+  },
+  "statusChecked": "فُحص {when}",
+  "@statusChecked": {
+    "description": "English: checked {when} (When the connection was last checked, e.g. \"checked 5 min ago\")"
+  },
+  "secondsAgo": "قبل {count} ث",
+  "@secondsAgo": {
+    "description": "English: {count}s ago (Seconds ago, very short)"
+  },
+  "statusConnected": "متصل",
+  "@statusConnected": {
+    "description": "English: Connected"
+  },
+  "statusConnectedBody": "يستجيب التحليل عبر الإنترنت خلال {ms} ملّي ثانية. ستُحلَّل صورك هناك.",
+  "@statusConnectedBody": {
+    "description": "English: Online analysis is answering in {ms} ms. Your scans will be analyzed there."
+  },
+  "statusOfflineBody": "{reason}. تحقّق من العنوان ومن أن حاسوب Ossia يعمل.",
+  "@statusOfflineBody": {
+    "description": "English: {reason}. Check the address, and that the Ossia computer is switched on. (The reason is one of the connection problems, e.g. \"Nothing answered at that address\")"
+  },
+  "statusNoAnswer": "لا ردّ",
+  "@statusNoAnswer": {
+    "description": "English: No answer"
+  },
+  "statusFailedTitle": "تعذّر تجهيزه",
+  "@statusFailedTitle": {
+    "description": "English: Couldn’t get ready"
+  },
+  "statusFailedBody": "منع شيءٌ Ossia من البدء على هذا الهاتف. حاول مجددًا أو أعد تشغيل التطبيق.",
+  "@statusFailedBody": {
+    "description": "English: Something stopped Ossia from starting on this phone. Try again, or restart the app."
+  },
+  "statusOnPhoneTitle": "التحليل على هذا الهاتف",
+  "@statusOnPhoneTitle": {
+    "description": "English: Analyzing on this phone"
+  },
+  "statusOnPhoneBody": "يعمل في أي مكان، حتى من دون إشارة، ولا تغادر صورك هاتفك أبدًا.",
+  "@statusOnPhoneBody": {
+    "description": "English: Works anywhere, even with no signal, and your photos never leave your phone."
+  },
+  "statusConnectingBody": "نتحقّق من أن التحليل عبر الإنترنت مستيقظ.",
+  "@statusConnectingBody": {
+    "description": "English: Checking that online analysis is awake."
+  },
+  "statusChecking": "جارٍ الفحص…",
+  "@statusChecking": {
+    "description": "English: Checking… (Button while a check runs)"
+  },
+  "statusCheckNow": "افحص الاتصال",
+  "@statusCheckNow": {
+    "description": "English: Check connection (Button)"
+  },
+  "statusChangeAddress": "غيّر العنوان",
+  "@statusChangeAddress": {
+    "description": "English: Change address (Button)"
+  },
+  "statusRunningFor": "يعمل منذ",
+  "@statusRunningFor": {
+    "description": "English: Running for (Tile label; the value under it is e.g. \"2h 5m\")"
+  },
+  "statusHistory": "سجل الاتصال",
+  "@statusHistory": {
+    "description": "English: Connection history"
+  },
+  "statusAutoPaused": "الفحص التلقائي متوقف",
+  "@statusAutoPaused": {
+    "description": "English: auto-check paused"
+  },
+  "statusNextIn": "التالي بعد {seconds} ث",
+  "@statusNextIn": {
+    "description": "English: next in {seconds}s (Countdown to the next automatic check)"
+  },
+  "statusNoChecks": "لا فحوصات بعد",
+  "@statusNoChecks": {
+    "description": "English: No checks yet"
+  },
+  "statusHistoryFooter": "يُفحص الاتصال كل {seconds} ثانية ما دام التطبيق مفتوحًا. الأعمدة الأقصر تعني اتصالًا أسرع.",
+  "@statusHistoryFooter": {
+    "description": "English: Checked every {seconds}s while the app is open. Shorter bars mean a faster connection. (The number is always 30)"
+  },
+  "statusRow": "الحالة",
+  "@statusRow": {
+    "description": "English: Status"
+  },
+  "statusWakesUp": "يستيقظ عند أول فحص",
+  "@statusWakesUp": {
+    "description": "English: Wakes up on your first scan"
+  },
+  "statusSleeping": "نائم",
+  "@statusSleeping": {
+    "description": "English: Sleeping"
+  },
+  "statusGettingReady": "يستعد…",
+  "@statusGettingReady": {
+    "description": "English: Getting ready…"
+  },
+  "statusCouldntStart": "تعذّر البدء",
+  "@statusCouldntStart": {
+    "description": "English: Couldn’t start"
+  },
+  "statusInternetNeeded": "يحتاج إلى إنترنت",
+  "@statusInternetNeeded": {
+    "description": "English: Internet needed"
+  },
+  "statusNo": "لا",
+  "@statusNo": {
+    "description": "English: No"
+  },
+  "statusPhotosSent": "إرسال الصور إلى أي مكان",
+  "@statusPhotosSent": {
+    "description": "English: Photos sent anywhere"
+  },
+  "statusNever": "أبدًا",
+  "@statusNever": {
+    "description": "English: Never"
+  },
+  "statusGetReady": "جهّزه الآن",
+  "@statusGetReady": {
+    "description": "English: Get it ready now (Button)"
+  }
+}

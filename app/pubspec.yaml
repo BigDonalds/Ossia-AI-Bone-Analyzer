@@ -1,0 +1,106 @@
+name: ossia
+description: "Ossia: identifies a bone from a photo, on the phone or through a local server."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # Dates, plurals and right-to-left layout for German and Arabic (lib/l10n/).
+  flutter_localizations:
+    sdk: flutter
+  intl: 0.20.2
+
+  cupertino_icons: ^1.0.8
+  image_picker: ^1.2.3
+  shared_preferences: ^2.5.5
+  http: ^1.6.0
+  path_provider: ^2.1.6
+  provider: ^6.1.5+1
+  camera: ^0.12.1
+  flutter_onnxruntime: ^1.8.5
+  image: ^4.10.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+
+flutter:
+  uses-material-design: true
+
+  # Builds lib/l10n/app_localizations*.dart from the .arb files (see l10n.yaml).
+  generate: true
+
+  # The on-device model and what the app needs to build its report, written by
+  # scripts/export_mobile.py in training/.
+  assets:
+    - assets/model/
+    - assets/fonts/OFL.txt
+
+  # Bundled so the app never has to download anything to look right. Baloo
+  # Bhaijaan 2 and Readex Pro carry the Arabic letters the first two lack.
+  # All four are under the SIL Open Font License (assets/fonts/OFL.txt).
+  fonts:
+    - family: BricolageGrotesque
+      fonts:
+        - asset: assets/fonts/BricolageGrotesque-400.ttf
+          weight: 400
+        - asset: assets/fonts/BricolageGrotesque-500.ttf
+          weight: 500
+        - asset: assets/fonts/BricolageGrotesque-600.ttf
+          weight: 600
+        - asset: assets/fonts/BricolageGrotesque-700.ttf
+          weight: 700
+        - asset: assets/fonts/BricolageGrotesque-800.ttf
+          weight: 800
+    - family: DMSans
+      fonts:
+        - asset: assets/fonts/DMSans-400.ttf
+          weight: 400
+        - asset: assets/fonts/DMSans-500.ttf
+          weight: 500
+        - asset: assets/fonts/DMSans-600.ttf
+          weight: 600
+        - asset: assets/fonts/DMSans-700.ttf
+          weight: 700
+        - asset: assets/fonts/DMSans-800.ttf
+          weight: 800
+    - family: BalooBhaijaan2
+      fonts:
+        - asset: assets/fonts/BalooBhaijaan2-400.ttf
+          weight: 400
+        - asset: assets/fonts/BalooBhaijaan2-500.ttf
+          weight: 500
+        - asset: assets/fonts/BalooBhaijaan2-600.ttf
+          weight: 600
+        - asset: assets/fonts/BalooBhaijaan2-700.ttf
+          weight: 700
+        - asset: assets/fonts/BalooBhaijaan2-800.ttf
+          weight: 800
+    - family: ReadexPro
+      fonts:
+        - asset: assets/fonts/ReadexPro-400.ttf
+          weight: 400
+        - asset: assets/fonts/ReadexPro-500.ttf
+          weight: 500
+        - asset: assets/fonts/ReadexPro-600.ttf
+          weight: 600
+        - asset: assets/fonts/ReadexPro-700.ttf
+          weight: 700
+
+# App icon. Source art is drawn by tool/make_icon.py; regenerate every size with
+#   python tool/make_icon.py && dart run flutter_launcher_icons
+flutter_launcher_icons:
+  image_path: "assets/icon/icon.png"
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  adaptive_icon_background: "#FFD23F"
+  adaptive_icon_foreground: "assets/icon/foreground.png"
+  adaptive_icon_monochrome: "assets/icon/monochrome.png"

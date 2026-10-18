@@ -1,0 +1,151 @@
+{
+ "about": "What the Ossia app needs to run the exported model and build the same report as models/bone_analyzer.py. Written by export_mobile.py; do not edit by hand.",
+ "model_file": "ossia.onnx",
+ "model_sha256": "fa887e4826e2da69ebd46c8f893b00b29dc1f1773b4af18739dc15c80bace175",
+ "model_bytes": 51394391,
+ "checkpoint": "bone_analyzer.pt",
+ "epoch": 41,
+ "exported": "2026-10-01",
+ "img_size": 384,
+ "input": {
+  "name": "image",
+  "shape": [
+   1,
+   384,
+   384,
+   3
+  ],
+  "layout": "RGB, 0-255, channels last, letterboxed onto black like data/preprocess.letterbox_resize"
+ },
+ "outputs": [
+  "bone_detection",
+  "species",
+  "bone_type",
+  "bone_part",
+  "completeness",
+  "damage",
+  "animal_class",
+  "animal_family",
+  "age_group",
+  "sex"
+ ],
+ "calibrated": true,
+ "labels": {
+  "species": [
+   "human",
+   "non_human"
+  ],
+  "bone_type": [
+   "skull",
+   "femur",
+   "humerus",
+   "rib_1_2",
+   "typical_rib",
+   "rib_11_12",
+   "cervical_vertebrae",
+   "thoracic_vertebrae",
+   "lumbar_vertebrae",
+   "os_coxa",
+   "cranium",
+   "tibia",
+   "scapula",
+   "ulna",
+   "radius",
+   "mandible"
+  ],
+  "bone_part": [
+   "complete",
+   "shaft",
+   "proximal_end",
+   "distal_end",
+   "fragment"
+  ],
+  "completeness": [
+   "complete",
+   "fragment"
+  ],
+  "damage": [
+   "fracture",
+   "cut_marks",
+   "burn_signs"
+  ],
+  "animal_class": [
+   "mammal",
+   "bird",
+   "reptile"
+  ],
+  "animal_family": [
+   "canid",
+   "cervid",
+   "bovid",
+   "suid",
+   "felid",
+   "ursid",
+   "leporid",
+   "procyonid",
+   "equid",
+   "rodent",
+   "other_mammal"
+  ],
+  "age_group": [
+   "juvenile",
+   "adult",
+   "unknown"
+  ],
+  "sex": [
+   "male",
+   "female",
+   "unknown"
+  ]
+ },
+ "family_bone_types": [
+  "skull",
+  "cranium",
+  "mandible",
+  "femur",
+  "humerus",
+  "tibia",
+  "radius",
+  "ulna",
+  "os_coxa",
+  "scapula"
+ ],
+ "use_length_rerank": true,
+ "length_check": {
+  "tolerance_above": 0.1,
+  "floor_above": 0.05,
+  "tolerance_below": 0.2,
+  "floor_below": 0.25,
+  "slack_cm": 0.5,
+  "slack_fraction": 0.03,
+  "confidence_pull": {
+   "high": 1.0,
+   "medium": 0.9,
+   "low": 0.6
+  },
+  "min_checkable_mass": 0.05,
+  "candidates_reported": 5,
+  "unnamed_taxa": [
+   "none",
+   "unknown"
+  ],
+  "shown_as": {
+   "canid": "canid (dog family)",
+   "cervid": "cervid (deer family)",
+   "bovid": "bovid (cattle family)",
+   "suid": "suid (pig family)",
+   "felid": "felid (cat family)",
+   "ursid": "ursid (bear)",
+   "leporid": "leporid (rabbit or hare)",
+   "procyonid": "procyonid (raccoon family)",
+   "equid": "equid (horse family)",
+   "other_mammal": "mammal"
+  },
+  "part_shown_as": {
+   "shaft": "the middle (shaft) of a bone",
+   "proximal_end": "one end of a bone",
+   "distal_end": "one end of a bone",
+   "fragment": "a broken piece of bone"
+  }
+ }
+}
