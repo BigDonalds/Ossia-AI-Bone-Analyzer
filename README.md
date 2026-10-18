@@ -1,4 +1,4 @@
-# Bone Analyzer AI
+# Ossia: AI Bone Analyzer
 
 Identifies a bone from a photograph. One network reads the photo and answers
 nine questions about it, from "is this a bone at all?" down to the taxon and,
@@ -6,9 +6,9 @@ for human bones, an age group and sex. The project has two parts:
 
 - **`training/`** is the Python package `bone_analyzer`. It trains the model,
   calibrates its confidence, serves it over HTTP and exports it for phones.
-- **`app/`** is **Ossia**, a Flutter app for Android and iOS. It runs the
-  exported model on the phone, offline, or sends photos to the server in
-  `training/`. It is available in English, German and Arabic.
+- **`app/`** is the Ossia app itself, built in Flutter for Android and iOS.
+  It runs the exported model on the phone, offline, or sends photos to the
+  server in `training/`. It is available in English, German and Arabic.
 
 ## What the model reports
 
@@ -85,3 +85,9 @@ This project supports identification. It does not replace examination by a
 qualified osteologist, and its output must not be used for medical, legal or
 forensic decisions. Age and sex in particular come from the least certain
 stages of the pipeline.
+
+## License
+
+The code is released under the [MIT License](LICENSE). The fonts in
+`app/assets/fonts/` keep their own licence, the SIL Open Font License
+(`app/assets/fonts/OFL.txt`).
