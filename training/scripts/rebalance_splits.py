@@ -69,7 +69,9 @@ def tags(e):
 
 
 def group_of(e):
-    return (e.get('phase9_multi_image') or {}).get('group_id') or e['image_path']
+    # split_group joins groups that show one specimen, skeleton or shooting session
+    multi = e.get('phase9_multi_image') or {}
+    return multi.get('split_group') or multi.get('group_id') or e['image_path']
 
 
 def train_only(e):

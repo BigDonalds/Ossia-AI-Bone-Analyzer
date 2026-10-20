@@ -534,6 +534,11 @@
   "order": "Anseriformes",
   "family": "Anatidae"
  },
+ "Anser anser": {
+  "class": "bird",
+  "order": "Anseriformes",
+  "family": "Anatidae"
+ },
  "Anser anser domesticus": {
   "class": "bird",
   "order": "Anseriformes",
@@ -2478,6 +2483,11 @@
   "class": "fish",
   "order": "Clupeiformes",
   "family": "Clupeoidei"
+ },
+ "Cnemiornis calcitrans": {
+  "class": "bird",
+  "order": "Anseriformes",
+  "family": "Anatidae"
  },
  "Coccothraustes coccothraustes": {
   "class": "bird",
@@ -5124,6 +5134,11 @@
   "order": "Lagomorpha",
   "family": null
  },
+ "Lagopus lagopus": {
+  "class": "bird",
+  "order": "Galliformes",
+  "family": "Phasianidae"
+ },
  "Lagostomus maximus": {
   "class": "mammal",
   "order": "Rodentia",
@@ -5669,6 +5684,11 @@
   "order": "Carnivora",
   "family": "Felidae"
  },
+ "Lyrurus tetrix": {
+  "class": "bird",
+  "order": "Galliformes",
+  "family": "Phasianidae"
+ },
  "Lytoceras juilleti": {
   "class": "invertebrate",
   "order": null,
@@ -5969,6 +5989,11 @@
   "order": "Piciformes",
   "family": "Megalaimidae"
  },
+ "Megalaima oorti": {
+  "class": "bird",
+  "order": "Piciformes",
+  "family": "Megalaimidae"
+ },
  "Megalaima pulcherrima": {
   "class": "bird",
   "order": "Piciformes",
@@ -6183,6 +6208,11 @@
   "class": "fish",
   "order": "Gadiformes",
   "family": "Merlucciidae"
+ },
+ "Merops apiaster": {
+  "class": "bird",
+  "order": "Coraciiformes",
+  "family": "Meropidae"
  },
  "Merychippus isonesus": {
   "class": "mammal",
@@ -6913,6 +6943,11 @@
   "class": "bird",
   "order": "Charadriiformes",
   "family": "Rostratulidae"
+ },
+ "Nyctidromus albicollis": {
+  "class": "bird",
+  "order": "Caprimulgiformes",
+  "family": "Caprimulgidae"
  },
  "Nyctinomops laticaudatus": {
   "class": "mammal",
@@ -9925,6 +9960,11 @@
   "family": "Suidae"
  },
  "Sula": {
+  "class": "bird",
+  "order": "Suliformes",
+  "family": "Sulidae"
+ },
+ "Sula dactylatra": {
   "class": "bird",
   "order": "Suliformes",
   "family": "Sulidae"
