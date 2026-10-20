@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import '../../core/theme/palette.dart';
 
 /// Renders a stored specimen photograph, falling back to a neutral placeholder
-/// whenever the file cannot be shown — deleted from under us, unreadable, or
-/// running on the web preview target where there is no file system.
+/// whenever the file cannot be shown — deleted from under us or unreadable.
+/// On the web preview target a path is a browser URL rather than a file.
 class SpecimenImage extends StatelessWidget {
   const SpecimenImage({
     super.key,
@@ -24,20 +24,22 @@ class SpecimenImage extends StatelessWidget {
   final BoxFit fit;
   final double? iconSize;
 
-  static bool isAvailable(String path) {
-    if (kIsWeb) return false;
+  /// The image behind [path], or null when there is nothing to show.
+  static ImageProvider? providerFor(String path) {
+    if (kIsWeb) return path.isEmpty ? null : NetworkImage(path);
     try {
-      return File(path).existsSync();
+      return File(path).existsSync() ? FileImage(File(path)) : null;
     } catch (_) {
-      return false;
+      return null;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    if (!isAvailable(path)) return _placeholder(context);
-    return Image.file(
-      File(path),
+    final ImageProvider? image = providerFor(path);
+    if (image == null) return _placeholder(context);
+    return Image(
+      image: image,
       width: width,
       height: height,
       fit: fit,

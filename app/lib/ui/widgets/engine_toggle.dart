@@ -8,6 +8,7 @@ import '../../core/util/haptics.dart';
 import '../../data/settings_controller.dart';
 import '../../l10n/l10n.dart';
 import '../../l10n/labels.dart';
+import 'phone_icon.dart';
 import 'primitives.dart';
 
 /// Where scans are analyzed: a chunky two-way switch whose thumb springs
@@ -115,11 +116,9 @@ class _Side extends StatelessWidget {
               child: Transform.scale(scale: pop, child: child),
             );
           },
-          child: Icon(
-            phone ? Icons.smartphone_rounded : Icons.cloud_rounded,
-            size: 22,
-            color: fg,
-          ),
+          child: phone
+              ? PhoneIcon(size: 22, color: fg)
+              : Icon(Icons.cloud_rounded, size: 22, color: fg),
         ),
         const SizedBox(width: 8),
         Flexible(

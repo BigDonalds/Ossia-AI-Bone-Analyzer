@@ -14,6 +14,7 @@ import '../scan/review_screen.dart';
 import '../widgets/inset_group.dart';
 import '../widgets/primitives.dart';
 import '../widgets/sheets.dart';
+import '../widgets/specimen_image.dart';
 import 'result_sections.dart';
 import 'specimen_header.dart';
 
@@ -46,7 +47,49 @@ class _ReportPageState extends State<ReportPage> {
   late AnalysisRecord _record = widget.record;
   late bool _saved = widget.saved;
 
+  /// Width over height of the first photo, once it has loaded.
+  double? _aspect;
+  ImageStream? _photoStream;
+  ImageStreamListener? _photoListener;
+
   HistoryStore get _history => context.read<HistoryStore>();
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _measurePhoto();
+  }
+
+  @override
+  void dispose() {
+    _stopMeasuring();
+    super.dispose();
+  }
+
+  /// Reads the first photo's shape so the header can show all of it.
+  void _measurePhoto() {
+    final ImageProvider? image = SpecimenImage.providerFor(_record.imagePath);
+    if (image == null) return;
+    final ImageStream stream = image.resolve(createLocalImageConfiguration(context));
+    if (stream.key == _photoStream?.key) return;
+    _stopMeasuring();
+    _photoStream = stream;
+    _photoListener = ImageStreamListener(
+      (ImageInfo info, bool _) {
+        final double aspect = info.image.width / info.image.height;
+        info.dispose();
+        _stopMeasuring();
+        if (mounted && aspect != _aspect) setState(() => _aspect = aspect);
+      },
+      onError: (Object _, StackTrace? _) => _stopMeasuring(),
+    );
+    stream.addListener(_photoListener!);
+  }
+
+  void _stopMeasuring() {
+    if (_photoListener != null) _photoStream?.removeListener(_photoListener!);
+    _photoListener = null;
+  }
 
   Future<void> _persist(AnalysisRecord next) async {
     setState(() => _record = next);
@@ -214,7 +257,15 @@ class _ReportPageState extends State<ReportPage> {
   Widget build(BuildContext context) {
     final AppColors c = context.colors;
     final AppLocalizations l = context.l10n;
-    final double width = MediaQuery.sizeOf(context).width;
+    final Size screen = MediaQuery.sizeOf(context);
+    final double top = MediaQuery.paddingOf(context).top;
+    // Tall enough for the whole photo at full width, within limits that
+    // leave the answer in view below it. Phone photos are usually 3:4.
+    // On a wide screen (tablet on its side) the height limit wins.
+    final double tallest = screen.height * 0.52;
+    final double shortest = (screen.width * 0.62).clamp(0.0, tallest).toDouble();
+    final double photo =
+        (screen.width / (_aspect ?? 0.75)).clamp(shortest, tallest).toDouble();
 
     return Scaffold(
       backgroundColor: c.canvas,
@@ -230,8 +281,8 @@ class _ReportPageState extends State<ReportPage> {
               title: l.recordTitle(_record),
               colors: c,
               backLabel: widget.backLabel ?? l.back,
-              topPadding: MediaQuery.paddingOf(context).top,
-              expandedHeight: width * 0.86,
+              topPadding: top,
+              expandedHeight: SpecimenHeader.photoTop(top) + photo,
               actions: (double t) => <Widget>[
                 HeaderAction(
                   icon: Icons.more_horiz_rounded,

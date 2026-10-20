@@ -154,6 +154,7 @@ def write_spec(path, checkpoint_path, checkpoint, model, onnx_path):
         'calibrated': bool(model.temperatures),
         'labels': LABELS,
         'family_bone_types': list(config.FAMILY_BONE_TYPES),
+        'family_min_confidence': config.FAMILY_MIN_CONFIDENCE,
         'use_length_rerank': config.USE_LENGTH_RERANK,
         'length_check': {
             'tolerance_above': length_check.TOLERANCE_ABOVE, 'floor_above': length_check.FLOOR_ABOVE,

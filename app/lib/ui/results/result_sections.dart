@@ -15,6 +15,7 @@ import '../reference/bone_detail_screen.dart';
 import '../widgets/bone_buddy.dart';
 import '../widgets/bone_sketch.dart';
 import '../widgets/inset_group.dart';
+import '../widgets/phone_icon.dart';
 import '../widgets/primitives.dart';
 import '../widgets/stat_icon.dart';
 
@@ -74,13 +75,15 @@ class VerdictBlock extends StatelessWidget {
                       ? Icons.accessibility_new_rounded
                       : Icons.pets_rounded,
                 ),
-              if (r.imageCount > 1) StatusPill(l.resultAngles(r.imageCount)),
+              if (r.imageCount > 1)
+                StatusPill(r.detection.present && (r.photosWithBone ?? r.imageCount) < r.imageCount
+                    ? l.resultAnglesWithBone(r.photosWithBone!, r.imageCount)
+                    : l.resultAngles(r.imageCount)),
               if (r.source != null)
                 StatusPill(
                   l.sourceName(r.source!),
-                  icon: r.source!.onDevice
-                      ? Icons.smartphone_rounded
-                      : Icons.dns_rounded,
+                  icon: r.source!.onDevice ? null : Icons.dns_rounded,
+                  leading: r.source!.onDevice ? const PhoneIcon() : null,
                 ),
             ],
           ),
@@ -185,9 +188,13 @@ class VerdictBlock extends StatelessWidget {
                   color: confidenceTone(context, conf),
                   height: 12,
                 ),
+                if (r.detection.present) ...<Widget>[
+                  const SizedBox(height: 14),
+                  _ConfidenceSteps(result: r),
+                ],
                 const SizedBox(height: 10),
                 Text(
-                  l.resultShakiest,
+                  r.detection.present ? l.resultHowSureSteps : l.resultHowSureNone,
                   style: AppType.caption.copyWith(
                     color: c.textTertiary,
                     height: 1.4,
@@ -198,6 +205,70 @@ class VerdictBlock extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+/// The steps behind the overall score, each with its own chance; the weakest
+/// one, which sets the score, is in bold.
+class _ConfidenceSteps extends StatelessWidget {
+  const _ConfidenceSteps({required this.result});
+
+  final AnalysisResult result;
+
+  @override
+  Widget build(BuildContext context) {
+    final AppColors c = context.colors;
+    final AppLocalizations l = context.l10n;
+    final List<({String step, double chance})> steps = result.confidenceSteps;
+    final double lowest = result.overallConfidence;
+    // Ties go to the first step, so only one row is marked.
+    final int weakest = steps.indexWhere(
+      (({String step, double chance}) s) => s.chance == lowest,
+    );
+
+    return Column(
+      children: <Widget>[
+        for (final (int i, ({String step, double chance}) s) in steps.indexed)
+          Padding(
+            padding: EdgeInsets.only(bottom: i == steps.length - 1 ? 0 : 7),
+            child: Row(
+              children: <Widget>[
+                Container(
+                  width: 8,
+                  height: 8,
+                  decoration: BoxDecoration(
+                    color: confidenceTone(context, s.chance),
+                    shape: BoxShape.circle,
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Text(
+                    switch (s.step) {
+                      'detect' => l.resultStepBone,
+                      'species' => l.resultHumanOrAnimal,
+                      'bone' => l.resultWhichBone,
+                      _ => l.resultWhichAnimal,
+                    },
+                    style: AppType.footnote.copyWith(
+                      color: i == weakest ? c.textPrimary : c.textSecondary,
+                      fontWeight: i == weakest ? FontWeight.w700 : FontWeight.w500,
+                    ),
+                  ),
+                ),
+                Text(
+                  percent(s.chance),
+                  style: AppType.footnote.copyWith(
+                    color: i == weakest ? c.textPrimary : c.textSecondary,
+                    fontWeight: FontWeight.w700,
+                    fontFeatures: const <FontFeature>[FontFeature.tabularFigures()],
+                  ),
+                ),
+              ],
+            ),
+          ),
+      ],
     );
   }
 }

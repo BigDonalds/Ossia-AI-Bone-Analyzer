@@ -324,7 +324,7 @@
   "@boneUnidentified": {
     "description": "English: Unidentified (Headline when no bone type was found)"
   },
-  "noBoneDetected": "لم يُكتشف عظم",
+  "noBoneDetected": "لم نعثر على عظمة",
   "@noBoneDetected": {
     "description": "English: No bone detected (Headline when the photo shows no bone)"
   },
@@ -504,7 +504,7 @@
   "@ageAdult": {
     "description": "English: Adult"
   },
-  "ageJuvenile": "يافع",
+  "ageJuvenile": "غير بالغ",
   "@ageJuvenile": {
     "description": "English: Juvenile (A child or teenager)"
   },
@@ -800,7 +800,7 @@
   "@atlasRadiusLm4": {
     "description": "English: Styloid process at the wrist (Atlas: one thing an expert looks for on this bone)"
   },
-  "atlasRadiusSiding": "الرأس الصغير في الطرف القريب والطرف العريض في الطرف البعيد؛ ويتجه الناتئ الإبري نحو الخارج، بعيدًا عن خط المنتصف.",
+  "atlasRadiusSiding": "الرأس الصغير هو الطرف القريب والطرف العريض هو البعيد؛ ويتجه الناتئ الإبري نحو الخارج، بعيدًا عن خط المنتصف.",
   "@atlasRadiusSiding": {
     "description": "English: The small head is proximal and the broad end distal; the styloid process points laterally, away from the midline. (Atlas: how to tell left from right, or the place in a series)"
   },
@@ -1000,7 +1000,7 @@
   "@atlasCervicalLm4": {
     "description": "English: Large triangular vertebral foramen (Atlas: one thing an expert looks for on this bone)"
   },
-  "atlasCervicalSiding": "متناظرة. يُعرف موقعها في السلسلة من الناتئ الشوكي وحجم الجسم؛ وللفقرة C7 شوكة طويلة غير مشقوقة تُعرف بـ«البارزة».",
+  "atlasCervicalSiding": "متناظرة. يُعرف موقعها في السلسلة من الناتئ الشوكي وحجم جسم الفقرة؛ وللفقرة C7 شوكة طويلة غير مشقوقة تُعرف بـ«البارزة».",
   "@atlasCervicalSiding": {
     "description": "English: Symmetrical. Position in the series is read from the spinous process and body size; C7 has the long, unsplit \"prominens\" spine. (Atlas: how to tell left from right, or the place in a series)"
   },
@@ -1028,7 +1028,7 @@
   "@atlasThoracicLm4": {
     "description": "English: Circular vertebral foramen (Atlas: one thing an expert looks for on this bone)"
   },
-  "atlasThoracicSiding": "متناظرة. يُستدل على الترتيب من حجم الجسم ومن مدى تراكب الناتئ الشوكي على الفقرة التي تحته.",
+  "atlasThoracicSiding": "متناظرة. يُستدل على الترتيب من حجم جسم الفقرة ومن مدى تراكب الناتئ الشوكي على الفقرة التي تحته.",
   "@atlasThoracicSiding": {
     "description": "English: Symmetrical. Sequence is judged from body size and how far the spinous process overlaps the vertebra below. (Atlas: how to tell left from right, or the place in a series)"
   },
@@ -1056,7 +1056,7 @@
   "@atlasLumbarLm4": {
     "description": "English: Mammillary processes on the superior articular facets (Atlas: one thing an expert looks for on this bone)"
   },
-  "atlasLumbarSiding": "متناظرة. تُعرف الفقرة L5 بشكلها الإسفيني، فهي أعمق من الأمام منها من الخلف، حيث تلتقي بالعجز.",
+  "atlasLumbarSiding": "متناظرة. تُعرف الفقرة L5 بشكلها الإسفيني، فارتفاعها من الأمام أكبر منه من الخلف حيث تلتقي بالعجز.",
   "@atlasLumbarSiding": {
     "description": "English: Symmetrical. L5 is recognised by its wedge shape, deeper in front than behind, where it meets the sacrum. (Atlas: how to tell left from right, or the place in a series)"
   },
@@ -1096,7 +1096,7 @@
   "@phaseDoc5Title": {
     "description": "English: Whole or broken? (How analysis works: step title)"
   },
-  "phaseDoc5Detail": "نعم أو لا بسرعة: هل العظم كامل، أم مجرد قطعة منه؟",
+  "phaseDoc5Detail": "سؤال سريع جوابه نعم أو لا: هل العظم كامل، أم مجرد قطعة منه؟",
   "@phaseDoc5Detail": {
     "description": "English: A quick yes or no: is the bone complete, or only a fragment? (How analysis works: what this step does)"
   },
@@ -1120,7 +1120,7 @@
   "@phaseDoc8Title": {
     "description": "English: Age and sex (How analysis works: step title)"
   },
-  "phaseDoc8Detail": "للعظام البشرية فقط. اعتبرها تلميحًا يجب التحقق منه، لا إجابة قائمة بذاتها.",
+  "phaseDoc8Detail": "للعظام البشرية فقط. اعتبرها إشارة تستحق التحقق منها، لا إجابة نهائية.",
   "@phaseDoc8Detail": {
     "description": "English: For human bones only. Treat these as a hint to check, never as an answer on their own. (How analysis works: what this step does)"
   },
@@ -1184,7 +1184,7 @@
   "@errUnreachable": {
     "description": "English: Couldn't connect for online analysis. Check your internet and the online address in Settings. (Shown when a scan fails)"
   },
-  "errNotAReport": "ردّ شيء ما، لكن ليس بتقرير. تحقّق من عنوان التحليل في الإعدادات.",
+  "errNotAReport": "وصل ردّ، لكنه ليس تقريرًا. تحقّق من عنوان التحليل في الإعدادات.",
   "@errNotAReport": {
     "description": "English: Something answered, but not with a report. Check the online address in Settings. (Shown when a scan fails)"
   },
@@ -1296,7 +1296,7 @@
   "@netNotSecure": {
     "description": "English: Couldn't make a secure connection (Connection checklist: result of a step)"
   },
-  "netNotRunning": "العنوان يعمل، لكن Ossia لا يعمل خلفه",
+  "netNotRunning": "العنوان يعمل، لكن Ossia لا يعمل عليه",
   "@netNotRunning": {
     "description": "English: The address works, but Ossia isn't running behind it (Connection checklist: result of a step)"
   },
@@ -1384,7 +1384,7 @@
   "@lenChangedNotRuledOut": {
     "description": "English: {after} can't be ruled out by length, so the length changed the answer. (A note on a report about the length the person measured (second half))"
   },
-  "lenNoUsual": "ليس لدينا طول معتاد لـ{before}، لذا لم يستطع الطول تأكيده. لقد ساعد فقط في الموازنة بين الخيارات الأخرى.",
+  "lenNoUsual": "ليس لدينا طول معتاد لـ{before}، لذا لم يستطع الطول تأكيده، وإنما ساعد فقط في الموازنة بين الخيارات الأخرى.",
   "@lenNoUsual": {
     "description": "English: We don't have a usual length for {before}, so the length couldn't confirm it. It only helped weigh up the other options. (A note on a report about the length the person measured)"
   },
@@ -1400,11 +1400,11 @@
   "@lenLong": {
     "description": "English: {cm} cm is long for {before}, but the photo still points to it. Worth measuring again. (A note on a report about the length the person measured)"
   },
-  "lenPhotoAlone": "بحسب الصورة وحدها، كان {headline}.",
+  "lenPhotoAlone": "ولو اعتمدنا على الصورة وحدها لكانت النتيجة «{headline}».",
   "@lenPhotoAlone": {
     "description": "English: From the photo alone, it was {headline}. (After a length note, when the length changed the answer)"
   },
-  "lenMeasuredOn": "{thing} (قيس على {animals})",
+  "lenMeasuredOn": "{thing} (بحسب قياسات {animals})",
   "@lenMeasuredOn": {
     "description": "English: {thing} (measured on {animals}) (Under \"Typical length\": which animals the range was measured on)"
   },
@@ -1576,7 +1576,7 @@
   "@guideSmallTip": {
     "description": "English: Tiny bone? Get up close till it fills the outline."
   },
-  "camHold": "ابتعد نحو {cm} سم · واملأ الإطار",
+  "camHold": "على بُعد {cm} سم تقريبًا · املأ الإطار",
   "@camHold": {
     "description": "English: Hold ~{cm} cm away · fill the outline (Chip in the camera: how far to hold the phone)"
   },
@@ -1620,11 +1620,11 @@
   "@camAnotherAngleTip": {
     "description": "English: Same bone, new side. Flip it over, or get one of the ends."
   },
-  "camShotFailed": "تعذّر التقاط الصورة. تحاول مجددًا؟",
+  "camShotFailed": "تعذّر التقاط الصورة. نحاول مجددًا؟",
   "@camShotFailed": {
     "description": "English: Couldn’t take that one. Try again?"
   },
-  "camNoAccess": "لا إذن للكاميرا",
+  "camNoAccess": "لا إذن باستخدام الكاميرا",
   "@camNoAccess": {
     "description": "English: No camera access"
   },
@@ -1640,7 +1640,39 @@
   "@camNappingBody": {
     "description": "English: Couldn’t start the camera here. Upload a photo instead?"
   },
-  "reviewDropTitle": "هل تتخلى عن هذه الصور؟",
+  "camAuto": "الالتقاط التلقائي",
+  "@camAuto": {
+    "description": "English: Auto snap (Camera button that turns the automatic photo on and off)"
+  },
+  "camAutoOnTip": "الالتقاط التلقائي مُفعَّل. ضع العظمة داخل الإطار وثبّت الهاتف.",
+  "@camAutoOnTip": {
+    "description": "English: Auto snap is on. Get the bone in the frame and hold still. (Mascot tip right after auto snap is turned on)"
+  },
+  "camAutoOffTip": "الالتقاط التلقائي متوقف. اضغط الزر الكبير لالتقاط الصورة.",
+  "@camAutoOffTip": {
+    "description": "English: Auto snap is off. Tap the big button to take the photo. (Mascot tip right after auto snap is turned off)"
+  },
+  "camAutoSpotted": "وجدنا عظمة!",
+  "@camAutoSpotted": {
+    "description": "English: BONE SPOTTED! (Sticker that pops onto the camera frame when a bone is in view)"
+  },
+  "camAutoFound": "وجدتُها! ثبّت الهاتف الآن.",
+  "@camAutoFound": {
+    "description": "English: Got it! Now hold the phone still. (Mascot tip when a bone is in view but the phone is moving)"
+  },
+  "camAutoHolding": "ممتاز، ابقَ هكذا…",
+  "@camAutoHolding": {
+    "description": "English: Perfect, hold it right there… (Mascot tip while the phone is still and the auto photo is counting down)"
+  },
+  "camAutoSnapped": "التُقطت!",
+  "@camAutoSnapped": {
+    "description": "English: SNAP! (Big stamp at the moment the auto photo is taken)"
+  },
+  "camAutoRearm": "حرّك الهاتف قليلًا لالتقاط صورة أخرى.",
+  "@camAutoRearm": {
+    "description": "English: Move the phone a little to take another. (Mascot tip after coming back to the camera from a photo, before auto snap will fire again)"
+  },
+  "reviewDropTitle": "هل تتخلّص من هذه الصور؟",
   "@reviewDropTitle": {
     "description": "English: Drop these photos? (Question when leaving the photo check screen after adding or removing photos)"
   },
@@ -1652,7 +1684,7 @@
   "@reviewDropRevising": {
     "description": "English: The angles you added or removed won’t be analyzed. The saved report stays as it was. (Same question, when adding angles to a find that was already analysed)"
   },
-  "reviewDropConfirm": "تخلَّ عنها",
+  "reviewDropConfirm": "تخلّص منها",
   "@reviewDropConfirm": {
     "description": "English: Drop them (Red button that leaves without analysing)"
   },
@@ -1728,7 +1760,7 @@
   "@reviewAnglesOf": {
     "description": "English: {count} OF {max} (Small sticker: photos used out of the most allowed)"
   },
-  "reviewAnglesBodyOne": "العظمة نفسها من جهة أخرى. قد يحل الظهر أو أحد الطرفين أو لقطة قريبة لغز عظمة صعبة، وتُقرأ كل الصور معًا.",
+  "reviewAnglesBodyOne": "العظمة نفسها من جهة أخرى. قد يحل الوجه الخلفي أو أحد الطرفين أو لقطة قريبة لغزَ عظمة صعبة، وتُقرأ كل الصور معًا.",
   "@reviewAnglesBodyOne": {
     "description": "English: Same bone, another side. The back, an end or a close-up can crack a tricky one. Every photo gets read together."
   },
@@ -1952,13 +1984,25 @@
   "@resultAngles": {
     "description": "English: {count} angles (Sticker: how many photos of the bone were read; always 2 or more)"
   },
-  "resultHowSure": "ما مدى ثقتنا؟",
-  "@resultHowSure": {
-    "description": "English: How sure are we?"
+  "resultAnglesWithBone": "العظمة ظاهرة في {seen} من {count}",
+  "@resultAnglesWithBone": {
+    "description": "English: Bone in {seen} of {count} photos (Sticker in place of the angle count when some photos showed no bone; only those that did were read)"
   },
-  "resultShakiest": "الثقة لا تتجاوز أضعف خطوة: إيجاد العظمة، والتمييز بين الإنسان والحيوان، وتسمية العظمة، ومعرفة الحيوان إن كانت لحيوان.",
-  "@resultShakiest": {
-    "description": "English: Only as sure as the shakiest step: finding the bone, telling human from animal, naming the bone and, for animals, which one."
+  "resultHowSure": "ما مدى الثقة في هذه النتيجة؟",
+  "@resultHowSure": {
+    "description": "English: How sure is this answer? (Title of the box with the big percentage under the answer)"
+  },
+  "resultHowSureSteps": "النتيجة لا تكون أقوى من أضعف خطوة فيها، لذلك النسبة في الأعلى هي أدنى هذه النسب.",
+  "@resultHowSureSteps": {
+    "description": "English: The answer is only as good as its weakest step, so the score above is the lowest of these. (Small grey text under the list of steps (Bone or not, Human or animal, Which bone, Which animal), each with its own percentage)"
+  },
+  "resultHowSureNone": "مدى ثقة التطبيق بأن هذه الصورة لا تظهر فيها عظمة.",
+  "@resultHowSureNone": {
+    "description": "English: How sure the app is that this photo shows no bone. (Small grey text under the percentage when no bone was found)"
+  },
+  "resultStepBone": "عظمة أم لا",
+  "@resultStepBone": {
+    "description": "English: Bone or not (First step in the list under the percentage: was a bone found at all)"
   },
   "resultCouldAlsoBe": "غير مؤكد. قد تكون أيضًا:",
   "@resultCouldAlsoBe": {
@@ -1972,7 +2016,7 @@
   "@resultNoBoneBody": {
     "description": "English: We couldn’t find a bone in this photo. Try a plain background, and get close enough that the bone fills most of the picture."
   },
-  "resultIdentification": "التعرّف",
+  "resultIdentification": "تحديد الهوية",
   "@resultIdentification": {
     "description": "English: Identification (Section title)"
   },
@@ -2084,7 +2128,7 @@
   "@resultInsideRange": {
     "description": "English: Right inside the typical range. Nice."
   },
-  "resultOutsideRange": "خارج النطاق المعتاد. تستحق نظرة ثانية.",
+  "resultOutsideRange": "خارج النطاق المعتاد. يستحق الأمر نظرة ثانية.",
   "@resultOutsideRange": {
     "description": "English: Outside the typical range. Worth a second look."
   },
@@ -2092,7 +2136,7 @@
   "@resultInsideEstimate": {
     "description": "English: Right inside the estimate. Nice."
   },
-  "resultOutsideEstimate": "خارج التقدير. تستحق نظرة ثانية.",
+  "resultOutsideEstimate": "خارج التقدير. يستحق الأمر نظرة ثانية.",
   "@resultOutsideEstimate": {
     "description": "English: Outside the estimate. Worth a second look."
   },
@@ -2104,7 +2148,7 @@
   "@resultAtlasSubtitle": {
     "description": "English: {region} · what to look for, and left or right (Under the bone’s name in the Atlas link)"
   },
-  "resultDisclaimer": "يقدّم Ossia أفضل تخمين، لا جوابًا نهائيًا. لا تعتمد عليه في قرارات طبية أو قانونية أو أمنية من دون أن يفحص خبير العظمة بنفسه.",
+  "resultDisclaimer": "يقدّم Ossia أفضل تخمين، لا جوابًا نهائيًا. لا تعتمد عليه في قرارات طبية أو قانونية أو أمنية من دون أن يفحص خبير عظام العظمةَ بنفسه.",
   "@resultDisclaimer": {
     "description": "English: Ossia gives a best guess, not a final answer. Don’t rely on it for medical, legal or police decisions without a bone expert checking the bone in person. (Shown at the bottom of every report)"
   },
@@ -2180,7 +2224,7 @@
   "@libNoMatchBody": {
     "description": "English: Try a different filter or clear the search."
   },
-  "atlasSubtitle": "{count, plural, =0{لا عظام بعد} =1{عظمة واحدة يعرفها الذكاء الاصطناعي جيدًا} =2{عظمتان يعرفهما الذكاء الاصطناعي جيدًا} few{{count} عظام يعرفها الذكاء الاصطناعي جيدًا} many{{count} عظمة يعرفها الذكاء الاصطناعي جيدًا} other{{count} عظمة يعرفها الذكاء الاصطناعي جيدًا}}",
+  "atlasSubtitle": "{count, plural, =0{لا عظام بعد} =1{عظمة واحدة يحفظها الذكاء الاصطناعي عن ظهر قلب} =2{عظمتان يحفظهما الذكاء الاصطناعي عن ظهر قلب} few{{count} عظام يحفظها الذكاء الاصطناعي عن ظهر قلب} many{{count} عظمة يحفظها الذكاء الاصطناعي عن ظهر قلب} other{{count} عظمة يحفظها الذكاء الاصطناعي عن ظهر قلب}}",
   "@atlasSubtitle": {
     "description": "English: {count} bones the AI knows by heart (Line under the Atlas title)"
   },
@@ -2299,6 +2343,14 @@
   "settingsAutoSaveBody": "عند الإيقاف، لا يُحفظ التقرير إلا إذا حفظته بنفسك.",
   "@settingsAutoSaveBody": {
     "description": "English: Off means each report is kept only if you save it."
+  },
+  "settingsAutoSnap": "الالتقاط التلقائي",
+  "@settingsAutoSnap": {
+    "description": "English: Auto snap (Settings switch for the automatic camera photo)"
+  },
+  "settingsAutoSnapBody": "تلتقط الكاميرا الصورة بنفسها حين ترى عظمة ويكون الهاتف ثابتًا.",
+  "@settingsAutoSnapBody": {
+    "description": "English: The camera takes the photo by itself once it sees a bone and the phone is still. (Explains the auto snap switch)"
   },
   "settingsUnits": "وحدة القياس",
   "@settingsUnits": {
@@ -2460,7 +2512,7 @@
   "@statusFailedTitle": {
     "description": "English: Couldn’t get ready"
   },
-  "statusFailedBody": "منع شيءٌ Ossia من البدء على هذا الهاتف. حاول مجددًا أو أعد تشغيل التطبيق.",
+  "statusFailedBody": "حال شيء دون تشغيل Ossia على هذا الهاتف. حاول مجددًا أو أعد تشغيل التطبيق.",
   "@statusFailedBody": {
     "description": "English: Something stopped Ossia from starting on this phone. Try again, or restart the app."
   },
@@ -2524,7 +2576,7 @@
   "@statusSleeping": {
     "description": "English: Sleeping"
   },
-  "statusGettingReady": "يستعد…",
+  "statusGettingReady": "جارٍ التجهيز…",
   "@statusGettingReady": {
     "description": "English: Getting ready…"
   },
@@ -2540,7 +2592,7 @@
   "@statusNo": {
     "description": "English: No"
   },
-  "statusPhotosSent": "إرسال الصور إلى أي مكان",
+  "statusPhotosSent": "تغادر الصور هاتفك",
   "@statusPhotosSent": {
     "description": "English: Photos sent anywhere"
   },

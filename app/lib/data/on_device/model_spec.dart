@@ -29,6 +29,8 @@ class ModelSpec {
         ageGroups = _label(j, 'age_group'),
         sexes = _label(j, 'sex'),
         familyBoneTypes = _strings(j['family_bone_types']).toSet(),
+        familyMinConfidence =
+            (j['family_min_confidence'] as num?)?.toDouble() ?? 0.5,
         useLengthRerank = j['use_length_rerank'] as bool,
         lengthCheck = LengthCheckSettings.fromJson(
             j['length_check'] as Map<String, dynamic>);
@@ -56,6 +58,9 @@ class ModelSpec {
   final List<String> ageGroups;
   final List<String> sexes;
   final Set<String> familyBoneTypes;
+
+  /// Share of the mammal probability a family needs before it is named.
+  final double familyMinConfidence;
   final bool useLengthRerank;
   final LengthCheckSettings lengthCheck;
 
@@ -132,18 +137,41 @@ class LengthRange {
 
 class LengthTable {
   LengthTable.fromJson(Map<String, dynamic> j)
-      : _ranges = (j['ranges'] as Map<String, dynamic>).map(
-          (String taxon, dynamic bones) => MapEntry<String, Map<String, LengthRange>>(
-            taxon,
-            (bones as Map<String, dynamic>).map(
-              (String bone, dynamic e) => MapEntry<String, LengthRange>(
-                  bone, LengthRange.fromJson(e as Map<String, dynamic>)),
-            ),
-          ),
-        );
+      : _ranges = _table(j['ranges']),
+        _widths = <String, Map<String, Map<String, LengthRange>>>{
+          for (final MapEntry<String, dynamic> t
+              in ((j['widths'] as Map<String, dynamic>?) ?? <String, dynamic>{}).entries)
+            t.key: _table(t.value),
+        };
 
   final Map<String, Map<String, LengthRange>> _ranges;
+  final Map<String, Map<String, Map<String, LengthRange>>> _widths;
 
-  /// The entry for a taxon ('human' or an animal group) and bone type, or null.
-  LengthRange? range(String taxon, String boneType) => _ranges[taxon]?[boneType];
+  /// The measurements the table can hold and where each one lives
+  /// (`length_check.MEASUREMENTS`), in the report's order.
+  static const Map<String, String> measurements = <String, String>{
+    'length_cm': 'ranges',
+    'end_width_cm': 'end_width',
+    'shaft_width_cm': 'shaft_width',
+    'head_diameter_cm': 'head_diameter',
+  };
+
+  /// The entry for a taxon ('human' or an animal group) and bone type, or
+  /// null; the length unless another [measurement] is named.
+  LengthRange? range(String taxon, String boneType,
+      [String measurement = 'length_cm']) {
+    final String table = measurements[measurement]!;
+    return (table == 'ranges' ? _ranges : _widths[table])?[taxon]?[boneType];
+  }
+
+  static Map<String, Map<String, LengthRange>> _table(Object? j) =>
+      (j as Map<String, dynamic>).map(
+        (String taxon, dynamic bones) => MapEntry<String, Map<String, LengthRange>>(
+          taxon,
+          (bones as Map<String, dynamic>).map(
+            (String bone, dynamic e) => MapEntry<String, LengthRange>(
+                bone, LengthRange.fromJson(e as Map<String, dynamic>)),
+          ),
+        ),
+      );
 }

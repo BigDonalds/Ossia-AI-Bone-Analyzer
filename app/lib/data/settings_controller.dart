@@ -43,6 +43,7 @@ class SettingsController extends ChangeNotifier with WidgetsBindingObserver {
   AccentTone _accent = AccentTone.sunny;
   bool _haptics = true;
   bool _autoSave = true;
+  bool _autoSnap = true;
   bool _hideLowConfidence = false;
   double _confidenceFloor = 0.40;
   LengthUnit _unit = LengthUnit.centimetres;
@@ -64,6 +65,9 @@ class SettingsController extends ChangeNotifier with WidgetsBindingObserver {
   AccentTone get accent => _accent;
   bool get haptics => _haptics;
   bool get autoSave => _autoSave;
+
+  /// The camera takes the photo by itself once it sees a bone held still.
+  bool get autoSnap => _autoSnap;
   bool get hideLowConfidence => _hideLowConfidence;
 
   /// Predictions below this score are dimmed, or hidden entirely when
@@ -94,6 +98,7 @@ class SettingsController extends ChangeNotifier with WidgetsBindingObserver {
     _accent = AccentTone.values[_prefs.getInt('accent') ?? 0];
     _haptics = _prefs.getBool('haptics') ?? true;
     _autoSave = _prefs.getBool('auto_save') ?? true;
+    _autoSnap = _prefs.getBool('auto_snap') ?? true;
     _hideLowConfidence = _prefs.getBool('hide_low_conf') ?? false;
     _confidenceFloor = _prefs.getDouble('conf_floor') ?? 0.40;
     _unit = LengthUnit.values[_prefs.getInt('unit') ?? 0];
@@ -129,6 +134,12 @@ class SettingsController extends ChangeNotifier with WidgetsBindingObserver {
   void setAutoSave(bool v) {
     _autoSave = v;
     _prefs.setBool('auto_save', v);
+    notifyListeners();
+  }
+
+  void setAutoSnap(bool v) {
+    _autoSnap = v;
+    _prefs.setBool('auto_snap', v);
     notifyListeners();
   }
 

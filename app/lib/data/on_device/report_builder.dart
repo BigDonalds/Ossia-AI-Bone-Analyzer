@@ -1,10 +1,14 @@
 /// Builds the same report the Ossia server sends, from the on-device model's
 /// probabilities. A line-by-line port of the Python pipeline:
 ///
-/// * `inference/analyzer.py`: `analyze_image`, `animal_taxa_probs`,
-///   `animal_answer`, `_length_block`, `analyze_multiple_images`
+/// * `inference/analyzer.py`: `analyze_image`, `head_probabilities`,
+///   `clarity`, `combine_photos`, `animal_taxa_probs`, `animal_answer`,
+///   `_length_block`, `_widths_block`, `analyze_multiple_images`
 /// * `inference/length_check.py`: `rerank` and its explanations
 /// * `server.py`: `ModelService.analyze`, which tidies the report
+///
+/// The phone asks for a length only, never widths or a shape, so the parts of
+/// those files that use them reduce to what they do without them.
 ///
 /// Change it together with those files. test/on_device_report_test.dart checks
 /// it against reports the Python code wrote for the same probabilities
@@ -49,10 +53,7 @@ class ReportBuilder {
   ) {
     final Map<String, dynamic> report = photos.length == 1
         ? analyzeImage(photos.single, names.single, lengthCm)
-        : analyzeMultipleImages(<Map<String, dynamic>>[
-            for (int i = 0; i < photos.length; i++)
-              analyzeImage(photos[i], names[i], lengthCm),
-          ], lengthCm);
+        : analyzeMultipleImages(photos, names, lengthCm);
 
     final Map<String, dynamic> p1 =
         report['phase1_bone_detection'] as Map<String, dynamic>;
@@ -108,6 +109,15 @@ class ReportBuilder {
     HeadProbabilities p,
     String imagePath,
     double? userLength,
+  ) =>
+      _analyze(p, imagePath, userLength).$1;
+
+  /// `BoneAnalyzer._analyze`: the report, plus the probabilities it was built
+  /// from (after the length check), or null when no bone was found.
+  (Map<String, dynamic>, HeadProbabilities?) _analyze(
+    HeadProbabilities p,
+    String imagePath,
+    double? userLength,
   ) {
     // Phase 1: bone detection
     final double boneConf = p['bone_detection']![0];
@@ -129,28 +139,95 @@ class ReportBuilder {
         'user_length_cm': userLength,
         'reason': "No bone was found, so the length wasn't used.",
       };
-      return results;
+      results['shape_hint'] = _noShape();
+      return (results, null);
     }
 
-    List<double> speciesProbs = p['species']!;
-    List<double> boneTypeProbs = p['bone_type']!;
-    List<double> animalProbs = animalTaxaProbs(p);
-    final List<double> partProbs = p['bone_part']!;
-    final List<double> compProbs = p['completeness']!;
-    final int partIdx = _argmax(partProbs);
-    final int compIdx = _argmax(compProbs);
+    final HeadProbabilities probs = headProbabilities(p);
+
+    // No shape is picked on the phone, so shape_hint.apply_shape changes nothing
+    final String top = spec.boneTypes[_argmax(probs['bone_type']!)];
+    results['shape_hint'] = <String, dynamic>{
+      ..._noShape(),
+      'image_only': top,
+      'with_shape': top,
+    };
 
     // Length check: weigh species / bone type / taxon by the user's measurement
-    final Reranked checked = rerank(speciesProbs, boneTypeProbs, animalProbs,
-        userLength, spec.parts[partIdx], spec.completeness[compIdx]);
+    final Reranked checked = rerank(
+        probs['species']!,
+        probs['bone_type']!,
+        probs['animal']!,
+        userLength,
+        spec.parts[_argmax(probs['part']!)],
+        spec.completeness[_argmax(probs['completeness']!)]);
     if (spec.useLengthRerank) {
-      speciesProbs = checked.species;
-      boneTypeProbs = checked.boneType;
-      animalProbs = checked.animal;
+      probs['species'] = checked.species;
+      probs['bone_type'] = checked.boneType;
+      probs['animal'] = checked.animal;
     }
     results['length_check'] = checked.report;
+    results.addAll(_phases(probs));
+    return (results, probs);
+  }
+
+  static Map<String, dynamic> _noShape() =>
+      <String, dynamic>{'applied': false, 'changed': false, 'shape': null};
+
+  /// One photo's outputs as the lists the report is built from: species,
+  /// bone type, animal taxa ([ModelSpec.animalTaxa]), part, completeness,
+  /// damage (each its own yes/no), age group and sex.
+  HeadProbabilities headProbabilities(HeadProbabilities p) => <String, List<double>>{
+        'species': p['species']!,
+        'bone_type': p['bone_type']!,
+        'animal': animalTaxaProbs(p),
+        'part': p['bone_part']!,
+        'completeness': p['completeness']!,
+        'damage': p['damage']!,
+        'age': p['age_group']!,
+        'sex': p['sex']!,
+      };
+
+  /// How clear one photo's answer is for a head: 1 when it is certain, 0 when
+  /// every option is equally likely (one minus the normalised entropy), plus a
+  /// floor so every photo counts.
+  static double clarity(List<double> probs) {
+    double entropy = 0.0;
+    for (final double p in probs) {
+      if (p > 0) entropy -= p * math.log(p);
+    }
+    return 0.1 + 1 - entropy / math.log(probs.length);
+  }
+
+  /// Head by head, the average of several photos' probabilities, a clear
+  /// photo counting more than a vague one. Damage is a plain mean.
+  static HeadProbabilities combinePhotos(List<HeadProbabilities> photos) {
+    final HeadProbabilities combined = <String, List<double>>{};
+    for (final String head in photos.first.keys) {
+      final List<List<double>> rows = <List<double>>[
+        for (final HeadProbabilities p in photos) p[head]!,
+      ];
+      final List<double> weights = <double>[
+        for (final List<double> r in rows) head == 'damage' ? 1.0 : clarity(r),
+      ];
+      final double total = weights.fold(0.0, (double a, double b) => a + b);
+      combined[head] = <double>[
+        for (int i = 0; i < rows.first.length; i++)
+          _sumOf(rows.length, (int k) => weights[k] * rows[k][i]) / total,
+      ];
+    }
+    return combined;
+  }
+
+  /// `BoneAnalyzer._phases`: phases 2-8 and the reference blocks, from one
+  /// photo's probabilities or several photos' combined ones.
+  Map<String, dynamic> _phases(HeadProbabilities probs) {
+    final Map<String, dynamic> results = <String, dynamic>{};
+    final int partIdx = _argmax(probs['part']!);
+    final int compIdx = _argmax(probs['completeness']!);
 
     // Phase 2: species
+    final List<double> speciesProbs = probs['species']!;
     final int speciesIdx = _argmax(speciesProbs);
     results['phase2_species'] = <String, dynamic>{
       'species': spec.species[speciesIdx],
@@ -159,6 +236,7 @@ class ReportBuilder {
     };
 
     // Phase 3: bone type (top 3)
+    final List<double> boneTypeProbs = probs['bone_type']!;
     final List<int> top3 = _ranked(boneTypeProbs).take(3).toList();
     results['phase3_bone_type'] = <String, dynamic>{
       'predictions': <Map<String, dynamic>>[
@@ -174,17 +252,17 @@ class ReportBuilder {
     // Phases 4-5: bone part and completeness
     results['phase4_bone_part'] = <String, dynamic>{
       'part': spec.parts[partIdx],
-      'confidence': partProbs[partIdx],
+      'confidence': probs['part']![partIdx],
       'available': true,
     };
     results['phase5_completeness'] = <String, dynamic>{
       'status': spec.completeness[compIdx],
-      'confidence': compProbs[compIdx],
+      'confidence': probs['completeness']![compIdx],
       'available': true,
     };
 
     // Phase 6: damage (multi-label)
-    final List<double> damage = p['damage']!;
+    final List<double> damage = probs['damage']!;
     results['phase6_damage'] = <String, dynamic>{
       'fracture': damage[0],
       'cut_marks': damage[1],
@@ -195,7 +273,7 @@ class ReportBuilder {
     // Phase 7: animal class, and family group when the bone shows it
     final bool isHuman = spec.species[speciesIdx] == 'human';
     final Map<String, dynamic> animal =
-        animalAnswer(animalProbs, spec.boneTypes[top3[0]], spec.parts[partIdx]);
+        animalAnswer(probs['animal']!, spec.boneTypes[top3[0]], spec.parts[partIdx]);
     results['phase7_species_detail'] = <String, dynamic>{
       ...animal,
       'available': true,
@@ -204,8 +282,8 @@ class ReportBuilder {
 
     // Phase 8: biological profile (age and sex), human only
     if (isHuman) {
-      final List<double> ageProbs = p['age_group']!;
-      final List<double> sexProbs = p['sex']!;
+      final List<double> ageProbs = probs['age']!;
+      final List<double> sexProbs = probs['sex']!;
       final int ageIdx = _argmax(ageProbs);
       final int sexIdx = _argmax(sexProbs);
       results['phase8_biological_profile'] = <String, dynamic>{
@@ -228,6 +306,10 @@ class ReportBuilder {
         ? 'human'
         : (animal['family'] as String?) ?? animal['class'] as String;
     results['bone_length'] = _lengthBlock(taxon, spec.boneTypes[top3[0]]);
+    results['bone_widths'] = _widthsBlock(taxon, spec.boneTypes[top3[0]]);
+    // head_sex.sex_from_head needs a measured head diameter, which the phone
+    // doesn't ask for
+    results['head_sex_hint'] = <String, dynamic>{'available': false};
     return results;
   }
 
@@ -253,8 +335,9 @@ class ReportBuilder {
         !const <String>{'fragment', 'shaft'}.contains(part);
   }
 
-  /// The phase 7 block: the class always, the family only for a mammal whose
-  /// bone shows it.
+  /// The phase 7 block: the class always; the family only for a mammal whose
+  /// bone shows it, and named only when it holds at least
+  /// [ModelSpec.familyMinConfidence] of the mammal probability.
   Map<String, dynamic> animalAnswer(
     List<double> taxaProbs,
     String boneType,
@@ -277,8 +360,11 @@ class ReportBuilder {
       family = spec.mammalFamilies[best];
       familyConf = families[best] / classProbs['mammal']!;
     }
-    final String? named =
-        family != null && family != 'other_mammal' ? family : null;
+    final String? named = family != null &&
+            family != 'other_mammal' &&
+            familyConf >= spec.familyMinConfidence
+        ? family
+        : null;
     return <String, dynamic>{
       'species': named ?? animalClass,
       'confidence': named != null
@@ -307,132 +393,57 @@ class ReportBuilder {
     };
   }
 
-  /// `BoneAnalyzer.analyze_multiple_images`: combines per-photo reports of the
-  /// same bone by confidence-weighted votes.
+  /// Reference width ranges for the identified bone, per measurement the
+  /// table has.
+  Map<String, dynamic> _widthsBlock(String taxon, String boneType) {
+    final Map<String, dynamic> widths = <String, dynamic>{};
+    for (final String m in LengthTable.measurements.keys) {
+      final LengthRange? entry =
+          m == 'length_cm' ? null : lengths.range(taxon, boneType, m);
+      if (entry != null) {
+        widths[m] = <String, dynamic>{
+          'min_cm': entry.minCm,
+          'max_cm': entry.maxCm,
+          'reference_for': displayName(taxon, boneType),
+        };
+      }
+    }
+    return <String, dynamic>{'available': widths.isNotEmpty, ...widths};
+  }
+
+  /// `BoneAnalyzer.analyze_multiple_images`: the photos that show a bone are
+  /// combined head by head ([combinePhotos]) and the report is built from
+  /// that, as for a single photo; a photo without a bone doesn't water the
+  /// answer down.
   Map<String, dynamic> analyzeMultipleImages(
-    List<Map<String, dynamic>> all,
+    List<HeadProbabilities> photos,
+    List<String> names,
     double? userLength,
   ) {
-    final int n = all.length;
-    Map<String, dynamic> phase(Map<String, dynamic> r, String name) =>
-        (r[name] as Map<String, dynamic>?) ?? <String, dynamic>{};
+    final List<(Map<String, dynamic>, HeadProbabilities?)> analyzed =
+        <(Map<String, dynamic>, HeadProbabilities?)>[
+      for (int i = 0; i < photos.length; i++) _analyze(photos[i], names[i], userLength),
+    ];
+    final int n = analyzed.length;
 
-    (String, double, bool) vote(String name, String key,
-        [bool Function(Map<String, dynamic>)? applicable]) {
-      final Map<String, double> votes = <String, double>{};
-      for (final Map<String, dynamic> r in all) {
-        final Map<String, dynamic> p = phase(r, name);
-        if (p['available'] == true && (applicable?.call(p) ?? true)) {
-          final String k = p[key] as String;
-          votes[k] = (votes[k] ?? 0.0) + ((p['confidence'] as num?)?.toDouble() ?? 0.5);
-        }
-      }
-      if (votes.isEmpty) return ('unknown', 0.0, false);
-      final String best = _firstMax(votes);
-      return (best, math.min(votes[best]! / n, 0.95), true);
-    }
-
+    // A bone is there if any photo shows one, as surely as the surest photo says so
     final List<Map<String, dynamic>> detections = <Map<String, dynamic>>[
-      for (final Map<String, dynamic> r in all) phase(r, 'phase1_bone_detection'),
+      for (final (Map<String, dynamic>, HeadProbabilities?) r in analyzed)
+        r.$1['phase1_bone_detection'] as Map<String, dynamic>,
     ];
-    final (String species, double speciesConf, bool speciesOk) =
-        vote('phase2_species', 'species');
-    final (String part, double partConf, bool partOk) =
-        vote('phase4_bone_part', 'part');
-    final (String status, double statusConf, bool statusOk) =
-        vote('phase5_completeness', 'status');
-    bool applicable(Map<String, dynamic> p) => p['applicable'] == true;
-    final (String animal, double animalConf, bool animalOk) =
-        vote('phase7_species_detail', 'species', applicable);
-    final (String animalClass, double animalClassConf, bool _) =
-        vote('phase7_species_detail', 'class', applicable);
-
-    // Age and sex: confidence-weighted votes over the photos that read as human
-    (String, double) profileVote(String key) {
-      final Map<String, double> votes = <String, double>{};
-      for (final Map<String, dynamic> r in all) {
-        final Map<String, dynamic> p = phase(r, 'phase8_biological_profile');
-        final String? value = p[key] as String?;
-        if (p['applicable'] == true && value != null && value.isNotEmpty) {
-          final Object? conf = p['${key.split('_').first}_confidence'];
-          votes[value] = (votes[value] ?? 0.0) + ((conf as num?)?.toDouble() ?? 0.5);
-        }
-      }
-      if (votes.isEmpty) return ('unknown', 0.0);
-      final String best = _firstMax(votes);
-      return (best, math.min(votes[best]! / n, 0.95));
-    }
-
-    final Map<String, dynamic> profile;
-    if (species == 'human') {
-      final (String age, double ageConf) = profileVote('age_group');
-      final (String sex, double sexConf) = profileVote('sex');
-      profile = <String, dynamic>{
-        'age_group': age,
-        'age_confidence': ageConf,
-        'sex': sex,
-        'sex_confidence': sexConf,
-        'available': true,
-        'applicable': true,
-      };
-    } else if (speciesOk) {
-      profile = <String, dynamic>{
-        'available': true,
-        'applicable': false,
-        'note': 'Non-human bone',
-      };
-    } else {
-      profile = _unavailablePhases()['phase8_biological_profile'] as Map<String, dynamic>;
-    }
-
-    final Map<String, double> boneTypeVotes = <String, double>{};
-    for (final Map<String, dynamic> r in all) {
-      final Map<String, dynamic> p = phase(r, 'phase3_bone_type');
-      if (p['available'] == true) {
-        for (final dynamic pred in p['predictions'] as List<dynamic>) {
-          final Map<String, dynamic> m = pred as Map<String, dynamic>;
-          final String k = m['bone_type'] as String;
-          boneTypeVotes[k] = (boneTypeVotes[k] ?? 0.0) + (m['confidence'] as double);
-        }
-      }
-    }
-    final List<MapEntry<String, double>> topTypes = _stableSorted(
-            boneTypeVotes.entries.toList(), (MapEntry<String, double> e) => -e.value)
-        .take(3)
-        .toList();
-
-    final List<Map<String, dynamic>> damaged = <Map<String, dynamic>>[
-      for (final Map<String, dynamic> r in all)
-        if (phase(r, 'phase6_damage')['available'] == true) phase(r, 'phase6_damage'),
+    final List<HeadProbabilities> bonePhotos = <HeadProbabilities>[
+      for (final (Map<String, dynamic>, HeadProbabilities?) r in analyzed)
+        if (r.$2 != null) r.$2!,
     ];
-    final Map<String, dynamic> damage = <String, dynamic>{
-      for (final String k in const <String>['fracture', 'cut_marks', 'burn_signs'])
-        k: damaged.isEmpty
-            ? 0.0
-            : damaged.fold(0.0, (double s, Map<String, dynamic> d) => s + (d[k] as double)) /
-                damaged.length,
-    };
-
-    final Map<String, dynamic> boneLength = topTypes.isNotEmpty
-        ? _lengthBlock(species == 'human' ? 'human' : animal, topTypes.first.key)
-        : <String, dynamic>{'available': false};
-    boneLength['user_length_cm'] = userLength;
-
-    // Each photo was re-ranked with the same length before the votes above
-    final List<Map<String, dynamic>> checks = <Map<String, dynamic>>[
-      for (final Map<String, dynamic> r in all) r['length_check'] as Map<String, dynamic>,
-    ];
-    final bool anyBone = detections.any((Map<String, dynamic> d) => d['final_verdict'] == true);
-    final double meanConf = detections.fold(
-            0.0, (double s, Map<String, dynamic> d) => s + (d['final_confidence'] as double)) /
-        n;
-
-    return <String, dynamic>{
+    final double best = detections
+        .map((Map<String, dynamic> d) => d['final_confidence'] as double)
+        .reduce(math.max);
+    final Map<String, dynamic> report = <String, dynamic>{
       'phase1_bone_detection': <String, dynamic>{
-        'bone_present': anyBone,
-        'confidence': meanConf,
-        'final_verdict': anyBone,
-        'final_confidence': meanConf,
+        'bone_present': bonePhotos.isNotEmpty,
+        'confidence': best,
+        'final_verdict': bonePhotos.isNotEmpty,
+        'final_confidence': best,
         'per_image': <Map<String, dynamic>>[
           for (final Map<String, dynamic> d in detections)
             <String, dynamic>{
@@ -442,43 +453,47 @@ class ReportBuilder {
             },
         ],
       },
-      'phase2_species': <String, dynamic>{
-        'species': species, 'confidence': speciesConf, 'available': speciesOk,
-      },
-      'phase3_bone_type': <String, dynamic>{
-        'predictions': <Map<String, dynamic>>[
-          for (final MapEntry<String, double> e in topTypes)
-            <String, dynamic>{'bone_type': e.key, 'confidence': math.min(e.value / n, 0.95)},
-        ],
-        'available': topTypes.isNotEmpty,
-      },
-      'phase4_bone_part': <String, dynamic>{
-        'part': part, 'confidence': partConf, 'available': partOk,
-      },
-      'phase5_completeness': <String, dynamic>{
-        'status': status, 'confidence': statusConf, 'available': statusOk,
-      },
-      'phase6_damage': <String, dynamic>{...damage, 'available': damaged.isNotEmpty},
-      'phase7_species_detail': <String, dynamic>{
-        'species': animal,
-        'confidence': animalConf,
-        'available': animalOk,
-        'class': animalClass,
-        'class_confidence': animalClassConf,
-        'applicable': species == 'non_human',
-      },
-      'phase8_biological_profile': profile,
-      'bone_length': boneLength,
-      'length_check': <String, dynamic>{
-        'applied': checks.any((Map<String, dynamic> c) => c['applied'] == true),
-        'changed': checks.any((Map<String, dynamic> c) => c['changed'] == true),
-        'user_length_cm': userLength,
-        'per_image': checks,
-      },
-      'phase9_multi_image': <String, dynamic>{'num_angles': n, 'user_length_cm': userLength},
-      'num_images_analyzed': n,
     };
+    report.addAll(bonePhotos.isNotEmpty
+        ? _phases(combinePhotos(bonePhotos))
+        : _unavailablePhases());
+    (report['bone_length'] as Map<String, dynamic>)['user_length_cm'] = userLength;
+
+    // Each photo was re-ranked with the same length before they were combined
+    final List<Map<String, dynamic>> checks = <Map<String, dynamic>>[
+      for (final (Map<String, dynamic>, HeadProbabilities?) r in analyzed)
+        r.$1['length_check'] as Map<String, dynamic>,
+    ];
+    final List<Map<String, dynamic>> shapes = <Map<String, dynamic>>[
+      for (final (Map<String, dynamic>, HeadProbabilities?) r in analyzed)
+        r.$1['shape_hint'] as Map<String, dynamic>,
+    ];
+    report['length_check'] = <String, dynamic>{
+      'applied': checks.any((Map<String, dynamic> c) => c['applied'] == true),
+      'changed': checks.any((Map<String, dynamic> c) => c['changed'] == true),
+      'user_length_cm': userLength,
+      'measurements': _measurements(userLength),
+      'per_image': checks,
+    };
+    report['shape_hint'] = <String, dynamic>{
+      'applied': shapes.any((Map<String, dynamic> h) => h['applied'] == true),
+      'changed': shapes.any((Map<String, dynamic> h) => h['changed'] == true),
+      'shape': null,
+      'per_image': shapes,
+    };
+    report['phase9_multi_image'] = <String, dynamic>{
+      'num_angles': n,
+      'photos_with_bone': bonePhotos.length,
+      'user_length_cm': userLength,
+    };
+    report['num_images_analyzed'] = n;
+    return report;
   }
+
+  /// The measurements given, by name (only ever a length on the phone).
+  static Map<String, dynamic> _measurements(double? lengthCm) =>
+      <String, dynamic>{'length_cm': ?lengthCm};
+
 
   // ── length_check.py ───────────────────────────────────────────────────────
 
@@ -549,6 +564,7 @@ class ReportBuilder {
       'applied': false,
       'changed': false,
       'user_length_cm': lengthCm,
+      'measurements': _measurements(lengthCm),
       'image_only': imageAnswer,
       'with_length': imageAnswer,
     };
@@ -570,6 +586,7 @@ class ReportBuilder {
           "This looks like $shown, so its length can't be compared with whole bones.";
       return unchanged;
     }
+    report['measurements_used'] = <String>['length_cm'];
 
     final List<_Candidate> candidates = <_Candidate>[];
     for (int t = 0; t < boneTypeProbs.length; t++) {
@@ -645,8 +662,10 @@ class ReportBuilder {
         <String, dynamic>{
           'taxon': c.taxon,
           'bone_type': c.boneType,
-          'reference_cm': c.entry == null ? null : <double>[c.entry!.minCm, c.entry!.maxCm],
+          'reference_cm': _referenceCm(c.taxon, c.boneType),
           'length_fit': c.side ?? 'no reference',
+          'reference_widths_cm': <String, dynamic>{},
+          'fits': <String, dynamic>{'length_cm': ?c.side},
           'image_probability': c.prior,
           'length_weighted_probability': c.posterior,
         },
@@ -670,6 +689,11 @@ class ReportBuilder {
       animal: newAnimal,
       report: report,
     );
+  }
+
+  List<double>? _referenceCm(String taxon, String boneType) {
+    final LengthRange? entry = lengths.range(taxon, boneType);
+    return entry == null ? null : <double>[entry.minCm, entry.maxCm];
   }
 
   /// 'a human femur (usually 34.4–55 cm)' plus where the length falls.
@@ -762,6 +786,15 @@ double _round1(double x) => double.parse(x.toStringAsFixed(1));
 String _a(String phrase) => '${'aeiou'.contains(phrase[0]) ? 'an' : 'a'} $phrase';
 
 String _fileName(String path) => path.split(RegExp(r'[/\\]')).last;
+
+/// f(0) + f(1) + ... + f(n - 1), added in that order like Python's sum().
+double _sumOf(int n, double Function(int) f) {
+  double total = 0.0;
+  for (int i = 0; i < n; i++) {
+    total += f(i);
+  }
+  return total;
+}
 
 /// Index of the largest value; the first one on a tie, like Python's max().
 int _argmax(List<double> values) {

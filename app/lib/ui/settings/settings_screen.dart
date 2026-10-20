@@ -7,6 +7,7 @@ import '../../core/theme/typography.dart';
 import '../../core/util/formatting.dart';
 import '../../core/util/haptics.dart';
 import '../../data/history_store.dart';
+import '../../data/on_device/on_device_model.dart';
 import '../../data/server_monitor.dart';
 import '../../data/settings_controller.dart';
 import '../../l10n/l10n.dart';
@@ -167,6 +168,13 @@ class SettingsScreen extends StatelessWidget {
                   value: s.autoSave,
                   onChanged: s.setAutoSave,
                 ),
+                if (OnDeviceModel.supported)
+                  InsetSwitchRow(
+                    title: l.settingsAutoSnap,
+                    subtitle: l.settingsAutoSnapBody,
+                    value: s.autoSnap,
+                    onChanged: s.setAutoSnap,
+                  ),
                 _StackedRow(
                   title: l.settingsUnits,
                   child: SegmentedControl<LengthUnit>(

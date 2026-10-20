@@ -5,16 +5,21 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 import '../../core/theme/motion.dart';
 import '../../core/theme/palette.dart';
 import '../../core/theme/typography.dart';
 import '../../core/util/haptics.dart';
 import '../../data/analysis_engine.dart';
+import '../../data/on_device/on_device_model.dart';
+import '../../data/settings_controller.dart';
 import '../../l10n/l10n.dart';
 import '../widgets/bone_buddy.dart';
 import '../widgets/primitives.dart';
+import 'auto_snap_fx.dart';
 import 'bone_guide.dart';
+import 'bone_spotter.dart';
 import 'review_screen.dart';
 
 /// Opens the in-app camera on the root navigator, so it covers the tab bar.
@@ -111,6 +116,11 @@ class CameraScreen extends StatefulWidget {
 
 enum _CamStatus { starting, ready, denied, unavailable }
 
+/// Where the auto snap is: watching for a bone, seen one while the phone
+/// moves, counting down while it is still, taking the photo, or waiting for
+/// the phone to move after coming back from one.
+enum _Snap { looking, found, holding, firing, rearm }
+
 class _CameraScreenState extends State<CameraScreen>
     with WidgetsBindingObserver, TickerProviderStateMixin {
   CameraController? _controller;
@@ -149,10 +159,67 @@ class _CameraScreenState extends State<CameraScreen>
     duration: const Duration(milliseconds: 700),
   );
 
+  // ── Auto snap ──────────────────────────────────────────────────────────
+  // The model checks recent preview frames for a bone while small grey
+  // thumbnails tell a still phone from a moving one. A bone held still for
+  // the length of [_hold] takes the photo.
+
+  /// Picture change ([frameChange]) below which the phone counts as still,
+  /// and above which a countdown already running is dropped. About 13 and 25
+  /// pixels of drift between looks on a 1080p frame.
+  static const double _steady = 4.5;
+  static const double _shaky = 8;
+
+  bool _auto = false;
+  _Snap _snap = _Snap.looking;
+  double _motion = 0;
+  int _boneHits = 0;
+  int _boneMisses = 0;
+  bool _boneSeen = false;
+
+  /// After a photo, the next one waits until the phone or bone has moved,
+  /// so coming back to retake doesn't fire straight away.
+  bool _needsMove = false;
+
+  /// Shown in the tip bubble for a moment after the toggle: on or off.
+  bool? _toggleTip;
+  Timer? _toggleTipTimer;
+
+  /// The guide box from the last layout, for the burst.
+  Rect _guide = Rect.zero;
+  List<SnapParticle> _pieces = const <SnapParticle>[];
+
+  late final BoneSpotter _spotter;
+
+  late final AnimationController _scan = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 2400),
+  )..repeat();
+
+  late final AnimationController _seenFx = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 520),
+    reverseDuration: Motion.base,
+  );
+
+  late final AnimationController _hold = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 1300),
+  )..addStatusListener(_onHoldStatus);
+
+  late final AnimationController _burst = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 1100),
+  );
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    final OnDeviceModel model = context.read<OnDeviceModel>();
+    _spotter = BoneSpotter(model, onMotion: _onMotion, onBone: _onBone);
+    _auto = OnDeviceModel.supported && context.read<SettingsController>().autoSnap;
+    if (_auto) unawaited(model.ensureLoaded().catchError((Object _) {}));
     _start();
   }
 
@@ -191,12 +258,16 @@ class _CameraScreenState extends State<CameraScreen>
   Future<void> _bind(CameraDescription description) async {
     final CameraController? old = _controller;
     _controller = null;
+    _spotter.forget();
     await old?.dispose();
 
     final CameraController next = CameraController(
       description,
       ResolutionPreset.veryHigh,
       enableAudio: false,
+      // The format the auto snap reads preview frames in; photos are JPEG
+      // either way.
+      imageFormatGroup: ImageFormatGroup.yuv420,
     );
     await next.initialize();
     if (!mounted) {
@@ -223,6 +294,8 @@ class _CameraScreenState extends State<CameraScreen>
       _zoom = minZ;
       _status = _CamStatus.ready;
     });
+    _resetSnap();
+    _startSpotter();
   }
 
   @override
@@ -231,6 +304,7 @@ class _CameraScreenState extends State<CameraScreen>
     if (state == AppLifecycleState.inactive) {
       if (c == null || !c.value.isInitialized) return;
       _controller = null;
+      _spotter.forget();
       c.dispose();
       if (mounted) setState(() => _status = _CamStatus.starting);
     } else if (state == AppLifecycleState.resumed &&
@@ -243,11 +317,17 @@ class _CameraScreenState extends State<CameraScreen>
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    _spotter.forget();
     _controller?.dispose();
+    _toggleTipTimer?.cancel();
     _ants.dispose();
     _pop.dispose();
     _flashFx.dispose();
     _focusFx.dispose();
+    _scan.dispose();
+    _seenFx.dispose();
+    _hold.dispose();
+    _burst.dispose();
     super.dispose();
   }
 
@@ -309,19 +389,153 @@ class _CameraScreenState extends State<CameraScreen>
     } catch (_) {}
   }
 
-  Future<void> _shoot() async {
+  void _toggleAuto() {
+    final bool on = !_auto;
+    Haptics.tap();
+    context.read<SettingsController>().setAutoSnap(on);
+    _toggleTipTimer?.cancel();
+    _toggleTipTimer = Timer(const Duration(milliseconds: 3200), () {
+      if (mounted) setState(() => _toggleTip = null);
+    });
+    setState(() {
+      _auto = on;
+      _toggleTip = on;
+    });
+    _resetSnap();
+    if (on) {
+      unawaited(context.read<OnDeviceModel>().ensureLoaded().catchError((Object _) {}));
+      _startSpotter();
+    } else {
+      unawaited(_spotter.stop());
+    }
+  }
+
+  void _startSpotter() {
+    final CameraController? c = _controller;
+    if (!_auto || c == null || !c.value.isInitialized || _status != _CamStatus.ready) {
+      return;
+    }
+    unawaited(_spotter.start(c));
+  }
+
+  /// Back to watching from scratch; [needsMove] after a photo.
+  void _resetSnap({bool needsMove = false}) {
+    _snap = needsMove ? _Snap.rearm : _Snap.looking;
+    _needsMove = needsMove;
+    _boneSeen = false;
+    _boneHits = 0;
+    _boneMisses = 0;
+    _motion = 0;
+    _hold.value = 0;
+    _seenFx.value = 0;
+    if (mounted) setState(() {});
+  }
+
+  void _onMotion(double change) {
+    _motion = _motion * 0.5 + change * 0.5;
+    if (_needsMove && _motion > _shaky) _needsMove = false;
+    _updateSnap();
+  }
+
+  void _onBone(double p) {
+    if (p > 0.5) {
+      _boneHits++;
+      _boneMisses = 0;
+    } else {
+      _boneMisses++;
+      _boneHits = 0;
+    }
+    // One very sure look or two in a row to see a bone; two misses in a row
+    // to lose it, so a single odd frame changes nothing.
+    if (!_boneSeen && (p >= 0.85 || _boneHits >= 2)) {
+      _boneSeen = true;
+    } else if (_boneMisses >= 2) {
+      _boneSeen = false;
+      _needsMove = false;
+    }
+    _updateSnap();
+  }
+
+  void _updateSnap() {
+    if (!mounted ||
+        !_auto ||
+        _capturing ||
+        _snap == _Snap.firing ||
+        _status != _CamStatus.ready) {
+      return;
+    }
+    final _Snap next = _needsMove
+        ? _Snap.rearm
+        : !_boneSeen
+            ? _Snap.looking
+            : _motion < (_snap == _Snap.holding ? _shaky : _steady)
+                ? _Snap.holding
+                : _Snap.found;
+    if (next == _snap) return;
+    final _Snap was = _snap;
+    setState(() => _snap = next);
+    switch (next) {
+      case _Snap.found:
+      case _Snap.holding:
+        if (was == _Snap.looking || was == _Snap.rearm) Haptics.light();
+        _seenFx.forward();
+        if (next == _Snap.holding) {
+          _hold.forward();
+        } else {
+          _hold.animateBack(0, duration: Motion.quick);
+        }
+      case _Snap.looking:
+      case _Snap.rearm:
+        _seenFx.reverse();
+        _hold.animateBack(0, duration: Motion.quick);
+      case _Snap.firing:
+        break;
+    }
+  }
+
+  void _onHoldStatus(AnimationStatus status) {
+    // Not while the camera is being swapped or paused: the spotter is off then.
+    if (status != AnimationStatus.completed ||
+        _snap != _Snap.holding ||
+        _capturing ||
+        !_spotter.running) {
+      return;
+    }
+    _pieces = snapParticles(DateTime.now().microsecondsSinceEpoch);
+    setState(() => _snap = _Snap.firing);
+    _burst.forward(from: 0);
+    _shoot(auto: true);
+  }
+
+  Future<void> _shoot({bool auto = false}) async {
     final CameraController? c = _controller;
     if (c == null || !c.value.isInitialized || _capturing || c.value.isTakingPicture) {
+      if (auto) _resetSnap();
       return;
     }
     setState(() => _capturing = true);
-    Haptics.medium();
-    _flashFx.forward(from: 0);
+    if (auto) {
+      Haptics.success();
+    } else {
+      Haptics.medium();
+      _flashFx.forward(from: 0);
+      _hold.stop();
+    }
+    // Give the burst a moment on screen before the review covers it.
+    final Future<void> show = auto
+        ? Future<void>.delayed(const Duration(milliseconds: 650))
+        : Future<void>.value();
+    bool leaving = false;
+    bool shot = false;
     try {
-      final XFile shot = await c.takePicture();
+      await _spotter.stop();
+      final XFile file = await c.takePicture();
+      shot = true;
+      await show;
       if (!mounted) return;
       if (widget.angle != null) {
-        Navigator.of(context).pop(<File>[File(shot.path)]);
+        leaving = true;
+        Navigator.of(context).pop(<File>[File(file.path)]);
         return;
       }
       try {
@@ -330,7 +544,7 @@ class _CameraScreenState extends State<CameraScreen>
       if (!mounted) return;
       await Navigator.of(context).push(
         MaterialPageRoute<void>(
-          builder: (_) => ReviewScreen(images: <File>[File(shot.path)], fromCamera: true),
+          builder: (_) => ReviewScreen(images: <File>[File(file.path)], fromCamera: true),
         ),
       );
       // Back from review means "retake".
@@ -345,11 +559,17 @@ class _CameraScreenState extends State<CameraScreen>
         );
       }
     } finally {
-      if (mounted) setState(() => _capturing = false);
+      if (mounted && !leaving) {
+        setState(() => _capturing = false);
+        _resetSnap(needsMove: shot);
+        _startSpotter();
+      }
     }
   }
 
   Future<void> _openLibrary() async {
+    await _spotter.stop();
+    _resetSnap();
     try {
       await _controller?.pausePreview();
     } catch (_) {}
@@ -367,12 +587,18 @@ class _CameraScreenState extends State<CameraScreen>
     try {
       await _controller?.resumePreview();
     } catch (_) {}
+    if (mounted) _startSpotter();
   }
 
   @override
   Widget build(BuildContext context) {
     final AppColors c = context.colors;
     final EdgeInsets safe = MediaQuery.paddingOf(context);
+    // The auto snap shows only while it can actually work.
+    final bool autoLive = _auto &&
+        _status == _CamStatus.ready &&
+        context.select<OnDeviceModel, OnDeviceStatus>((OnDeviceModel m) => m.status) !=
+            OnDeviceStatus.failed;
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light.copyWith(
@@ -399,6 +625,7 @@ class _CameraScreenState extends State<CameraScreen>
                     screen.height - safe.bottom - 214,
                   );
                   final Rect guide = _guideRect(band);
+                  _guide = guide;
                   return GestureDetector(
                     behavior: HitTestBehavior.opaque,
                     onTapUp: (TapUpDetails d) => _focusAt(d, screen),
@@ -423,7 +650,41 @@ class _CameraScreenState extends State<CameraScreen>
                             ),
                           ),
                         ),
+                        if (autoLive)
+                          Positioned.fill(
+                            child: IgnorePointer(
+                              child: AnimatedBuilder(
+                                animation:
+                                    Listenable.merge(<Listenable>[_scan, _seenFx, _hold]),
+                                builder: (BuildContext context, _) => CustomPaint(
+                                  painter: AutoSnapPainter(
+                                    box: guide,
+                                    scan: _scan.value,
+                                    sweep: _snap == _Snap.rearm || _snap == _Snap.firing
+                                        ? 0
+                                        : 1 - _seenFx.value,
+                                    seen: _seenFx.value,
+                                    hold: _hold.value,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
                         if (_focusPoint != null) _focusRing(_focusPoint!),
+                        if (autoLive)
+                          Positioned(
+                            top: guide.top - 16,
+                            left: 0,
+                            right: 0,
+                            child: IgnorePointer(
+                              child: Center(
+                                child: SpottedBadge(
+                                  show: _seenFx,
+                                  label: context.l10n.camAutoSpotted,
+                                ),
+                              ),
+                            ),
+                          ),
                         // Distance cue, pinned under the guide.
                         Positioned(
                           left: 0,
@@ -438,51 +699,80 @@ class _CameraScreenState extends State<CameraScreen>
               ),
             ),
 
-            // Top: close, title sticker, flash.
+            // Top: close, title sticker, auto snap and flash.
             Positioned(
               top: safe.top + 8,
               left: 14,
               right: 14,
               child: Row(
                 children: <Widget>[
-                  RoundButton(
-                    icon: Icons.close_rounded,
-                    tooltip: context.l10n.camClose,
-                    onTap: () => Navigator.of(context).maybePop(),
-                  ),
-                  const Spacer(),
-                  Transform.rotate(
-                    angle: -0.04,
-                    child: Container(
-                      padding: const EdgeInsets.fromLTRB(12, 6, 12, 7),
-                      decoration: BoxDecoration(
-                        color: c.accent,
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: const Color(0xFF141414), width: 2),
+                  SizedBox(
+                    width: 96,
+                    child: Align(
+                      alignment: AlignmentDirectional.centerStart,
+                      child: RoundButton(
+                        icon: Icons.close_rounded,
+                        tooltip: context.l10n.camClose,
+                        onTap: () => Navigator.of(context).maybePop(),
                       ),
-                      child: Text(
-                        widget.angle == null
-                            ? context.l10n.camTitle
-                            : context.l10n.camAngle(widget.angle!),
-                        style: AppType.button.copyWith(
-                          color: c.onAccent,
-                          fontSize: 14,
-                          letterSpacing: AppType.tracking(1.2),
+                    ),
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Transform.rotate(
+                          angle: -0.04,
+                          child: Container(
+                            padding: const EdgeInsets.fromLTRB(12, 6, 12, 7),
+                            decoration: BoxDecoration(
+                              color: c.accent,
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(color: const Color(0xFF141414), width: 2),
+                            ),
+                            child: Text(
+                              widget.angle == null
+                                  ? context.l10n.camTitle
+                                  : context.l10n.camAngle(widget.angle!),
+                              style: AppType.button.copyWith(
+                                color: c.onAccent,
+                                fontSize: 14,
+                                letterSpacing: AppType.tracking(1.2),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                  const Spacer(),
-                  RoundButton(
-                    icon: switch (_flash) {
-                      FlashMode.auto => Icons.flash_auto_rounded,
-                      FlashMode.always => Icons.flash_on_rounded,
-                      _ => Icons.flash_off_rounded,
-                    },
-                    color: _flash == FlashMode.off ? null : c.accent,
-                    iconColor: _flash == FlashMode.off ? null : c.onAccent,
-                    tooltip: context.l10n.camFlash,
-                    onTap: _status == _CamStatus.ready ? _cycleFlash : null,
+                  SizedBox(
+                    width: 96,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        if (OnDeviceModel.supported) ...<Widget>[
+                          RoundButton(
+                            icon: Icons.motion_photos_auto_rounded,
+                            color: _auto ? c.accent : null,
+                            iconColor: _auto ? c.onAccent : null,
+                            tooltip: context.l10n.camAuto,
+                            onTap: _toggleAuto,
+                          ),
+                          const SizedBox(width: 8),
+                        ],
+                        RoundButton(
+                          icon: switch (_flash) {
+                            FlashMode.auto => Icons.flash_auto_rounded,
+                            FlashMode.always => Icons.flash_on_rounded,
+                            _ => Icons.flash_off_rounded,
+                          },
+                          color: _flash == FlashMode.off ? null : c.accent,
+                          iconColor: _flash == FlashMode.off ? null : c.onAccent,
+                          tooltip: context.l10n.camFlash,
+                          onTap: _status == _CamStatus.ready ? _cycleFlash : null,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -507,9 +797,9 @@ class _CameraScreenState extends State<CameraScreen>
                 children: <Widget>[
                   _status == _CamStatus.denied || _status == _CamStatus.unavailable
                       ? _problemCard(c)
-                      : _tipRow(),
+                      : _tipRow(autoLive),
                   const SizedBox(height: 16),
-                  _controls(c),
+                  _controls(c, autoLive),
                 ],
               ),
             ),
@@ -525,6 +815,37 @@ class _CameraScreenState extends State<CameraScreen>
                         : 0,
                   ),
                 ),
+              ),
+            ),
+
+            // The auto snap's burst and stamp.
+            IgnorePointer(
+              child: AnimatedBuilder(
+                animation: _burst,
+                builder: (BuildContext context, _) {
+                  if (!_burst.isAnimating) return const SizedBox.shrink();
+                  return Stack(
+                    fit: StackFit.expand,
+                    children: <Widget>[
+                      CustomPaint(
+                        painter: SnapBurstPainter(
+                          t: _burst.value,
+                          box: _guide,
+                          pieces: _pieces,
+                        ),
+                      ),
+                      Positioned.fromRect(
+                        rect: _guide,
+                        child: Center(
+                          child: SnapStamp(
+                            t: _burst.value,
+                            label: context.l10n.camAutoSnapped,
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ],
@@ -642,7 +963,24 @@ class _CameraScreenState extends State<CameraScreen>
     );
   }
 
-  Widget _tipRow() {
+  Widget _tipRow(bool autoLive) {
+    final AppLocalizations l = context.l10n;
+    final String usual = widget.angle != null ? l.camAnotherAngleTip : _shape.tip(l);
+    final bool locked = autoLive &&
+        (_snap == _Snap.found || _snap == _Snap.holding || _snap == _Snap.firing);
+    final (String text, BuddyMood mood) = _status == _CamStatus.starting
+        ? (l.camWarmingUp, BuddyMood.thinking)
+        : _toggleTip != null
+            ? (_toggleTip! ? l.camAutoOnTip : l.camAutoOffTip, BuddyMood.happy)
+            : !autoLive
+                ? (usual, BuddyMood.happy)
+                : switch (_snap) {
+                    _Snap.found => (l.camAutoFound, BuddyMood.wow),
+                    _Snap.holding => (l.camAutoHolding, BuddyMood.wink),
+                    _Snap.firing => (l.camAutoHolding, BuddyMood.wow),
+                    _Snap.rearm => (l.camAutoRearm, BuddyMood.happy),
+                    _Snap.looking => (usual, BuddyMood.happy),
+                  };
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
@@ -650,23 +988,20 @@ class _CameraScreenState extends State<CameraScreen>
         children: <Widget>[
           BoneBuddy(
             size: 72,
-            mood: _status == _CamStatus.starting ? BuddyMood.thinking : BuddyMood.happy,
+            mood: mood,
             look: const Offset(0.7, -0.3),
           ),
           const SizedBox(width: 4),
           Expanded(
             child: SpeechBubble(
+              color: locked ? kLockGreen : null,
               child: AnimatedSwitcher(
                 duration: Motion.quick,
                 child: Text(
-                  _status == _CamStatus.starting
-                      ? context.l10n.camWarmingUp
-                      : widget.angle != null
-                          ? context.l10n.camAnotherAngleTip
-                          : _shape.tip(context.l10n),
-                  key: ValueKey<String>('${_shape.name}$_status'),
+                  text,
+                  key: ValueKey<String>(text),
                   style: AppType.footnote.copyWith(
-                    color: context.colors.textPrimary,
+                    color: locked ? const Color(0xFF141414) : context.colors.textPrimary,
                     fontWeight: FontWeight.w600,
                     height: 1.3,
                   ),
@@ -720,7 +1055,7 @@ class _CameraScreenState extends State<CameraScreen>
     );
   }
 
-  Widget _controls(AppColors c) {
+  Widget _controls(AppColors c, bool autoLive) {
     final bool ready = _status == _CamStatus.ready;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 28),
@@ -734,10 +1069,38 @@ class _CameraScreenState extends State<CameraScreen>
           ),
           Expanded(
             child: Center(
-              child: _Shutter(
-                enabled: ready && !_capturing,
-                busy: _capturing,
-                onTap: _shoot,
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: <Widget>[
+                  _Shutter(
+                    enabled: ready && !_capturing,
+                    busy: _capturing,
+                    onTap: _shoot,
+                  ),
+                  if (autoLive)
+                    Positioned(
+                      left: -11,
+                      top: -11,
+                      right: -11,
+                      bottom: -11,
+                      child: IgnorePointer(
+                        child: AnimatedBuilder(
+                          animation: Listenable.merge(<Listenable>[_scan, _hold]),
+                          builder: (BuildContext context, _) => CustomPaint(
+                            painter: ShutterRingPainter(
+                              spin: _scan.value,
+                              hold: _hold.value,
+                              armed: switch (_snap) {
+                                _Snap.rearm => 0.35,
+                                _Snap.firing => 0,
+                                _ => (1 - _hold.value * 1.5).clamp(0.0, 1.0),
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
               ),
             ),
           ),

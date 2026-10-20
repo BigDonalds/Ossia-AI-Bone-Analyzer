@@ -1635,6 +1635,38 @@
     "description": "Title when the camera could not start"
   },
   "camNappingBody": "Couldn’t start the camera here. Upload a photo instead?",
+  "camAuto": "Auto snap",
+  "@camAuto": {
+    "description": "Camera button that turns the automatic photo on and off"
+  },
+  "camAutoOnTip": "Auto snap is on. Get the bone in the frame and hold still.",
+  "@camAutoOnTip": {
+    "description": "Mascot tip right after auto snap is turned on"
+  },
+  "camAutoOffTip": "Auto snap is off. Tap the big button to take the photo.",
+  "@camAutoOffTip": {
+    "description": "Mascot tip right after auto snap is turned off"
+  },
+  "camAutoSpotted": "BONE SPOTTED!",
+  "@camAutoSpotted": {
+    "description": "Sticker that pops onto the camera frame when a bone is in view"
+  },
+  "camAutoFound": "Got it! Now hold the phone still.",
+  "@camAutoFound": {
+    "description": "Mascot tip when a bone is in view but the phone is moving"
+  },
+  "camAutoHolding": "Perfect, hold it right there…",
+  "@camAutoHolding": {
+    "description": "Mascot tip while the phone is still and the auto photo is counting down"
+  },
+  "camAutoSnapped": "SNAP!",
+  "@camAutoSnapped": {
+    "description": "Big stamp at the moment the auto photo is taken"
+  },
+  "camAutoRearm": "Move the phone a little to take another.",
+  "@camAutoRearm": {
+    "description": "Mascot tip after coming back to the camera from a photo, before auto snap will fire again"
+  },
   "reviewDropTitle": "Drop these photos?",
   "@reviewDropTitle": {
     "description": "Question when leaving the photo check screen after adding or removing photos"
@@ -1962,8 +1994,33 @@
       }
     }
   },
-  "resultHowSure": "How sure are we?",
-  "resultShakiest": "Only as sure as the shakiest step: finding the bone, telling human from animal, naming the bone and, for animals, which one.",
+  "resultAnglesWithBone": "Bone in {seen} of {count} photos",
+  "@resultAnglesWithBone": {
+    "description": "Sticker in place of the angle count when some photos showed no bone; only those that did were read",
+    "placeholders": {
+      "seen": {
+        "type": "int",
+        "example": "2"
+      },
+      "count": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "resultHowSure": "How sure is this answer?",
+  "resultHowSureSteps": "The answer is only as good as its weakest step, so the score above is the lowest of these.",
+  "@resultHowSureSteps": {
+    "description": "Small grey text under the list of steps (Bone or not, Human or animal, Which bone, Which animal), each with its own percentage"
+  },
+  "resultHowSureNone": "How sure the app is that this photo shows no bone.",
+  "@resultHowSureNone": {
+    "description": "Small grey text under the percentage when no bone was found"
+  },
+  "resultStepBone": "Bone or not",
+  "@resultStepBone": {
+    "description": "First step in the list under the percentage: was a bone found at all"
+  },
   "resultCouldAlsoBe": "Not certain. It could also be:",
   "@resultCouldAlsoBe": {
     "description": "Above a few other possible answers with their chances"
@@ -2288,6 +2345,14 @@
   },
   "settingsAutoSave": "Save analyses automatically",
   "settingsAutoSaveBody": "Off means each report is kept only if you save it.",
+  "settingsAutoSnap": "Auto snap",
+  "@settingsAutoSnap": {
+    "description": "Settings switch for the automatic camera photo"
+  },
+  "settingsAutoSnapBody": "The camera takes the photo by itself once it sees a bone and the phone is still.",
+  "@settingsAutoSnapBody": {
+    "description": "Explains the auto snap switch"
+  },
   "settingsUnits": "Measurement units",
   "settingsHaptics": "Haptic feedback",
   "@settingsHaptics": {
@@ -2484,5 +2549,8 @@
   "statusGetReady": "Get it ready now",
   "@statusGetReady": {
     "description": "Button"
+  },
+  "@resultHowSure": {
+    "description": "Title of the box with the big percentage under the answer"
   }
 }

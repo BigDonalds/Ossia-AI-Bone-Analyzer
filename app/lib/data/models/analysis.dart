@@ -289,6 +289,7 @@ class AnalysisResult {
     this.length,
     this.lengthCheck,
     this.imageCount = 1,
+    this.photosWithBone,
     this.source,
   });
 
@@ -310,6 +311,10 @@ class AnalysisResult {
   /// ranges; species and element above already reflect it.
   final LengthCheck? lengthCheck;
   final int imageCount;
+
+  /// Of several photos, how many showed the bone; only those were read.
+  /// Null for one photo, or a report from before this was recorded.
+  final int? photosWithBone;
   final AnalysisSource? source;
 
   bool get isHuman => species.label == 'human';
@@ -355,17 +360,26 @@ class AnalysisResult {
   double get animalChance =>
       isHuman ? 0 : species.confidence * animalSpecies.confidence;
 
-  /// Overall trust in the result — the weakest link across the heads that
-  /// actually contribute to the headline.
+  /// The steps behind the headline and how sure each one is, in order:
+  /// finding the bone, human or animal, which bone and, for an animal with a
+  /// named group, which animal. Empty when no bone was found.
+  List<({String step, double chance})> get confidenceSteps => detection.present
+      ? <({String step, double chance})>[
+          (step: 'detect', chance: detection.confidence),
+          (step: 'species', chance: species.confidence),
+          if (topBone != null) (step: 'bone', chance: topBone!.confidence),
+          if (!isHuman && animalSpecies.confidence > 0)
+            (step: 'animal', chance: animalChance),
+        ]
+      : const <({String step, double chance})>[];
+
+  /// Overall trust in the result: the weakest of [confidenceSteps], or, when
+  /// no bone was found, how sure the model is that there is none.
   double get overallConfidence {
-    if (!detection.present) return detection.confidence;
-    final List<double> parts = <double>[
-      detection.confidence,
-      species.confidence,
-      if (topBone != null) topBone!.confidence,
-      if (!isHuman && animalSpecies.confidence > 0) animalChance,
-    ];
-    return parts.reduce((double a, double b) => a < b ? a : b);
+    if (!detection.present) return 1 - detection.confidence;
+    return confidenceSteps
+        .map((({String step, double chance}) s) => s.chance)
+        .reduce((double a, double b) => a < b ? a : b);
   }
 
   factory AnalysisResult.fromJson(Map<String, dynamic> j) {
@@ -398,6 +412,7 @@ class AnalysisResult {
           ? LengthCheck.fromJson(j['length_check'] as Map<String, dynamic>)
           : null,
       imageCount: (j['num_images_analyzed'] as int?) ?? 1,
+      photosWithBone: (m('phase9_multi_image')['photos_with_bone'] as num?)?.toInt(),
       source: j['engine'] is Map<String, dynamic>
           ? AnalysisSource.fromJson(j['engine'] as Map<String, dynamic>)
           : null,
@@ -424,6 +439,11 @@ class AnalysisResult {
         if (length != null) 'bone_length': length!.toJson(),
         if (lengthCheck != null) 'length_check': lengthCheck!.toJson(),
         'num_images_analyzed': imageCount,
+        if (photosWithBone != null)
+          'phase9_multi_image': <String, dynamic>{
+            'num_angles': imageCount,
+            'photos_with_bone': photosWithBone,
+          },
         if (source != null) 'engine': source!.toJson(),
       };
 }

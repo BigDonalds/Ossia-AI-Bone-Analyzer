@@ -1,5 +1,8 @@
+import 'dart:ui' show ImageFilter;
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart' show OverScrollHeaderStretchConfiguration;
 
 import '../../core/theme/motion.dart';
 import '../../core/theme/palette.dart';
@@ -8,8 +11,10 @@ import '../widgets/primitives.dart';
 import '../widgets/specimen_image.dart';
 
 /// Photograph header that parallaxes on scroll and hands off to a solid bar as
-/// it collapses. Several angles swipe sideways. The back button stays pinned
-/// to the top corner where reading starts (top-right in Arabic) throughout.
+/// it collapses. The whole photo shows below the button bar, over a blurred
+/// copy of itself, and pulling down at the top zooms it. Several angles swipe
+/// sideways. The back button stays pinned to the top corner where reading
+/// starts (top-right in Arabic) throughout.
 class SpecimenHeader extends SliverPersistentHeaderDelegate {
   SpecimenHeader({
     required this.imagePaths,
@@ -37,6 +42,9 @@ class SpecimenHeader extends SliverPersistentHeaderDelegate {
 
   static const double _bar = 60;
 
+  /// How far down the photo starts: below the status bar and the buttons.
+  static double photoTop(double topPadding) => topPadding + _bar;
+
   @override
   double get minExtent => topPadding + _bar;
 
@@ -44,36 +52,52 @@ class SpecimenHeader extends SliverPersistentHeaderDelegate {
   double get maxExtent => expandedHeight;
 
   @override
+  OverScrollHeaderStretchConfiguration get stretchConfiguration =>
+      OverScrollHeaderStretchConfiguration();
+
+  @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     final double range = (maxExtent - minExtent).clamp(1.0, double.infinity);
     final double t = (shrinkOffset / range).clamp(0.0, 1.0);
     final double solid = ((t - 0.55) / 0.35).clamp(0.0, 1.0);
+    final double inset = photoTop(topPadding);
 
     return Stack(
       fit: StackFit.expand,
       children: <Widget>[
         ClipRect(
-          child: Stack(
-            fit: StackFit.expand,
-            children: <Widget>[
-              Positioned(
-                top: -shrinkOffset * 0.32,
-                left: 0,
-                right: 0,
-                height: maxExtent,
-                child: imagePaths.length == 1
-                    ? SpecimenImage(path: imagePaths.single, fit: BoxFit.cover)
-                    : _PhotoPager(paths: imagePaths, colors: colors),
-              ),
-              // Chunky ink rule where the photo meets the page.
-              Positioned(
-                left: 0,
-                right: 0,
-                bottom: 0,
-                child: Container(height: Chunky.border + 0.8, color: colors.ink),
-              ),
-            ],
+          child: LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints box) {
+              // Pulled down past the top: the header is taller than its full
+              // size, and the photo grows from the top edge to fill it.
+              final double zoom = box.maxHeight > maxExtent ? box.maxHeight / maxExtent : 1;
+              return Stack(
+                fit: StackFit.expand,
+                children: <Widget>[
+                  Positioned(
+                    top: -shrinkOffset * 0.32,
+                    left: 0,
+                    right: 0,
+                    height: maxExtent,
+                    child: Transform.scale(
+                      scale: zoom,
+                      alignment: Alignment.topCenter,
+                      child: imagePaths.length == 1
+                          ? _Photo(path: imagePaths.single, top: inset)
+                          : _PhotoPager(paths: imagePaths, colors: colors, top: inset),
+                    ),
+                  ),
+                  // Chunky ink rule where the photo meets the page.
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    child: Container(height: _rule, color: colors.ink),
+                  ),
+                ],
+              );
+            },
           ),
         ),
 
@@ -143,12 +167,42 @@ class SpecimenHeader extends SliverPersistentHeaderDelegate {
       old.expandedHeight != expandedHeight;
 }
 
+const double _rule = Chunky.border + 0.8;
+
+/// One photo, whole, between [top] and the ink rule, over a blurred and
+/// darkened copy of itself that fills the rest of the header.
+class _Photo extends StatelessWidget {
+  const _Photo({required this.path, required this.top});
+
+  final String path;
+  final double top;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      fit: StackFit.expand,
+      children: <Widget>[
+        ImageFiltered(
+          imageFilter: ImageFilter.blur(sigmaX: 28, sigmaY: 28, tileMode: TileMode.clamp),
+          child: SpecimenImage(path: path, fit: BoxFit.cover),
+        ),
+        const ColoredBox(color: Color(0x33000000)),
+        Padding(
+          padding: EdgeInsets.only(top: top, bottom: _rule),
+          child: SpecimenImage(path: path, fit: BoxFit.contain),
+        ),
+      ],
+    );
+  }
+}
+
 /// Swipeable photos with page dots.
 class _PhotoPager extends StatefulWidget {
-  const _PhotoPager({required this.paths, required this.colors});
+  const _PhotoPager({required this.paths, required this.colors, required this.top});
 
   final List<String> paths;
   final AppColors colors;
+  final double top;
 
   @override
   State<_PhotoPager> createState() => _PhotoPagerState();
@@ -167,7 +221,7 @@ class _PhotoPagerState extends State<_PhotoPager> {
           itemCount: paths.length,
           onPageChanged: (int i) => setState(() => _page = i),
           itemBuilder: (BuildContext context, int i) =>
-              SpecimenImage(path: paths[i], fit: BoxFit.cover),
+              _Photo(path: paths[i], top: widget.top),
         ),
         Positioned(
           left: 0,

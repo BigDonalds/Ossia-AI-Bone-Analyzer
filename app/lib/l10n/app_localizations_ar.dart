@@ -297,7 +297,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get boneUnidentified => 'غير محدد';
 
   @override
-  String get noBoneDetected => 'لم يُكتشف عظم';
+  String get noBoneDetected => 'لم نعثر على عظمة';
 
   @override
   String get animalHuman => 'إنسان';
@@ -443,7 +443,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get ageAdult => 'بالغ';
 
   @override
-  String get ageJuvenile => 'يافع';
+  String get ageJuvenile => 'غير بالغ';
 
   @override
   String get sexMale => 'ذكر';
@@ -679,7 +679,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get atlasRadiusSiding =>
-      'الرأس الصغير في الطرف القريب والطرف العريض في الطرف البعيد؛ ويتجه الناتئ الإبري نحو الخارج، بعيدًا عن خط المنتصف.';
+      'الرأس الصغير هو الطرف القريب والطرف العريض هو البعيد؛ ويتجه الناتئ الإبري نحو الخارج، بعيدًا عن خط المنتصف.';
 
   @override
   String get atlasUlnaBlurb => 'العظم الإنسي في الساعد؛ رأس المرفق';
@@ -846,7 +846,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get atlasCervicalSiding =>
-      'متناظرة. يُعرف موقعها في السلسلة من الناتئ الشوكي وحجم الجسم؛ وللفقرة C7 شوكة طويلة غير مشقوقة تُعرف بـ«البارزة».';
+      'متناظرة. يُعرف موقعها في السلسلة من الناتئ الشوكي وحجم جسم الفقرة؛ وللفقرة C7 شوكة طويلة غير مشقوقة تُعرف بـ«البارزة».';
 
   @override
   String get atlasThoracicBlurb => 'T1–T12؛ تحمل الوجيهات الضلعية';
@@ -869,7 +869,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get atlasThoracicSiding =>
-      'متناظرة. يُستدل على الترتيب من حجم الجسم ومن مدى تراكب الناتئ الشوكي على الفقرة التي تحته.';
+      'متناظرة. يُستدل على الترتيب من حجم جسم الفقرة ومن مدى تراكب الناتئ الشوكي على الفقرة التي تحته.';
 
   @override
   String get atlasLumbarBlurb => 'L1–L5؛ الأثقل في العمود الفقري';
@@ -892,7 +892,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get atlasLumbarSiding =>
-      'متناظرة. تُعرف الفقرة L5 بشكلها الإسفيني، فهي أعمق من الأمام منها من الخلف، حيث تلتقي بالعجز.';
+      'متناظرة. تُعرف الفقرة L5 بشكلها الإسفيني، فارتفاعها من الأمام أكبر منه من الخلف حيث تلتقي بالعجز.';
 
   @override
   String get phaseDoc1Title => 'هل يوجد عظم؟';
@@ -927,7 +927,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get phaseDoc5Detail =>
-      'نعم أو لا بسرعة: هل العظم كامل، أم مجرد قطعة منه؟';
+      'سؤال سريع جوابه نعم أو لا: هل العظم كامل، أم مجرد قطعة منه؟';
 
   @override
   String get phaseDoc6Title => 'الآثار والأضرار';
@@ -948,7 +948,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get phaseDoc8Detail =>
-      'للعظام البشرية فقط. اعتبرها تلميحًا يجب التحقق منه، لا إجابة قائمة بذاتها.';
+      'للعظام البشرية فقط. اعتبرها إشارة تستحق التحقق منها، لا إجابة نهائية.';
 
   @override
   String get phaseDoc9Title => 'جمع النتائج';
@@ -1012,7 +1012,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get errNotAReport =>
-      'ردّ شيء ما، لكن ليس بتقرير. تحقّق من عنوان التحليل في الإعدادات.';
+      'وصل ردّ، لكنه ليس تقريرًا. تحقّق من عنوان التحليل في الإعدادات.';
 
   @override
   String get errGeneric => 'حدث خطأ ما. يُرجى المحاولة مجددًا.';
@@ -1113,7 +1113,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get netNotSecure => 'تعذّر إنشاء اتصال آمن';
 
   @override
-  String get netNotRunning => 'العنوان يعمل، لكن Ossia لا يعمل خلفه';
+  String get netNotRunning => 'العنوان يعمل، لكن Ossia لا يعمل عليه';
 
   @override
   String get netExpired => 'انتهت صلاحية هذا العنوان';
@@ -1210,7 +1210,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String lenNoUsual(String before) {
-    return 'ليس لدينا طول معتاد لـ$before، لذا لم يستطع الطول تأكيده. لقد ساعد فقط في الموازنة بين الخيارات الأخرى.';
+    return 'ليس لدينا طول معتاد لـ$before، لذا لم يستطع الطول تأكيده، وإنما ساعد فقط في الموازنة بين الخيارات الأخرى.';
   }
 
   @override
@@ -1230,12 +1230,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String lenPhotoAlone(String headline) {
-    return 'بحسب الصورة وحدها، كان $headline.';
+    return 'ولو اعتمدنا على الصورة وحدها لكانت النتيجة «$headline».';
   }
 
   @override
   String lenMeasuredOn(String thing, String animals) {
-    return '$thing (قيس على $animals)';
+    return '$thing (بحسب قياسات $animals)';
   }
 
   @override
@@ -1375,7 +1375,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String camHold(int cm) {
-    return 'ابتعد نحو $cm سم · واملأ الإطار';
+    return 'على بُعد $cm سم تقريبًا · املأ الإطار';
   }
 
   @override
@@ -1412,10 +1412,10 @@ class AppLocalizationsAr extends AppLocalizations {
       'العظمة نفسها من جهة أخرى. اقلبها أو صوّر أحد طرفيها.';
 
   @override
-  String get camShotFailed => 'تعذّر التقاط الصورة. تحاول مجددًا؟';
+  String get camShotFailed => 'تعذّر التقاط الصورة. نحاول مجددًا؟';
 
   @override
-  String get camNoAccess => 'لا إذن للكاميرا';
+  String get camNoAccess => 'لا إذن باستخدام الكاميرا';
 
   @override
   String get camNoAccessBody =>
@@ -1429,7 +1429,33 @@ class AppLocalizationsAr extends AppLocalizations {
       'تعذّر تشغيل الكاميرا هنا. هل ترفع صورة بدلًا من ذلك؟';
 
   @override
-  String get reviewDropTitle => 'هل تتخلى عن هذه الصور؟';
+  String get camAuto => 'الالتقاط التلقائي';
+
+  @override
+  String get camAutoOnTip =>
+      'الالتقاط التلقائي مُفعَّل. ضع العظمة داخل الإطار وثبّت الهاتف.';
+
+  @override
+  String get camAutoOffTip =>
+      'الالتقاط التلقائي متوقف. اضغط الزر الكبير لالتقاط الصورة.';
+
+  @override
+  String get camAutoSpotted => 'وجدنا عظمة!';
+
+  @override
+  String get camAutoFound => 'وجدتُها! ثبّت الهاتف الآن.';
+
+  @override
+  String get camAutoHolding => 'ممتاز، ابقَ هكذا…';
+
+  @override
+  String get camAutoSnapped => 'التُقطت!';
+
+  @override
+  String get camAutoRearm => 'حرّك الهاتف قليلًا لالتقاط صورة أخرى.';
+
+  @override
+  String get reviewDropTitle => 'هل تتخلّص من هذه الصور؟';
 
   @override
   String reviewDropNew(int count) {
@@ -1451,7 +1477,7 @@ class AppLocalizationsAr extends AppLocalizations {
       'لن تُحلَّل الزوايا التي أضفتها أو حذفتها، وسيبقى التقرير المحفوظ كما هو.';
 
   @override
-  String get reviewDropConfirm => 'تخلَّ عنها';
+  String get reviewDropConfirm => 'تخلّص منها';
 
   @override
   String get reviewTypeLength => 'اكتب الطول';
@@ -1541,7 +1567,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get reviewAnglesBodyOne =>
-      'العظمة نفسها من جهة أخرى. قد يحل الظهر أو أحد الطرفين أو لقطة قريبة لغز عظمة صعبة، وتُقرأ كل الصور معًا.';
+      'العظمة نفسها من جهة أخرى. قد يحل الوجه الخلفي أو أحد الطرفين أو لقطة قريبة لغزَ عظمة صعبة، وتُقرأ كل الصور معًا.';
 
   @override
   String reviewAnglesBodyMany(int count) {
@@ -1768,11 +1794,23 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get resultHowSure => 'ما مدى ثقتنا؟';
+  String resultAnglesWithBone(int seen, int count) {
+    return 'العظمة ظاهرة في $seen من $count';
+  }
 
   @override
-  String get resultShakiest =>
-      'الثقة لا تتجاوز أضعف خطوة: إيجاد العظمة، والتمييز بين الإنسان والحيوان، وتسمية العظمة، ومعرفة الحيوان إن كانت لحيوان.';
+  String get resultHowSure => 'ما مدى الثقة في هذه النتيجة؟';
+
+  @override
+  String get resultHowSureSteps =>
+      'النتيجة لا تكون أقوى من أضعف خطوة فيها، لذلك النسبة في الأعلى هي أدنى هذه النسب.';
+
+  @override
+  String get resultHowSureNone =>
+      'مدى ثقة التطبيق بأن هذه الصورة لا تظهر فيها عظمة.';
+
+  @override
+  String get resultStepBone => 'عظمة أم لا';
 
   @override
   String get resultCouldAlsoBe => 'غير مؤكد. قد تكون أيضًا:';
@@ -1785,7 +1823,7 @@ class AppLocalizationsAr extends AppLocalizations {
       'لم نجد عظمة في هذه الصورة. جرّب خلفية سادة، واقترب حتى تملأ العظمة معظم الصورة.';
 
   @override
-  String get resultIdentification => 'التعرّف';
+  String get resultIdentification => 'تحديد الهوية';
 
   @override
   String get resultHumanOrAnimal => 'إنسان أم حيوان';
@@ -1892,13 +1930,14 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resultInsideRange => 'ضمن النطاق المعتاد تمامًا. رائع.';
 
   @override
-  String get resultOutsideRange => 'خارج النطاق المعتاد. تستحق نظرة ثانية.';
+  String get resultOutsideRange =>
+      'خارج النطاق المعتاد. يستحق الأمر نظرة ثانية.';
 
   @override
   String get resultInsideEstimate => 'ضمن التقدير تمامًا. رائع.';
 
   @override
-  String get resultOutsideEstimate => 'خارج التقدير. تستحق نظرة ثانية.';
+  String get resultOutsideEstimate => 'خارج التقدير. يستحق الأمر نظرة ثانية.';
 
   @override
   String get resultReference => 'المرجع';
@@ -1910,7 +1949,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get resultDisclaimer =>
-      'يقدّم Ossia أفضل تخمين، لا جوابًا نهائيًا. لا تعتمد عليه في قرارات طبية أو قانونية أو أمنية من دون أن يفحص خبير العظمة بنفسه.';
+      'يقدّم Ossia أفضل تخمين، لا جوابًا نهائيًا. لا تعتمد عليه في قرارات طبية أو قانونية أو أمنية من دون أن يفحص خبير عظام العظمةَ بنفسه.';
 
   @override
   String get libTitle => 'مجموعتي';
@@ -1986,11 +2025,11 @@ class AppLocalizationsAr extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count عظمة يعرفها الذكاء الاصطناعي جيدًا',
-      many: '$count عظمة يعرفها الذكاء الاصطناعي جيدًا',
-      few: '$count عظام يعرفها الذكاء الاصطناعي جيدًا',
-      two: 'عظمتان يعرفهما الذكاء الاصطناعي جيدًا',
-      one: 'عظمة واحدة يعرفها الذكاء الاصطناعي جيدًا',
+      other: '$count عظمة يحفظها الذكاء الاصطناعي عن ظهر قلب',
+      many: '$count عظمة يحفظها الذكاء الاصطناعي عن ظهر قلب',
+      few: '$count عظام يحفظها الذكاء الاصطناعي عن ظهر قلب',
+      two: 'عظمتان يحفظهما الذكاء الاصطناعي عن ظهر قلب',
+      one: 'عظمة واحدة يحفظها الذكاء الاصطناعي عن ظهر قلب',
       zero: 'لا عظام بعد',
     );
     return '$_temp0';
@@ -2090,6 +2129,13 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get settingsAutoSaveBody =>
       'عند الإيقاف، لا يُحفظ التقرير إلا إذا حفظته بنفسك.';
+
+  @override
+  String get settingsAutoSnap => 'الالتقاط التلقائي';
+
+  @override
+  String get settingsAutoSnapBody =>
+      'تلتقط الكاميرا الصورة بنفسها حين ترى عظمة ويكون الهاتف ثابتًا.';
 
   @override
   String get settingsUnits => 'وحدة القياس';
@@ -2261,7 +2307,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get statusFailedBody =>
-      'منع شيءٌ Ossia من البدء على هذا الهاتف. حاول مجددًا أو أعد تشغيل التطبيق.';
+      'حال شيء دون تشغيل Ossia على هذا الهاتف. حاول مجددًا أو أعد تشغيل التطبيق.';
 
   @override
   String get statusOnPhoneTitle => 'التحليل على هذا الهاتف';
@@ -2315,7 +2361,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get statusSleeping => 'نائم';
 
   @override
-  String get statusGettingReady => 'يستعد…';
+  String get statusGettingReady => 'جارٍ التجهيز…';
 
   @override
   String get statusCouldntStart => 'تعذّر البدء';
@@ -2327,7 +2373,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get statusNo => 'لا';
 
   @override
-  String get statusPhotosSent => 'إرسال الصور إلى أي مكان';
+  String get statusPhotosSent => 'تغادر الصور هاتفك';
 
   @override
   String get statusNever => 'أبدًا';

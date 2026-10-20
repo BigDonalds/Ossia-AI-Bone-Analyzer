@@ -448,28 +448,76 @@ class _Phone extends StatelessWidget {
 
   final BuddyMood mood;
 
+  static const Color _ink = Color(0xFF141414);
+
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 74,
       height: 124,
-      padding: const EdgeInsets.fromLTRB(6, 12, 6, 12),
+      padding: const EdgeInsets.symmetric(horizontal: 6),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFF141414), width: 2.4),
+        border: Border.all(color: _ink, width: 2.4),
         boxShadow: const <BoxShadow>[
-          BoxShadow(color: Color(0xFF141414), offset: Offset(3, 3)),
+          BoxShadow(color: _ink, offset: Offset(3, 3)),
         ],
       ),
-      child: Container(
-        decoration: BoxDecoration(
-          color: const Color(0xFFFFE8F2),
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: const Color(0xFF141414), width: 1.6),
-        ),
-        alignment: Alignment.center,
-        child: BoneBuddy(size: 52, mood: mood, tilt: -0.2),
+      child: Column(
+        children: <Widget>[
+          // Earpiece with the front camera beside it.
+          SizedBox(
+            height: 13,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const SizedBox(width: 9),
+                Container(
+                  width: 18,
+                  height: 3.6,
+                  decoration: BoxDecoration(
+                    color: _ink,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+                const SizedBox(width: 4),
+                Container(
+                  width: 5,
+                  height: 5,
+                  decoration: const BoxDecoration(color: _ink, shape: BoxShape.circle),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: const Color(0xFFFFE8F2),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: _ink, width: 1.6),
+              ),
+              alignment: Alignment.center,
+              child: BoneBuddy(size: 52, mood: mood, tilt: -0.2),
+            ),
+          ),
+          // Home button.
+          SizedBox(
+            height: 20,
+            child: Center(
+              child: Container(
+                width: 11,
+                height: 11,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: _ink, width: 1.6),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

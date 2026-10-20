@@ -59,6 +59,9 @@ MAMMAL_FAMILIES = ['canid', 'cervid', 'bovid', 'suid', 'felid', 'ursid', 'lepori
 # whole limb bones, pelvis or scapula. A rib, a vertebra or a shaft splinter says little
 # about the animal, and training on them teaches the photo setting instead.
 FAMILY_BONE_TYPES = ('skull', 'cranium', 'mandible', 'femur', 'humerus', 'tibia', 'radius', 'ulna', 'os_coxa', 'scapula')
+# A family is named only when it holds at least this share of the mammal probability; a
+# weaker family guess is wrong more often than right, so the answer stays at 'mammal'.
+FAMILY_MIN_CONFIDENCE = 0.5
 
 NUM_PARTS = len(PART_LABELS)
 NUM_COMPLETENESS = len(COMPLETENESS_LABELS)

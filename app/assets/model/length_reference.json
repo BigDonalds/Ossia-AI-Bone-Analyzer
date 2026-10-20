@@ -1,9 +1,13 @@
 {
-  "about": "Reference ranges for the greatest length of complete bones, used by models/length_check.py to re-rank identifications when the user measures the bone. Keys are 'human' or one of the model's mammal family groups (config.MAMMAL_FAMILIES), then BONE_TYPES names; each entry says which animals it was measured on. A taxon/bone pair that is missing is simply not checked. Birds span sparrows to ostriches, so they get only an upper bound ('upper_bound_only'): the femur and tibia (tibiotarsus) of the ostrich, the largest living bird. That rules a bird out for longer bones and says nothing about shorter ones. Bird wing bones are not covered.",
+  "about": "Reference ranges used by inference/length_check.py to re-rank identifications when the user measures the bone. 'ranges' holds the greatest length of complete bones; 'widths' holds three widths that also work on broken bones: end_width (across an end, at its widest; either end, so a broken-off end counts), shaft_width (across the shaft at its narrowest) and head_diameter (the ball of the femur or humerus, or the hip socket). Keys are 'human' or one of the model's mammal family groups (config.MAMMAL_FAMILIES), then BONE_TYPES names; each entry says which animals it was measured on. A taxon/bone pair that is missing is simply not checked. Birds span sparrows to ostriches, so they get only an upper bound on length ('upper_bound_only'): the femur and tibia (tibiotarsus) of the ostrich, the largest living bird. That rules a bird out for longer bones and says nothing about shorter ones. Bird wing bones and bird widths are not covered.",
   "units": "cm",
   "measurement": {
     "long_bones": "Greatest length, end to end, of a complete femur, humerus, tibia, radius or ulna.",
-    "cranium": "Greatest cranial length, glabella to opisthocranion (front of the brow ridge to the back of the skull)."
+    "flat_bones": "Greatest length, end to end, of a complete os coxa (hip bone) or scapula (shoulder blade).",
+    "cranium": "Greatest cranial length, glabella to opisthocranion (front of the brow ridge to the back of the skull).",
+    "end_width": "Greatest breadth across one end of a long bone (OsteoID's maximum proximal and distal widths, either end).",
+    "shaft_width": "Breadth of the shaft at its narrowest (von den Driesch SD); for humans, the midshaft diameters front-to-back and side-to-side.",
+    "head_diameter": "Diameter of the femoral or humeral head, or of the hip socket (acetabulum): von den Driesch DC (femur head depth) and LA (acetabulum length) for animals; Goldman FHD, HHD and AcH for humans."
   },
   "confidence_levels": {
     "high": "Measured specimen ranges agree with published population statistics.",
@@ -11,10 +15,12 @@
     "low": "Covers only part of what the class name includes (e.g. one wild species of a group with larger domestic forms)."
   },
   "sources": {
-    "osteoid": "OsteoID Bone Identification, 'Max Length' on each species/bone page, https://boneidentification.com/bones/<species>-<bone>/ (accessed 2026-09-14). Ranges appear to include juvenile specimens.",
+    "osteoid": "OsteoID Bone Identification, 'Max Length', 'Max Proximal Width' and 'Max Distal Width' on each species/bone page, https://boneidentification.com/bones/<species>-<bone>/ (accessed 2026-09-14 for the first lengths, 2026-10-02 for widths, os coxa, scapula and the added species). Ranges appear to include juvenile specimens.",
     "human_literature": "Adult population statistics used to check the human ranges: femur 39.2-49.0 cm (males) and 36.0-46.9 cm (females) in 200 Indian adults, https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8811676/ ; Southern Brazil means femur 46.4, humerus 33.5, radius 26.2, ulna 27.9, tibia 38.8 cm, https://www.bjfs.org/forensicjournal/download.php?arquivo=389 ; Spanish cadaver means, https://pubmed.ncbi.nlm.nih.gov/24611570/ ; female humerus 27.7 +/- 1.1 cm, https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7003718/ . Accessed 2026-09-14.",
     "craniometric_literature": "Greatest cranial length (g-op) averages about 18-19.5 cm in adult males and slightly less in females, with population means as low as about 16.2 cm reported; standard deviations about 0.6-1.0 cm. Accessed 2026-09-14.",
-    "ostrich_morphometrics": "Kassem, Tahon, Khalil & El-Ayat 2023, \"Morphometric studies on the appendicular bony skeleton of the ostriches (Struthio camelus)\", BMC Veterinary Research, https://pmc.ncbi.nlm.nih.gov/articles/PMC10401756/ : 12 adult males, femur 30.00 +/- 0.23 cm, tibiotarsus 52.00 +/- 0.50 cm. Accessed 2026-10-01."
+    "ostrich_morphometrics": "Kassem, Tahon, Khalil & El-Ayat 2023, \"Morphometric studies on the appendicular bony skeleton of the ostriches (Struthio camelus)\", BMC Veterinary Research, https://pmc.ncbi.nlm.nih.gov/articles/PMC10401756/ : 12 adult males, femur 30.00 +/- 0.23 cm, tibiotarsus 52.00 +/- 0.50 cm. Accessed 2026-10-01.",
+    "goldman": "Goldman Osteometric Data Set (B. M. Auerbach): 1,538 adult skeletons from 59 locations worldwide, mostly preindustrial. Ranges are the 0.5th-99.5th percentiles of each measurement, left and right averaged. Measurement guide https://web.utk.edu/~auerbach/GoldMeasures.pdf ; data as packaged in https://github.com/geanes/bioanth (inst/extdata/Goldman.csv). Accessed 2026-10-02.",
+    "open_context_zooarch": "EOL Computational Data Challenge: Zooarchaeology Metrics Dataset, Open Context, archived at https://zenodo.org/records/10742251 : 20,725 measured archaeological animal bones (mostly Neolithic to Iron Age sites in Turkey and the eastern Mediterranean) recorded after von den Driesch (1976). Values under half or over twice their genus's median were dropped as recording errors; ranges are the 1st-99th percentile from 100 bones up, else the full range, and need at least 10 bones. Ancient domestic animals were smaller than many modern breeds, hence the low confidence; only bovids (with cattle), pigs and the horse family are used, because the deer (fallow, roe and red deer) and dogs measured leave out elk, moose, wolves and big breeds. Accessed 2026-10-02."
   },
   "ranges": {
     "human": {
@@ -55,6 +61,18 @@
         "confidence": "medium",
         "source": "craniometric_literature",
         "note": "Adult; population means minus/plus about 2 SD."
+      },
+      "os_coxa": {
+        "min_cm": 16.6,
+        "max_cm": 23.7,
+        "confidence": "medium",
+        "source": "osteoid"
+      },
+      "scapula": {
+        "min_cm": 12.7,
+        "max_cm": 21.2,
+        "confidence": "medium",
+        "source": "osteoid"
       }
     },
     "canid": {
@@ -63,116 +81,151 @@
         "max_cm": 28.1,
         "confidence": "medium",
         "source": "osteoid",
-        "measured_on": "domestic dogs (all breeds) and red and gray fox",
-        "note": "All breeds, so length says little about dogs. Red and gray fox combined. Dog and fox ranges combined; wolves can run a little longer."
+        "measured_on": "domestic dogs (all breeds), red and gray fox, coyote and wolf"
       },
       "humerus": {
         "min_cm": 5.4,
         "max_cm": 26.8,
         "confidence": "medium",
         "source": "osteoid",
-        "measured_on": "domestic dogs (all breeds) and red and gray fox",
-        "note": "Dog and fox ranges combined; wolves can run a little longer."
+        "measured_on": "domestic dogs (all breeds), red and gray fox, coyote and wolf"
       },
       "radius": {
         "min_cm": 5.1,
         "max_cm": 26.7,
         "confidence": "medium",
         "source": "osteoid",
-        "measured_on": "domestic dogs (all breeds) and red and gray fox",
-        "note": "Dog and fox ranges combined; wolves can run a little longer."
+        "measured_on": "domestic dogs (all breeds), red and gray fox, coyote and wolf"
       },
       "tibia": {
         "min_cm": 6.5,
         "max_cm": 29.2,
         "confidence": "medium",
         "source": "osteoid",
-        "measured_on": "domestic dogs (all breeds) and red and gray fox",
-        "note": "Dog and fox ranges combined; wolves can run a little longer."
+        "measured_on": "domestic dogs (all breeds), red and gray fox, coyote and wolf"
       },
       "ulna": {
         "min_cm": 6.2,
         "max_cm": 31.4,
         "confidence": "medium",
         "source": "osteoid",
-        "measured_on": "domestic dogs (all breeds) and red and gray fox",
-        "note": "Dog and fox ranges combined; wolves can run a little longer."
+        "measured_on": "domestic dogs (all breeds), red and gray fox, coyote and wolf"
+      },
+      "os_coxa": {
+        "min_cm": 5.6,
+        "max_cm": 22.6,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "domestic dogs (all breeds), red and gray fox, coyote and wolf"
+      },
+      "scapula": {
+        "min_cm": 5.0,
+        "max_cm": 21.3,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "domestic dogs (all breeds), red and gray fox, coyote and wolf"
       }
     },
     "cervid": {
       "femur": {
         "min_cm": 18.1,
-        "max_cm": 30.4,
-        "confidence": "low",
+        "max_cm": 51.8,
+        "confidence": "medium",
         "source": "osteoid",
-        "measured_on": "white-tailed and mule deer",
-        "note": "White-tailed and mule deer combined; elk and moose are much larger and not covered. Elk, moose and reindeer run much longer and are not covered."
+        "measured_on": "white-tailed and mule deer, elk and moose"
       },
       "humerus": {
         "min_cm": 15.4,
-        "max_cm": 25.0,
-        "confidence": "low",
+        "max_cm": 36.3,
+        "confidence": "medium",
         "source": "osteoid",
-        "measured_on": "white-tailed and mule deer",
-        "note": "Elk, moose and reindeer run much longer and are not covered."
+        "measured_on": "white-tailed and mule deer, elk and moose (white tailed deer, mule deer, elk only)"
       },
       "radius": {
         "min_cm": 16.8,
-        "max_cm": 26.3,
-        "confidence": "low",
+        "max_cm": 46.4,
+        "confidence": "medium",
         "source": "osteoid",
-        "measured_on": "white-tailed and mule deer",
-        "note": "Elk, moose and reindeer run much longer and are not covered."
+        "measured_on": "white-tailed and mule deer, elk and moose"
       },
       "tibia": {
         "min_cm": 18.9,
-        "max_cm": 34.8,
-        "confidence": "low",
+        "max_cm": 56.7,
+        "confidence": "medium",
         "source": "osteoid",
-        "measured_on": "white-tailed and mule deer",
-        "note": "Elk, moose and reindeer run much longer and are not covered."
+        "measured_on": "white-tailed and mule deer, elk and moose"
       },
       "ulna": {
         "min_cm": 19.0,
-        "max_cm": 33.2,
-        "confidence": "low",
+        "max_cm": 59.6,
+        "confidence": "medium",
         "source": "osteoid",
-        "measured_on": "white-tailed and mule deer",
-        "note": "Elk, moose and reindeer run much longer and are not covered."
+        "measured_on": "white-tailed and mule deer, elk and moose"
+      },
+      "os_coxa": {
+        "min_cm": 17.0,
+        "max_cm": 60.0,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "white-tailed and mule deer, elk and moose"
+      },
+      "scapula": {
+        "min_cm": 14.2,
+        "max_cm": 51.5,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "white-tailed and mule deer, elk and moose"
       }
     },
     "bovid": {
       "femur": {
-        "min_cm": 19.9,
+        "min_cm": 14.0,
         "max_cm": 55.2,
-        "confidence": "low",
+        "confidence": "medium",
         "source": "osteoid",
-        "measured_on": "cattle",
-        "note": "Sheep, goats and small antelope are much shorter and are not covered."
+        "measured_on": "cattle, sheep and goat"
       },
       "humerus": {
-        "min_cm": 24.2,
+        "min_cm": 11.6,
         "max_cm": 41.3,
-        "confidence": "low",
+        "confidence": "medium",
         "source": "osteoid",
-        "measured_on": "cattle",
-        "note": "Sheep, goats and small antelope are much shorter and are not covered."
+        "measured_on": "cattle, sheep and goat"
       },
       "radius": {
-        "min_cm": 24.2,
+        "min_cm": 11.8,
         "max_cm": 34.2,
-        "confidence": "low",
+        "confidence": "medium",
         "source": "osteoid",
-        "measured_on": "cattle",
-        "note": "No separate ulna page (fused to the radius). Sheep, goats and small antelope are much shorter and are not covered."
+        "measured_on": "cattle, sheep and goat"
       },
       "tibia": {
-        "min_cm": 28.9,
+        "min_cm": 15.9,
         "max_cm": 45.2,
-        "confidence": "low",
+        "confidence": "medium",
         "source": "osteoid",
-        "measured_on": "cattle",
-        "note": "Sheep, goats and small antelope are much shorter and are not covered."
+        "measured_on": "cattle, sheep and goat"
+      },
+      "ulna": {
+        "min_cm": 12.4,
+        "max_cm": 25.4,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "cattle, sheep and goat (sheep, goat only)"
+      },
+      "os_coxa": {
+        "min_cm": 13.0,
+        "max_cm": 70.6,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "cattle, sheep and goat"
+      },
+      "scapula": {
+        "min_cm": 9.8,
+        "max_cm": 53.9,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "cattle, sheep and goat"
       }
     },
     "suid": {
@@ -210,6 +263,20 @@
         "confidence": "medium",
         "source": "osteoid",
         "measured_on": "domestic pig and wild boar"
+      },
+      "os_coxa": {
+        "min_cm": 13.8,
+        "max_cm": 38.3,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "domestic pig and wild boar"
+      },
+      "scapula": {
+        "min_cm": 14.2,
+        "max_cm": 30.6,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "domestic pig and wild boar"
       }
     },
     "felid": {
@@ -218,40 +285,49 @@
         "max_cm": 12.9,
         "confidence": "low",
         "source": "osteoid",
-        "measured_on": "domestic cat",
-        "note": "Big cats run far longer and are not covered."
+        "measured_on": "domestic cat"
       },
       "humerus": {
         "min_cm": 7.3,
         "max_cm": 11.7,
         "confidence": "low",
         "source": "osteoid",
-        "measured_on": "domestic cat",
-        "note": "Big cats run far longer and are not covered."
+        "measured_on": "domestic cat"
       },
       "radius": {
         "min_cm": 6.1,
         "max_cm": 11.4,
         "confidence": "low",
         "source": "osteoid",
-        "measured_on": "domestic cat",
-        "note": "Big cats run far longer and are not covered."
+        "measured_on": "domestic cat"
       },
       "tibia": {
         "min_cm": 8.1,
         "max_cm": 13.2,
         "confidence": "low",
         "source": "osteoid",
-        "measured_on": "domestic cat",
-        "note": "Big cats run far longer and are not covered."
+        "measured_on": "domestic cat"
       },
       "ulna": {
         "min_cm": 7.2,
         "max_cm": 13.5,
         "confidence": "low",
         "source": "osteoid",
-        "measured_on": "domestic cat",
-        "note": "Big cats run far longer and are not covered."
+        "measured_on": "domestic cat"
+      },
+      "os_coxa": {
+        "min_cm": 5.8,
+        "max_cm": 9.6,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "domestic cat"
+      },
+      "scapula": {
+        "min_cm": 4.9,
+        "max_cm": 8.8,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "domestic cat"
       }
     },
     "ursid": {
@@ -260,8 +336,7 @@
         "max_cm": 51.5,
         "confidence": "medium",
         "source": "osteoid",
-        "measured_on": "black and brown bear",
-        "note": "Black and brown bear combined."
+        "measured_on": "black and brown bear"
       },
       "humerus": {
         "min_cm": 22.8,
@@ -290,6 +365,20 @@
         "confidence": "medium",
         "source": "osteoid",
         "measured_on": "black and brown bear"
+      },
+      "os_coxa": {
+        "min_cm": 21.4,
+        "max_cm": 40.5,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "black and brown bear"
+      },
+      "scapula": {
+        "min_cm": 16.0,
+        "max_cm": 34.6,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "black and brown bear"
       }
     },
     "leporid": {
@@ -298,40 +387,49 @@
         "max_cm": 9.0,
         "confidence": "low",
         "source": "osteoid",
-        "measured_on": "eastern cottontail",
-        "note": "Eastern cottontail only; domestic breeds can be larger. Hares and large domestic rabbits run longer."
+        "measured_on": "eastern cottontail"
       },
       "humerus": {
         "min_cm": 5.4,
         "max_cm": 6.8,
         "confidence": "low",
         "source": "osteoid",
-        "measured_on": "eastern cottontail",
-        "note": "Hares and large domestic rabbits run longer."
+        "measured_on": "eastern cottontail"
       },
       "radius": {
         "min_cm": 4.7,
         "max_cm": 6.7,
         "confidence": "low",
         "source": "osteoid",
-        "measured_on": "eastern cottontail",
-        "note": "Hares and large domestic rabbits run longer."
+        "measured_on": "eastern cottontail"
       },
       "tibia": {
         "min_cm": 7.9,
         "max_cm": 10.0,
         "confidence": "low",
         "source": "osteoid",
-        "measured_on": "eastern cottontail",
-        "note": "Hares and large domestic rabbits run longer."
+        "measured_on": "eastern cottontail"
       },
       "ulna": {
         "min_cm": 6.1,
         "max_cm": 7.6,
         "confidence": "low",
         "source": "osteoid",
-        "measured_on": "eastern cottontail",
-        "note": "Hares and large domestic rabbits run longer."
+        "measured_on": "eastern cottontail"
+      },
+      "os_coxa": {
+        "min_cm": 5.3,
+        "max_cm": 7.3,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "eastern cottontail"
+      },
+      "scapula": {
+        "min_cm": 4.8,
+        "max_cm": 6.3,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "eastern cottontail"
       }
     },
     "procyonid": {
@@ -369,6 +467,20 @@
         "confidence": "medium",
         "source": "osteoid",
         "measured_on": "raccoon"
+      },
+      "os_coxa": {
+        "min_cm": 7.2,
+        "max_cm": 11.5,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "raccoon"
+      },
+      "scapula": {
+        "min_cm": 5.0,
+        "max_cm": 8.6,
+        "confidence": "medium",
+        "source": "osteoid",
+        "measured_on": "raccoon"
       }
     },
     "equid": {
@@ -377,32 +489,42 @@
         "max_cm": 53.2,
         "confidence": "low",
         "source": "osteoid",
-        "measured_on": "horse",
-        "note": "Donkeys and ponies are shorter and are not covered."
+        "measured_on": "horse"
       },
       "humerus": {
         "min_cm": 22.8,
         "max_cm": 41.9,
         "confidence": "low",
         "source": "osteoid",
-        "measured_on": "horse",
-        "note": "Donkeys and ponies are shorter and are not covered."
+        "measured_on": "horse"
       },
       "radius": {
         "min_cm": 33.1,
         "max_cm": 41.3,
         "confidence": "low",
         "source": "osteoid",
-        "measured_on": "horse",
-        "note": "No separate ulna page (fused to the radius). Donkeys and ponies are shorter and are not covered."
+        "measured_on": "horse"
       },
       "tibia": {
         "min_cm": 27.9,
         "max_cm": 47.2,
         "confidence": "low",
         "source": "osteoid",
-        "measured_on": "horse",
-        "note": "Donkeys and ponies are shorter and are not covered."
+        "measured_on": "horse"
+      },
+      "os_coxa": {
+        "min_cm": 31.7,
+        "max_cm": 59.6,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "horse"
+      },
+      "scapula": {
+        "min_cm": 26.6,
+        "max_cm": 52.3,
+        "confidence": "low",
+        "source": "osteoid",
+        "measured_on": "horse"
       }
     },
     "bird": {
@@ -421,6 +543,426 @@
         "upper_bound_only": true,
         "source": "ostrich_morphometrics",
         "note": "Upper bound only: no living bird has a longer one (ostrich, the largest, averages 52.0 cm). Extinct moa and elephant birds were bigger. The bird tibia is the tibiotarsus."
+      }
+    }
+  },
+  "widths": {
+    "end_width": {
+      "canid": {
+        "femur": {
+          "min_cm": 1.4,
+          "max_cm": 6.2,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "domestic dogs (all breeds), red and gray fox, coyote and wolf"
+        },
+        "humerus": {
+          "min_cm": 1.0,
+          "max_cm": 6.2,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "domestic dogs (all breeds), red and gray fox, coyote and wolf"
+        },
+        "tibia": {
+          "min_cm": 0.9,
+          "max_cm": 5.7,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "domestic dogs (all breeds), red and gray fox, coyote and wolf"
+        },
+        "radius": {
+          "min_cm": 0.5,
+          "max_cm": 3.9,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "domestic dogs (all breeds), red and gray fox, coyote and wolf"
+        }
+      },
+      "cervid": {
+        "femur": {
+          "min_cm": 3.4,
+          "max_cm": 14.2,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "white-tailed and mule deer, elk and moose"
+        },
+        "tibia": {
+          "min_cm": 2.6,
+          "max_cm": 12.4,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "white-tailed and mule deer, elk and moose"
+        },
+        "radius": {
+          "min_cm": 2.4,
+          "max_cm": 8.7,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "white-tailed and mule deer, elk and moose"
+        }
+      },
+      "bovid": {
+        "femur": {
+          "min_cm": 3.1,
+          "max_cm": 19.1,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "cattle, sheep and goat"
+        },
+        "humerus": {
+          "min_cm": 2.1,
+          "max_cm": 16.2,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "cattle, sheep and goat"
+        },
+        "tibia": {
+          "min_cm": 1.9,
+          "max_cm": 14.1,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "cattle, sheep and goat"
+        },
+        "radius": {
+          "min_cm": 2.3,
+          "max_cm": 10.5,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "cattle, sheep and goat"
+        }
+      },
+      "suid": {
+        "femur": {
+          "min_cm": 3.4,
+          "max_cm": 8.7,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "domestic pig and wild boar"
+        },
+        "humerus": {
+          "min_cm": 1.8,
+          "max_cm": 11.4,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "domestic pig and wild boar"
+        },
+        "tibia": {
+          "min_cm": 2.5,
+          "max_cm": 7.7,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "domestic pig and wild boar"
+        },
+        "radius": {
+          "min_cm": 2.0,
+          "max_cm": 5.3,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "domestic pig and wild boar"
+        }
+      },
+      "felid": {
+        "femur": {
+          "min_cm": 1.1,
+          "max_cm": 2.5,
+          "confidence": "low",
+          "source": "osteoid",
+          "measured_on": "domestic cat"
+        },
+        "humerus": {
+          "min_cm": 1.2,
+          "max_cm": 2.4,
+          "confidence": "low",
+          "source": "osteoid",
+          "measured_on": "domestic cat"
+        },
+        "tibia": {
+          "min_cm": 1.0,
+          "max_cm": 2.4,
+          "confidence": "low",
+          "source": "osteoid",
+          "measured_on": "domestic cat"
+        },
+        "radius": {
+          "min_cm": 0.5,
+          "max_cm": 1.5,
+          "confidence": "low",
+          "source": "osteoid",
+          "measured_on": "domestic cat"
+        }
+      },
+      "ursid": {
+        "femur": {
+          "min_cm": 5.1,
+          "max_cm": 12.4,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "black and brown bear"
+        },
+        "humerus": {
+          "min_cm": 3.8,
+          "max_cm": 14.4,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "black and brown bear"
+        },
+        "tibia": {
+          "min_cm": 3.8,
+          "max_cm": 10.2,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "black and brown bear"
+        },
+        "radius": {
+          "min_cm": 2.6,
+          "max_cm": 7.2,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "black and brown bear"
+        }
+      },
+      "leporid": {
+        "femur": {
+          "min_cm": 1.0,
+          "max_cm": 1.9,
+          "confidence": "low",
+          "source": "osteoid",
+          "measured_on": "eastern cottontail"
+        },
+        "humerus": {
+          "min_cm": 0.6,
+          "max_cm": 1.2,
+          "confidence": "low",
+          "source": "osteoid",
+          "measured_on": "eastern cottontail"
+        },
+        "tibia": {
+          "min_cm": 0.6,
+          "max_cm": 1.5,
+          "confidence": "low",
+          "source": "osteoid",
+          "measured_on": "eastern cottontail"
+        },
+        "radius": {
+          "min_cm": 0.4,
+          "max_cm": 0.6,
+          "confidence": "low",
+          "source": "osteoid",
+          "measured_on": "eastern cottontail"
+        }
+      },
+      "procyonid": {
+        "femur": {
+          "min_cm": 1.9,
+          "max_cm": 3.1,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "raccoon"
+        },
+        "humerus": {
+          "min_cm": 1.3,
+          "max_cm": 2.6,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "raccoon"
+        },
+        "tibia": {
+          "min_cm": 1.2,
+          "max_cm": 2.8,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "raccoon"
+        },
+        "radius": {
+          "min_cm": 0.8,
+          "max_cm": 1.4,
+          "confidence": "medium",
+          "source": "osteoid",
+          "measured_on": "raccoon"
+        }
+      },
+      "equid": {
+        "femur": {
+          "min_cm": 7.1,
+          "max_cm": 16.4,
+          "confidence": "low",
+          "source": "osteoid",
+          "measured_on": "horse"
+        },
+        "humerus": {
+          "min_cm": 6.5,
+          "max_cm": 13.7,
+          "confidence": "low",
+          "source": "osteoid",
+          "measured_on": "horse"
+        },
+        "tibia": {
+          "min_cm": 1.8,
+          "max_cm": 14.4,
+          "confidence": "low",
+          "source": "osteoid",
+          "measured_on": "horse"
+        }
+      },
+      "human": {
+        "femur": {
+          "min_cm": 5.8,
+          "max_cm": 10.5,
+          "confidence": "high",
+          "source": "osteoid + goldman"
+        },
+        "humerus": {
+          "min_cm": 3.8,
+          "max_cm": 7.7,
+          "confidence": "high",
+          "source": "osteoid + goldman"
+        },
+        "tibia": {
+          "min_cm": 4.0,
+          "max_cm": 9.4,
+          "confidence": "high",
+          "source": "osteoid + goldman"
+        },
+        "radius": {
+          "min_cm": 1.5,
+          "max_cm": 4.2,
+          "confidence": "high",
+          "source": "osteoid + goldman"
+        }
+      }
+    },
+    "shaft_width": {
+      "human": {
+        "humerus": {
+          "min_cm": 1.4,
+          "max_cm": 2.6,
+          "confidence": "high",
+          "source": "goldman",
+          "measured_on": "midshaft, front-to-back and side-to-side"
+        },
+        "radius": {
+          "min_cm": 0.8,
+          "max_cm": 1.9,
+          "confidence": "high",
+          "source": "goldman",
+          "measured_on": "midshaft, front-to-back and side-to-side"
+        },
+        "femur": {
+          "min_cm": 1.9,
+          "max_cm": 3.4,
+          "confidence": "high",
+          "source": "goldman",
+          "measured_on": "midshaft, front-to-back and side-to-side"
+        },
+        "tibia": {
+          "min_cm": 1.6,
+          "max_cm": 3.3,
+          "confidence": "high",
+          "source": "goldman",
+          "measured_on": "midshaft, front-to-back and side-to-side"
+        }
+      },
+      "bovid": {
+        "humerus": {
+          "min_cm": 0.8,
+          "max_cm": 4.5,
+          "confidence": "low",
+          "source": "open_context_zooarch",
+          "measured_on": "cattle, goat, sheep, sheep/goat (53 archaeological bones)"
+        },
+        "radius": {
+          "min_cm": 0.8,
+          "max_cm": 3.8,
+          "confidence": "low",
+          "source": "open_context_zooarch",
+          "measured_on": "cattle, goat, sheep, sheep/goat (107 archaeological bones)"
+        },
+        "tibia": {
+          "min_cm": 0.8,
+          "max_cm": 6.1,
+          "confidence": "low",
+          "source": "open_context_zooarch",
+          "measured_on": "cattle, goat, sheep, sheep/goat (96 archaeological bones)"
+        }
+      },
+      "suid": {
+        "humerus": {
+          "min_cm": 1.0,
+          "max_cm": 1.6,
+          "confidence": "low",
+          "source": "open_context_zooarch",
+          "measured_on": "pig/wild boar (10 archaeological bones)"
+        },
+        "radius": {
+          "min_cm": 1.2,
+          "max_cm": 1.9,
+          "confidence": "low",
+          "source": "open_context_zooarch",
+          "measured_on": "pig/wild boar (14 archaeological bones)"
+        }
+      }
+    },
+    "head_diameter": {
+      "human": {
+        "femur": {
+          "min_cm": 3.4,
+          "max_cm": 5.5,
+          "confidence": "high",
+          "source": "goldman"
+        },
+        "humerus": {
+          "min_cm": 3.4,
+          "max_cm": 5.3,
+          "confidence": "high",
+          "source": "goldman"
+        },
+        "os_coxa": {
+          "min_cm": 4.0,
+          "max_cm": 6.0,
+          "confidence": "high",
+          "source": "goldman"
+        }
+      },
+      "bovid": {
+        "femur": {
+          "min_cm": 1.8,
+          "max_cm": 5.7,
+          "confidence": "low",
+          "source": "open_context_zooarch",
+          "measured_on": "cattle, goat, sheep, sheep/goat (229 archaeological bones)"
+        },
+        "os_coxa": {
+          "min_cm": 2.4,
+          "max_cm": 8.5,
+          "confidence": "low",
+          "source": "open_context_zooarch",
+          "measured_on": "cattle, goat, sheep, sheep/goat (266 archaeological bones)"
+        }
+      },
+      "equid": {
+        "os_coxa": {
+          "min_cm": 4.5,
+          "max_cm": 7.2,
+          "confidence": "low",
+          "source": "open_context_zooarch",
+          "measured_on": "horse family (18 archaeological bones)"
+        }
+      },
+      "suid": {
+        "femur": {
+          "min_cm": 2.2,
+          "max_cm": 4.0,
+          "confidence": "low",
+          "source": "open_context_zooarch",
+          "measured_on": "pig/wild boar (11 archaeological bones)"
+        },
+        "os_coxa": {
+          "min_cm": 2.8,
+          "max_cm": 4.8,
+          "confidence": "low",
+          "source": "open_context_zooarch",
+          "measured_on": "pig/wild boar (52 archaeological bones)"
+        }
       }
     }
   }

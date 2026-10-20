@@ -1417,6 +1417,32 @@ class AppLocalizationsEn extends AppLocalizations {
       'Couldn’t start the camera here. Upload a photo instead?';
 
   @override
+  String get camAuto => 'Auto snap';
+
+  @override
+  String get camAutoOnTip =>
+      'Auto snap is on. Get the bone in the frame and hold still.';
+
+  @override
+  String get camAutoOffTip =>
+      'Auto snap is off. Tap the big button to take the photo.';
+
+  @override
+  String get camAutoSpotted => 'BONE SPOTTED!';
+
+  @override
+  String get camAutoFound => 'Got it! Now hold the phone still.';
+
+  @override
+  String get camAutoHolding => 'Perfect, hold it right there…';
+
+  @override
+  String get camAutoSnapped => 'SNAP!';
+
+  @override
+  String get camAutoRearm => 'Move the phone a little to take another.';
+
+  @override
   String get reviewDropTitle => 'Drop these photos?';
 
   @override
@@ -1695,11 +1721,23 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get resultHowSure => 'How sure are we?';
+  String resultAnglesWithBone(int seen, int count) {
+    return 'Bone in $seen of $count photos';
+  }
 
   @override
-  String get resultShakiest =>
-      'Only as sure as the shakiest step: finding the bone, telling human from animal, naming the bone and, for animals, which one.';
+  String get resultHowSure => 'How sure is this answer?';
+
+  @override
+  String get resultHowSureSteps =>
+      'The answer is only as good as its weakest step, so the score above is the lowest of these.';
+
+  @override
+  String get resultHowSureNone =>
+      'How sure the app is that this photo shows no bone.';
+
+  @override
+  String get resultStepBone => 'Bone or not';
 
   @override
   String get resultCouldAlsoBe => 'Not certain. It could also be:';
@@ -1995,6 +2033,13 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get settingsAutoSaveBody =>
       'Off means each report is kept only if you save it.';
+
+  @override
+  String get settingsAutoSnap => 'Auto snap';
+
+  @override
+  String get settingsAutoSnapBody =>
+      'The camera takes the photo by itself once it sees a bone and the phone is still.';
 
   @override
   String get settingsUnits => 'Measurement units';

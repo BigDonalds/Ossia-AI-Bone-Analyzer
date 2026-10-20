@@ -18,6 +18,7 @@ import '../../l10n/l10n.dart';
 import '../../l10n/labels.dart';
 import '../results/results_screen.dart';
 import '../widgets/bone_buddy.dart';
+import '../widgets/phone_icon.dart';
 import '../widgets/primitives.dart';
 import '../widgets/specimen_image.dart';
 import 'specimen_frame.dart';
@@ -51,8 +52,25 @@ class _AnalyzingScreenState extends State<AnalyzingScreen>
   )..repeat();
 
   StreamSubscription<AnalysisEvent>? _sub;
-  int _phase = 0;
   LocalText? _error;
+
+  /// The stage on screen. It follows the engine one step at a time, so a fast
+  /// phone still shows the whole walk-through instead of a flash.
+  int _phase = 0;
+
+  /// The furthest stage the engine has reached.
+  int _reached = 0;
+
+  /// The finished report, held back until the walk-through catches up.
+  AnalysisResult? _result;
+
+  Timer? _pacer;
+  final Stopwatch _onStage = Stopwatch();
+
+  /// Each stage stays up at least this long, and the last one a little longer
+  /// before the report opens.
+  static const Duration _stageTime = Duration(milliseconds: 300);
+  static const Duration _lastHold = Duration(milliseconds: 600);
 
   /// The server couldn't be reached, so offer the phone's own model.
   bool _offerLocal = false;
@@ -78,6 +96,13 @@ class _AnalyzingScreenState extends State<AnalyzingScreen>
       _offerLocal = false;
       _phase = 0;
     });
+    _reached = 0;
+    _result = null;
+    _onStage
+      ..reset()
+      ..start();
+    _pacer?.cancel();
+    _pacer = Timer.periodic(const Duration(milliseconds: 50), _tick);
 
     _sub?.cancel();
     _sub = engine
@@ -86,10 +111,12 @@ class _AnalyzingScreenState extends State<AnalyzingScreen>
       if (!mounted) return;
       switch (event) {
         case PhaseStarted(:final int index):
-          setState(() => _phase = index);
+          if (index > _reached) _reached = index;
         case AnalysisSucceeded(:final AnalysisResult result):
-          _finish(result);
+          _reached = kPhaseCount - 1;
+          _result = result;
         case AnalysisFailed(:final LocalText message, :final bool serverUnreachable):
+          _pacer?.cancel();
           Haptics.medium();
           if (!local) context.read<ServerMonitor>().quickCheck();
           setState(() {
@@ -98,6 +125,18 @@ class _AnalyzingScreenState extends State<AnalyzingScreen>
           });
       }
     });
+  }
+
+  void _tick(Timer _) {
+    if (!mounted) return;
+    if (_phase < _reached) {
+      if (_onStage.elapsed < _stageTime) return;
+      _onStage.reset();
+      setState(() => _phase++);
+    } else if (_result != null && _onStage.elapsed >= _lastHold) {
+      _pacer?.cancel();
+      _finish(_result!);
+    }
   }
 
   void _runLocally() {
@@ -150,6 +189,7 @@ class _AnalyzingScreenState extends State<AnalyzingScreen>
   @override
   void dispose() {
     _sub?.cancel();
+    _pacer?.cancel();
     _sweep.dispose();
     super.dispose();
   }
@@ -451,7 +491,7 @@ class _Failure extends StatelessWidget {
           const SizedBox(height: 8),
           SecondaryButton(
             label: l.analyzingOnPhone,
-            icon: Icons.smartphone_rounded,
+            leading: const PhoneIcon(),
             onTap: onLocal,
           ),
         ],

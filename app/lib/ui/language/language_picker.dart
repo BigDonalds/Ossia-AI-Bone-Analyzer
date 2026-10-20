@@ -7,6 +7,7 @@ import '../../core/theme/typography.dart';
 import '../../core/util/haptics.dart';
 import '../../data/settings_controller.dart';
 import '../../l10n/l10n.dart';
+import '../widgets/phone_icon.dart';
 import '../widgets/primitives.dart';
 import '../widgets/sheets.dart';
 
@@ -111,7 +112,7 @@ class LanguageChoice extends StatelessWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      Icon(Icons.smartphone_rounded, size: 13, color: c.textPrimary),
+                      PhoneIcon(size: 13, color: c.textPrimary),
                       const SizedBox(width: 4),
                       Text(
                         tag!,
@@ -342,7 +343,7 @@ class _LanguageList extends StatelessWidget {
                 shape: BoxShape.circle,
                 border: Border.all(color: c.ink, width: 1.8),
               ),
-              child: Icon(Icons.smartphone_rounded, size: 21, color: c.textPrimary),
+              child: PhoneIcon(size: 21, color: c.textPrimary),
             ),
             title: l.languageMatchPhone,
             subtitle: l.languageMatchPhoneHint(phone.nameIn(l)),

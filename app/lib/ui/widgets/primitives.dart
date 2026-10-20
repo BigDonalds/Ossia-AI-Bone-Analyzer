@@ -379,12 +379,16 @@ class StatusPill extends StatelessWidget {
     this.color,
     this.filled = false,
     this.icon,
+    this.leading,
   });
 
   final String text;
   final Color? color;
   final bool filled;
   final IconData? icon;
+
+  /// Drawn in place of [icon], at the icon's size and colour.
+  final Widget? leading;
 
   @override
   Widget build(BuildContext context) {
@@ -395,7 +399,8 @@ class StatusPill extends StatelessWidget {
     final Color bg = filled ? tone : Colors.transparent;
     final Color fg = filled ? _inkOn(tone) : c.textPrimary;
     return Container(
-      padding: EdgeInsetsDirectional.fromSTEB(icon == null ? 10 : 7, 4, 10, 4.5),
+      padding: EdgeInsetsDirectional.fromSTEB(
+          icon == null && leading == null ? 10 : 7, 4, 10, 4.5),
       decoration: BoxDecoration(
         color: bg,
         borderRadius: BorderRadius.circular(99),
@@ -404,8 +409,11 @@ class StatusPill extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          if (icon != null) ...<Widget>[
-            Icon(icon, size: 13, color: fg),
+          if (leading != null || icon != null) ...<Widget>[
+            IconTheme(
+              data: IconThemeData(size: 13, color: fg),
+              child: leading ?? Icon(icon),
+            ),
             const SizedBox(width: 4),
           ],
           // No Flexible here: pills often sit in rows that give them unbounded
@@ -565,6 +573,7 @@ class SecondaryButton extends StatelessWidget {
     super.key,
     required this.label,
     this.icon,
+    this.leading,
     this.onTap,
     this.destructive = false,
     this.height = 58,
@@ -572,6 +581,9 @@ class SecondaryButton extends StatelessWidget {
 
   final String label;
   final IconData? icon;
+
+  /// Drawn in place of [icon], at the icon's size and colour.
+  final Widget? leading;
   final VoidCallback? onTap;
   final bool destructive;
   final double height;
@@ -591,8 +603,11 @@ class SecondaryButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            if (icon != null) ...<Widget>[
-              Icon(icon, size: 21, color: tone),
+            if (leading != null || icon != null) ...<Widget>[
+              IconTheme(
+                data: IconThemeData(size: 21, color: tone),
+                child: leading ?? Icon(icon),
+              ),
               const SizedBox(width: 9),
             ],
             Flexible(

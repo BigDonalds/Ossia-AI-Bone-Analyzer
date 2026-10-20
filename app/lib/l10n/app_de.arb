@@ -504,7 +504,7 @@
   "@ageAdult": {
     "description": "English: Adult"
   },
-  "ageJuvenile": "Jugendlich",
+  "ageJuvenile": "Nicht erwachsen",
   "@ageJuvenile": {
     "description": "English: Juvenile (A child or teenager)"
   },
@@ -656,7 +656,7 @@
   "@atlasCraniumLm4": {
     "description": "English: External auditory meatus (Atlas: one thing an expert looks for on this bone)"
   },
-  "atlasCraniumSiding": "Vollständig symmetrisch. Einzelne Schädeldachfragmente werden über den Verlauf der Nähte und das Muster der Hirnhautgefäßfurchen zugeordnet.",
+  "atlasCraniumSiding": "Symmetrisch, wenn vollständig. Einzelne Schädeldachfragmente werden über den Verlauf der Nähte und das Muster der Hirnhautgefäßfurchen zugeordnet.",
   "@atlasCraniumSiding": {
     "description": "English: Symmetrical when complete. Isolated vault fragments are sided by suture direction and meningeal groove patterning. (Atlas: how to tell left from right, or the place in a series)"
   },
@@ -668,7 +668,7 @@
   "@atlasMandibleBlurb": {
     "description": "English: Lower jaw; dense and durable (Atlas: one line under the bone name in the list)"
   },
-  "atlasMandibleSummary": "Der Unterkiefer – der einzige frei bewegliche Knochen des Schädels. Dicht und kompakt, daher übersteht er Bestattung und Brand besser als die meisten Knochen.",
+  "atlasMandibleSummary": "Der Unterkiefer – der einzige frei bewegliche Knochen des Schädels. Dicht und kompakt, daher übersteht er Bodenlagerung und Verbrennung besser als die meisten Knochen.",
   "@atlasMandibleSummary": {
     "description": "English: The lower jaw — the only freely mobile bone of the skull. Dense and compact, so it survives burial and burning better than most. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
@@ -688,7 +688,7 @@
   "@atlasMandibleLm4": {
     "description": "English: Mental foramen below the premolars (Atlas: one thing an expert looks for on this bone)"
   },
-  "atlasMandibleSiding": "Vollständig symmetrisch. Eine Unterkieferhälfte wird daran zugeordnet, in welche Richtung der Ast aufsteigt und wohin sich die Zahnreihe krümmt.",
+  "atlasMandibleSiding": "Symmetrisch, wenn vollständig. Eine Unterkieferhälfte wird daran zugeordnet, in welche Richtung der Ast aufsteigt und wohin sich die Zahnreihe krümmt.",
   "@atlasMandibleSiding": {
     "description": "English: Symmetrical when whole. A half-mandible is sided by the direction the ramus rises and by which way the tooth row curves. (Atlas: how to tell left from right, or the place in a series)"
   },
@@ -696,7 +696,7 @@
   "@atlasFemurBlurb": {
     "description": "English: Thigh bone; best stature indicator (Atlas: one line under the bone name in the list)"
   },
-  "atlasFemurSummary": "Der Oberschenkelknochen – der längste und stärkste Knochen des Körpers. Seine größte Länge hängt am engsten mit der Körpergröße zu Lebzeiten zusammen.",
+  "atlasFemurSummary": "Der Oberschenkelknochen – der längste und stärkste Knochen des Körpers. Aus seiner größten Länge lässt sich die Körpergröße zu Lebzeiten am sichersten schätzen.",
   "@atlasFemurSummary": {
     "description": "English: The thigh bone — the longest and strongest bone in the body. Its maximum length carries the tightest correlation with living stature. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
@@ -744,7 +744,7 @@
   "@atlasTibiaLm4": {
     "description": "English: Flat medial and lateral condyles (Atlas: one thing an expert looks for on this bone)"
   },
-  "atlasTibiaSiding": "Der Innenknöchel ragt auf derselben Seite hervor wie die Körperseite, von der der Knochen stammt; der Schienbeinhöcker markiert die Vorderseite.",
+  "atlasTibiaSiding": "Der Innenknöchel ragt auf der Seite hervor, von der der Knochen stammt; der Schienbeinhöcker markiert die Vorderseite.",
   "@atlasTibiaSiding": {
     "description": "English: The medial malleolus projects on the same side as the body it came from; the tibial tuberosity marks the front. (Atlas: how to tell left from right, or the place in a series)"
   },
@@ -1000,7 +1000,7 @@
   "@atlasCervicalLm4": {
     "description": "English: Large triangular vertebral foramen (Atlas: one thing an expert looks for on this bone)"
   },
-  "atlasCervicalSiding": "Symmetrisch. Die Position in der Reihe ergibt sich aus Dornfortsatz und Körpergröße; C7 hat den langen, ungespaltenen Dorn der „Vertebra prominens“.",
+  "atlasCervicalSiding": "Symmetrisch. Die Position in der Reihe ergibt sich aus dem Dornfortsatz und der Größe des Wirbelkörpers; C7 hat den langen, ungespaltenen Dorn der „Vertebra prominens“.",
   "@atlasCervicalSiding": {
     "description": "English: Symmetrical. Position in the series is read from the spinous process and body size; C7 has the long, unsplit \"prominens\" spine. (Atlas: how to tell left from right, or the place in a series)"
   },
@@ -1028,7 +1028,7 @@
   "@atlasThoracicLm4": {
     "description": "English: Circular vertebral foramen (Atlas: one thing an expert looks for on this bone)"
   },
-  "atlasThoracicSiding": "Symmetrisch. Die Reihenfolge erkennt man an der Körpergröße und daran, wie weit der Dornfortsatz den Wirbel darunter überlappt.",
+  "atlasThoracicSiding": "Symmetrisch. Die Reihenfolge erkennt man an der Größe des Wirbelkörpers und daran, wie weit der Dornfortsatz den Wirbel darunter überlappt.",
   "@atlasThoracicSiding": {
     "description": "English: Symmetrical. Sequence is judged from body size and how far the spinous process overlaps the vertebra below. (Atlas: how to tell left from right, or the place in a series)"
   },
@@ -1056,7 +1056,7 @@
   "@atlasLumbarLm4": {
     "description": "English: Mammillary processes on the superior articular facets (Atlas: one thing an expert looks for on this bone)"
   },
-  "atlasLumbarSiding": "Symmetrisch. L5 erkennt man an der Keilform – vorn höher als hinten –, wo er auf das Kreuzbein trifft.",
+  "atlasLumbarSiding": "Symmetrisch. L5 erkennt man an seiner Keilform: Wo er auf das Kreuzbein trifft, ist er vorn höher als hinten.",
   "@atlasLumbarSiding": {
     "description": "English: Symmetrical. L5 is recognised by its wedge shape, deeper in front than behind, where it meets the sacrum. (Atlas: how to tell left from right, or the place in a series)"
   },
@@ -1072,7 +1072,7 @@
   "@phaseDoc2Title": {
     "description": "English: Human or animal? (How analysis works: step title)"
   },
-  "phaseDoc2Detail": "Dann entscheidet es, ob der Knochen von einem Menschen oder einem Tier stammt. Alles Weitere hängt von diesem Schritt ab.",
+  "phaseDoc2Detail": "Danach entscheidet Ossia, ob der Knochen von einem Menschen oder einem Tier stammt. Alles Weitere hängt von diesem Schritt ab.",
   "@phaseDoc2Detail": {
     "description": "English: Next it decides whether the bone came from a person or an animal. Everything after depends on this step. (How analysis works: what this step does)"
   },
@@ -1120,7 +1120,7 @@
   "@phaseDoc8Title": {
     "description": "English: Age and sex (How analysis works: step title)"
   },
-  "phaseDoc8Detail": "Nur bei menschlichen Knochen. Sieh das als Hinweis zum Überprüfen, nie als Antwort für sich allein.",
+  "phaseDoc8Detail": "Nur bei menschlichen Knochen. Betrachte das als Hinweis, den du prüfen solltest, nie als fertige Antwort.",
   "@phaseDoc8Detail": {
     "description": "English: For human bones only. Treat these as a hint to check, never as an answer on their own. (How analysis works: what this step does)"
   },
@@ -1184,7 +1184,7 @@
   "@errUnreachable": {
     "description": "English: Couldn't connect for online analysis. Check your internet and the online address in Settings. (Shown when a scan fails)"
   },
-  "errNotAReport": "Etwas hat geantwortet, aber nicht mit einem Bericht. Prüf die Online-Adresse in den Einstellungen.",
+  "errNotAReport": "Unter der Adresse hat etwas geantwortet, aber keinen Bericht geliefert. Prüf die Online-Adresse in den Einstellungen.",
   "@errNotAReport": {
     "description": "English: Something answered, but not with a report. Check the online address in Settings. (Shown when a scan fails)"
   },
@@ -1196,7 +1196,7 @@
   "@checkAddress": {
     "description": "English: Address (Connection checklist: one step)"
   },
-  "checkReach": "Erreichbar",
+  "checkReach": "Erreichbarkeit",
   "@checkReach": {
     "description": "English: Reaching it (Connection checklist: one step)"
   },
@@ -1304,11 +1304,11 @@
   "@netExpired": {
     "description": "English: That address has expired (Connection checklist: result of a step)"
   },
-  "netHttpError": "Die Antwort war ein Fehler ({code})",
+  "netHttpError": "Es kam eine Fehlermeldung zurück ({code})",
   "@netHttpError": {
     "description": "English: It answered with an error ({code}) (Connection checklist: result of a step)"
   },
-  "netNotOssia": "Etwas hat geantwortet, aber es ist nicht Ossia",
+  "netNotOssia": "Da antwortet etwas, aber nicht Ossia",
   "@netNotOssia": {
     "description": "English: Something answered, but it isn't Ossia (Connection checklist: result of a step)"
   },
@@ -1356,7 +1356,7 @@
   "@lenNoReference": {
     "description": "English: We don't have usual lengths for {things}, so the length wasn't used. (A note on a report about the length the person measured)"
   },
-  "lenNoFit": "{cm} cm passt weder zu {before} noch zur nächstbesten Möglichkeit, {after}, daher haben wir die Antwort des Fotos behalten. Der Knochen könnte von einem jungen Tier oder Menschen stammen, oder es lohnt sich, nochmal zu messen.",
+  "lenNoFit": "{cm} cm passt weder zu {before} noch zur nächstbesten Möglichkeit, {after}, daher haben wir die Antwort aus dem Foto behalten. Der Knochen könnte von einem jungen Tier oder Menschen stammen, oder es lohnt sich, nochmal zu messen.",
   "@lenNoFit": {
     "description": "English: {cm} cm doesn't fit {before} or the next closest option, {after}, so we kept the photo's answer. It could be from a young animal or person, or worth measuring again. (A note on a report about the length the person measured)"
   },
@@ -1368,7 +1368,7 @@
   "@lenChangedTooShort": {
     "description": "English: {cm} cm is too short for {before}. (A note on a report about the length the person measured (first half))"
   },
-  "lenChangedFitsBut": "{cm} cm passt zu {before}, aber das Ausschließen anderer Möglichkeiten hat die Antwort verschoben.",
+  "lenChangedFitsBut": "{cm} cm passt zu {before}, aber weil andere Möglichkeiten wegfielen, hat sich die Antwort verschoben.",
   "@lenChangedFitsBut": {
     "description": "English: {cm} cm fits {before}, but ruling out other options shifted the answer. (A note on a report about the length the person measured (first half))"
   },
@@ -1400,7 +1400,7 @@
   "@lenLong": {
     "description": "English: {cm} cm is long for {before}, but the photo still points to it. Worth measuring again. (A note on a report about the length the person measured)"
   },
-  "lenPhotoAlone": "Nur nach dem Foto war es {headline}.",
+  "lenPhotoAlone": "Allein nach dem Foto wäre es „{headline}“ gewesen.",
   "@lenPhotoAlone": {
     "description": "English: From the photo alone, it was {headline}. (After a length note, when the length changed the answer)"
   },
@@ -1476,7 +1476,7 @@
   "@tipLightTitle": {
     "description": "English: Soft light (Tip card title. Keep it short, it is on one line.)"
   },
-  "tipLightBody": "Tageslicht ist am besten. Harte Schatten verstecken Details.",
+  "tipLightBody": "Tageslicht ist am besten. Harte Schatten verschlucken Details.",
   "@tipLightBody": {
     "description": "English: Daylight is best. Harsh shadows hide details."
   },
@@ -1488,7 +1488,7 @@
   "@tipLengthBody": {
     "description": "English: Add it before analyzing. It sharpens the guess."
   },
-  "tipAnglesTitle": "Mehrere Winkel",
+  "tipAnglesTitle": "Mehrere Ansichten",
   "@tipAnglesTitle": {
     "description": "English: Try a few angles (Tip card title. Keep it short, it is on one line.)"
   },
@@ -1508,7 +1508,7 @@
   "@scanNoFinds": {
     "description": "English: No finds yet"
   },
-  "scanNoFindsBody": "Deine gescannten Knochen sammeln sich genau hier.",
+  "scanNoFindsBody": "Hier landen deine gescannten Knochen.",
   "@scanNoFindsBody": {
     "description": "English: Your scanned bones will pile up right here."
   },
@@ -1564,7 +1564,7 @@
   "@guideLongBoneTip": {
     "description": "English: Lay it flat and line it up with my knobby ends. (The cartoon bone speaking; the long-bone outline is its own shape)"
   },
-  "guideSkullTip": "Von vorn fotografieren. Augenhöhlen in die gepunkteten Augen.",
+  "guideSkullTip": "Fotografier ihn direkt von vorn, die Augenhöhlen in die gepunkteten Augen.",
   "@guideSkullTip": {
     "description": "English: Face it straight on. Eye sockets in the dotted eyes."
   },
@@ -1584,7 +1584,7 @@
   "@camTitle": {
     "description": "English: BONE CAM (Sticker at the top of the camera)"
   },
-  "camAngle": "WINKEL #{number}",
+  "camAngle": "ANSICHT #{number}",
   "@camAngle": {
     "description": "English: ANGLE #{number} (Sticker at the top of the camera when adding another photo of the same bone)"
   },
@@ -1616,7 +1616,7 @@
   "@camWarmingUp": {
     "description": "English: Warming up the camera…"
   },
-  "camAnotherAngleTip": "Gleicher Knochen, neue Seite. Dreh ihn um oder nimm ein Ende auf.",
+  "camAnotherAngleTip": "Derselbe Knochen, andere Seite. Dreh ihn um oder fotografier ein Ende.",
   "@camAnotherAngleTip": {
     "description": "English: Same bone, new side. Flip it over, or get one of the ends."
   },
@@ -1640,6 +1640,38 @@
   "@camNappingBody": {
     "description": "English: Couldn’t start the camera here. Upload a photo instead?"
   },
+  "camAuto": "Auto-Auslöser",
+  "@camAuto": {
+    "description": "English: Auto snap (Camera button that turns the automatic photo on and off)"
+  },
+  "camAutoOnTip": "Der Auto-Auslöser ist an. Bring den Knochen in den Rahmen und halt kurz still.",
+  "@camAutoOnTip": {
+    "description": "English: Auto snap is on. Get the bone in the frame and hold still. (Mascot tip right after auto snap is turned on)"
+  },
+  "camAutoOffTip": "Der Auto-Auslöser ist aus. Tippe auf den großen Knopf, um das Foto zu machen.",
+  "@camAutoOffTip": {
+    "description": "English: Auto snap is off. Tap the big button to take the photo. (Mascot tip right after auto snap is turned off)"
+  },
+  "camAutoSpotted": "KNOCHEN ENTDECKT!",
+  "@camAutoSpotted": {
+    "description": "English: BONE SPOTTED! (Sticker that pops onto the camera frame when a bone is in view)"
+  },
+  "camAutoFound": "Hab ihn! Jetzt das Handy ruhig halten.",
+  "@camAutoFound": {
+    "description": "English: Got it! Now hold the phone still. (Mascot tip when a bone is in view but the phone is moving)"
+  },
+  "camAutoHolding": "Perfekt, genau so halten…",
+  "@camAutoHolding": {
+    "description": "English: Perfect, hold it right there… (Mascot tip while the phone is still and the auto photo is counting down)"
+  },
+  "camAutoSnapped": "KLICK!",
+  "@camAutoSnapped": {
+    "description": "English: SNAP! (Big stamp at the moment the auto photo is taken)"
+  },
+  "camAutoRearm": "Beweg das Handy ein Stück für ein neues Foto.",
+  "@camAutoRearm": {
+    "description": "English: Move the phone a little to take another. (Mascot tip after coming back to the camera from a photo, before auto snap will fire again)"
+  },
   "reviewDropTitle": "Diese Fotos verwerfen?",
   "@reviewDropTitle": {
     "description": "English: Drop these photos? (Question when leaving the photo check screen after adding or removing photos)"
@@ -1648,7 +1680,7 @@
   "@reviewDropNew": {
     "description": "English: {count, plural, =1{This bone’s photo hasn’t been analyzed yet.} other{The {count} photos of this bone haven’t been analyzed yet.}}"
   },
-  "reviewDropRevising": "Die hinzugefügten oder entfernten Winkel werden nicht analysiert. Der gespeicherte Bericht bleibt, wie er war.",
+  "reviewDropRevising": "Deine Änderungen an den Ansichten werden nicht analysiert. Der gespeicherte Bericht bleibt, wie er war.",
   "@reviewDropRevising": {
     "description": "English: The angles you added or removed won’t be analyzed. The saved report stays as it was. (Same question, when adding angles to a find that was already analysed)"
   },
@@ -1680,11 +1712,11 @@
   "@reviewRetake": {
     "description": "English: Retake (Button: go back to the camera and take the photo again)"
   },
-  "reviewTitleRevising": "Weitere Winkel",
+  "reviewTitleRevising": "Weitere Ansichten",
   "@reviewTitleRevising": {
     "description": "English: More angles (Screen title when adding photos to a saved find)"
   },
-  "reviewTitleAngles": "Ein Knochen, {count} Winkel",
+  "reviewTitleAngles": "Ein Knochen, {count} Ansichten",
   "@reviewTitleAngles": {
     "description": "English: One bone, {count} angles (Screen title; count is always 2 or more)"
   },
@@ -1704,7 +1736,7 @@
   "@reviewAnalyzeCount": {
     "description": "English: Analyze {count} photos (Main button; count is always 2 or more)"
   },
-  "reviewSkipAnalyze": "Ohne Länge los",
+  "reviewSkipAnalyze": "Ohne Länge weiter",
   "@reviewSkipAnalyze": {
     "description": "English: Skip & analyze (Main button when no length was given. Keep it short.)"
   },
@@ -1712,11 +1744,11 @@
   "@reviewAnalyzeIt": {
     "description": "English: Analyze it (Main button. Keep it short.)"
   },
-  "reviewMoreAnglesQ": "Weitere Winkel?",
+  "reviewMoreAnglesQ": "Weitere Ansichten?",
   "@reviewMoreAnglesQ": {
     "description": "English: More angles? (Card title when there is one photo)"
   },
-  "reviewAngles": "Winkel",
+  "reviewAngles": "Ansichten",
   "@reviewAngles": {
     "description": "English: Angles (Card title when there are several photos)"
   },
@@ -1728,7 +1760,7 @@
   "@reviewAnglesOf": {
     "description": "English: {count} OF {max} (Small sticker: photos used out of the most allowed)"
   },
-  "reviewAnglesBodyOne": "Gleicher Knochen, andere Seite. Die Rückseite, ein Ende oder eine Nahaufnahme knackt knifflige Fälle. Alle Fotos werden zusammen ausgewertet.",
+  "reviewAnglesBodyOne": "Derselbe Knochen, andere Seite. Die Rückseite, ein Ende oder eine Nahaufnahme knacken knifflige Fälle. Alle Fotos werden zusammen ausgewertet.",
   "@reviewAnglesBodyOne": {
     "description": "English: Same bone, another side. The back, an end or a close-up can crack a tricky one. Every photo gets read together."
   },
@@ -1744,11 +1776,11 @@
   "@reviewUpload": {
     "description": "English: Upload (Tiny tile under the photos: add photos from the phone. One short word.)"
   },
-  "reviewSnapHint": "Weiteren Winkel aufnehmen",
+  "reviewSnapHint": "Weitere Ansicht aufnehmen",
   "@reviewSnapHint": {
     "description": "English: Take another angle (Read out by screen readers)"
   },
-  "reviewUploadHint": "Winkel aus der Galerie hinzufügen",
+  "reviewUploadHint": "Ansichten aus der Galerie hinzufügen",
   "@reviewUploadHint": {
     "description": "English: Add angles from the library (Read out by screen readers)"
   },
@@ -1900,7 +1932,7 @@
   "@reportSheetTitle": {
     "description": "English: Report (Title of the options sheet)"
   },
-  "reportAddAngle": "Weiteren Winkel hinzufügen",
+  "reportAddAngle": "Weitere Ansicht hinzufügen",
   "@reportAddAngle": {
     "description": "English: Add another angle"
   },
@@ -1948,17 +1980,29 @@
   "@resultNoBoneFound": {
     "description": "English: No bone found (Sticker above the answer)"
   },
-  "resultAngles": "{count} Winkel",
+  "resultAngles": "{count} Ansichten",
   "@resultAngles": {
     "description": "English: {count} angles (Sticker: how many photos of the bone were read; always 2 or more)"
   },
-  "resultHowSure": "Wie sicher sind wir?",
-  "@resultHowSure": {
-    "description": "English: How sure are we?"
+  "resultAnglesWithBone": "Knochen auf {seen} von {count} Fotos",
+  "@resultAnglesWithBone": {
+    "description": "English: Bone in {seen} of {count} photos (Sticker in place of the angle count when some photos showed no bone; only those that did were read)"
   },
-  "resultShakiest": "Nur so sicher wie der wackeligste Schritt: den Knochen finden, Mensch und Tier unterscheiden, den Knochen benennen und bei Tieren das Tier.",
-  "@resultShakiest": {
-    "description": "English: Only as sure as the shakiest step: finding the bone, telling human from animal, naming the bone and, for animals, which one."
+  "resultHowSure": "Wie sicher ist diese Antwort?",
+  "@resultHowSure": {
+    "description": "English: How sure is this answer? (Title of the box with the big percentage under the answer)"
+  },
+  "resultHowSureSteps": "Eine Antwort ist nur so gut wie ihr schwächster Schritt. Deshalb zählt oben der niedrigste dieser Werte.",
+  "@resultHowSureSteps": {
+    "description": "English: The answer is only as good as its weakest step, so the score above is the lowest of these. (Small grey text under the list of steps (Bone or not, Human or animal, Which bone, Which animal), each with its own percentage)"
+  },
+  "resultHowSureNone": "So sicher ist sich die App, dass auf diesem Foto kein Knochen zu sehen ist.",
+  "@resultHowSureNone": {
+    "description": "English: How sure the app is that this photo shows no bone. (Small grey text under the percentage when no bone was found)"
+  },
+  "resultStepBone": "Knochen oder nicht",
+  "@resultStepBone": {
+    "description": "English: Bone or not (First step in the list under the percentage: was a bone found at all)"
   },
   "resultCouldAlsoBe": "Nicht sicher. Es könnte auch sein:",
   "@resultCouldAlsoBe": {
@@ -2024,7 +2068,7 @@
   "@resultSex": {
     "description": "English: Sex (Row label: male or female)"
   },
-  "resultAgeFooter": "Alter und Geschlecht sind auf einem Foto am schwersten zu erkennen, und Ossia hat sie an wenigen Beispielen gelernt. Sieh sie als Hinweis zum Prüfen, nicht als Antwort.",
+  "resultAgeFooter": "Alter und Geschlecht sind auf einem Foto am schwersten zu erkennen, und Ossia hat sie an wenigen Beispielen gelernt. Betrachte sie als Hinweis, den du prüfen solltest, nicht als Antwort.",
   "@resultAgeFooter": {
     "description": "English: Age and sex are the hardest things to read from a photo, and Ossia learned them from few examples. Treat them as a hint to check, not an answer."
   },
@@ -2040,11 +2084,11 @@
   "@resultUndetermined": {
     "description": "English: Undetermined"
   },
-  "resultUndeterminedBody": "Es sieht nach einem Tierknochen aus, aber keine Tiergruppe stach genug heraus, um sie zu nennen.",
+  "resultUndeterminedBody": "Es sieht nach einem Tierknochen aus, aber keine Tiergruppe hebt sich klar genug ab, um sie zu nennen.",
   "@resultUndeterminedBody": {
     "description": "English: It looks like an animal bone, but no animal group stood out enough to name."
   },
-  "resultAnimalFooter": "Bei Säugetieren nennt Ossia die Familie (etwa Hirsche oder Hunde), wenn der Knochen sie zeigt; sonst sagt es Säugetier, Vogel oder Reptil. Vergleiche mit einem bekannten Skelett, bevor du dich darauf verlässt.",
+  "resultAnimalFooter": "Bei Säugetieren nennt Ossia die Familie (etwa Hirsche oder Hunde), wenn der Knochen sie zeigt; sonst nur Säugetier, Vogel oder Reptil. Vergleiche mit einem bekannten Skelett, bevor du dich darauf verlässt.",
   "@resultAnimalFooter": {
     "description": "English: For mammals, Ossia names the family (like the deer or dog family) when the bone shows it; otherwise it says mammal, bird or reptile. Compare with a known skeleton before relying on it."
   },
@@ -2080,7 +2124,7 @@
   "@resultYourMeasurement": {
     "description": "English: Your measurement (Row label)"
   },
-  "resultInsideRange": "Genau im typischen Bereich. Gut.",
+  "resultInsideRange": "Genau im typischen Bereich. Sehr gut.",
   "@resultInsideRange": {
     "description": "English: Right inside the typical range. Nice."
   },
@@ -2088,7 +2132,7 @@
   "@resultOutsideRange": {
     "description": "English: Outside the typical range. Worth a second look."
   },
-  "resultInsideEstimate": "Passt genau zur Schätzung. Gut.",
+  "resultInsideEstimate": "Passt genau zur Schätzung. Sehr gut.",
   "@resultInsideEstimate": {
     "description": "English: Right inside the estimate. Nice."
   },
@@ -2100,7 +2144,7 @@
   "@resultReference": {
     "description": "English: Reference (Section title above a link to the bone’s Atlas page)"
   },
-  "resultAtlasSubtitle": "{region} · worauf achten, und links oder rechts",
+  "resultAtlasSubtitle": "{region} · Merkmale und Seitenbestimmung",
   "@resultAtlasSubtitle": {
     "description": "English: {region} · what to look for, and left or right (Under the bone’s name in the Atlas link)"
   },
@@ -2296,9 +2340,17 @@
   "@settingsAutoSave": {
     "description": "English: Save analyses automatically"
   },
-  "settingsAutoSaveBody": "Wenn aus, bleibt ein Bericht nur, wenn du ihn speicherst.",
+  "settingsAutoSaveBody": "Ausgeschaltet bleibt ein Bericht nur, wenn du ihn selbst speicherst.",
   "@settingsAutoSaveBody": {
     "description": "English: Off means each report is kept only if you save it."
+  },
+  "settingsAutoSnap": "Auto-Auslöser",
+  "@settingsAutoSnap": {
+    "description": "English: Auto snap (Settings switch for the automatic camera photo)"
+  },
+  "settingsAutoSnapBody": "Die Kamera löst von selbst aus, sobald sie einen Knochen sieht und das Handy ruhig ist.",
+  "@settingsAutoSnapBody": {
+    "description": "English: The camera takes the photo by itself once it sees a bone and the phone is still. (Explains the auto snap switch)"
   },
   "settingsUnits": "Maßeinheit",
   "@settingsUnits": {
@@ -2472,7 +2524,7 @@
   "@statusOnPhoneBody": {
     "description": "English: Works anywhere, even with no signal, and your photos never leave your phone."
   },
-  "statusConnectingBody": "Prüfe, ob die Online-Analyse wach ist.",
+  "statusConnectingBody": "Wir prüfen, ob die Online-Analyse wach ist.",
   "@statusConnectingBody": {
     "description": "English: Checking that online analysis is awake."
   },
@@ -2540,7 +2592,7 @@
   "@statusNo": {
     "description": "English: No"
   },
-  "statusPhotosSent": "Fotos verschickt",
+  "statusPhotosSent": "Fotos verlassen das Handy",
   "@statusPhotosSent": {
     "description": "English: Photos sent anywhere"
   },

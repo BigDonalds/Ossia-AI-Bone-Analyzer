@@ -419,7 +419,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get ageAdult => 'Erwachsen';
 
   @override
-  String get ageJuvenile => 'Jugendlich';
+  String get ageJuvenile => 'Nicht erwachsen';
 
   @override
   String get sexMale => 'Männlich';
@@ -540,7 +540,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get atlasCraniumSiding =>
-      'Vollständig symmetrisch. Einzelne Schädeldachfragmente werden über den Verlauf der Nähte und das Muster der Hirnhautgefäßfurchen zugeordnet.';
+      'Symmetrisch, wenn vollständig. Einzelne Schädeldachfragmente werden über den Verlauf der Nähte und das Muster der Hirnhautgefäßfurchen zugeordnet.';
 
   @override
   String get atlasCraniumAka => 'Calvaria (nur Schädeldach)';
@@ -550,7 +550,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get atlasMandibleSummary =>
-      'Der Unterkiefer – der einzige frei bewegliche Knochen des Schädels. Dicht und kompakt, daher übersteht er Bestattung und Brand besser als die meisten Knochen.';
+      'Der Unterkiefer – der einzige frei bewegliche Knochen des Schädels. Dicht und kompakt, daher übersteht er Bodenlagerung und Verbrennung besser als die meisten Knochen.';
 
   @override
   String get atlasMandibleLm1 => 'Protuberantia mentalis (das Kinn)';
@@ -569,7 +569,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get atlasMandibleSiding =>
-      'Vollständig symmetrisch. Eine Unterkieferhälfte wird daran zugeordnet, in welche Richtung der Ast aufsteigt und wohin sich die Zahnreihe krümmt.';
+      'Symmetrisch, wenn vollständig. Eine Unterkieferhälfte wird daran zugeordnet, in welche Richtung der Ast aufsteigt und wohin sich die Zahnreihe krümmt.';
 
   @override
   String get atlasFemurBlurb =>
@@ -577,7 +577,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get atlasFemurSummary =>
-      'Der Oberschenkelknochen – der längste und stärkste Knochen des Körpers. Seine größte Länge hängt am engsten mit der Körpergröße zu Lebzeiten zusammen.';
+      'Der Oberschenkelknochen – der längste und stärkste Knochen des Körpers. Aus seiner größten Länge lässt sich die Körpergröße zu Lebzeiten am sichersten schätzen.';
 
   @override
   String get atlasFemurLm1 => 'Kugelförmiger Kopf mit der Fovea capitis';
@@ -618,7 +618,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get atlasTibiaSiding =>
-      'Der Innenknöchel ragt auf derselben Seite hervor wie die Körperseite, von der der Knochen stammt; der Schienbeinhöcker markiert die Vorderseite.';
+      'Der Innenknöchel ragt auf der Seite hervor, von der der Knochen stammt; der Schienbeinhöcker markiert die Vorderseite.';
 
   @override
   String get atlasHumerusBlurb =>
@@ -841,7 +841,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get atlasCervicalSiding =>
-      'Symmetrisch. Die Position in der Reihe ergibt sich aus Dornfortsatz und Körpergröße; C7 hat den langen, ungespaltenen Dorn der „Vertebra prominens“.';
+      'Symmetrisch. Die Position in der Reihe ergibt sich aus dem Dornfortsatz und der Größe des Wirbelkörpers; C7 hat den langen, ungespaltenen Dorn der „Vertebra prominens“.';
 
   @override
   String get atlasThoracicBlurb => 'T1–T12; tragen die Rippengelenkflächen';
@@ -866,7 +866,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get atlasThoracicSiding =>
-      'Symmetrisch. Die Reihenfolge erkennt man an der Körpergröße und daran, wie weit der Dornfortsatz den Wirbel darunter überlappt.';
+      'Symmetrisch. Die Reihenfolge erkennt man an der Größe des Wirbelkörpers und daran, wie weit der Dornfortsatz den Wirbel darunter überlappt.';
 
   @override
   String get atlasLumbarBlurb => 'L1–L5; die schwersten der Wirbelsäule';
@@ -891,7 +891,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get atlasLumbarSiding =>
-      'Symmetrisch. L5 erkennt man an der Keilform – vorn höher als hinten –, wo er auf das Kreuzbein trifft.';
+      'Symmetrisch. L5 erkennt man an seiner Keilform: Wo er auf das Kreuzbein trifft, ist er vorn höher als hinten.';
 
   @override
   String get phaseDoc1Title => 'Ist da ein Knochen?';
@@ -905,7 +905,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get phaseDoc2Detail =>
-      'Dann entscheidet es, ob der Knochen von einem Menschen oder einem Tier stammt. Alles Weitere hängt von diesem Schritt ab.';
+      'Danach entscheidet Ossia, ob der Knochen von einem Menschen oder einem Tier stammt. Alles Weitere hängt von diesem Schritt ab.';
 
   @override
   String get phaseDoc3Title => 'Welcher Knochen?';
@@ -947,7 +947,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get phaseDoc8Detail =>
-      'Nur bei menschlichen Knochen. Sieh das als Hinweis zum Überprüfen, nie als Antwort für sich allein.';
+      'Nur bei menschlichen Knochen. Betrachte das als Hinweis, den du prüfen solltest, nie als fertige Antwort.';
 
   @override
   String get phaseDoc9Title => 'Alles zusammen';
@@ -1012,7 +1012,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get errNotAReport =>
-      'Etwas hat geantwortet, aber nicht mit einem Bericht. Prüf die Online-Adresse in den Einstellungen.';
+      'Unter der Adresse hat etwas geantwortet, aber keinen Bericht geliefert. Prüf die Online-Adresse in den Einstellungen.';
 
   @override
   String get errGeneric =>
@@ -1022,7 +1022,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get checkAddress => 'Adresse';
 
   @override
-  String get checkReach => 'Erreichbar';
+  String get checkReach => 'Erreichbarkeit';
 
   @override
   String get checkServer => 'Ossia antwortet';
@@ -1123,11 +1123,11 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String netHttpError(int code) {
-    return 'Die Antwort war ein Fehler ($code)';
+    return 'Es kam eine Fehlermeldung zurück ($code)';
   }
 
   @override
-  String get netNotOssia => 'Etwas hat geantwortet, aber es ist nicht Ossia';
+  String get netNotOssia => 'Da antwortet etwas, aber nicht Ossia';
 
   @override
   String lenThing(String animal, String bone) {
@@ -1179,7 +1179,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String lenNoFit(String cm, String before, String after) {
-    return '$cm cm passt weder zu $before noch zur nächstbesten Möglichkeit, $after, daher haben wir die Antwort des Fotos behalten. Der Knochen könnte von einem jungen Tier oder Menschen stammen, oder es lohnt sich, nochmal zu messen.';
+    return '$cm cm passt weder zu $before noch zur nächstbesten Möglichkeit, $after, daher haben wir die Antwort aus dem Foto behalten. Der Knochen könnte von einem jungen Tier oder Menschen stammen, oder es lohnt sich, nochmal zu messen.';
   }
 
   @override
@@ -1194,7 +1194,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String lenChangedFitsBut(String cm, String before) {
-    return '$cm cm passt zu $before, aber das Ausschließen anderer Möglichkeiten hat die Antwort verschoben.';
+    return '$cm cm passt zu $before, aber weil andere Möglichkeiten wegfielen, hat sich die Antwort verschoben.';
   }
 
   @override
@@ -1234,7 +1234,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String lenPhotoAlone(String headline) {
-    return 'Nur nach dem Foto war es $headline.';
+    return 'Allein nach dem Foto wäre es „$headline“ gewesen.';
   }
 
   @override
@@ -1298,7 +1298,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get tipLightBody =>
-      'Tageslicht ist am besten. Harte Schatten verstecken Details.';
+      'Tageslicht ist am besten. Harte Schatten verschlucken Details.';
 
   @override
   String get tipLengthTitle => 'Länge bekannt?';
@@ -1308,7 +1308,7 @@ class AppLocalizationsDe extends AppLocalizations {
       'Trag sie vor der Analyse ein. Das macht die Schätzung genauer.';
 
   @override
-  String get tipAnglesTitle => 'Mehrere Winkel';
+  String get tipAnglesTitle => 'Mehrere Ansichten';
 
   @override
   String get tipAnglesBody =>
@@ -1326,8 +1326,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get scanNoFinds => 'Noch keine Funde';
 
   @override
-  String get scanNoFindsBody =>
-      'Deine gescannten Knochen sammeln sich genau hier.';
+  String get scanNoFindsBody => 'Hier landen deine gescannten Knochen.';
 
   @override
   String get linkNotReady => 'Nicht bereit';
@@ -1373,7 +1372,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get guideSkullTip =>
-      'Von vorn fotografieren. Augenhöhlen in die gepunkteten Augen.';
+      'Fotografier ihn direkt von vorn, die Augenhöhlen in die gepunkteten Augen.';
 
   @override
   String get guideFlatTip =>
@@ -1393,7 +1392,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String camAngle(int number) {
-    return 'WINKEL #$number';
+    return 'ANSICHT #$number';
   }
 
   @override
@@ -1419,7 +1418,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get camAnotherAngleTip =>
-      'Gleicher Knochen, neue Seite. Dreh ihn um oder nimm ein Ende auf.';
+      'Derselbe Knochen, andere Seite. Dreh ihn um oder fotografier ein Ende.';
 
   @override
   String get camShotFailed => 'Das Foto hat nicht geklappt. Nochmal?';
@@ -1439,6 +1438,32 @@ class AppLocalizationsDe extends AppLocalizations {
       'Die Kamera ließ sich hier nicht starten. Stattdessen ein Foto hochladen?';
 
   @override
+  String get camAuto => 'Auto-Auslöser';
+
+  @override
+  String get camAutoOnTip =>
+      'Der Auto-Auslöser ist an. Bring den Knochen in den Rahmen und halt kurz still.';
+
+  @override
+  String get camAutoOffTip =>
+      'Der Auto-Auslöser ist aus. Tippe auf den großen Knopf, um das Foto zu machen.';
+
+  @override
+  String get camAutoSpotted => 'KNOCHEN ENTDECKT!';
+
+  @override
+  String get camAutoFound => 'Hab ihn! Jetzt das Handy ruhig halten.';
+
+  @override
+  String get camAutoHolding => 'Perfekt, genau so halten…';
+
+  @override
+  String get camAutoSnapped => 'KLICK!';
+
+  @override
+  String get camAutoRearm => 'Beweg das Handy ein Stück für ein neues Foto.';
+
+  @override
   String get reviewDropTitle => 'Diese Fotos verwerfen?';
 
   @override
@@ -1454,7 +1479,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get reviewDropRevising =>
-      'Die hinzugefügten oder entfernten Winkel werden nicht analysiert. Der gespeicherte Bericht bleibt, wie er war.';
+      'Deine Änderungen an den Ansichten werden nicht analysiert. Der gespeicherte Bericht bleibt, wie er war.';
 
   @override
   String get reviewDropConfirm => 'Verwerfen';
@@ -1482,11 +1507,11 @@ class AppLocalizationsDe extends AppLocalizations {
   String get reviewRetake => 'Neu aufnehmen';
 
   @override
-  String get reviewTitleRevising => 'Weitere Winkel';
+  String get reviewTitleRevising => 'Weitere Ansichten';
 
   @override
   String reviewTitleAngles(int count) {
-    return 'Ein Knochen, $count Winkel';
+    return 'Ein Knochen, $count Ansichten';
   }
 
   @override
@@ -1506,16 +1531,16 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get reviewSkipAnalyze => 'Ohne Länge los';
+  String get reviewSkipAnalyze => 'Ohne Länge weiter';
 
   @override
   String get reviewAnalyzeIt => 'Analysieren';
 
   @override
-  String get reviewMoreAnglesQ => 'Weitere Winkel?';
+  String get reviewMoreAnglesQ => 'Weitere Ansichten?';
 
   @override
-  String get reviewAngles => 'Winkel';
+  String get reviewAngles => 'Ansichten';
 
   @override
   String get reviewOptional => 'OPTIONAL';
@@ -1527,7 +1552,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get reviewAnglesBodyOne =>
-      'Gleicher Knochen, andere Seite. Die Rückseite, ein Ende oder eine Nahaufnahme knackt knifflige Fälle. Alle Fotos werden zusammen ausgewertet.';
+      'Derselbe Knochen, andere Seite. Die Rückseite, ein Ende oder eine Nahaufnahme knacken knifflige Fälle. Alle Fotos werden zusammen ausgewertet.';
 
   @override
   String reviewAnglesBodyMany(int count) {
@@ -1541,10 +1566,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get reviewUpload => 'Galerie';
 
   @override
-  String get reviewSnapHint => 'Weiteren Winkel aufnehmen';
+  String get reviewSnapHint => 'Weitere Ansicht aufnehmen';
 
   @override
-  String get reviewUploadHint => 'Winkel aus der Galerie hinzufügen';
+  String get reviewUploadHint => 'Ansichten aus der Galerie hinzufügen';
 
   @override
   String get reviewMaxPhotos => 'Mehr passen nicht in eine Analyse.';
@@ -1679,7 +1704,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get reportSheetTitle => 'Bericht';
 
   @override
-  String get reportAddAngle => 'Weiteren Winkel hinzufügen';
+  String get reportAddAngle => 'Weitere Ansicht hinzufügen';
 
   @override
   String get reportCopy => 'Bericht kopieren';
@@ -1716,15 +1741,27 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String resultAngles(int count) {
-    return '$count Winkel';
+    return '$count Ansichten';
   }
 
   @override
-  String get resultHowSure => 'Wie sicher sind wir?';
+  String resultAnglesWithBone(int seen, int count) {
+    return 'Knochen auf $seen von $count Fotos';
+  }
 
   @override
-  String get resultShakiest =>
-      'Nur so sicher wie der wackeligste Schritt: den Knochen finden, Mensch und Tier unterscheiden, den Knochen benennen und bei Tieren das Tier.';
+  String get resultHowSure => 'Wie sicher ist diese Antwort?';
+
+  @override
+  String get resultHowSureSteps =>
+      'Eine Antwort ist nur so gut wie ihr schwächster Schritt. Deshalb zählt oben der niedrigste dieser Werte.';
+
+  @override
+  String get resultHowSureNone =>
+      'So sicher ist sich die App, dass auf diesem Foto kein Knochen zu sehen ist.';
+
+  @override
+  String get resultStepBone => 'Knochen oder nicht';
 
   @override
   String get resultCouldAlsoBe => 'Nicht sicher. Es könnte auch sein:';
@@ -1781,7 +1818,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get resultAgeFooter =>
-      'Alter und Geschlecht sind auf einem Foto am schwersten zu erkennen, und Ossia hat sie an wenigen Beispielen gelernt. Sieh sie als Hinweis zum Prüfen, nicht als Antwort.';
+      'Alter und Geschlecht sind auf einem Foto am schwersten zu erkennen, und Ossia hat sie an wenigen Beispielen gelernt. Betrachte sie als Hinweis, den du prüfen solltest, nicht als Antwort.';
 
   @override
   String get resultWhichAnimal => 'Welches Tier';
@@ -1794,11 +1831,11 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get resultUndeterminedBody =>
-      'Es sieht nach einem Tierknochen aus, aber keine Tiergruppe stach genug heraus, um sie zu nennen.';
+      'Es sieht nach einem Tierknochen aus, aber keine Tiergruppe hebt sich klar genug ab, um sie zu nennen.';
 
   @override
   String get resultAnimalFooter =>
-      'Bei Säugetieren nennt Ossia die Familie (etwa Hirsche oder Hunde), wenn der Knochen sie zeigt; sonst sagt es Säugetier, Vogel oder Reptil. Vergleiche mit einem bekannten Skelett, bevor du dich darauf verlässt.';
+      'Bei Säugetieren nennt Ossia die Familie (etwa Hirsche oder Hunde), wenn der Knochen sie zeigt; sonst nur Säugetier, Vogel oder Reptil. Vergleiche mit einem bekannten Skelett, bevor du dich darauf verlässt.';
 
   @override
   String get resultMeasurements => 'Maße';
@@ -1831,14 +1868,14 @@ class AppLocalizationsDe extends AppLocalizations {
   String get resultYourMeasurement => 'Deine Messung';
 
   @override
-  String get resultInsideRange => 'Genau im typischen Bereich. Gut.';
+  String get resultInsideRange => 'Genau im typischen Bereich. Sehr gut.';
 
   @override
   String get resultOutsideRange =>
       'Außerhalb des typischen Bereichs. Lohnt einen zweiten Blick.';
 
   @override
-  String get resultInsideEstimate => 'Passt genau zur Schätzung. Gut.';
+  String get resultInsideEstimate => 'Passt genau zur Schätzung. Sehr gut.';
 
   @override
   String get resultOutsideEstimate =>
@@ -1849,7 +1886,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String resultAtlasSubtitle(String region) {
-    return '$region · worauf achten, und links oder rechts';
+    return '$region · Merkmale und Seitenbestimmung';
   }
 
   @override
@@ -2021,7 +2058,14 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get settingsAutoSaveBody =>
-      'Wenn aus, bleibt ein Bericht nur, wenn du ihn speicherst.';
+      'Ausgeschaltet bleibt ein Bericht nur, wenn du ihn selbst speicherst.';
+
+  @override
+  String get settingsAutoSnap => 'Auto-Auslöser';
+
+  @override
+  String get settingsAutoSnapBody =>
+      'Die Kamera löst von selbst aus, sobald sie einen Knochen sieht und das Handy ruhig ist.';
 
   @override
   String get settingsUnits => 'Maßeinheit';
@@ -2191,7 +2235,8 @@ class AppLocalizationsDe extends AppLocalizations {
       'Funktioniert überall, auch ohne Empfang, und deine Fotos verlassen nie dein Handy.';
 
   @override
-  String get statusConnectingBody => 'Prüfe, ob die Online-Analyse wach ist.';
+  String get statusConnectingBody =>
+      'Wir prüfen, ob die Online-Analyse wach ist.';
 
   @override
   String get statusChecking => 'Wird geprüft…';
@@ -2246,7 +2291,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get statusNo => 'Nein';
 
   @override
-  String get statusPhotosSent => 'Fotos verschickt';
+  String get statusPhotosSent => 'Fotos verlassen das Handy';
 
   @override
   String get statusNever => 'Nie';

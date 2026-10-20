@@ -47,6 +47,7 @@ void main() {
   });
   check('no-bone headline', none.headline == 'No bone detected', none.headline);
   check('no-bone topBone null', none.topBone == null);
+  check('no-bone overall = sure there is none', (none.overallConfidence - 0.8).abs() < 1e-9, '${none.overallConfidence}');
 
   final AnalysisRecord rec = AnalysisRecord(
     id: 'abc', imagePath: '/tmp/x.jpg', createdAt: DateTime.utc(2026, 3, 4), label: 'TR2-114',

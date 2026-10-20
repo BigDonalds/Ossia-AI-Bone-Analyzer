@@ -2560,6 +2560,54 @@ abstract class AppLocalizations {
   /// **'Couldn’t start the camera here. Upload a photo instead?'**
   String get camNappingBody;
 
+  /// Camera button that turns the automatic photo on and off
+  ///
+  /// In en, this message translates to:
+  /// **'Auto snap'**
+  String get camAuto;
+
+  /// Mascot tip right after auto snap is turned on
+  ///
+  /// In en, this message translates to:
+  /// **'Auto snap is on. Get the bone in the frame and hold still.'**
+  String get camAutoOnTip;
+
+  /// Mascot tip right after auto snap is turned off
+  ///
+  /// In en, this message translates to:
+  /// **'Auto snap is off. Tap the big button to take the photo.'**
+  String get camAutoOffTip;
+
+  /// Sticker that pops onto the camera frame when a bone is in view
+  ///
+  /// In en, this message translates to:
+  /// **'BONE SPOTTED!'**
+  String get camAutoSpotted;
+
+  /// Mascot tip when a bone is in view but the phone is moving
+  ///
+  /// In en, this message translates to:
+  /// **'Got it! Now hold the phone still.'**
+  String get camAutoFound;
+
+  /// Mascot tip while the phone is still and the auto photo is counting down
+  ///
+  /// In en, this message translates to:
+  /// **'Perfect, hold it right there…'**
+  String get camAutoHolding;
+
+  /// Big stamp at the moment the auto photo is taken
+  ///
+  /// In en, this message translates to:
+  /// **'SNAP!'**
+  String get camAutoSnapped;
+
+  /// Mascot tip after coming back to the camera from a photo, before auto snap will fire again
+  ///
+  /// In en, this message translates to:
+  /// **'Move the phone a little to take another.'**
+  String get camAutoRearm;
+
   /// Question when leaving the photo check screen after adding or removing photos
   ///
   /// In en, this message translates to:
@@ -3028,17 +3076,35 @@ abstract class AppLocalizations {
   /// **'{count} angles'**
   String resultAngles(int count);
 
-  /// No description provided for @resultHowSure.
+  /// Sticker in place of the angle count when some photos showed no bone; only those that did were read
   ///
   /// In en, this message translates to:
-  /// **'How sure are we?'**
+  /// **'Bone in {seen} of {count} photos'**
+  String resultAnglesWithBone(int seen, int count);
+
+  /// Title of the box with the big percentage under the answer
+  ///
+  /// In en, this message translates to:
+  /// **'How sure is this answer?'**
   String get resultHowSure;
 
-  /// No description provided for @resultShakiest.
+  /// Small grey text under the list of steps (Bone or not, Human or animal, Which bone, Which animal), each with its own percentage
   ///
   /// In en, this message translates to:
-  /// **'Only as sure as the shakiest step: finding the bone, telling human from animal, naming the bone and, for animals, which one.'**
-  String get resultShakiest;
+  /// **'The answer is only as good as its weakest step, so the score above is the lowest of these.'**
+  String get resultHowSureSteps;
+
+  /// Small grey text under the percentage when no bone was found
+  ///
+  /// In en, this message translates to:
+  /// **'How sure the app is that this photo shows no bone.'**
+  String get resultHowSureNone;
+
+  /// First step in the list under the percentage: was a bone found at all
+  ///
+  /// In en, this message translates to:
+  /// **'Bone or not'**
+  String get resultStepBone;
 
   /// Above a few other possible answers with their chances
   ///
@@ -3549,6 +3615,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Off means each report is kept only if you save it.'**
   String get settingsAutoSaveBody;
+
+  /// Settings switch for the automatic camera photo
+  ///
+  /// In en, this message translates to:
+  /// **'Auto snap'**
+  String get settingsAutoSnap;
+
+  /// Explains the auto snap switch
+  ///
+  /// In en, this message translates to:
+  /// **'The camera takes the photo by itself once it sees a bone and the phone is still.'**
+  String get settingsAutoSnapBody;
 
   /// No description provided for @settingsUnits.
   ///

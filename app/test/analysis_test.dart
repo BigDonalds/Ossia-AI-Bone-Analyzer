@@ -90,6 +90,8 @@ void main() {
       expect(r.detection.present, isFalse);
       expect(r.topBone, isNull);
       expect(r.headline, 'No bone detected');
+      // How sure the model is that there is no bone.
+      expect(r.overallConfidence, closeTo(0.8, 0.001));
     });
 
     test('round-trips through JSON', () {

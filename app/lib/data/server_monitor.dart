@@ -82,6 +82,12 @@ class ServerMonitor extends ChangeNotifier with WidgetsBindingObserver {
   bool _fullRunning = false;
   bool _disposed = false;
 
+  /// Moves on whenever the engine or the address changes. A check started
+  /// before then is stale: its request is cut off, and it stops at its next
+  /// step without touching anything.
+  int _epoch = 0;
+  Completer<void> _abort = Completer<void>();
+
   LinkState _state = LinkState.unknown;
   LocalText? _error;
   String? _model;
@@ -121,6 +127,7 @@ class ServerMonitor extends ChangeNotifier with WidgetsBindingObserver {
     if (_settings.engine == _mode && _settings.serverUrl == _url) return;
     _mode = _settings.engine;
     _url = _settings.serverUrl;
+    _dropRunningChecks();
     _history.clear();
     _latencyMs = null;
     _model = null;
@@ -133,6 +140,16 @@ class ServerMonitor extends ChangeNotifier with WidgetsBindingObserver {
     }
     _restart();
   }
+
+  void _dropRunningChecks() {
+    _epoch++;
+    _abort.complete();
+    _abort = Completer<void>();
+    _inFlight = false;
+    _fullRunning = false;
+  }
+
+  bool _stale(int epoch) => epoch != _epoch || _disposed;
 
   void _restart() {
     _timer?.cancel();
@@ -188,12 +205,14 @@ class ServerMonitor extends ChangeNotifier with WidgetsBindingObserver {
   /// One quiet health ping. Updates the state, the history and the checklist.
   Future<void> quickCheck() async {
     if (_settings.onDevice || _inFlight || _fullRunning) return;
+    final int epoch = _epoch;
     _inFlight = true;
     if (_state == LinkState.unknown) {
       _state = LinkState.checking;
       _notify();
     }
-    final _Probe probe = await _probe();
+    final _Probe probe = await _probe(epoch);
+    if (_stale(epoch)) return;
     _inFlight = false;
     _apply(probe, animateSteps: false);
   }
@@ -205,10 +224,13 @@ class ServerMonitor extends ChangeNotifier with WidgetsBindingObserver {
       _restart();
       return;
     }
+    final int epoch = _epoch;
     // Let a background ping finish first so the two don't interleave.
     while (_inFlight) {
       await Future<void>.delayed(const Duration(milliseconds: 50));
+      if (_stale(epoch)) return;
     }
+    if (_fullRunning) return;
     _fullRunning = true;
     _state = LinkState.checking;
     _error = null;
@@ -220,7 +242,7 @@ class ServerMonitor extends ChangeNotifier with WidgetsBindingObserver {
     _notify();
 
     // 1. Address.
-    await _run('address', () async {
+    await _run(epoch, 'address', () async {
       try {
         final Uri u = _healthUri();
         if (u.host.isEmpty) throw const FormatException();
@@ -232,42 +254,48 @@ class ServerMonitor extends ChangeNotifier with WidgetsBindingObserver {
         return (false, (AppLocalizations l) => l.checkBadAddress);
       }
     });
+    if (_stale(epoch)) return;
     if (_failedAt('address')) return _finishFull();
 
     // 2–4. One real request, read three ways.
     _Probe? probe;
-    await _run('reach', () async {
-      probe = await _probe();
+    await _run(epoch, 'reach', () async {
+      probe = await _probe(epoch);
       final _Probe p = probe!;
       if (p.transportError != null) return (false, p.transportError!);
       return (true, (AppLocalizations l) => l.checkAnsweredIn(p.ms));
     });
+    if (_stale(epoch)) return;
     if (_failedAt('reach')) {
       _apply(probe!, animateSteps: true);
       return _finishFull();
     }
-    await _run('server', () async {
+    await _run(epoch, 'server', () async {
       final _Probe p = probe!;
       if (p.httpError != null) return (false, p.httpError!);
       return (true, (AppLocalizations l) => l.checkRunningFor(l.uptime(p.uptime)));
     });
+    if (_stale(epoch)) return;
     if (_failedAt('server')) {
       _apply(probe!, animateSteps: true);
       return _finishFull();
     }
-    await _run('model', () async {
+    await _run(epoch, 'model', () async {
       final _Probe p = probe!;
       return p.model == null
           ? (false, (AppLocalizations l) => l.checkNotReady)
           : (true, (AppLocalizations l) => l.checkReady);
     });
 
+    if (_stale(epoch)) return;
+
     // 5. A few pings for a steadier number.
-    await _run('ping', () async {
+    await _run(epoch, 'ping', () async {
       final List<int> times = <int>[];
       _Probe? last;
       for (int i = 0; i < 3; i++) {
-        last = await _probe();
+        last = await _probe(epoch);
+        if (_stale(epoch)) return (false, (AppLocalizations l) => l.checkLost);
         if (last.ok) {
           times.add(last.ms);
         } else {
@@ -283,6 +311,7 @@ class ServerMonitor extends ChangeNotifier with WidgetsBindingObserver {
       _apply(last!.copyWithMs(avg), animateSteps: true);
       return (true, (AppLocalizations l) => l.checkPing(avg, l.pingWord(avg)));
     });
+    if (_stale(epoch)) return;
     _finishFull();
   }
 
@@ -303,21 +332,24 @@ class ServerMonitor extends ChangeNotifier with WidgetsBindingObserver {
 
   /// Runs one checklist step with a minimum on-screen time, so each tick
   /// lands one after another rather than all at once.
-  Future<void> _run(String id, Future<(bool, LocalText)> Function() body) async {
+  Future<void> _run(int epoch, String id, Future<(bool, LocalText)> Function() body) async {
     final CheckStep step = steps.firstWhere((CheckStep s) => s.id == id);
     step.status = StepStatus.running;
     _notify();
     final Stopwatch sw = Stopwatch()..start();
     final (bool ok, LocalText detail) = await body();
     final int left = 550 - sw.elapsedMilliseconds;
-    if (left > 0) await Future<void>.delayed(Duration(milliseconds: left));
+    if (left > 0 && !_stale(epoch)) {
+      await Future<void>.delayed(Duration(milliseconds: left));
+    }
+    if (_stale(epoch)) return;
     step
       ..status = ok ? StepStatus.passed : StepStatus.failed
       ..detail = detail;
     _notify();
   }
 
-  Future<_Probe> _probe() async {
+  Future<_Probe> _probe(int epoch) async {
     final Uri uri;
     try {
       uri = _healthUri();
@@ -331,10 +363,21 @@ class ServerMonitor extends ChangeNotifier with WidgetsBindingObserver {
     }
     _emit(const PingSent());
     final Stopwatch sw = Stopwatch()..start();
+    _Probe lost(LocalText reason) {
+      if (!_stale(epoch)) _emit(PingLost(reason));
+      return _Probe.transport(reason);
+    }
+
     try {
-      final http.Response r = await _client.get(uri).timeout(timeout);
+      final http.AbortableRequest request =
+          http.AbortableRequest('GET', uri, abortTrigger: _abort.future);
+      final http.Response r = await _client
+          .send(request)
+          .then(http.Response.fromStream)
+          .timeout(timeout);
       final int ms = sw.elapsedMilliseconds;
       final _Probe probe = _Probe.fromResponse(r, ms);
+      if (_stale(epoch)) return probe;
       if (probe.ok) {
         _emit(PingReturned(ms));
       } else {
@@ -342,21 +385,13 @@ class ServerMonitor extends ChangeNotifier with WidgetsBindingObserver {
       }
       return probe;
     } on TimeoutException {
-      final _Probe p = _Probe.transport((AppLocalizations l) => l.netNoAnswer(timeout.inSeconds));
-      _emit(PingLost(p.transportError!));
-      return p;
+      return lost((AppLocalizations l) => l.netNoAnswer(timeout.inSeconds));
     } on SocketException catch (e) {
-      final _Probe p = _Probe.transport(_explain(e.message));
-      _emit(PingLost(p.transportError!));
-      return p;
+      return lost(_explain(e.message));
     } on http.ClientException catch (e) {
-      final _Probe p = _Probe.transport(_explain(e.message));
-      _emit(PingLost(p.transportError!));
-      return p;
+      return lost(_explain(e.message));
     } catch (e) {
-      final _Probe p = _Probe.transport(verbatim('$e'));
-      _emit(PingLost(p.transportError!));
-      return p;
+      return lost(verbatim('$e'));
     }
   }
 
@@ -459,6 +494,7 @@ class ServerMonitor extends ChangeNotifier with WidgetsBindingObserver {
   @override
   void dispose() {
     _disposed = true;
+    _abort.complete();
     _timer?.cancel();
     _settings.removeListener(_onSettings);
     WidgetsBinding.instance.removeObserver(this);
