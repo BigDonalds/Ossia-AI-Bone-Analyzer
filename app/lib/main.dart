@@ -69,6 +69,7 @@ class OssiaApp extends StatefulWidget {
 
   static final GlobalKey<ScaffoldMessengerState> messengerKey =
       GlobalKey<ScaffoldMessengerState>();
+  static final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   State<OssiaApp> createState() => _OssiaAppState();
@@ -128,6 +129,7 @@ class _OssiaAppState extends State<OssiaApp> {
       onGenerateTitle: (BuildContext context) => context.l10n.appName,
       debugShowCheckedModeBanner: false,
       scaffoldMessengerKey: OssiaApp.messengerKey,
+      navigatorKey: OssiaApp.navigatorKey,
       locale: settings.language.locale,
       supportedLocales: <Locale>[for (final AppLanguage l in kLanguages) l.locale],
       localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -143,7 +145,11 @@ class _OssiaAppState extends State<OssiaApp> {
           child: MediaQuery.withClampedTextScaling(
             minScaleFactor: 0.85,
             maxScaleFactor: 1.35,
-            child: StatusToaster(messengerKey: OssiaApp.messengerKey, child: child!),
+            child: StatusToaster(
+              messengerKey: OssiaApp.messengerKey,
+              navigatorKey: OssiaApp.navigatorKey,
+              child: child!,
+            ),
           ),
         );
       },

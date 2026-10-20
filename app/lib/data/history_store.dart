@@ -25,8 +25,9 @@ class HistoryStore extends ChangeNotifier {
 
   bool get isEmpty => _records.isEmpty;
 
-  int get humanCount =>
-      _records.where((AnalysisRecord r) => r.result.isHuman).length;
+  int get humanCount => _records
+      .where((AnalysisRecord r) => r.result.detection.present && r.result.isHuman)
+      .length;
 
   int get flaggedCount => _records
       .where((AnalysisRecord r) => r.result.damage.flagged.isNotEmpty)

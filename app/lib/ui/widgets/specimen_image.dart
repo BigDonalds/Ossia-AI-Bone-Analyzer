@@ -48,6 +48,37 @@ class SpecimenImage extends StatelessWidget {
     );
   }
 
+  /// Reads the shape (width over height) of the photo at [path] and hands it
+  /// to [onAspect] once it has loaded. Call the returned function to stop
+  /// listening early; it is safe to call more than once.
+  static VoidCallback measure(
+    BuildContext context,
+    String path,
+    ValueChanged<double> onAspect,
+  ) {
+    final ImageProvider? image = providerFor(path);
+    if (image == null) return () {};
+    final ImageStream stream = image.resolve(createLocalImageConfiguration(context));
+    late final ImageStreamListener listener;
+    bool listening = true;
+    void stop() {
+      if (listening) stream.removeListener(listener);
+      listening = false;
+    }
+
+    listener = ImageStreamListener(
+      (ImageInfo info, bool _) {
+        final double aspect = info.image.width / info.image.height;
+        info.dispose();
+        stop();
+        onAspect(aspect);
+      },
+      onError: (Object _, StackTrace? _) => stop(),
+    );
+    stream.addListener(listener);
+    return stop;
+  }
+
   Widget _placeholder(BuildContext context) {
     final AppColors c = context.colors;
     final double side = iconSize ??

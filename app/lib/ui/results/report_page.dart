@@ -47,10 +47,11 @@ class _ReportPageState extends State<ReportPage> {
   late AnalysisRecord _record = widget.record;
   late bool _saved = widget.saved;
 
-  /// Width over height of the first photo, once it has loaded.
+  /// Width over height of the first photo, once it has loaded, so the header
+  /// can be sized to show all of it.
   double? _aspect;
-  ImageStream? _photoStream;
-  ImageStreamListener? _photoListener;
+  String? _measured;
+  VoidCallback _stopMeasuring = () {};
 
   HistoryStore get _history => context.read<HistoryStore>();
 
@@ -66,29 +67,13 @@ class _ReportPageState extends State<ReportPage> {
     super.dispose();
   }
 
-  /// Reads the first photo's shape so the header can show all of it.
   void _measurePhoto() {
-    final ImageProvider? image = SpecimenImage.providerFor(_record.imagePath);
-    if (image == null) return;
-    final ImageStream stream = image.resolve(createLocalImageConfiguration(context));
-    if (stream.key == _photoStream?.key) return;
+    if (_record.imagePath == _measured) return;
+    _measured = _record.imagePath;
     _stopMeasuring();
-    _photoStream = stream;
-    _photoListener = ImageStreamListener(
-      (ImageInfo info, bool _) {
-        final double aspect = info.image.width / info.image.height;
-        info.dispose();
-        _stopMeasuring();
-        if (mounted && aspect != _aspect) setState(() => _aspect = aspect);
-      },
-      onError: (Object _, StackTrace? _) => _stopMeasuring(),
-    );
-    stream.addListener(_photoListener!);
-  }
-
-  void _stopMeasuring() {
-    if (_photoListener != null) _photoStream?.removeListener(_photoListener!);
-    _photoListener = null;
+    _stopMeasuring = SpecimenImage.measure(context, _record.imagePath, (double aspect) {
+      if (mounted && aspect != _aspect) setState(() => _aspect = aspect);
+    });
   }
 
   Future<void> _persist(AnalysisRecord next) async {
@@ -259,13 +244,8 @@ class _ReportPageState extends State<ReportPage> {
     final AppLocalizations l = context.l10n;
     final Size screen = MediaQuery.sizeOf(context);
     final double top = MediaQuery.paddingOf(context).top;
-    // Tall enough for the whole photo at full width, within limits that
-    // leave the answer in view below it. Phone photos are usually 3:4.
-    // On a wide screen (tablet on its side) the height limit wins.
-    final double tallest = screen.height * 0.52;
-    final double shortest = (screen.width * 0.62).clamp(0.0, tallest).toDouble();
     final double photo =
-        (screen.width / (_aspect ?? 0.75)).clamp(shortest, tallest).toDouble();
+        SpecimenHeader.photoHeight(screen, _aspect, several: _record.imagePaths.length > 1);
 
     return Scaffold(
       backgroundColor: c.canvas,

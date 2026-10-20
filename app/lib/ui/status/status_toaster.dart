@@ -9,9 +9,18 @@ import '../widgets/sheets.dart';
 /// Pops a toast, wherever the user is in the app, when the model goes offline
 /// or comes back.
 class StatusToaster extends StatefulWidget {
-  const StatusToaster({super.key, required this.messengerKey, required this.child});
+  const StatusToaster({
+    super.key,
+    required this.messengerKey,
+    required this.navigatorKey,
+    required this.child,
+  });
 
   final GlobalKey<ScaffoldMessengerState> messengerKey;
+
+  /// The app's own navigator, to tell whether a page of its own is open over
+  /// the tabs.
+  final GlobalKey<NavigatorState> navigatorKey;
   final Widget child;
 
   @override
@@ -51,12 +60,19 @@ class _StatusToasterState extends State<StatusToaster> {
     final ScaffoldMessengerState? messenger = widget.messengerKey.currentState;
     if (messenger == null || !mounted) return;
     final AppColors c = context.colors;
+    final bool overTabs = !(widget.navigatorKey.currentState?.canPop() ?? false);
     if (s == LinkState.offline) {
       showToast(context, context.l10n.toastLostConnection,
-          icon: Icons.cloud_off_rounded, messenger: messenger, color: c.critical);
+          icon: Icons.cloud_off_rounded,
+          messenger: messenger,
+          color: c.critical,
+          overTabs: overTabs);
     } else {
       showToast(context, context.l10n.toastBackOnline,
-          icon: Icons.cloud_done_rounded, messenger: messenger, color: c.positive);
+          icon: Icons.cloud_done_rounded,
+          messenger: messenger,
+          color: c.positive,
+          overTabs: overTabs);
     }
   }
 

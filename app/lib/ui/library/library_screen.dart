@@ -41,6 +41,9 @@ class _LibraryScreenState extends State<LibraryScreen> {
   /// Search looks at the words on screen in the app's language, and at the
   /// English names too, so "femur" still finds a Femur in German.
   bool _matches(AppLocalizations l, AnalysisRecord r) {
+    // A photo with no bone in it is neither human nor animal, so it only
+    // shows under All.
+    if (_filter != LibraryFilter.all && !r.result.detection.present) return false;
     switch (_filter) {
       case LibraryFilter.human:
         if (!r.result.isHuman) return false;

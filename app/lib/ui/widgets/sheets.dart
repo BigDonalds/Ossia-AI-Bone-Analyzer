@@ -219,16 +219,22 @@ Future<String?> promptForText(
   ).whenComplete(controller.dispose);
 }
 
-/// Sticker toast anchored above the tab bar.
+/// Sticker toast near the bottom of the screen. Inside the tabs the scaffold
+/// already sets it just above the tab bar; a page of its own may have buttons
+/// along the bottom, so there it sits higher, about where the tab bar's top
+/// would be. [overTabs] says which, for a caller outside both.
 void showToast(
   BuildContext context,
   String message, {
   IconData? icon,
   ScaffoldMessengerState? messenger,
   Color? color,
+  bool? overTabs,
 }) {
   final AppColors c = context.colors;
   messenger ??= ScaffoldMessenger.of(context);
+  overTabs ??=
+      context.findRootAncestorStateOfType<ScaffoldState>()?.widget.bottomNavigationBar != null;
   messenger.clearSnackBars();
   messenger.showSnackBar(
     SnackBar(
@@ -236,8 +242,7 @@ void showToast(
       backgroundColor: color ?? c.accent,
       elevation: 0,
       duration: const Duration(seconds: 2),
-      margin: EdgeInsets.fromLTRB(
-          16, 0, 16, 96 + MediaQuery.paddingOf(context).bottom),
+      margin: EdgeInsets.fromLTRB(16, 0, 16, overTabs ? 12 : 96),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
         side: BorderSide(color: c.ink, width: Chunky.border),
