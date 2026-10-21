@@ -1,11 +1,11 @@
 {
- "about": "What the Ossia app needs to run the exported model and build the same report as models/bone_analyzer.py. Written by export_mobile.py; do not edit by hand.",
+ "about": "What the Ossia app needs to run the exported model and build the same report as inference/analyzer.py. Written by scripts/export_mobile.py; do not edit by hand.",
  "model_file": "ossia.onnx",
- "model_sha256": "fa887e4826e2da69ebd46c8f893b00b29dc1f1773b4af18739dc15c80bace175",
- "model_bytes": 51394391,
+ "model_sha256": "9bf28eb084f1a1e525cecd918f711b4023cb0b89bad7e74f04ed14387bb75d28",
+ "model_bytes": 57592502,
  "checkpoint": "bone_analyzer.pt",
- "epoch": 41,
- "exported": "2026-10-01",
+ "epoch": 40,
+ "exported": "2026-10-21",
  "img_size": 384,
  "input": {
   "name": "image",
@@ -15,7 +15,7 @@
    384,
    3
   ],
-  "layout": "RGB, 0-255, channels last, letterboxed onto black like data/preprocess.letterbox_resize"
+  "layout": "RGB, 0-255, channels last, letterboxed onto black like bone_analyzer.data.images.letterbox_resize"
  },
  "outputs": [
   "bone_detection",
@@ -110,6 +110,7 @@
   "os_coxa",
   "scapula"
  ],
+ "family_min_confidence": 0.5,
  "use_length_rerank": true,
  "length_check": {
   "tolerance_above": 0.1,
