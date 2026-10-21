@@ -5,6 +5,7 @@ import '../../core/theme/palette.dart';
 import '../../core/theme/typography.dart';
 import '../../core/util/haptics.dart';
 import 'primitives.dart';
+import 'text_fit.dart';
 
 /// A chunky outlined card holding rows separated by thin rules.
 class InsetGroup extends StatelessWidget {
@@ -65,7 +66,7 @@ class InsetRow extends StatelessWidget {
   final Widget? leading;
   final Widget? trailing;
 
-  /// Grey detail text at the row's far end.
+  /// Grey detail text at the row's far end, or under the title when long.
   final String? value;
   final VoidCallback? onTap;
   final bool chevron;
@@ -77,6 +78,28 @@ class InsetRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppColors c = context.colors;
+    final TextStyle titleStyle = AppType.body.copyWith(
+      color: tint ?? c.textPrimary,
+      fontWeight: FontWeight.w600,
+    );
+    final Widget words = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(title, style: titleStyle),
+        if (subtitle != null) ...<Widget>[
+          const SizedBox(height: 2),
+          Text(
+            subtitle!,
+            style: AppType.footnote.copyWith(
+              color: c.textSecondary,
+              fontWeight: FontWeight.w400,
+              height: 1.35,
+            ),
+          ),
+        ],
+      ],
+    );
 
     return Pressable(
       onTap: onTap,
@@ -95,50 +118,13 @@ class InsetRow extends StatelessWidget {
                 const SizedBox(width: 13),
               ],
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      title,
-                      style: AppType.body.copyWith(
-                        color: tint ?? c.textPrimary,
-                        fontWeight: FontWeight.w600,
+                child: value == null
+                    ? words
+                    : LayoutBuilder(
+                        builder: (BuildContext context, BoxConstraints area) =>
+                            _withValue(context, c, words, titleStyle, box.maxWidth, area.maxWidth),
                       ),
-                    ),
-                    if (subtitle != null) ...<Widget>[
-                      const SizedBox(height: 2),
-                      Text(
-                        subtitle!,
-                        style: AppType.footnote.copyWith(
-                          color: c.textSecondary,
-                          fontWeight: FontWeight.w400,
-                          height: 1.35,
-                        ),
-                      ),
-                    ],
-                  ],
-                ),
               ),
-              if (value != null) ...<Widget>[
-                const SizedBox(width: 12),
-                // The value takes only the width it needs (up to 45% of the
-                // row), so it sits flush against the trailing edge and short
-                // values leave the title room to stay on one line.
-                ConstrainedBox(
-                  constraints: BoxConstraints(maxWidth: box.maxWidth * 0.45),
-                  child: Text(
-                    value!,
-                    textAlign: TextAlign.end,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppType.callout.copyWith(
-                      color: c.textSecondary,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ],
               if (trailing != null) ...<Widget>[
                 const SizedBox(width: 10),
                 trailing!,
@@ -163,6 +149,45 @@ class InsetRow extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  /// The title with [value] at the row's far end when the value is short (up
+  /// to 45% of the row) and leaves the title's longest word room, so short
+  /// values keep the title on one line. A longer value (a server address, a
+  /// German status) goes under the title, where it can wrap, rather than
+  /// ending in "…".
+  Widget _withValue(
+    BuildContext context,
+    AppColors c,
+    Widget words,
+    TextStyle titleStyle,
+    double rowWidth,
+    double room,
+  ) {
+    final TextStyle style = AppType.callout.copyWith(
+      color: c.textSecondary,
+      fontWeight: FontWeight.w600,
+    );
+    final double width = TextFit.width(context, value!, style);
+    final bool beside = width <= rowWidth * 0.45 &&
+        width + 12 + TextFit.longestWord(context, title, titleStyle) <= room;
+    if (beside) {
+      return Row(
+        children: <Widget>[
+          Expanded(child: words),
+          const SizedBox(width: 12),
+          Text(value!, textAlign: TextAlign.end, maxLines: 1, style: style),
+        ],
+      );
+    }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        words,
+        const SizedBox(height: 2),
+        Text(value!, maxLines: 2, overflow: TextOverflow.ellipsis, style: style),
+      ],
     );
   }
 }

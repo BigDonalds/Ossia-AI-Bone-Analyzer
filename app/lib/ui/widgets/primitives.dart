@@ -6,6 +6,7 @@ import '../../core/theme/typography.dart';
 import '../../core/util/formatting.dart';
 import '../../core/util/haptics.dart';
 import 'bone_buddy.dart';
+import 'text_fit.dart';
 
 /// Outline weight and hard-shadow depth shared by every raised element.
 abstract final class Chunky {
@@ -235,21 +236,26 @@ class GroupLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Widget label = Text(
+      text,
+      style: AppType.groupHeader.copyWith(color: context.colors.textPrimary),
+    );
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 28, 20, 10),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Expanded(
-            child: Text(
-              text,
-              style: AppType.groupHeader
-                  .copyWith(color: context.colors.textPrimary),
+      // The trailing pill drops under the label when the two don't fit on one
+      // line (German, large text).
+      child: trailing == null
+          ? label
+          : SizedBox(
+              width: double.infinity,
+              child: Wrap(
+                alignment: WrapAlignment.spaceBetween,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: 12,
+                runSpacing: 8,
+                children: <Widget>[label, trailing!],
+              ),
             ),
-          ),
-          ?trailing,
-        ],
-      ),
     );
   }
 }
@@ -380,6 +386,7 @@ class StatusPill extends StatelessWidget {
     this.filled = false,
     this.icon,
     this.leading,
+    this.maxLines = 1,
   });
 
   final String text;
@@ -389,6 +396,9 @@ class StatusPill extends StatelessWidget {
 
   /// Drawn in place of [icon], at the icon's size and colour.
   final Widget? leading;
+
+  /// Lines the label may take before it ends in "…".
+  final int maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -406,28 +416,33 @@ class StatusPill extends StatelessWidget {
         borderRadius: BorderRadius.circular(99),
         border: Border.all(color: c.ink, width: 1.6),
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          if (leading != null || icon != null) ...<Widget>[
-            IconTheme(
-              data: IconThemeData(size: 13, color: fg),
-              child: leading ?? Icon(icon),
-            ),
-            const SizedBox(width: 4),
+      // One rich text rather than a row: it sizes to the label where the
+      // width is open, and wraps or ends in "…" where it is not (a long German
+      // region name beside a sketch) instead of running past the pill.
+      child: Text.rich(
+        TextSpan(
+          children: <InlineSpan>[
+            if (leading != null || icon != null)
+              WidgetSpan(
+                alignment: PlaceholderAlignment.middle,
+                child: Padding(
+                  padding: const EdgeInsetsDirectional.only(end: 4),
+                  child: IconTheme(
+                    data: IconThemeData(size: 13, color: fg),
+                    child: leading ?? Icon(icon),
+                  ),
+                ),
+              ),
+            TextSpan(text: text),
           ],
-          // No Flexible here: pills often sit in rows that give them unbounded
-          // width, and their labels are short.
-          Text(
-            text,
-            maxLines: 1,
-            style: AppType.caption.copyWith(
-              color: fg,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 0.1,
-            ),
-          ),
-        ],
+        ),
+        maxLines: maxLines,
+        overflow: TextOverflow.ellipsis,
+        style: AppType.caption.copyWith(
+          color: fg,
+          fontWeight: FontWeight.w700,
+          letterSpacing: 0.1,
+        ),
       ),
     );
   }
@@ -623,6 +638,73 @@ class SecondaryButton extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// A secondary and a primary button side by side, sharing the width by
+/// [secondaryFlex] to [primaryFlex]. When either label would have to shrink
+/// to fit its share (German and Arabic labels run long), they stack instead,
+/// the primary on top, as on the report page.
+class ButtonPair extends StatelessWidget {
+  const ButtonPair({
+    super.key,
+    required this.secondary,
+    required this.primary,
+    this.secondaryFlex = 1,
+    this.primaryFlex = 1,
+  });
+
+  final SecondaryButton secondary;
+  final PrimaryButton primary;
+  final int secondaryFlex;
+  final int primaryFlex;
+
+  static const double _gap = 6;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints box) {
+        final double share =
+            (box.maxWidth - _gap) / (secondaryFlex + primaryFlex);
+        // Room for the label inside a button [width] wide: less the outline,
+        // the shadow, the side padding and an icon with its gap. A label may
+        // shrink a touch, as it does on a single button, but no more.
+        bool fits(String label, bool icon, double width, double pad) {
+          final double room = width -
+              Chunky.shadow -
+              Chunky.border * 2 -
+              pad * 2 -
+              (icon ? 30 : 0);
+          return TextFit.width(context, label, AppType.button) * 0.92 <= room;
+        }
+
+        final bool side = fits(
+              secondary.label,
+              secondary.icon != null || secondary.leading != null,
+              share * secondaryFlex,
+              12,
+            ) &&
+            fits(primary.label, primary.icon != null, share * primaryFlex, 16);
+        if (!side) {
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              primary,
+              const SizedBox(height: 10),
+              secondary,
+            ],
+          );
+        }
+        return Row(
+          children: <Widget>[
+            Expanded(flex: secondaryFlex, child: secondary),
+            const SizedBox(width: _gap),
+            Expanded(flex: primaryFlex, child: primary),
+          ],
+        );
+      },
     );
   }
 }

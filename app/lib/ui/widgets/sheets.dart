@@ -136,25 +136,18 @@ Future<bool> confirm(
                   ),
                 ),
                 const SizedBox(height: 20),
-                Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: SecondaryButton(
-                        label: context.l10n.nah,
-                        height: 52,
-                        onTap: () => Navigator.pop(context, false),
-                      ),
-                    ),
-                    const SizedBox(width: 6),
-                    Expanded(
-                      child: PrimaryButton(
-                        label: confirmLabel ?? context.l10n.confirm,
-                        height: 52,
-                        tone: destructive ? c.critical : null,
-                        onTap: () => Navigator.pop(context, true),
-                      ),
-                    ),
-                  ],
+                ButtonPair(
+                  secondary: SecondaryButton(
+                    label: context.l10n.nah,
+                    height: 52,
+                    onTap: () => Navigator.pop(context, false),
+                  ),
+                  primary: PrimaryButton(
+                    label: confirmLabel ?? context.l10n.confirm,
+                    height: 52,
+                    tone: destructive ? c.critical : null,
+                    onTap: () => Navigator.pop(context, true),
+                  ),
                 ),
               ],
             ),

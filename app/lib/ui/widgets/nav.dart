@@ -6,6 +6,7 @@ import '../../core/theme/typography.dart';
 import '../../l10n/l10n.dart';
 import '../language/language_picker.dart';
 import 'primitives.dart';
+import 'text_fit.dart';
 
 /// A scroll view with a big chunky title that collapses into a solid bar as
 /// content scrolls under it. The bar carries the language globe unless
@@ -34,6 +35,17 @@ class LargeTitleScrollView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // The large title area grows with the text, so a subtitle that wraps
+    // (German counts) or a bigger font size is never cut off.
+    final double room = MediaQuery.sizeOf(context).width - 40;
+    double largeArea =
+        TextFit.height(context, title, _LargeTitleHeader.titleStyle, maxWidth: room, maxLines: 1) + 18;
+    if (subtitle != null) {
+      largeArea += 4 +
+          TextFit.height(context, subtitle!, _LargeTitleHeader.subtitleStyle,
+              maxWidth: room, maxLines: 2);
+    }
+
     return CustomScrollView(
       controller: controller,
       physics: const BouncingScrollPhysics(
@@ -50,6 +62,7 @@ class LargeTitleScrollView extends StatelessWidget {
             globe: globe,
             colors: context.colors,
             topPadding: MediaQuery.paddingOf(context).top,
+            largeArea: largeArea.ceilToDouble(),
           ),
         ),
         ...slivers,
@@ -67,6 +80,7 @@ class _LargeTitleHeader extends SliverPersistentHeaderDelegate {
     required this.globe,
     required this.colors,
     required this.topPadding,
+    required this.largeArea,
   });
 
   final String title;
@@ -77,19 +91,25 @@ class _LargeTitleHeader extends SliverPersistentHeaderDelegate {
   final AppColors colors;
   final double topPadding;
 
+  /// Height of the large title and subtitle, measured by the scroll view.
+  final double largeArea;
+
   static const double _barHeight = 52;
-  double get _largeArea => subtitle == null ? 56 : 80;
+
+  static TextStyle get titleStyle => AppType.largeTitle;
+  static TextStyle get subtitleStyle =>
+      AppType.subhead.copyWith(fontWeight: FontWeight.w600);
 
   @override
   double get minExtent => topPadding + _barHeight;
 
   @override
-  double get maxExtent => topPadding + _barHeight + _largeArea;
+  double get maxExtent => topPadding + _barHeight + largeArea;
 
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    final double t = (shrinkOffset / _largeArea).clamp(0.0, 1.0);
+    final double t = (shrinkOffset / largeArea).clamp(0.0, 1.0);
     final double largeOpacity = (1 - t * 1.6).clamp(0.0, 1.0);
     final double smallOpacity = ((t - 0.6) / 0.4).clamp(0.0, 1.0);
 
@@ -122,10 +142,8 @@ class _LargeTitleHeader extends SliverPersistentHeaderDelegate {
                 Expanded(
                   child: Opacity(
                     opacity: smallOpacity,
-                    child: Text(
+                    child: FittedTitle(
                       title,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
                       style: AppType.title3.copyWith(color: colors.textPrimary),
                     ),
                   ),
@@ -153,23 +171,17 @@ class _LargeTitleHeader extends SliverPersistentHeaderDelegate {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      Text(
+                      FittedTitle(
                         title,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: AppType.largeTitle
-                            .copyWith(color: colors.textPrimary),
+                        style: titleStyle.copyWith(color: colors.textPrimary),
                       ),
                       if (subtitle != null) ...<Widget>[
                         const SizedBox(height: 4),
                         Text(
                           subtitle!,
-                          maxLines: 1,
+                          maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          style: AppType.subhead.copyWith(
-                            color: colors.textSecondary,
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: subtitleStyle.copyWith(color: colors.textSecondary),
                         ),
                       ],
                     ],
@@ -191,7 +203,8 @@ class _LargeTitleHeader extends SliverPersistentHeaderDelegate {
       old.leading != leading ||
       old.globe != globe ||
       old.colors != colors ||
-      old.topPadding != topPadding;
+      old.topPadding != topPadding ||
+      old.largeArea != largeArea;
 }
 
 /// Back button and title for pushed screens.
@@ -240,10 +253,8 @@ class DetailBar extends StatelessWidget implements PreferredSizeWidget {
           Expanded(
             child: title == null
                 ? const SizedBox.shrink()
-                : Text(
+                : FittedTitle(
                     title!,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
                     style: AppType.title3.copyWith(color: c.textPrimary),
                   ),
           ),
@@ -291,64 +302,82 @@ class AppTabBar extends StatelessWidget {
         color: c.surface,
         clip: false,
         padding: const EdgeInsets.all(6),
-        child: Row(
-          children: List<Widget>.generate(destinations.length, (int i) {
-            final TabDestination d = destinations[i];
-            final bool active = i == index;
-            return Expanded(
-              flex: active ? 6 : 3,
-              child: Pressable(
-                scale: 0.9,
-                onTap: () => onChanged(i),
-                child: AnimatedContainer(
-                  duration: Motion.base,
-                  curve: Curves.easeOutBack,
-                  height: 50,
-                  // Keeps a long label off the pill's outline.
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  decoration: BoxDecoration(
-                    color: active ? c.accent : Colors.transparent,
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      color: active ? c.ink : Colors.transparent,
-                      width: 2,
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(
-                        active ? d.activeIcon : d.icon,
-                        size: 24,
-                        color: active ? c.onAccent : c.textSecondary,
+        child: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints box) {
+            // The active tab takes twice an icon tab's share, or more when its
+            // label needs it ("Einstellungen"), as long as the icons keep
+            // [_iconRoom] each.
+            final int others = destinations.length - 1;
+            final double share = box.maxWidth * 6 / (6 + 3 * others);
+            final double needed = TextFit.width(context, destinations[index].label, _labelStyle) +
+                24 + 6 + 8 * 2 + 2 * 2 + 1;
+            final double activeWidth = others == 0
+                ? box.maxWidth
+                : needed.clamp(share, (box.maxWidth - others * _iconRoom).clamp(share, box.maxWidth));
+            final double iconWidth = others == 0 ? 0 : (box.maxWidth - activeWidth) / others;
+            return Row(
+              children: List<Widget>.generate(destinations.length, (int i) {
+                final TabDestination d = destinations[i];
+                final bool active = i == index;
+                return SizedBox(
+                  width: active ? activeWidth : iconWidth,
+                  child: Pressable(
+                    scale: 0.9,
+                    onTap: () => onChanged(i),
+                    child: AnimatedContainer(
+                      duration: Motion.base,
+                      curve: Curves.easeOutBack,
+                      height: 50,
+                      // Keeps a long label off the pill's outline.
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      decoration: BoxDecoration(
+                        color: active ? c.accent : Colors.transparent,
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                          color: active ? c.ink : Colors.transparent,
+                          width: 2,
+                        ),
                       ),
-                      if (active) ...<Widget>[
-                        const SizedBox(width: 6),
-                        // A long label ("Einstellungen") shrinks a little
-                        // rather than losing its last letters.
-                        Flexible(
-                          child: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            child: Text(
-                              d.label,
-                              maxLines: 1,
-                              softWrap: false,
-                              style: AppType.button.copyWith(
-                                color: c.onAccent,
-                                fontSize: 14.5,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            active ? d.activeIcon : d.icon,
+                            size: 24,
+                            color: active ? c.onAccent : c.textSecondary,
+                          ),
+                          if (active) ...<Widget>[
+                            const SizedBox(width: 6),
+                            // Only shrinks when even the widest share is too
+                            // narrow (very large system text), rather than
+                            // losing its last letters.
+                            Flexible(
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  d.label,
+                                  maxLines: 1,
+                                  softWrap: false,
+                                  style: _labelStyle.copyWith(color: c.onAccent),
+                                ),
                               ),
                             ),
-                          ),
-                        ),
-                      ],
-                    ],
+                          ],
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-              ),
+                );
+              }),
             );
-          }),
+          },
         ),
       ),
     );
   }
+
+  /// Least width an icon-only tab keeps when the active label needs room.
+  static const double _iconRoom = 48;
+
+  static TextStyle get _labelStyle => AppType.button.copyWith(fontSize: 14.5);
 }

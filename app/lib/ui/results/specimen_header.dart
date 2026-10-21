@@ -9,6 +9,7 @@ import '../../core/theme/palette.dart';
 import '../../core/theme/typography.dart';
 import '../widgets/primitives.dart';
 import '../widgets/specimen_image.dart';
+import '../widgets/text_fit.dart';
 
 /// Photograph header that parallaxes on scroll and hands off to a solid bar as
 /// it collapses. The whole photo shows below the button bar as a print with an
@@ -151,10 +152,8 @@ class SpecimenHeader extends SliverPersistentHeaderDelegate {
               Expanded(
                 child: Opacity(
                   opacity: solid,
-                  child: Text(
+                  child: FittedTitle(
                     title,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
                     style: AppType.title3.copyWith(color: colors.textPrimary),
                   ),
                 ),

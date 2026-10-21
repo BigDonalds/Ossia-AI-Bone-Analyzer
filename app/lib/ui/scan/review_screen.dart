@@ -253,30 +253,23 @@ class _ReviewScreenState extends State<ReviewScreen> {
                   color: c.canvas,
                   border: Border(top: BorderSide(color: c.ink, width: Chunky.border)),
                 ),
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      flex: 2,
-                      child: SecondaryButton(
-                        label: retake ? l.reviewRetake : l.back,
-                        icon: retake ? Icons.refresh_rounded : null,
-                        onTap: _leave,
-                      ),
-                    ),
-                    const SizedBox(width: 6),
-                    Expanded(
-                      flex: 3,
-                      child: PrimaryButton(
-                        label: n > 1
-                            ? l.reviewAnalyzeCount(n)
-                            : _lengthCm == null
-                                ? l.reviewSkipAnalyze
-                                : l.reviewAnalyzeIt,
-                        icon: Icons.auto_awesome_rounded,
-                        onTap: _analyze,
-                      ),
-                    ),
-                  ],
+                child: ButtonPair(
+                  secondaryFlex: 2,
+                  primaryFlex: 3,
+                  secondary: SecondaryButton(
+                    label: retake ? l.reviewRetake : l.back,
+                    icon: retake ? Icons.refresh_rounded : null,
+                    onTap: _leave,
+                  ),
+                  primary: PrimaryButton(
+                    label: n > 1
+                        ? l.reviewAnalyzeCount(n)
+                        : _lengthCm == null
+                            ? l.reviewSkipAnalyze
+                            : l.reviewAnalyzeIt,
+                    icon: Icons.auto_awesome_rounded,
+                    onTap: _analyze,
+                  ),
                 ),
               ),
             ],

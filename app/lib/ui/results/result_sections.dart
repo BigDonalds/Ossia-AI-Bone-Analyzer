@@ -18,6 +18,7 @@ import '../widgets/inset_group.dart';
 import '../widgets/phone_icon.dart';
 import '../widgets/primitives.dart';
 import '../widgets/stat_icon.dart';
+import '../widgets/text_fit.dart';
 
 /// Confidence is colour-coded on one scale everywhere in the app.
 Color confidenceTone(BuildContext context, double v) {
@@ -476,6 +477,8 @@ class _ConditionGroup extends StatelessWidget {
             icon: flagged.isEmpty
                 ? Icons.check_rounded
                 : Icons.priority_high_rounded,
+            // All three marks can be wider than the screen in German.
+            maxLines: 2,
           ),
         ),
         InsetGroup(
@@ -795,44 +798,75 @@ class _MetricRow extends StatelessWidget {
   }
 
   Widget _metric(AppColors c, BuildContext context) {
+    final TextStyle labelStyle = AppType.body.copyWith(
+      color: c.textPrimary,
+      fontWeight: FontWeight.w600,
+    );
+    final TextStyle valueStyle = AppType.metric.copyWith(color: c.textPrimary);
+    final Widget score = SizedBox(
+      width: 46,
+      child: Text(
+        percent(confidence),
+        textAlign: TextAlign.end,
+        style: AppType.metric.copyWith(
+          color: c.textPrimary,
+          fontSize: 14,
+        ),
+      ),
+    );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Row(
-          children: <Widget>[
-            Expanded(
-              child: Text(
-                label,
-                style: AppType.body.copyWith(
-                  color: c.textPrimary,
-                  fontWeight: FontWeight.w600,
+        LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints box) {
+            const double valueMax = 150;
+            final double room = box.maxWidth - 8 - 46;
+            final double valueWidth =
+                TextFit.width(context, value, valueStyle).clamp(0.0, valueMax);
+            // The value sits beside the label while both still fit without
+            // a word broken in two; a long German or Arabic pair puts the
+            // value under the label instead.
+            final bool beside =
+                TextFit.longestWord(context, label, labelStyle) + 8 + valueWidth <= room &&
+                    TextFit.longestWord(context, value, valueStyle) <= valueMax;
+            if (!beside) {
+              return Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(label, style: labelStyle),
+                        const SizedBox(height: 2),
+                        Text(value, style: valueStyle),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  score,
+                ],
+              );
+            }
+            return Row(
+              children: <Widget>[
+                Expanded(child: Text(label, style: labelStyle)),
+                const SizedBox(width: 8),
+                // A long value wraps past this width rather than crowding
+                // the label.
+                ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: valueMax),
+                  child: Text(
+                    value,
+                    textAlign: TextAlign.end,
+                    style: valueStyle,
+                  ),
                 ),
-              ),
-            ),
-            const SizedBox(width: 8),
-            // Long labels wrap, and so does a long value past this width,
-            // rather than either running off the row.
-            ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 150),
-              child: Text(
-                value,
-                textAlign: TextAlign.end,
-                style: AppType.metric.copyWith(color: c.textPrimary),
-              ),
-            ),
-            const SizedBox(width: 8),
-            SizedBox(
-              width: 46,
-              child: Text(
-                percent(confidence),
-                textAlign: TextAlign.end,
-                style: AppType.metric.copyWith(
-                  color: c.textPrimary,
-                  fontSize: 14,
-                ),
-              ),
-            ),
-          ],
+                const SizedBox(width: 8),
+                score,
+              ],
+            );
+          },
         ),
         if (subtitle != null) ...<Widget>[
           const SizedBox(height: 2),

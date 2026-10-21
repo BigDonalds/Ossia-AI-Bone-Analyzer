@@ -7,6 +7,7 @@ import '../../data/on_device/on_device_model.dart';
 import '../../data/server_monitor.dart';
 import '../../l10n/l10n.dart';
 import '../widgets/primitives.dart';
+import '../widgets/text_fit.dart';
 import 'model_status_screen.dart';
 
 /// Colour and short label for a link state, shared by the pill, the settings
@@ -102,7 +103,32 @@ class _LinkDotState extends State<LinkDot> with SingleTickerProviderStateMixin {
 
 /// The tappable status pill in the Home header.
 class LinkPill extends StatelessWidget {
-  const LinkPill({super.key});
+  const LinkPill({super.key, this.chevron = true});
+
+  /// Left off where the header is too narrow for it and the label both.
+  final bool chevron;
+
+  static TextStyle _style(AppColors c) =>
+      AppType.caption.copyWith(color: c.textPrimary, fontWeight: FontWeight.w700);
+
+  /// The pill's width less its label: padding, outline, dot and, if shown,
+  /// the chevron.
+  static double chrome({required bool chevron}) => 3 + 11 + 1.8 * 2 + 18 + 2 + (chevron ? 4 + 16 : 0);
+
+  /// The widest label the pill can show in the current mode, so the header
+  /// can keep one layout while the status changes.
+  static double widestLabel(BuildContext context) {
+    final AppLocalizations l = context.l10n;
+    final List<String> labels = context.watch<ServerMonitor>().state == LinkState.onDevice
+        ? <String>[l.linkOnPhone, l.linkNotReady]
+        : <String>[l.linkConnecting, l.linkOnlineMs(888), l.linkCantConnect];
+    double widest = 0;
+    for (final String label in labels) {
+      final double w = TextFit.width(context, label, _style(context.colors));
+      if (w > widest) widest = w;
+    }
+    return widest;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -135,15 +161,14 @@ class LinkPill extends StatelessWidget {
                   key: ValueKey<String>(label),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: AppType.caption.copyWith(
-                    color: c.textPrimary,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: _style(c),
                 ),
               ),
             ),
-            const SizedBox(width: 4),
-            Icon(Icons.chevron_right_rounded, size: 16, color: c.textSecondary),
+            if (chevron) ...<Widget>[
+              const SizedBox(width: 4),
+              Icon(Icons.chevron_right_rounded, size: 16, color: c.textSecondary),
+            ],
           ],
         ),
       ),

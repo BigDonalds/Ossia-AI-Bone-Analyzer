@@ -37,7 +37,8 @@ class EngineToggle extends StatelessWidget {
       label: l.engineAnalyzeOn,
       value: l.engineName(value),
       child: Container(
-        height: _height,
+        // Grows past [_height] when a caption wraps (German, large text).
+        constraints: const BoxConstraints(minHeight: _height),
         padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           color: c.surfaceSunken,
@@ -45,41 +46,50 @@ class EngineToggle extends StatelessWidget {
           border: Border.all(color: c.ink, width: Chunky.border),
         ),
         child: Stack(
+          fit: StackFit.passthrough,
           children: <Widget>[
             // The thumb.
-            AnimatedAlign(
-              alignment: phone ? AlignmentDirectional.centerStart : AlignmentDirectional.centerEnd,
-              duration: const Duration(milliseconds: 460),
-              curve: Curves.easeOutBack,
-              child: FractionallySizedBox(
-                widthFactor: 0.5,
-                heightFactor: 1,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: c.accent,
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(color: c.ink, width: Chunky.border),
-                    boxShadow: <BoxShadow>[
-                      BoxShadow(color: c.shadow, offset: const Offset(2.5, 2.5)),
-                    ],
+            Positioned.fill(
+              child: AnimatedAlign(
+                alignment: phone ? AlignmentDirectional.centerStart : AlignmentDirectional.centerEnd,
+                duration: const Duration(milliseconds: 460),
+                curve: Curves.easeOutBack,
+                child: FractionallySizedBox(
+                  widthFactor: 0.5,
+                  heightFactor: 1,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: c.accent,
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(color: c.ink, width: Chunky.border),
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(color: c.shadow, offset: const Offset(2.5, 2.5)),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-            Row(
-              children: <Widget>[
-                for (final EngineMode m in EngineMode.values)
-                  Expanded(
-                    child: GestureDetector(
-                      behavior: HitTestBehavior.opaque,
-                      onTap: () => pick(m),
-                      child: _Side(
-                        mode: m,
-                        selected: m == value,
+            IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  for (final EngineMode m in EngineMode.values)
+                    Expanded(
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () => pick(m),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4),
+                          child: _Side(
+                            mode: m,
+                            selected: m == value,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
@@ -123,13 +133,14 @@ class _Side extends StatelessWidget {
         const SizedBox(width: 8),
         Flexible(
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               AnimatedDefaultTextStyle(
                 duration: const Duration(milliseconds: 220),
                 style: AppType.headline.copyWith(color: fg, fontWeight: FontWeight.w800),
-                child: Text(context.l10n.engineName(mode), maxLines: 1, overflow: TextOverflow.ellipsis),
+                child: Text(context.l10n.engineName(mode), maxLines: 2, overflow: TextOverflow.ellipsis),
               ),
               AnimatedDefaultTextStyle(
                 duration: const Duration(milliseconds: 220),
@@ -139,7 +150,7 @@ class _Side extends StatelessWidget {
                 ),
                 child: Text(
                   phone ? context.l10n.engineWorksOffline : context.l10n.engineUsesInternet,
-                  maxLines: 1,
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),

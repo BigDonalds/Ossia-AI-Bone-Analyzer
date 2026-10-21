@@ -9,6 +9,7 @@ import '../../l10n/labels.dart';
 import '../widgets/bone_sketch.dart';
 import '../widgets/nav.dart';
 import '../widgets/primitives.dart';
+import '../widgets/text_fit.dart';
 
 class BoneDetailScreen extends StatelessWidget {
   const BoneDetailScreen({super.key, required this.entry});
@@ -35,39 +36,51 @@ class BoneDetailScreen extends StatelessWidget {
                   20, 24, 20, 100 + MediaQuery.paddingOf(context).bottom),
               children: <Widget>[
                 Reveal(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      BoneSketch(entry: entry, size: 76),
-                      const SizedBox(width: 14),
-                      Expanded(
-                        child: Column(
+                  child: LayoutBuilder(
+                    builder: (BuildContext context, BoxConstraints box) {
+                      const double sketch = 76;
+                      final Widget info = Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            text.name,
+                            style: AppType.title1.copyWith(color: c.textPrimary),
+                          ),
+                          const SizedBox(height: 6),
+                          // Side by side when they fit, else one under the
+                          // other; German names are long.
+                          Wrap(
+                            spacing: 6,
+                            runSpacing: 6,
+                            children: <Widget>[
+                              StatusPill(l.regionName(entry.region),
+                                  color: c.accent, filled: true, maxLines: 2),
+                              if (text.aka != null) StatusPill(text.aka!, maxLines: 2),
+                            ],
+                          ),
+                        ],
+                      );
+                      // The sketch moves above the name when a word of it is
+                      // too long to sit beside it ("Lendenwirbel" in large text).
+                      if (TextFit.longestWord(context, text.name, AppType.title1) >
+                          box.maxWidth - sketch - 14) {
+                        return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text(
-                              text.name,
-                              style: AppType.title1
-                                  .copyWith(color: c.textPrimary),
-                            ),
-                            const SizedBox(height: 6),
-                            Row(
-                              children: <Widget>[
-                                Flexible(
-                                  child: StatusPill(l.regionName(entry.region),
-                                      color: c.accent, filled: true),
-                                ),
-                                if (text.aka != null) ...<Widget>[
-                                  const SizedBox(width: 6),
-                                  Flexible(
-                                    child: StatusPill(text.aka!),
-                                  ),
-                                ],
-                              ],
-                            ),
+                            BoneSketch(entry: entry, size: sketch),
+                            const SizedBox(height: 14),
+                            info,
                           ],
-                        ),
-                      ),
-                    ],
+                        );
+                      }
+                      return Row(
+                        children: <Widget>[
+                          BoneSketch(entry: entry, size: sketch),
+                          const SizedBox(width: 14),
+                          Expanded(child: info),
+                        ],
+                      );
+                    },
                   ),
                 ),
                 const SizedBox(height: 22),

@@ -890,19 +890,26 @@ class _Headline extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Row(
-            children: <Widget>[
-              StatusPill(chip, color: tone, filled: true),
-              const Spacer(),
-              if (m.lastChecked != null)
-                Text(
-                  _checked(l, m.lastChecked!),
-                  style: AppType.caption.copyWith(
-                    color: c.textSecondary,
-                    fontWeight: FontWeight.w700,
+          // The check time drops under the pill when the two don't fit.
+          SizedBox(
+            width: double.infinity,
+            child: Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              spacing: 12,
+              runSpacing: 6,
+              children: <Widget>[
+                StatusPill(chip, color: tone, filled: true),
+                if (m.lastChecked != null)
+                  Text(
+                    _checked(l, m.lastChecked!),
+                    style: AppType.caption.copyWith(
+                      color: c.textSecondary,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
-                ),
-            ],
+              ],
+            ),
           ),
           const SizedBox(height: 10),
           AnimatedSwitcher(
@@ -1236,34 +1243,45 @@ class _PingHistory extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: Text(
+          // The countdown drops under the title when the two don't fit
+          // ("Verbindungsverlauf" under large text).
+          SizedBox(
+            width: double.infinity,
+            child: Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              spacing: 8,
+              runSpacing: 6,
+              children: <Widget>[
+                Text(
                   l.statusHistory,
                   style: AppType.headline.copyWith(color: c.textPrimary),
                 ),
-              ),
-              const SizedBox(width: 8),
-              SizedBox(
-                width: 18,
-                height: 18,
-                child: CircularProgressIndicator(
-                  value: progress.clamp(0.0, 1.0),
-                  strokeWidth: 3,
-                  color: c.textPrimary,
-                  backgroundColor: c.fill,
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    SizedBox(
+                      width: 18,
+                      height: 18,
+                      child: CircularProgressIndicator(
+                        value: progress.clamp(0.0, 1.0),
+                        strokeWidth: 3,
+                        color: c.textPrimary,
+                        backgroundColor: c.fill,
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    Text(
+                      next == null ? l.statusAutoPaused : l.statusNextIn(left),
+                      style: AppType.caption.copyWith(
+                        color: c.textSecondary,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              const SizedBox(width: 6),
-              Text(
-                next == null ? l.statusAutoPaused : l.statusNextIn(left),
-                style: AppType.caption.copyWith(
-                  color: c.textSecondary,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
           const SizedBox(height: 12),
           SizedBox(
