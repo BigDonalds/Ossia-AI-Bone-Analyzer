@@ -32,8 +32,9 @@ SHARE = 0.10           # wanted in val and in test, as a share of the label's im
 MIN_EVAL = {8: 2, 15: 3}   # ...but at least this many (by label total)
 KEEP_IN_TRAIN = 0.55   # never let train fall below this share of any label
 # One studio, one background, about half of all humerus photos: learned from, never measured on,
-# so val and test humerus scores come from photos like the ones the app receives.
-TRAIN_ONLY_SOURCES = ('zenodo_ducks',)
+# so val and test humerus scores come from photos like the ones the app receives. The shared
+# human scans are 3D renders on black, the same reasoning.
+TRAIN_ONLY_SOURCES = ('zenodo_ducks', 'shared_scans')
 
 
 def tags(e):

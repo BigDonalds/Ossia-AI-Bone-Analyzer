@@ -99,6 +99,16 @@
   "order": "Rodentia",
   "family": "Cricetidae"
  },
+ "Aegolius funereus": {
+  "class": "bird",
+  "order": "Strigiformes",
+  "family": "Strigidae"
+ },
+ "Aegotheles crinifrons": {
+  "class": "bird",
+  "order": "Apodiformes",
+  "family": "Aegothelidae"
+ },
  "Aelurodon stirtoni": {
   "class": "mammal",
   "order": "Carnivora",
@@ -379,6 +389,11 @@
   "order": null,
   "family": "Colubridae"
  },
+ "Amyda cartilaginea": {
+  "class": "reptile",
+  "order": null,
+  "family": "Trionychidae"
+ },
  "Anahamulina botevensis": {
   "class": "invertebrate",
   "order": null,
@@ -649,6 +664,11 @@
   "order": null,
   "family": "Colubridae"
  },
+ "Apterygidae": {
+  "class": "bird",
+  "order": "Apterygiformes",
+  "family": "Apterygidae"
+ },
  "Apteryx australis": {
   "class": "bird",
   "order": "Apterygiformes",
@@ -904,6 +924,11 @@
   "order": "Strigiformes",
   "family": "Strigidae"
  },
+ "Atherurus africanus": {
+  "class": "mammal",
+  "order": "Rodentia",
+  "family": "Hystricidae"
+ },
  "Atilax paludinosus paludinosus": {
   "class": "mammal",
   "order": "Carnivora",
@@ -1030,6 +1055,11 @@
   "family": "Balaenopteridae"
  },
  "Balaenoptera borealis": {
+  "class": "mammal",
+  "order": "Cetacea",
+  "family": "Balaenopteridae"
+ },
+ "Balaenoptera edeni": {
   "class": "mammal",
   "order": "Cetacea",
   "family": "Balaenopteridae"
@@ -1384,6 +1414,11 @@
   "order": "Strigiformes",
   "family": "Strigidae"
  },
+ "Bubo bubo": {
+  "class": "bird",
+  "order": "Strigiformes",
+  "family": "Strigidae"
+ },
  "Bubo virginianus": {
   "class": "bird",
   "order": "Strigiformes",
@@ -1403,6 +1438,11 @@
   "class": "bird",
   "order": "Anseriformes",
   "family": "Anatidae"
+ },
+ "Bucerotidae": {
+  "class": "bird",
+  "order": "Bucerotiformes",
+  "family": "Bucerotidae"
  },
  "Bucorvus abyssinicus": {
   "class": "bird",
@@ -1584,6 +1624,16 @@
   "order": "Rodentia",
   "family": "Sciuridae"
  },
+ "Callosciurus notatus": {
+  "class": "mammal",
+  "order": "Rodentia",
+  "family": "Sciuridae"
+ },
+ "Callosciurus prevostii": {
+  "class": "mammal",
+  "order": "Rodentia",
+  "family": "Sciuridae"
+ },
  "Calonectris": {
   "class": "bird",
   "order": "Procellariiformes",
@@ -1603,6 +1653,11 @@
   "class": "reptile",
   "order": null,
   "family": "Agamidae"
+ },
+ "Calyptorhynchus banksii naso": {
+  "class": "bird",
+  "order": "Psittaciformes",
+  "family": "Psittacidae"
  },
  "Camelidae": {
   "class": "mammal",
@@ -1924,6 +1979,11 @@
   "order": "Rodentia",
   "family": "Caviidae"
  },
+ "Cebidae": {
+  "class": "mammal",
+  "order": "Primates",
+  "family": "Cebidae"
+ },
  "Cebidichthys violaceus": {
   "class": "fish",
   "order": "Perciformes",
@@ -2130,6 +2190,11 @@
   "family": "Dasypodidae"
  },
  "Chaetura pelagica": {
+  "class": "bird",
+  "order": "Apodiformes",
+  "family": "Apodidae"
+ },
+ "Chaetura spinicauda": {
   "class": "bird",
   "order": "Apodiformes",
   "family": "Apodidae"
@@ -2699,6 +2764,11 @@
   "order": "Accipitriformes",
   "family": "Cathartidae"
  },
+ "Coronella austriaca": {
+  "class": "reptile",
+  "order": null,
+  "family": "Colubridae"
+ },
  "Corvidae": {
   "class": "bird",
   "order": "Passeriformes",
@@ -2859,6 +2929,11 @@
   "order": null,
   "family": "Crocodylidae"
  },
+ "Crocodylus raninus": {
+  "class": "reptile",
+  "order": null,
+  "family": "Crocodylidae"
+ },
  "Crocodylus robustus": {
   "class": "reptile",
   "order": null,
@@ -2878,6 +2953,11 @@
   "class": "mammal",
   "order": "Carnivora",
   "family": "Hyaenidae"
+ },
+ "Crotalus": {
+  "class": "reptile",
+  "order": null,
+  "family": "Viperidae"
  },
  "Crotalus adamanteus": {
   "class": "reptile",
@@ -2968,6 +3048,11 @@
   "class": "reptile",
   "order": null,
   "family": "Iguanidae"
+ },
+ "Cuculidae": {
+  "class": "bird",
+  "order": "Cuculiformes",
+  "family": "Cuculidae"
  },
  "Cuniculus paca": {
   "class": "mammal",
@@ -3064,6 +3149,11 @@
   "order": "Anseriformes",
   "family": "Anatidae"
  },
+ "Cylindraspis": {
+  "class": "reptile",
+  "order": null,
+  "family": "Testudinidae"
+ },
  "Cynocephalus volans": {
   "class": "mammal",
   "order": "Dermoptera",
@@ -3149,6 +3239,11 @@
   "order": "Artiodactyla",
   "family": "Bovidae"
  },
+ "Damaliscus pygargus": {
+  "class": "mammal",
+  "order": "Artiodactyla",
+  "family": "Bovidae"
+ },
  "Damaliscus pygargus pygargus": {
   "class": "mammal",
   "order": "Artiodactyla",
@@ -3180,6 +3275,11 @@
   "family": "Dasyproctidae"
  },
  "Dasyprocta iacki": {
+  "class": "mammal",
+  "order": "Rodentia",
+  "family": "Dasyproctidae"
+ },
+ "Dasyprocta leporina": {
   "class": "mammal",
   "order": "Rodentia",
   "family": "Dasyproctidae"
@@ -3218,6 +3318,11 @@
   "class": "mammal",
   "order": "Cingulata",
   "family": "Dasypodidae"
+ },
+ "Dasyuridae": {
+  "class": "mammal",
+  "order": "Dasyuromorphia",
+  "family": "Dasyuridae"
  },
  "Deirochelyinae": {
   "class": "reptile",
@@ -3509,6 +3614,11 @@
   "order": null,
   "family": "Colubridae"
  },
+ "Elaphe quadrivirgata": {
+  "class": "reptile",
+  "order": null,
+  "family": "Colubridae"
+ },
  "Elasmobranchii": {
   "class": "fish",
   "order": null,
@@ -3779,7 +3889,17 @@
   "order": "Esociformes",
   "family": "Esocidae"
  },
+ "Euarchontoglires": {
+  "class": "mammal",
+  "order": null,
+  "family": null
+ },
  "Eubalaena australis": {
+  "class": "mammal",
+  "order": "Cetacea",
+  "family": "Balaenidae"
+ },
+ "Eubalaena glacialis": {
   "class": "mammal",
   "order": "Cetacea",
   "family": "Balaenidae"
@@ -4163,6 +4283,11 @@
   "class": "bird",
   "order": "Gaviiformes",
   "family": null
+ },
+ "Gazella": {
+  "class": "mammal",
+  "order": "Artiodactyla",
+  "family": "Bovidae"
  },
  "Gazella granti": {
   "class": "mammal",
@@ -4604,6 +4729,11 @@
   "order": null,
   "family": "Heteroceratidae"
  },
+ "Heterodon platirhinos": {
+  "class": "reptile",
+  "order": null,
+  "family": "Colubridae"
+ },
  "Heterodontus portusjacksoni": {
   "class": "fish",
   "order": "Heterodontiformes",
@@ -4829,6 +4959,11 @@
   "order": "Acipenseriformes",
   "family": "Acipenseridae"
  },
+ "Hyaenidae": {
+  "class": "mammal",
+  "order": "Carnivora",
+  "family": "Hyaenidae"
+ },
  "Hydrochoerus hydrochaeris": {
   "class": "mammal",
   "order": "Rodentia",
@@ -4988,6 +5123,16 @@
   "class": "reptile",
   "order": null,
   "family": "Iguanidae"
+ },
+ "Indicator maculatus": {
+  "class": "bird",
+  "order": "Piciformes",
+  "family": "Indicatoridae"
+ },
+ "Indriidae": {
+  "class": "mammal",
+  "order": "Primates",
+  "family": "Indriidae"
  },
  "Inia": {
   "class": "mammal",
@@ -5219,6 +5364,11 @@
   "order": "Perciformes",
   "family": "Latridae"
  },
+ "Laurasiatheria": {
+  "class": "mammal",
+  "order": null,
+  "family": null
+ },
  "Leiothlypis peregrina": {
   "class": "bird",
   "order": "Passeriformes",
@@ -5275,6 +5425,11 @@
   "family": "Felidae"
  },
  "Leopardus pardalis pardalis": {
+  "class": "mammal",
+  "order": "Carnivora",
+  "family": "Felidae"
+ },
+ "Leopardus tigrinus": {
   "class": "mammal",
   "order": "Carnivora",
   "family": "Felidae"
@@ -5674,6 +5829,11 @@
   "order": "Carnivora",
   "family": "Felidae"
  },
+ "Lynx pardinus": {
+  "class": "mammal",
+  "order": "Carnivora",
+  "family": "Felidae"
+ },
  "Lynx rufus": {
   "class": "mammal",
   "order": "Carnivora",
@@ -5744,7 +5904,17 @@
   "order": "Diprotodontia",
   "family": "Macropodidae"
  },
+ "Macropodiformes": {
+  "class": "mammal",
+  "order": "Diprotodontia",
+  "family": null
+ },
  "Macropodinae": {
+  "class": "mammal",
+  "order": "Diprotodontia",
+  "family": "Macropodidae"
+ },
+ "Macropodini": {
   "class": "mammal",
   "order": "Diprotodontia",
   "family": "Macropodidae"
@@ -5783,6 +5953,11 @@
   "class": "reptile",
   "order": null,
   "family": "Emydidae"
+ },
+ "Malayopython reticulatus": {
+  "class": "reptile",
+  "order": null,
+  "family": "Pythonidae"
  },
  "Malleus maleficarum": {
   "class": "invertebrate",
@@ -6139,6 +6314,11 @@
   "order": "Carnivora",
   "family": "Mustelidae"
  },
+ "Meliphagidae": {
+  "class": "bird",
+  "order": "Passeriformes",
+  "family": "Meliphagidae"
+ },
  "Mellivora capensis": {
   "class": "mammal",
   "order": "Carnivora",
@@ -6234,7 +6414,17 @@
   "order": "Rodentia",
   "family": "Cricetidae"
  },
+ "Mesoplodon carlhubbsi": {
+  "class": "mammal",
+  "order": "Cetacea",
+  "family": "Hyperoodontidae"
+ },
  "Mesoplodon grayi": {
+  "class": "mammal",
+  "order": "Cetacea",
+  "family": "Hyperoodontidae"
+ },
+ "Mesoplodon mirus": {
   "class": "mammal",
   "order": "Cetacea",
   "family": "Hyperoodontidae"
@@ -6374,6 +6564,11 @@
   "order": "Tetraodontiformes",
   "family": "Molidae"
  },
+ "Molossidae": {
+  "class": "mammal",
+  "order": "Chiroptera",
+  "family": "Molossidae"
+ },
  "Momotus momota": {
   "class": "bird",
   "order": "Coraciiformes",
@@ -6483,6 +6678,11 @@
   "class": "mammal",
   "order": "Rodentia",
   "family": "Muridae"
+ },
+ "Mustela": {
+  "class": "mammal",
+  "order": "Carnivora",
+  "family": "Mustelidae"
  },
  "Mustela erminea": {
   "class": "mammal",
@@ -6629,6 +6829,11 @@
   "order": "Suliformes",
   "family": "Phalacrocoracidae"
  },
+ "Nannosciurus melanotis": {
+  "class": "mammal",
+  "order": "Rodentia",
+  "family": "Sciuridae"
+ },
  "Nasua": {
   "class": "mammal",
   "order": "Carnivora",
@@ -6669,6 +6874,11 @@
   "order": "Ceratodontiformes",
   "family": "Neoceratodontidae"
  },
+ "Neofelis diardi": {
+  "class": "mammal",
+  "order": "Carnivora",
+  "family": "Felidae"
+ },
  "Neofelis nebulosa": {
   "class": "mammal",
   "order": "Carnivora",
@@ -6708,6 +6918,11 @@
   "class": "mammal",
   "order": "Soricomorpha",
   "family": "Soricidae"
+ },
+ "Neophoca cinerea": {
+  "class": "mammal",
+  "order": "Carnivora",
+  "family": "Otariidae"
  },
  "Neophoca palatina": {
   "class": "mammal",
@@ -6785,6 +7000,11 @@
   "family": "Cricetidae"
  },
  "Neotoma micropus micropus": {
+  "class": "mammal",
+  "order": "Rodentia",
+  "family": "Cricetidae"
+ },
+ "Neotominae": {
   "class": "mammal",
   "order": "Rodentia",
   "family": "Cricetidae"
@@ -7183,6 +7403,11 @@
   "class": "fish",
   "order": "Scorpaeniformes",
   "family": "Hexagrammidae"
+ },
+ "Ophiophagus hannah": {
+  "class": "reptile",
+  "order": null,
+  "family": "Elapidae"
  },
  "Ophisaurus ventralis": {
   "class": "reptile",
@@ -8104,6 +8329,11 @@
   "order": "Cetacea",
   "family": "Phocoenidae"
  },
+ "Phocoidea": {
+  "class": "mammal",
+  "order": "Carnivora",
+  "family": null
+ },
  "Phoebastria nigripes": {
   "class": "bird",
   "order": "Procellariiformes",
@@ -8399,6 +8629,11 @@
   "order": "Primates",
   "family": "Hominidae"
  },
+ "Pongo pygmaeus": {
+  "class": "mammal",
+  "order": "Primates",
+  "family": "Hominidae"
+ },
  "Pontoporia blainvillei": {
   "class": "mammal",
   "order": "Cetacea",
@@ -8478,6 +8713,16 @@
   "class": "mammal",
   "order": "Cingulata",
   "family": "Dasypodidae"
+ },
+ "Prionailurus bengalensis": {
+  "class": "mammal",
+  "order": "Carnivora",
+  "family": "Felidae"
+ },
+ "Prionailurus viverrinus": {
+  "class": "mammal",
+  "order": "Carnivora",
+  "family": "Felidae"
  },
  "Prionotus evolans": {
   "class": "fish",
@@ -8578,6 +8823,11 @@
   "class": "mammal",
   "order": "Carnivora",
   "family": "Felidae"
+ },
+ "Pronolagus rupestris": {
+  "class": "mammal",
+  "order": "Lagomorpha",
+  "family": "Leporidae"
  },
  "Pronothrotherium typicum": {
   "class": "mammal",
@@ -8714,7 +8964,17 @@
   "order": "Piciformes",
   "family": "Ramphastidae"
  },
+ "Pteropodidae": {
+  "class": "mammal",
+  "order": "Chiroptera",
+  "family": "Pteropodidae"
+ },
  "Pteropus brunneus": {
+  "class": "mammal",
+  "order": "Chiroptera",
+  "family": "Pteropodidae"
+ },
+ "Pteropus melanopogon": {
   "class": "mammal",
   "order": "Chiroptera",
   "family": "Pteropodidae"
@@ -8788,6 +9048,11 @@
   "class": "invertebrate",
   "order": null,
   "family": "Pulchelliidae"
+ },
+ "Pulsatrix perspicillata": {
+  "class": "bird",
+  "order": "Strigiformes",
+  "family": "Strigidae"
  },
  "Puma concolor": {
   "class": "mammal",
@@ -8960,6 +9225,11 @@
   "family": "Bovidae"
  },
  "Raphus cocullatus": {
+  "class": "bird",
+  "order": "Columbiformes",
+  "family": "Columbidae"
+ },
+ "Raphus cucullatus": {
   "class": "bird",
   "order": "Columbiformes",
   "family": "Columbidae"
@@ -9394,6 +9664,11 @@
   "order": "Rodentia",
   "family": "Sciuridae"
  },
+ "Sciurus": {
+  "class": "mammal",
+  "order": "Rodentia",
+  "family": "Sciuridae"
+ },
  "Sciurus aureogaster": {
   "class": "mammal",
   "order": "Rodentia",
@@ -9589,6 +9864,11 @@
   "order": "Rodentia",
   "family": "Cricetidae"
  },
+ "Sigmodontinae": {
+  "class": "mammal",
+  "order": "Rodentia",
+  "family": "Cricetidae"
+ },
  "Silurus glanis": {
   "class": "fish",
   "order": "Siluriformes",
@@ -9667,6 +9947,11 @@
  "Soricidae": {
   "class": "mammal",
   "order": "Soricomorpha",
+  "family": "Soricidae"
+ },
+ "Soricinae": {
+  "class": "mammal",
+  "order": "Eulipotyphla",
   "family": "Soricidae"
  },
  "Sousa": {
@@ -10000,6 +10285,11 @@
   "family": "Suidae"
  },
  "Sus barbatus": {
+  "class": "mammal",
+  "order": "Artiodactyla",
+  "family": "Suidae"
+ },
+ "Sus celebensis": {
   "class": "mammal",
   "order": "Artiodactyla",
   "family": "Suidae"
@@ -10424,6 +10714,11 @@
   "order": null,
   "family": null
  },
+ "Testudinidae": {
+  "class": "reptile",
+  "order": null,
+  "family": "Testudinidae"
+ },
  "Testudo": {
   "class": "reptile",
   "order": null,
@@ -10719,6 +11014,11 @@
   "order": "Artiodactyla",
   "family": "Bovidae"
  },
+ "Tragulidae": {
+  "class": "mammal",
+  "order": "Artiodactyla",
+  "family": "Tragulidae"
+ },
  "Tremarctos ornatus": {
   "class": "mammal",
   "order": "Carnivora",
@@ -10775,6 +11075,11 @@
   "family": "Triodontidae"
  },
  "Trionychidae": {
+  "class": "reptile",
+  "order": null,
+  "family": "Trionychidae"
+ },
+ "Trionyx": {
   "class": "reptile",
   "order": null,
   "family": "Trionychidae"
@@ -10963,6 +11268,11 @@
   "class": "mammal",
   "order": "Carnivora",
   "family": "Canidae"
+ },
+ "Uroplatus phantasticus": {
+  "class": "reptile",
+  "order": null,
+  "family": "Gekkonidae"
  },
  "Ursidae": {
   "class": "mammal",
@@ -11264,6 +11574,11 @@
   "order": "Carnivora",
   "family": "Otariidae"
  },
+ "Zalophus japonicus": {
+  "class": "mammal",
+  "order": "Carnivora",
+  "family": "Otariidae"
+ },
  "Zalophus wollebaeki": {
   "class": "mammal",
   "order": "Carnivora",
@@ -11319,6 +11634,11 @@
   "order": "Proboscidea",
   "family": "Mammutidae"
  },
+ "alligator": {
+  "class": "reptile",
+  "order": "Crocodylia",
+  "family": "Alligatoridae"
+ },
  "armadillo": {
   "class": "mammal",
   "order": "Cingulata",
@@ -11333,6 +11653,11 @@
   "class": "bird",
   "order": null,
   "family": null
+ },
+ "cape buffalo": {
+  "class": "mammal",
+  "order": "Artiodactyla",
+  "family": "Bovidae"
  },
  "cat": {
   "class": "mammal",
@@ -11359,10 +11684,30 @@
   "order": "Carnivora",
   "family": "Canidae"
  },
+ "gazelle": {
+  "class": "mammal",
+  "order": "Artiodactyla",
+  "family": "Bovidae"
+ },
+ "goat": {
+  "class": "mammal",
+  "order": "Artiodactyla",
+  "family": "Bovidae"
+ },
  "horse": {
   "class": "mammal",
   "order": "Perissodactyla",
   "family": "Equidae"
+ },
+ "loggerhead sea turtle": {
+  "class": "reptile",
+  "order": null,
+  "family": "Cheloniidae"
+ },
+ "mammal": {
+  "class": "mammal",
+  "order": null,
+  "family": null
  },
  "ostrich": {
   "class": "bird",
@@ -11389,6 +11734,11 @@
   "order": "Carnivora",
   "family": "Procyonidae"
  },
+ "sheep": {
+  "class": "mammal",
+  "order": "Artiodactyla",
+  "family": "Bovidae"
+ },
  "skunk": {
   "class": "mammal",
   "order": "Carnivora",
@@ -11403,5 +11753,15 @@
   "class": "reptile",
   "order": "Testudines",
   "family": null
+ },
+ "whale": {
+  "class": "mammal",
+  "order": "Cetacea",
+  "family": null
+ },
+ "zebra": {
+  "class": "mammal",
+  "order": "Perissodactyla",
+  "family": "Equidae"
  }
 }
