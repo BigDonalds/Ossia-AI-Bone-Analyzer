@@ -47,8 +47,9 @@ Four tabs:
   pic* the photo library, plus capture tips and recent finds.
 - **Stash**: every saved analysis, grouped by date, searchable and filterable
   by human / faunal / flagged. Swipe a row to delete it.
-- **Atlas**: a field reference for the sixteen bone types the model knows, and
-  a walkthrough of the nine analysis stages.
+- **Atlas**: a field reference for the sixteen bone types the model knows, each
+  shown lit on a whole skeleton from the front and the back, and a walkthrough
+  of the nine analysis stages.
 - **Settings**: language, theme and accent, where analysis runs (this phone or
   online), model status, confidence floor, measurement units, haptics and
   library export.
@@ -241,6 +242,13 @@ The app icon is generated for iOS and Android. To change it, edit
 ```bash
 python tool/make_icon.py
 dart run flutter_launcher_icons
+```
+
+The skeleton on the Atlas pages is drawn by `tool/make_skeleton.py`, which
+writes `lib/data/skeleton_geometry.dart`. To change it, edit the script and run:
+
+```bash
+python tool/make_skeleton.py
 ```
 
 ## Layout

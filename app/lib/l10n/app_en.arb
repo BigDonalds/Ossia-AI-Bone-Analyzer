@@ -2281,6 +2281,32 @@
   "@atlasSidingTitle": {
     "description": "Heading on a bone page"
   },
+  "atlasMapTitle": "Where it sits",
+  "@atlasMapTitle": {
+    "description": "Heading over the whole-skeleton map on a bone page"
+  },
+  "atlasMapFront": "Front",
+  "@atlasMapFront": {
+    "description": "Under the skeleton seen from the front"
+  },
+  "atlasMapBack": "Back",
+  "@atlasMapBack": {
+    "description": "Under the skeleton seen from the back"
+  },
+  "atlasMapHidden": "Dashed: hidden behind other bones from this side",
+  "@atlasMapHidden": {
+    "description": "Explains the dashed outline on the skeleton map"
+  },
+  "atlasMapLabel": "{bone} highlighted on a whole skeleton, seen from the front and the back",
+  "@atlasMapLabel": {
+    "description": "Screen reader label for the skeleton map; bone is the bone's name",
+    "placeholders": {
+      "bone": {
+        "type": "String",
+        "example": "Femur"
+      }
+    }
+  },
   "howTitle": "How analysis works",
   "@howTitle": {
     "description": "Screen title"

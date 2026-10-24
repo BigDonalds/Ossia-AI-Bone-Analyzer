@@ -3466,6 +3466,36 @@ abstract class AppLocalizations {
   /// **'Left or right, and which way up'**
   String get atlasSidingTitle;
 
+  /// Heading over the whole-skeleton map on a bone page
+  ///
+  /// In en, this message translates to:
+  /// **'Where it sits'**
+  String get atlasMapTitle;
+
+  /// Under the skeleton seen from the front
+  ///
+  /// In en, this message translates to:
+  /// **'Front'**
+  String get atlasMapFront;
+
+  /// Under the skeleton seen from the back
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get atlasMapBack;
+
+  /// Explains the dashed outline on the skeleton map
+  ///
+  /// In en, this message translates to:
+  /// **'Dashed: hidden behind other bones from this side'**
+  String get atlasMapHidden;
+
+  /// Screen reader label for the skeleton map; bone is the bone's name
+  ///
+  /// In en, this message translates to:
+  /// **'{bone} highlighted on a whole skeleton, seen from the front and the back'**
+  String atlasMapLabel(String bone);
+
   /// Screen title
   ///
   /// In en, this message translates to:

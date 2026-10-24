@@ -1953,6 +1953,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get atlasSidingTitle => 'Left or right, and which way up';
 
   @override
+  String get atlasMapTitle => 'Where it sits';
+
+  @override
+  String get atlasMapFront => 'Front';
+
+  @override
+  String get atlasMapBack => 'Back';
+
+  @override
+  String get atlasMapHidden =>
+      'Dashed: hidden behind other bones from this side';
+
+  @override
+  String atlasMapLabel(String bone) {
+    return '$bone highlighted on a whole skeleton, seen from the front and the back';
+  }
+
+  @override
   String get howTitle => 'How analysis works';
 
   @override

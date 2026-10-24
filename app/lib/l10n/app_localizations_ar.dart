@@ -2049,6 +2049,23 @@ class AppLocalizationsAr extends AppLocalizations {
   String get atlasSidingTitle => 'يمين أم يسار، وأي جهة إلى الأعلى';
 
   @override
+  String get atlasMapTitle => 'الموقع في الهيكل العظمي';
+
+  @override
+  String get atlasMapFront => 'من الأمام';
+
+  @override
+  String get atlasMapBack => 'من الخلف';
+
+  @override
+  String get atlasMapHidden => 'الخط المتقطع: مخفي خلف عظام أخرى من هذه الجهة';
+
+  @override
+  String atlasMapLabel(String bone) {
+    return '$bone مظلَّل على هيكل عظمي كامل، من الأمام ومن الخلف';
+  }
+
+  @override
   String get howTitle => 'كيف يعمل التحليل';
 
   @override

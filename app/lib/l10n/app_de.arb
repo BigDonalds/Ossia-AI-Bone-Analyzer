@@ -2244,6 +2244,26 @@
   "@atlasSidingTitle": {
     "description": "English: Left or right, and which way up (Heading on a bone page)"
   },
+  "atlasMapTitle": "Lage im Skelett",
+  "@atlasMapTitle": {
+    "description": "English: Where it sits (Heading over the whole-skeleton map on a bone page)"
+  },
+  "atlasMapFront": "Von vorn",
+  "@atlasMapFront": {
+    "description": "English: Front (Under the skeleton seen from the front)"
+  },
+  "atlasMapBack": "Von hinten",
+  "@atlasMapBack": {
+    "description": "English: Back (Under the skeleton seen from the back)"
+  },
+  "atlasMapHidden": "Gestrichelt: von dieser Seite hinter anderen Knochen verdeckt",
+  "@atlasMapHidden": {
+    "description": "English: Dashed: hidden behind other bones from this side (Explains the dashed outline on the skeleton map)"
+  },
+  "atlasMapLabel": "{bone} am ganzen Skelett markiert, von vorn und von hinten",
+  "@atlasMapLabel": {
+    "description": "English: {bone} highlighted on a whole skeleton, seen from the front and the back (Screen reader label for the skeleton map; bone is the bone's name)"
+  },
   "howTitle": "So funktioniert die Analyse",
   "@howTitle": {
     "description": "English: How analysis works (Screen title)"

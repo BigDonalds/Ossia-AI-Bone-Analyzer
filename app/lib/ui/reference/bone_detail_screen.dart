@@ -9,6 +9,7 @@ import '../../l10n/labels.dart';
 import '../widgets/bone_sketch.dart';
 import '../widgets/nav.dart';
 import '../widgets/primitives.dart';
+import '../widgets/skeleton_map.dart';
 import '../widgets/text_fit.dart';
 
 class BoneDetailScreen extends StatelessWidget {
@@ -98,6 +99,18 @@ class BoneDetailScreen extends StatelessWidget {
                 Reveal(
                   delay: Motion.stagger * 2,
                   child: _Section(
+                    title: l.atlasMapTitle,
+                    child: SkeletonMap(
+                      bone: entry.key,
+                      label: l.atlasMapLabel(text.name),
+                      delay: Motion.stagger * 2,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 26),
+                Reveal(
+                  delay: Motion.stagger * 3,
+                  child: _Section(
                     title: l.atlasLookFor,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,7 +122,7 @@ class BoneDetailScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 26),
                 Reveal(
-                  delay: Motion.stagger * 3,
+                  delay: Motion.stagger * 4,
                   child: _Section(
                     title: l.atlasSidingTitle,
                     child: Text(

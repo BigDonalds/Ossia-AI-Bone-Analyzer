@@ -1978,6 +1978,24 @@ class AppLocalizationsDe extends AppLocalizations {
   String get atlasSidingTitle => 'Links oder rechts, und wo oben ist';
 
   @override
+  String get atlasMapTitle => 'Lage im Skelett';
+
+  @override
+  String get atlasMapFront => 'Von vorn';
+
+  @override
+  String get atlasMapBack => 'Von hinten';
+
+  @override
+  String get atlasMapHidden =>
+      'Gestrichelt: von dieser Seite hinter anderen Knochen verdeckt';
+
+  @override
+  String atlasMapLabel(String bone) {
+    return '$bone am ganzen Skelett markiert, von vorn und von hinten';
+  }
+
+  @override
   String get howTitle => 'So funktioniert die Analyse';
 
   @override

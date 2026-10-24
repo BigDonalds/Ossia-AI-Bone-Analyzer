@@ -2244,6 +2244,26 @@
   "@atlasSidingTitle": {
     "description": "English: Left or right, and which way up (Heading on a bone page)"
   },
+  "atlasMapTitle": "الموقع في الهيكل العظمي",
+  "@atlasMapTitle": {
+    "description": "English: Where it sits (Heading over the whole-skeleton map on a bone page)"
+  },
+  "atlasMapFront": "من الأمام",
+  "@atlasMapFront": {
+    "description": "English: Front (Under the skeleton seen from the front)"
+  },
+  "atlasMapBack": "من الخلف",
+  "@atlasMapBack": {
+    "description": "English: Back (Under the skeleton seen from the back)"
+  },
+  "atlasMapHidden": "الخط المتقطع: مخفي خلف عظام أخرى من هذه الجهة",
+  "@atlasMapHidden": {
+    "description": "English: Dashed: hidden behind other bones from this side (Explains the dashed outline on the skeleton map)"
+  },
+  "atlasMapLabel": "{bone} مظلَّل على هيكل عظمي كامل، من الأمام ومن الخلف",
+  "@atlasMapLabel": {
+    "description": "English: {bone} highlighted on a whole skeleton, seen from the front and the back (Screen reader label for the skeleton map; bone is the bone's name)"
+  },
   "howTitle": "كيف يعمل التحليل",
   "@howTitle": {
     "description": "English: How analysis works (Screen title)"
