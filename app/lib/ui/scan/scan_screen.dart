@@ -1,23 +1,20 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/theme/motion.dart';
 import '../../core/theme/palette.dart';
 import '../../core/theme/typography.dart';
-import '../../core/util/formatting.dart';
 import '../../data/history_store.dart';
 import '../../data/models/analysis.dart';
 import '../../data/settings_controller.dart';
 import '../../l10n/l10n.dart';
 import '../../l10n/labels.dart';
 import '../language/language_picker.dart';
-import '../library/record_detail_screen.dart';
+import '../library/find_card.dart';
 import '../widgets/bone_buddy.dart';
 import '../widgets/primitives.dart';
-import '../widgets/specimen_image.dart';
 import '../widgets/text_fit.dart';
+import '../widgets/wide.dart';
 import '../status/link_pill.dart';
 import 'camera_screen.dart';
 
@@ -29,19 +26,38 @@ class ScanScreen extends StatelessWidget {
     final AppColors c = context.colors;
     final SettingsController settings = context.watch<SettingsController>();
     final HistoryStore history = context.watch<HistoryStore>();
-    final List<AnalysisRecord> recent = history.records.take(8).toList();
     final double top = MediaQuery.paddingOf(context).top;
     final AppLocalizations l = context.l10n;
+    final bool wide = Wide.of(context);
+    final double inset = Wide.inset(context);
+    // On a tablet the recent finds fill two rows of a grid, inside its
+    // padding of 16 and 12, instead of one row that scrolls sideways.
+    final double room = MediaQuery.sizeOf(context).width - 2 * inset - 28;
+    final int columns = FindCard.columnsIn(room);
+    final double card = wide ? FindCard.widthIn(room, columns) : FindCard.rowWidth;
+    final List<AnalysisRecord> recent = history.records.take(wide ? columns * 2 : 8).toList();
     // A title too long for one line (German, or a name the user gave) gets a
     // second on every card, and the row grows by that line so the photos
     // keep their size.
-    final TextStyle titleStyle = _FindCard.titleStyle(c);
+    final TextStyle titleStyle = FindCard.titleStyle(c);
     final List<String> titles = <String>[for (final AnalysisRecord r in recent) l.recordTitle(r)];
-    final int titleLines =
-        titles.any((String t) => TextFit.width(context, t, titleStyle) > _FindCard.titleRoom)
-            ? 2
-            : 1;
-    final double lineHeight = _FindCard.measureLine(context, titleStyle, titles);
+    final int titleLines = FindCard.linesFor(context, titles, titleStyle, card);
+    final double lineHeight = FindCard.measureLine(context, titleStyle, titles);
+
+    const Widget hero = Reveal(
+      delay: Motion.stagger,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: _HeroCard(),
+      ),
+    );
+    final List<Widget> tips = <Widget>[
+      Reveal(
+        delay: Motion.stagger * 2,
+        child: GroupLabel(l.scanTipsHeader, top: wide ? 0 : 28),
+      ),
+      Reveal(delay: Motion.stagger * 2, child: const _TipGrid()),
+    ];
 
     return Scaffold(
       backgroundColor: c.canvas,
@@ -49,22 +65,14 @@ class ScanScreen extends StatelessWidget {
         physics: const BouncingScrollPhysics(
           parent: AlwaysScrollableScrollPhysics(),
         ),
-        padding: EdgeInsets.only(top: top + 10, bottom: 140),
+        padding: EdgeInsets.fromLTRB(inset, top + 10, inset, 140),
         children: <Widget>[
           Reveal(child: _Header(settings: settings)),
           const SizedBox(height: 18),
-          const Reveal(
-            delay: Motion.stagger,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: _HeroCard(),
-            ),
-          ),
-          Reveal(
-            delay: Motion.stagger * 2,
-            child: GroupLabel(l.scanTipsHeader),
-          ),
-          Reveal(delay: Motion.stagger * 2, child: const _TipGrid()),
+          // On a tablet the tips sit beside the camera card.
+          if (wide)
+            TwoColumns(start: const <Widget>[hero], end: tips)
+          else ...<Widget>[hero, ...tips],
           Reveal(
             delay: Motion.stagger * 3,
             child: GroupLabel(
@@ -79,15 +87,37 @@ class ScanScreen extends StatelessWidget {
             delay: Motion.stagger * 3,
             child: recent.isEmpty
                 ? const _NoFinds()
+                : wide
+                ? GridView(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    padding: const EdgeInsets.fromLTRB(16, 0, 12, 0),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: columns,
+                      crossAxisSpacing: 8,
+                      mainAxisSpacing: 10,
+                      mainAxisExtent: FindCard.height(card, titleLines, lineHeight),
+                    ),
+                    children: <Widget>[
+                      for (int i = 0; i < recent.length; i++)
+                        FindCard(
+                          record: recent[i],
+                          index: i,
+                          titleLines: titleLines,
+                          lineHeight: lineHeight,
+                          width: null,
+                        ),
+                    ],
+                  )
                 : SizedBox(
-                    height: 214 + (titleLines - 1) * lineHeight,
+                    height: FindCard.height(FindCard.rowWidth, titleLines, lineHeight),
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
                       physics: const BouncingScrollPhysics(),
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       itemCount: recent.length,
                       separatorBuilder: (_, _) => const SizedBox(width: 8),
-                      itemBuilder: (BuildContext context, int i) => _FindCard(
+                      itemBuilder: (BuildContext context, int i) => FindCard(
                         record: recent[i],
                         index: i,
                         titleLines: titleLines,
@@ -463,118 +493,6 @@ class _NoFinds extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class _FindCard extends StatelessWidget {
-  const _FindCard({
-    required this.record,
-    required this.index,
-    required this.titleLines,
-    required this.lineHeight,
-  });
-
-  final AnalysisRecord record;
-  final int index;
-
-  /// Lines kept for the title: the same on every card in the row.
-  final int titleLines;
-
-  /// Height of one title line, also the same on every card.
-  final double lineHeight;
-
-  static const double _width = 158;
-
-  /// The title's width: the card less its outline and padding.
-  static const double titleRoom = _width - Chunky.border * 2 - 20;
-
-  static TextStyle titleStyle(AppColors c) =>
-      AppType.headline.copyWith(color: c.textPrimary, fontSize: 14.5);
-
-  /// The tallest line among [titles], at least that of "Ag": Arabic sits a
-  /// little taller than Latin type.
-  static double measureLine(BuildContext context, TextStyle style, List<String> titles) =>
-      <String>['Ag', ...titles]
-          .map((String t) => TextFit.height(context, t, style, maxWidth: double.infinity, maxLines: 1))
-          .reduce(math.max);
-
-  @override
-  Widget build(BuildContext context) {
-    final AppColors c = context.colors;
-    final AnalysisResult r = record.result;
-    final bool flagged = r.damage.flagged.isNotEmpty;
-
-    final TextStyle title = titleStyle(c);
-    return Chunk(
-      width: _width,
-      onTap: () => Navigator.of(context).push(
-        MaterialPageRoute<void>(
-          builder: (_) => RecordDetailScreen(recordId: record.id),
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Expanded(
-            child: Stack(
-              fit: StackFit.expand,
-              children: <Widget>[
-                SpecimenImage(path: record.imagePath, fit: BoxFit.cover),
-                PositionedDirectional(
-                  top: 8,
-                  start: 8,
-                  child: StatusPill(
-                    percent(r.overallConfidence),
-                    color: c.sticker(index),
-                    filled: true,
-                  ),
-                ),
-                if (flagged)
-                  PositionedDirectional(
-                    top: 8,
-                    end: 8,
-                    child: Container(
-                      width: 26,
-                      height: 26,
-                      decoration: BoxDecoration(
-                        color: c.caution,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: const Color(0xFF141414), width: 1.6),
-                      ),
-                      child: const Icon(Icons.priority_high_rounded,
-                          size: 16, color: Color(0xFF141414)),
-                    ),
-                  ),
-              ],
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border(top: BorderSide(color: c.ink, width: Chunky.border)),
-            ),
-            padding: const EdgeInsets.fromLTRB(10, 8, 10, 9),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                SizedBox(
-                  height: titleLines * lineHeight,
-                  child: Text(
-                    context.l10n.recordTitle(record),
-                    maxLines: titleLines,
-                    overflow: TextOverflow.ellipsis,
-                    style: title,
-                  ),
-                ),
-                Text(
-                  context.l10n.relativeTime(record.createdAt),
-                  style: AppType.caption.copyWith(color: c.textSecondary),
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }

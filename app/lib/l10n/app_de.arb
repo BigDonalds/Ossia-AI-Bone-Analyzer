@@ -12,9 +12,9 @@
   "@tabStash": {
     "description": "English: Stash (Tab: every bone you have saved)"
   },
-  "tabAtlas": "Atlas",
-  "@tabAtlas": {
-    "description": "English: Atlas (Tab: a guide to each bone the app knows)"
+  "tabBones": "Knochen",
+  "@tabBones": {
+    "description": "English: Bones (Tab: a guide to each bone the app knows)"
   },
   "tabSettings": "Einstellungen",
   "@tabSettings": {
@@ -52,7 +52,7 @@
   "@close": {
     "description": "English: Close"
   },
-  "tryAgain": "Nochmal versuchen",
+  "tryAgain": "Erneut versuchen",
   "@tryAgain": {
     "description": "English: Try again"
   },
@@ -164,11 +164,11 @@
   "@languageSheetMessage": {
     "description": "English: Everything switches straight away, saved finds too."
   },
-  "languageMatchPhone": "Wie mein Handy",
+  "languageMatchPhone": "Wie auf meinem Handy",
   "@languageMatchPhone": {
     "description": "English: Match my phone (Option: always use the phone's own language)"
   },
-  "languageMatchPhoneHint": "Gerade ist das {language}",
+  "languageMatchPhoneHint": "Aktuell ist das {language}",
   "@languageMatchPhoneHint": {
     "description": "English: Right now that's {language} (Under \"Match my phone\". {language} is one of the three names below)"
   },
@@ -356,7 +356,7 @@
   "@animalBovid": {
     "description": "English: Bovid (Animal family name (Bovidae))"
   },
-  "animalBovidMeaning": "die Familie der Rinder (Kühe, Bisons, Schafe, Ziegen und Antilopen)",
+  "animalBovidMeaning": "die Familie der Hornträger (Rinder, Bisons, Schafe, Ziegen und Antilopen)",
   "@animalBovidMeaning": {
     "description": "English: the cattle family (cows, bison, sheep, goats and antelope)"
   },
@@ -388,7 +388,7 @@
   "@animalLeporid": {
     "description": "English: Leporid (Animal family name (Leporidae))"
   },
-  "animalLeporidMeaning": "Kaninchen und Feldhasen",
+  "animalLeporidMeaning": "Kaninchen und Hasen",
   "@animalLeporidMeaning": {
     "description": "English: rabbits and hares"
   },
@@ -424,7 +424,7 @@
   "@animalOtherMammalMeaning": {
     "description": "English: an animal with fur that feeds its young milk, from a family Ossia doesn't name, like a skunk or opossum"
   },
-  "animalMammalMeaning": "ein Tier mit Fell, das seine Jungen mit Milch säugt. Dieser Knochen zeigt nicht, aus welcher Familie",
+  "animalMammalMeaning": "ein Tier mit Fell, das seine Jungen mit Milch säugt. Dieser Knochen verrät nicht, aus welcher Familie es stammt",
   "@animalMammalMeaning": {
     "description": "English: an animal with fur that feeds its young milk. This bone doesn't show which family"
   },
@@ -460,11 +460,11 @@
   "@partShaft": {
     "description": "English: Middle (shaft)"
   },
-  "partProximal": "Nahes Ende",
+  "partProximal": "Körpernahes Ende",
   "@partProximal": {
     "description": "English: Near end (The end of a limb bone nearer the body)"
   },
-  "partDistal": "Fernes Ende",
+  "partDistal": "Körperfernes Ende",
   "@partDistal": {
     "description": "English: Far end (The end of a limb bone further from the body)"
   },
@@ -524,9 +524,9 @@
   "@sourceOnDevice": {
     "description": "English: On this phone"
   },
-  "sourceServer": "Dein Server",
+  "sourceServer": "Auf dem Ossia-Computer",
   "@sourceServer": {
-    "description": "English: Your server"
+    "description": "English: On the Ossia computer"
   },
   "regionCranial": "Kopf",
   "@regionCranial": {
@@ -606,459 +606,459 @@
   },
   "atlasSkullBlurb": "Cranium und Unterkiefer zusammen",
   "@atlasSkullBlurb": {
-    "description": "English: Cranium and mandible together (Atlas: one line under the bone name in the list)"
+    "description": "English: Cranium and mandible together (Bones tab: one line under the bone name in the list)"
   },
   "atlasSkullSummary": "Der vollständige knöcherne Kopf: das Cranium zusammen mit dem Unterkiefer. Insgesamt zweiundzwanzig Knochen, verbunden durch ineinandergreifende Nähte; nur der Unterkiefer ist frei beweglich.",
   "@atlasSkullSummary": {
-    "description": "English: The complete bony head: the cranium together with the mandible. Twenty-two bones in all, joined by interlocking sutures; only the mandible articulates freely. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The complete bony head: the cranium together with the mandible. Twenty-two bones in all, joined by interlocking sutures; only the mandible articulates freely. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
-  "atlasSkullLm1": "Kranz-, Pfeil- und Lambdanaht",
+  "atlasSkullLm1": "Kranz-, Pfeil-, Lambda- und Schuppennaht",
   "@atlasSkullLm1": {
-    "description": "English: Coronal, sagittal and lambdoid sutures (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Coronal, sagittal and lambdoid sutures (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasSkullLm2": "Augenhöhlen und die birnenförmige Nasenöffnung (Apertura piriformis)",
   "@atlasSkullLm2": {
-    "description": "English: Orbits and the piriform (nasal) aperture (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Orbits and the piriform (nasal) aperture (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasSkullLm3": "Foramen magnum an der Schädelbasis",
   "@atlasSkullLm3": {
-    "description": "English: Foramen magnum on the basicranium (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Foramen magnum on the basicranium (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasSkullLm4": "Warzenfortsätze hinter den Gehörgängen",
   "@atlasSkullLm4": {
-    "description": "English: Mastoid processes behind the ear canals (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Mastoid processes behind the ear canals (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasSkullSiding": "Symmetrisch. Die Ausrichtung ergibt sich aus dem Stirnbein (vorn) und der Hinterhauptsschuppe (hinten).",
   "@atlasSkullSiding": {
-    "description": "English: Symmetrical. Orientation comes from the frontal bone (anterior) and the occipital squama (posterior). (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Symmetrical. Orientation comes from the frontal bone (anterior) and the occipital squama (posterior). (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasCraniumBlurb": "Der Schädel ohne Unterkiefer",
   "@atlasCraniumBlurb": {
-    "description": "English: The skull without its jaw (Atlas: one line under the bone name in the list)"
+    "description": "English: The skull without its jaw (Bones tab: one line under the bone name in the list)"
   },
   "atlasCraniumSummary": "Der Schädel ohne Unterkiefer. Umschließt und schützt das Gehirn; das Schädeldach besteht aus Stirn-, Scheitel-, Schläfen- und Hinterhauptsbein.",
   "@atlasCraniumSummary": {
-    "description": "English: The skull with the mandible removed. Encloses and protects the brain; the vault is made of frontal, parietal, temporal and occipital bones. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The skull with the mandible removed. Encloses and protects the brain; the vault is made of frontal, parietal, temporal and occipital bones. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasCraniumLm1": "Überaugenwülste – bei männlichen Schädeln kräftiger",
   "@atlasCraniumLm1": {
-    "description": "English: Supraorbital ridges — heavier in male crania (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Supraorbital ridges — heavier in male crania (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasCraniumLm2": "Nackenlinien am Hinterhauptsbein",
   "@atlasCraniumLm2": {
-    "description": "English: Nuchal lines on the occipital (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Nuchal lines on the occipital (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasCraniumLm3": "Schläfenlinien, die über die Scheitelbeine ziehen",
   "@atlasCraniumLm3": {
-    "description": "English: Temporal lines sweeping across the parietals (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Temporal lines sweeping across the parietals (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasCraniumLm4": "Äußerer Gehörgang",
   "@atlasCraniumLm4": {
-    "description": "English: External auditory meatus (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: External auditory meatus (Bones tab: one thing an expert looks for on this bone)"
   },
-  "atlasCraniumSiding": "Symmetrisch, wenn vollständig. Einzelne Schädeldachfragmente werden über den Verlauf der Nähte und das Muster der Hirnhautgefäßfurchen zugeordnet.",
+  "atlasCraniumSiding": "Symmetrisch, wenn vollständig. Einzelne Schädeldachfragmente werden anhand des Nahtverlaufs und des Musters der Hirnhautgefäßfurchen einer Seite zugeordnet.",
   "@atlasCraniumSiding": {
-    "description": "English: Symmetrical when complete. Isolated vault fragments are sided by suture direction and meningeal groove patterning. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Symmetrical when complete. Isolated vault fragments are sided by suture direction and meningeal groove patterning. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasCraniumAka": "Calvaria (nur Schädeldach)",
   "@atlasCraniumAka": {
-    "description": "English: Calvarium (vault only) (Atlas: another name for this bone)"
+    "description": "English: Calvarium (vault only) (Bones tab: another name for this bone)"
   },
   "atlasMandibleBlurb": "Unterkiefer; dicht und widerstandsfähig",
   "@atlasMandibleBlurb": {
-    "description": "English: Lower jaw; dense and durable (Atlas: one line under the bone name in the list)"
+    "description": "English: Lower jaw; dense and durable (Bones tab: one line under the bone name in the list)"
   },
   "atlasMandibleSummary": "Der Unterkiefer – der einzige frei bewegliche Knochen des Schädels. Dicht und kompakt, daher übersteht er Bodenlagerung und Verbrennung besser als die meisten Knochen.",
   "@atlasMandibleSummary": {
-    "description": "English: The lower jaw — the only freely mobile bone of the skull. Dense and compact, so it survives burial and burning better than most. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The lower jaw — the only freely mobile bone of the skull. Dense and compact, so it survives burial and burning better than most. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasMandibleLm1": "Protuberantia mentalis (das Kinn)",
   "@atlasMandibleLm1": {
-    "description": "English: Mental protuberance (the chin) (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Mental protuberance (the chin) (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasMandibleLm2": "Kieferwinkel, wo Ast und Körper aufeinandertreffen",
   "@atlasMandibleLm2": {
-    "description": "English: Gonial angle where ramus meets body (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Gonial angle where ramus meets body (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasMandibleLm3": "Gelenkfortsatz (Condylus) und Muskelfortsatz (Processus coronoideus)",
   "@atlasMandibleLm3": {
-    "description": "English: Mandibular condyle and coronoid process (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Mandibular condyle and coronoid process (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasMandibleLm4": "Foramen mentale unterhalb der vorderen Backenzähne",
   "@atlasMandibleLm4": {
-    "description": "English: Mental foramen below the premolars (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Mental foramen below the premolars (Bones tab: one thing an expert looks for on this bone)"
   },
-  "atlasMandibleSiding": "Symmetrisch, wenn vollständig. Eine Unterkieferhälfte wird daran zugeordnet, in welche Richtung der Ast aufsteigt und wohin sich die Zahnreihe krümmt.",
+  "atlasMandibleSiding": "Symmetrisch, wenn vollständig. Bei einer Unterkieferhälfte zeigen die Richtung, in die der Ast aufsteigt, und die Krümmung der Zahnreihe die Seite an.",
   "@atlasMandibleSiding": {
-    "description": "English: Symmetrical when whole. A half-mandible is sided by the direction the ramus rises and by which way the tooth row curves. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Symmetrical when whole. A half-mandible is sided by the direction the ramus rises and by which way the tooth row curves. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasFemurBlurb": "Oberschenkelknochen; bester Hinweis auf die Körpergröße",
   "@atlasFemurBlurb": {
-    "description": "English: Thigh bone; best stature indicator (Atlas: one line under the bone name in the list)"
+    "description": "English: Thigh bone; best stature indicator (Bones tab: one line under the bone name in the list)"
   },
   "atlasFemurSummary": "Der Oberschenkelknochen – der längste und stärkste Knochen des Körpers. Aus seiner größten Länge lässt sich die Körpergröße zu Lebzeiten am sichersten schätzen.",
   "@atlasFemurSummary": {
-    "description": "English: The thigh bone — the longest and strongest bone in the body. Its maximum length carries the tightest correlation with living stature. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The thigh bone — the longest and strongest bone in the body. Its maximum length carries the tightest correlation with living stature. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasFemurLm1": "Kugelförmiger Kopf mit der Fovea capitis",
   "@atlasFemurLm1": {
-    "description": "English: Spherical head with the fovea capitis (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Spherical head with the fovea capitis (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasFemurLm2": "Großer und kleiner Rollhügel (Trochanter major und minor)",
   "@atlasFemurLm2": {
-    "description": "English: Greater and lesser trochanters (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Greater and lesser trochanters (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasFemurLm3": "Linea aspera als Leiste an der Schaftrückseite",
   "@atlasFemurLm3": {
-    "description": "English: Linea aspera ridging the posterior shaft (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Linea aspera ridging the posterior shaft (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasFemurLm4": "Innerer und äußerer Gelenkknorren am Knie",
   "@atlasFemurLm4": {
-    "description": "English: Medial and lateral condyles at the knee (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Medial and lateral condyles at the knee (Bones tab: one thing an expert looks for on this bone)"
   },
-  "atlasFemurSiding": "Halte den Knochen aufrecht: Der Kopf zeigt nach innen, die Linea aspera nach hinten. Die Seite, zu der der Kopf zeigt, ist die Körperseite.",
+  "atlasFemurSiding": "Halte den Knochen aufrecht, den Kopf oben und die Linea aspera von dir weg. Der Kopf zeigt dann zur Körperseite, von der der Knochen stammt.",
   "@atlasFemurSiding": {
-    "description": "English: Hold the bone upright: the head points medially and the linea aspera faces posteriorly. The side the head points to is the side of the body. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Hold the bone upright: the head points medially and the linea aspera faces posteriorly. The side the head points to is the side of the body. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasTibiaBlurb": "Schienbein; dreieckiger Schaft",
   "@atlasTibiaBlurb": {
-    "description": "English: Shin bone; triangular shaft (Atlas: one line under the bone name in the list)"
+    "description": "English: Shin bone; triangular shaft (Bones tab: one line under the bone name in the list)"
   },
   "atlasTibiaSummary": "Das Schienbein, der innere und tragende Knochen des Unterschenkels. Sein dreieckiger Schaft ist selbst in Bruchstücken unverkennbar.",
   "@atlasTibiaSummary": {
-    "description": "English: The shin bone, medial and weight-bearing in the lower leg. Its triangular shaft is distinctive even in fragments. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The shin bone, medial and weight-bearing in the lower leg. Its triangular shaft is distinctive even in fragments. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasTibiaLm1": "Schienbeinhöcker (Tuberositas tibiae) vorn am oberen Schaft",
   "@atlasTibiaLm1": {
-    "description": "English: Tibial tuberosity on the anterior proximal shaft (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Tibial tuberosity on the anterior proximal shaft (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasTibiaLm2": "Scharfe Vorderkante",
   "@atlasTibiaLm2": {
-    "description": "English: Sharp anterior crest (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Sharp anterior crest (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasTibiaLm3": "Innenknöchel am Sprunggelenk",
   "@atlasTibiaLm3": {
-    "description": "English: Medial malleolus at the ankle (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Medial malleolus at the ankle (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasTibiaLm4": "Flache innere und äußere Gelenkknorren",
   "@atlasTibiaLm4": {
-    "description": "English: Flat medial and lateral condyles (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Flat medial and lateral condyles (Bones tab: one thing an expert looks for on this bone)"
   },
-  "atlasTibiaSiding": "Der Innenknöchel ragt auf der Seite hervor, von der der Knochen stammt; der Schienbeinhöcker markiert die Vorderseite.",
+  "atlasTibiaSiding": "Halte ihn aufrecht, den Schienbeinhöcker zu dir und den Innenknöchel unten. Der Innenknöchel zeigt dann zur Körperseite, von der der Knochen stammt.",
   "@atlasTibiaSiding": {
-    "description": "English: The medial malleolus projects on the same side as the body it came from; the tibial tuberosity marks the front. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: The medial malleolus projects on the same side as the body it came from; the tibial tuberosity marks the front. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasHumerusBlurb": "Oberarm, von der Schulter bis zum Ellenbogen",
   "@atlasHumerusBlurb": {
-    "description": "English: Upper arm, shoulder to elbow (Atlas: one line under the bone name in the list)"
+    "description": "English: Upper arm, shoulder to elbow (Bones tab: one line under the bone name in the list)"
   },
-  "atlasHumerusSummary": "Der Oberarmknochen, vom Schultergelenk bis zum Ellenbogen. In der Länge nur vom Oberschenkelknochen übertroffen.",
+  "atlasHumerusSummary": "Der Oberarmknochen, vom Schultergelenk bis zum Ellenbogen. Der längste Knochen des Arms.",
   "@atlasHumerusSummary": {
-    "description": "English: The upper arm bone, running from the shoulder joint to the elbow. Second only to the femur in length. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The upper arm bone, running from the shoulder joint to the elbow. Second only to the femur in length. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasHumerusLm1": "Runder Kopf mit großem und kleinem Höcker",
   "@atlasHumerusLm1": {
-    "description": "English: Rounded head with greater and lesser tubercles (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Rounded head with greater and lesser tubercles (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasHumerusLm2": "Tuberositas deltoidea in Schaftmitte",
   "@atlasHumerusLm2": {
-    "description": "English: Deltoid tuberosity mid-shaft (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Deltoid tuberosity mid-shaft (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasHumerusLm3": "Fossa olecrani hinten am unteren Ende",
   "@atlasHumerusLm3": {
-    "description": "English: Olecranon fossa on the posterior distal end (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Olecranon fossa on the posterior distal end (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasHumerusLm4": "Trochlea und Capitulum bilden das Ellenbogengelenk",
   "@atlasHumerusLm4": {
-    "description": "English: Trochlea and capitulum forming the elbow (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Trochlea and capitulum forming the elbow (Bones tab: one thing an expert looks for on this bone)"
   },
-  "atlasHumerusSiding": "Stell ihn aufrecht, den Kopf zu dir gerichtet: Die Fossa olecrani liegt hinten, und der Kopf dreht sich nach innen zur Körpermitte.",
+  "atlasHumerusSiding": "Halte ihn aufrecht, den Kopf oben und die Fossa olecrani von dir weg. Der Kopf zeigt dann zur Körperseite, von der der Knochen stammt.",
   "@atlasHumerusSiding": {
-    "description": "English: Stand it upright with the head facing you: the olecranon fossa sits posteriorly, and the head turns medially toward the body midline. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Stand it upright with the head facing you: the olecranon fossa sits posteriorly, and the head turns medially toward the body midline. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasRadiusBlurb": "Äußerer Unterarmknochen, auf der Daumenseite",
   "@atlasRadiusBlurb": {
-    "description": "English: Lateral forearm, on the thumb side (Atlas: one line under the bone name in the list)"
+    "description": "English: Lateral forearm, on the thumb side (Bones tab: one line under the bone name in the list)"
   },
   "atlasRadiusSummary": "Der äußere Unterarmknochen auf der Daumenseite. Er dreht sich um die Elle und wendet so die Handfläche.",
   "@atlasRadiusSummary": {
-    "description": "English: The lateral forearm bone, on the thumb side. It rotates over the ulna to turn the palm. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The lateral forearm bone, on the thumb side. It rotates over the ulna to turn the palm. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasRadiusLm1": "Scheibenförmiger Kopf am oberen Ende",
   "@atlasRadiusLm1": {
-    "description": "English: Disc-shaped proximal head (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Disc-shaped proximal head (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRadiusLm2": "Tuberositas radii direkt unter dem Hals",
   "@atlasRadiusLm2": {
-    "description": "English: Radial tuberosity just below the neck (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Radial tuberosity just below the neck (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRadiusLm3": "Breites, ausladendes unteres Ende",
   "@atlasRadiusLm3": {
-    "description": "English: Broad, flared distal end (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Broad, flared distal end (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRadiusLm4": "Griffelfortsatz am Handgelenk",
   "@atlasRadiusLm4": {
-    "description": "English: Styloid process at the wrist (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Styloid process at the wrist (Bones tab: one thing an expert looks for on this bone)"
   },
-  "atlasRadiusSiding": "Der kleine Kopf liegt oben, das breite Ende unten; der Griffelfortsatz zeigt nach außen, weg von der Körpermitte.",
+  "atlasRadiusSiding": "Halte ihn mit dem kleinen Kopf nach oben und der flachen Handflächenseite des breiten Endes zu dir. Der Griffelfortsatz zeigt dann zur Gegenseite: nach links bei einer rechten Speiche.",
   "@atlasRadiusSiding": {
-    "description": "English: The small head is proximal and the broad end distal; the styloid process points laterally, away from the midline. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: The small head is proximal and the broad end distal; the styloid process points laterally, away from the midline. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasUlnaBlurb": "Innerer Unterarmknochen; die Ellenbogenspitze",
   "@atlasUlnaBlurb": {
-    "description": "English: Medial forearm; point of the elbow (Atlas: one line under the bone name in the list)"
+    "description": "English: Medial forearm; point of the elbow (Bones tab: one line under the bone name in the list)"
   },
   "atlasUlnaSummary": "Der innere Unterarmknochen auf der Kleinfingerseite. Bildet das Scharnier des Ellenbogens und ist der feste Partner, um den sich die Speiche dreht.",
   "@atlasUlnaSummary": {
-    "description": "English: The medial forearm bone, on the little-finger side. Forms the hinge of the elbow and is the stable partner the radius rotates around. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The medial forearm bone, on the little-finger side. Forms the hinge of the elbow and is the stable partner the radius rotates around. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasUlnaLm1": "Olecranon – die Ellenbogenspitze",
   "@atlasUlnaLm1": {
-    "description": "English: Olecranon process — the point of the elbow (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Olecranon process — the point of the elbow (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasUlnaLm2": "Incisura trochlearis, die den Oberarmknochen umgreift",
   "@atlasUlnaLm2": {
-    "description": "English: Trochlear notch gripping the humerus (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Trochlear notch gripping the humerus (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasUlnaLm3": "Processus coronoideus unterhalb der Incisura",
   "@atlasUlnaLm3": {
-    "description": "English: Coronoid process below the notch (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Coronoid process below the notch (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasUlnaLm4": "Schmaler Kopf am unteren Ende mit Griffelfortsatz",
   "@atlasUlnaLm4": {
-    "description": "English: Slender distal head with styloid process (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Slender distal head with styloid process (Bones tab: one thing an expert looks for on this bone)"
   },
-  "atlasUlnaSiding": "Die Incisura trochlearis öffnet sich nach vorn; mit dem Olecranon oben und der Incisura zu dir gerichtet krümmt sich der Schaft zur Körperseite hin.",
+  "atlasUlnaSiding": "Halte sie mit dem Olecranon nach oben und der Incisura trochlearis zu dir. Die Incisura radialis, in der die Speiche sitzt, zeigt dann zur Gegenseite: nach links bei einer rechten Elle.",
   "@atlasUlnaSiding": {
-    "description": "English: The trochlear notch opens anteriorly; with the olecranon up and the notch facing you, the shaft curves toward the body side. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: The trochlear notch opens anteriorly; with the olecranon up and the notch facing you, the shaft curves toward the body side. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasScapulaBlurb": "Schulterblatt; dünne dreieckige Platte",
   "@atlasScapulaBlurb": {
-    "description": "English: Shoulder blade; thin triangular plate (Atlas: one line under the bone name in the list)"
+    "description": "English: Shoulder blade; thin triangular plate (Bones tab: one line under the bone name in the list)"
   },
   "atlasScapulaSummary": "Das Schulterblatt – eine dünne dreieckige Platte, die hinten auf dem Brustkorb aufliegt. So dünn, dass die Platte oft nur in Bruchstücken erhalten bleibt.",
   "@atlasScapulaSummary": {
-    "description": "English: The shoulder blade — a thin triangular plate riding on the back of the ribcage. Thin enough that the blade often survives only as fragments. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The shoulder blade — a thin triangular plate riding on the back of the ribcage. Thin enough that the blade often survives only as fragments. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasScapulaLm1": "Schulterblattgräte quer über die Rückseite",
   "@atlasScapulaLm1": {
-    "description": "English: Spine running across the posterior surface (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Spine running across the posterior surface (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasScapulaLm2": "Schulterhöhe (Acromion) an der Schulterspitze",
   "@atlasScapulaLm2": {
-    "description": "English: Acromion process at the shoulder tip (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Acromion process at the shoulder tip (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasScapulaLm3": "Hakenförmiger Rabenschnabelfortsatz vorn",
   "@atlasScapulaLm3": {
-    "description": "English: Hooked coracoid process anteriorly (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Hooked coracoid process anteriorly (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasScapulaLm4": "Gelenkpfanne, die den Oberarmkopf aufnimmt",
   "@atlasScapulaLm4": {
-    "description": "English: Glenoid fossa receiving the humeral head (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Glenoid fossa receiving the humeral head (Bones tab: one thing an expert looks for on this bone)"
   },
-  "atlasScapulaSiding": "Die Gelenkpfanne zeigt nach außen, die Gräte liegt auf der Rückseite; die Seite, zu der die Pfanne zeigt, ist die Körperseite.",
+  "atlasScapulaSiding": "Halte es mit der Gräte zu dir und dem Acromion oben. Die Gelenkpfanne zeigt dann zur Körperseite, von der der Knochen stammt.",
   "@atlasScapulaSiding": {
-    "description": "English: The glenoid fossa faces laterally and the spine sits on the posterior surface; the side the fossa faces is the side of the body. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: The glenoid fossa faces laterally and the spine sits on the posterior surface; the side the fossa faces is the side of the body. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasOsCoxaBlurb": "Hüftbein; bester Hinweis auf das Geschlecht",
   "@atlasOsCoxaBlurb": {
-    "description": "English: Hip bone; best indicator of sex (Atlas: one line under the bone name in the list)"
+    "description": "English: Hip bone; best indicator of sex (Bones tab: one line under the bone name in the list)"
   },
   "atlasOsCoxaSummary": "Das Hüftbein: Darm-, Sitz- und Schambein, an der Hüftpfanne verwachsen. Der zuverlässigste einzelne Knochen, um Geschlecht und Alter Erwachsener zu schätzen.",
   "@atlasOsCoxaSummary": {
-    "description": "English: The hip bone: ilium, ischium and pubis fused at the acetabulum. The single most reliable element for estimating sex and adult age. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The hip bone: ilium, ischium and pubis fused at the acetabulum. The single most reliable element for estimating sex and adult age. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasOsCoxaLm1": "Incisura ischiadica major – bei Frauen breit, bei Männern schmal",
   "@atlasOsCoxaLm1": {
-    "description": "English: Greater sciatic notch — broad in females, narrow in males (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Greater sciatic notch — broad in females, narrow in males (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasOsCoxaLm2": "Schambogenwinkel und der ventrale Bogen",
   "@atlasOsCoxaLm2": {
-    "description": "English: Subpubic angle and the ventral arc (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Subpubic angle and the ventral arc (Bones tab: one thing an expert looks for on this bone)"
   },
-  "atlasOsCoxaLm3": "Facies auricularis, für das Sterbealter genutzt",
+  "atlasOsCoxaLm3": "Facies auricularis, zur Schätzung des Sterbealters genutzt",
   "@atlasOsCoxaLm3": {
-    "description": "English: Auricular surface, used for age-at-death (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Auricular surface, used for age-at-death (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasOsCoxaLm4": "Hüftpfanne, die den Oberschenkelkopf aufnimmt",
   "@atlasOsCoxaLm4": {
-    "description": "English: Acetabulum receiving the femoral head (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Acetabulum receiving the femoral head (Bones tab: one thing an expert looks for on this bone)"
   },
-  "atlasOsCoxaSiding": "Richte die Darmbeinschaufel nach oben und die Hüftpfanne nach außen: Das Schambein liegt vorn, die Incisura ischiadica öffnet sich nach hinten.",
+  "atlasOsCoxaSiding": "Richte die Darmbeinschaufel nach oben und die Hüftpfanne nach außen: Das Schambein liegt vorn, die Incisura ischiadica öffnet sich nach hinten. So an die eigene Hüfte gehalten, passt es zu der Seite, von der es stammt.",
   "@atlasOsCoxaSiding": {
-    "description": "English: Point the iliac blade up and the acetabulum out: the pubis sits anteriorly and the sciatic notch opens posteriorly. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Point the iliac blade up and the acetabulum out: the pubis sits anteriorly and the sciatic notch opens posteriorly. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasOsCoxaAka": "Os innominatum, Hüftbein",
   "@atlasOsCoxaAka": {
-    "description": "English: Innominate, hip bone (Atlas: another name for this bone)"
+    "description": "English: Innominate, hip bone (Bones tab: another name for this bone)"
   },
   "atlasRib12Blurb": "Atypische Rippen; flach und stark gekrümmt",
   "@atlasRib12Blurb": {
-    "description": "English: Atypical ribs; flat and sharply curved (Atlas: one line under the bone name in the list)"
+    "description": "English: Atypical ribs; flat and sharply curved (Bones tab: one line under the bone name in the list)"
   },
   "atlasRib12Summary": "Die ersten beiden Rippen sind atypisch. Rippe 1 ist die kürzeste, breiteste und am stärksten gekrümmte; Rippe 2 ist länger, aber ebenso abgeflacht.",
   "@atlasRib12Summary": {
-    "description": "English: The first two ribs are atypical. Rib 1 is the shortest, broadest and most sharply curved; rib 2 is longer but keeps the same flattened set. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The first two ribs are atypical. Rib 1 is the shortest, broadest and most sharply curved; rib 2 is longer but keeps the same flattened set. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasRib12Lm1": "Rippe 1 liegt flach, mit Ober- und Unterseite",
   "@atlasRib12Lm1": {
-    "description": "English: Rib 1 lies flat, with superior and inferior surfaces (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Rib 1 lies flat, with superior and inferior surfaces (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRib12Lm2": "Tuberculum musculi scaleni mit Furchen für die Schlüsselbeingefäße",
   "@atlasRib12Lm2": {
-    "description": "English: Scalene tubercle with grooves for the subclavian vessels (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Scalene tubercle with grooves for the subclavian vessels (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRib12Lm3": "Rippe 2 trägt eine Rauigkeit für den vorderen Sägemuskel",
   "@atlasRib12Lm3": {
-    "description": "English: Rib 2 carries a tuberosity for serratus anterior (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Rib 2 carries a tuberosity for serratus anterior (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRib12Lm4": "Eine einzelne Gelenkfläche am Kopf von Rippe 1",
   "@atlasRib12Lm4": {
-    "description": "English: Single articular facet on the head of rib 1 (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Single articular facet on the head of rib 1 (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRib12Siding": "Leg die Rippe flach, den Kopf nach hinten: Die konkave Innenseite zeigt zur Körpermitte und verrät so die Seite.",
   "@atlasRib12Siding": {
-    "description": "English: Lay the rib flat with the head backward: the concave inner surface faces the midline, giving the side. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Lay the rib flat with the head backward: the concave inner surface faces the midline, giving the side. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasTypicalRibBlurb": "Rippen 3–9; Kopf, Höcker, Rippenfurche",
   "@atlasTypicalRibBlurb": {
-    "description": "English: Ribs 3–9; head, tubercle, costal groove (Atlas: one line under the bone name in the list)"
+    "description": "English: Ribs 3–9; head, tubercle, costal groove (Bones tab: one line under the bone name in the list)"
   },
-  "atlasTypicalRibSummary": "Die Rippen 3 bis 9 folgen einem Bauplan: Kopf, Hals, Höcker und ein langer gebogener Körper, der sich am Rippenwinkel verdreht.",
+  "atlasTypicalRibSummary": "Die Rippen 3 bis 9 folgen einem gemeinsamen Bauplan: Kopf, Hals, Höcker und ein langer gebogener Körper, der sich am Rippenwinkel verdreht.",
   "@atlasTypicalRibSummary": {
-    "description": "English: Ribs 3 through 9 share one plan: a head, neck, tubercle and a long curving body that twists at the angle. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: Ribs 3 through 9 share one plan: a head, neck, tubercle and a long curving body that twists at the angle. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasTypicalRibLm1": "Zwei halbe Gelenkflächen am Kopf",
   "@atlasTypicalRibLm1": {
-    "description": "English: Two demifacets on the head (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Two demifacets on the head (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasTypicalRibLm2": "Höcker, der mit einem Querfortsatz ein Gelenk bildet",
   "@atlasTypicalRibLm2": {
-    "description": "English: Tubercle articulating with a transverse process (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Tubercle articulating with a transverse process (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasTypicalRibLm3": "Rippenwinkel, an dem der Schaft die Richtung ändert",
   "@atlasTypicalRibLm3": {
-    "description": "English: Angle where the shaft changes direction (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Angle where the shaft changes direction (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasTypicalRibLm4": "Rippenfurche am inneren unteren Rand",
   "@atlasTypicalRibLm4": {
-    "description": "English: Costal groove along the inner inferior border (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Costal groove along the inner inferior border (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasTypicalRibSiding": "Die Rippenfurche verläuft am inneren unteren Rand; liegt die Furche unten und innen, zeigt der Kopf nach hinten und verrät die Seite.",
   "@atlasTypicalRibSiding": {
-    "description": "English: The costal groove runs on the internal inferior edge; with the groove down and inside, the head points to the back and gives the side. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: The costal groove runs on the internal inferior edge; with the groove down and inside, the head points to the back and gives the side. (Bones tab: how to tell left from right, or the place in a series)"
   },
-  "atlasRib1112Blurb": "Freie Rippen; kurz und vorn nicht befestigt",
+  "atlasRib1112Blurb": "Freie Rippen; kurz, ohne Verbindung zum Brustbein",
   "@atlasRib1112Blurb": {
-    "description": "English: Floating ribs; short and unattached (Atlas: one line under the bone name in the list)"
+    "description": "English: Floating ribs; short and unattached (Bones tab: one line under the bone name in the list)"
   },
-  "atlasRib1112Summary": "Die freien Rippen. Kurz, spitz zulaufend und vorn nicht befestigt – deshalb fehlen ihnen die meisten Merkmale einer typischen Rippe.",
+  "atlasRib1112Summary": "Die freien Rippen. Kurz, spitz zulaufend und nicht mit dem Brustbein verbunden – deshalb fehlen ihnen die meisten Merkmale einer typischen Rippe.",
   "@atlasRib1112Summary": {
-    "description": "English: The floating ribs. Short, tapering and unattached at the front, which is why they lack most of the features a typical rib carries. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The floating ribs. Short, tapering and unattached at the front, which is why they lack most of the features a typical rib carries. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasRib1112Lm1": "Eine einzelne Gelenkfläche am Kopf",
   "@atlasRib1112Lm1": {
-    "description": "English: Single articular facet on the head (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Single articular facet on the head (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRib1112Lm2": "Kein Hals und kein Höcker",
   "@atlasRib1112Lm2": {
-    "description": "English: No neck and no tubercle (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: No neck and no tubercle (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRib1112Lm3": "Kaum oder keine Rippenfurche",
   "@atlasRib1112Lm3": {
-    "description": "English: Little or no costal groove (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Little or no costal groove (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRib1112Lm4": "Spitzes vorderes Ende mit Knorpelkappe",
   "@atlasRib1112Lm4": {
-    "description": "English: Pointed, cartilage-tipped anterior end (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Pointed, cartilage-tipped anterior end (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRib1112Siding": "Die Krümmung allein verrät die Seite: Die konkave Fläche zeigt zur Körpermitte.",
   "@atlasRib1112Siding": {
-    "description": "English: Curvature alone gives the side: the concave surface faces the midline. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Curvature alone gives the side: the concave surface faces the midline. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasCervicalBlurb": "C1–C7; die einzigen mit Querfortsatzlöchern",
   "@atlasCervicalBlurb": {
-    "description": "English: C1–C7; the only ones with transverse foramina (Atlas: one line under the bone name in the list)"
+    "description": "English: C1–C7; the only ones with transverse foramina (Bones tab: one line under the bone name in the list)"
   },
   "atlasCervicalSummary": "Die sieben Halswirbel, C1–C7. Die kleinsten Wirbelkörper der Wirbelsäule und die einzigen Wirbel mit Löchern in den Querfortsätzen.",
   "@atlasCervicalSummary": {
-    "description": "English: The seven neck vertebrae, C1–C7. Smallest bodies in the column and the only vertebrae with holes in the transverse processes. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The seven neck vertebrae, C1–C7. Smallest bodies in the column and the only vertebrae with holes in the transverse processes. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasCervicalLm1": "Querfortsatzlöcher – kennzeichnend für diesen Abschnitt",
   "@atlasCervicalLm1": {
-    "description": "English: Transverse foramina — diagnostic for the region (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Transverse foramina — diagnostic for the region (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasCervicalLm2": "C1 (Atlas) hat keinen Körper; C2 (Axis) trägt den Dens",
   "@atlasCervicalLm2": {
-    "description": "English: C1 (atlas) has no body; C2 (axis) carries the dens (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: C1 (atlas) has no body; C2 (axis) carries the dens (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasCervicalLm3": "Gespaltene Dornfortsätze an C2–C6",
   "@atlasCervicalLm3": {
-    "description": "English: Bifid spinous processes on C2–C6 (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Bifid spinous processes on C2–C6 (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasCervicalLm4": "Großes dreieckiges Wirbelloch",
   "@atlasCervicalLm4": {
-    "description": "English: Large triangular vertebral foramen (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Large triangular vertebral foramen (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasCervicalSiding": "Symmetrisch. Die Position in der Reihe ergibt sich aus dem Dornfortsatz und der Größe des Wirbelkörpers; C7 hat den langen, ungespaltenen Dorn der „Vertebra prominens“.",
   "@atlasCervicalSiding": {
-    "description": "English: Symmetrical. Position in the series is read from the spinous process and body size; C7 has the long, unsplit \"prominens\" spine. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Symmetrical. Position in the series is read from the spinous process and body size; C7 has the long, unsplit \"prominens\" spine. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasThoracicBlurb": "T1–T12; tragen die Rippengelenkflächen",
   "@atlasThoracicBlurb": {
-    "description": "English: T1–T12; carry the costal facets (Atlas: one line under the bone name in the list)"
+    "description": "English: T1–T12; carry the costal facets (Bones tab: one line under the bone name in the list)"
   },
   "atlasThoracicSummary": "Die zwölf Wirbel des oberen Rückens, T1–T12. Jeder bildet mit einem Rippenpaar ein Gelenk, und die Gelenkflächen dafür kennzeichnen diesen Abschnitt.",
   "@atlasThoracicSummary": {
-    "description": "English: The twelve vertebrae of the upper back, T1–T12. Each one articulates with a pair of ribs, and the facets for those ribs identify the region. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The twelve vertebrae of the upper back, T1–T12. Each one articulates with a pair of ribs, and the facets for those ribs identify the region. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasThoracicLm1": "Rippengelenkflächen an Körper und Querfortsätzen",
   "@atlasThoracicLm1": {
-    "description": "English: Costal facets on the body and transverse processes (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Costal facets on the body and transverse processes (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasThoracicLm2": "Herzförmige Wirbelkörper",
   "@atlasThoracicLm2": {
-    "description": "English: Heart-shaped vertebral bodies (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Heart-shaped vertebral bodies (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasThoracicLm3": "Lange, steil nach unten geneigte Dornfortsätze",
   "@atlasThoracicLm3": {
-    "description": "English: Long spinous processes angled steeply downward (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Long spinous processes angled steeply downward (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasThoracicLm4": "Rundes Wirbelloch",
   "@atlasThoracicLm4": {
-    "description": "English: Circular vertebral foramen (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Circular vertebral foramen (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasThoracicSiding": "Symmetrisch. Die Reihenfolge erkennt man an der Größe des Wirbelkörpers und daran, wie weit der Dornfortsatz den Wirbel darunter überlappt.",
   "@atlasThoracicSiding": {
-    "description": "English: Symmetrical. Sequence is judged from body size and how far the spinous process overlaps the vertebra below. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Symmetrical. Sequence is judged from body size and how far the spinous process overlaps the vertebra below. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasLumbarBlurb": "L1–L5; die schwersten der Wirbelsäule",
   "@atlasLumbarBlurb": {
-    "description": "English: L1–L5; the heaviest in the column (Atlas: one line under the bone name in the list)"
+    "description": "English: L1–L5; the heaviest in the column (Bones tab: one line under the bone name in the list)"
   },
   "atlasLumbarSummary": "Die fünf Wirbel des unteren Rückens, L1–L5. Die größten und kräftigsten der Wirbelsäule, gebaut für Last statt Beweglichkeit.",
   "@atlasLumbarSummary": {
-    "description": "English: The five vertebrae of the lower back, L1–L5. The largest and most robust in the column, built for load rather than movement. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The five vertebrae of the lower back, L1–L5. The largest and most robust in the column, built for load rather than movement. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasLumbarLm1": "Massive nierenförmige Körper",
   "@atlasLumbarLm1": {
-    "description": "English: Massive kidney-shaped bodies (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Massive kidney-shaped bodies (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasLumbarLm2": "Keine Querfortsatzlöcher und keine Rippengelenkflächen",
   "@atlasLumbarLm2": {
-    "description": "English: No transverse foramina and no costal facets (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: No transverse foramina and no costal facets (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasLumbarLm3": "Kurze, stumpfe, beilförmige Dornfortsätze",
   "@atlasLumbarLm3": {
-    "description": "English: Short, blunt, hatchet-shaped spinous processes (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Short, blunt, hatchet-shaped spinous processes (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasLumbarLm4": "Processus mamillares an den oberen Gelenkfortsätzen",
   "@atlasLumbarLm4": {
-    "description": "English: Mammillary processes on the superior articular facets (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Mammillary processes on the superior articular facets (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasLumbarSiding": "Symmetrisch. L5 erkennt man an seiner Keilform: Wo er auf das Kreuzbein trifft, ist er vorn höher als hinten.",
   "@atlasLumbarSiding": {
-    "description": "English: Symmetrical. L5 is recognised by its wedge shape, deeper in front than behind, where it meets the sacrum. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Symmetrical. L5 is recognised by its wedge shape, deeper in front than behind, where it meets the sacrum. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "phaseDoc1Title": "Ist da ein Knochen?",
   "@phaseDoc1Title": {
@@ -1104,7 +1104,7 @@
   "@phaseDoc6Title": {
     "description": "English: Marks and damage (How analysis works: step title)"
   },
-  "phaseDoc6Detail": "Brüche, Schnittspuren und Brandspuren werden jeweils einzeln geprüft, ein Knochen kann also alle drei zeigen.",
+  "phaseDoc6Detail": "Brüche, Schnittspuren und Brandspuren werden jeweils einzeln geprüft, sodass ein Knochen auch alle drei zeigen kann.",
   "@phaseDoc6Detail": {
     "description": "English: Breaks, cut marks and burning are each checked on their own, so one bone can show all three. (How analysis works: what this step does)"
   },
@@ -1120,11 +1120,11 @@
   "@phaseDoc8Title": {
     "description": "English: Age and sex (How analysis works: step title)"
   },
-  "phaseDoc8Detail": "Nur bei menschlichen Knochen. Betrachte das als Hinweis, den du prüfen solltest, nie als fertige Antwort.",
+  "phaseDoc8Detail": "Nur bei menschlichen Knochen. Betrachte beides als Hinweis, den du prüfen solltest, nie als fertige Antwort.",
   "@phaseDoc8Detail": {
     "description": "English: For human bones only. Treat these as a hint to check, never as an answer on their own. (How analysis works: what this step does)"
   },
-  "phaseDoc9Title": "Alles zusammen",
+  "phaseDoc9Title": "Das Gesamtbild",
   "@phaseDoc9Title": {
     "description": "English: Putting it together (How analysis works: step title)"
   },
@@ -2028,7 +2028,7 @@
   "@resultWhichBone": {
     "description": "English: Which bone (Row label)"
   },
-  "resultTopGuesses": "Top {count} Vermutungen",
+  "resultTopGuesses": "Top-{count}-Vermutungen",
   "@resultTopGuesses": {
     "description": "English: Top {count} guesses (Small grey text beside \"Which bone\"; count is 2 or more)"
   },
@@ -2048,11 +2048,11 @@
   "@resultCondition": {
     "description": "English: Condition (Section title)"
   },
-  "resultNoMarks": "Keine Spuren gemeldet",
+  "resultNoMarks": "Keine Spuren festgestellt",
   "@resultNoMarks": {
     "description": "English: No marks flagged (Sticker when no damage was found)"
   },
-  "resultMarksFooter": "Jede Art von Spur wird einzeln geprüft, ein Knochen kann also mehrere zeigen. Alles ab {threshold} wird gemeldet.",
+  "resultMarksFooter": "Jede Art von Spur wird einzeln geprüft, sodass ein Knochen auch mehrere zeigen kann. Alles ab {threshold} wird als auffällig markiert.",
   "@resultMarksFooter": {
     "description": "English: Each kind of mark is checked on its own, so a bone can show more than one. Anything at {threshold} or more is flagged."
   },
@@ -2142,11 +2142,11 @@
   },
   "resultReference": "Nachschlagen",
   "@resultReference": {
-    "description": "English: Reference (Section title above a link to the bone’s Atlas page)"
+    "description": "English: Reference (Section title above a link to the bone’s page on the Bones tab)"
   },
   "resultAtlasSubtitle": "{region} · Merkmale und Seitenbestimmung",
   "@resultAtlasSubtitle": {
-    "description": "English: {region} · what to look for, and left or right (Under the bone’s name in the Atlas link)"
+    "description": "English: {region} · what to look for, and left or right (Under the bone’s name in the link to the Bones tab)"
   },
   "resultDisclaimer": "Ossia liefert eine beste Schätzung, keine endgültige Antwort. Verlass dich bei medizinischen, rechtlichen oder polizeilichen Entscheidungen nicht darauf, ohne dass eine Fachperson den Knochen selbst prüft.",
   "@resultDisclaimer": {
@@ -2226,11 +2226,11 @@
   },
   "atlasSubtitle": "{count} Knochen, die die KI auswendig kennt",
   "@atlasSubtitle": {
-    "description": "English: {count} bones the AI knows by heart (Line under the Atlas title)"
+    "description": "English: {count} bones the AI knows by heart (Line under the Bones tab’s title)"
   },
   "atlasHowCardTitle": "So denkt die KI",
   "@atlasHowCardTitle": {
-    "description": "English: How the AI thinks (Card at the top of the Atlas that opens \"How analysis works\")"
+    "description": "English: How the AI thinks (Card at the top of the Bones tab that opens \"How analysis works\")"
   },
   "atlasHowCardBody": "Die neun Schritte, die jedes Foto durchläuft, und welchen du trauen kannst.",
   "@atlasHowCardBody": {
@@ -2240,7 +2240,7 @@
   "@atlasLookFor": {
     "description": "English: What to look for (Heading on a bone page, over the list of features)"
   },
-  "atlasSidingTitle": "Links oder rechts, und wo oben ist",
+  "atlasSidingTitle": "Links oder rechts und wo oben ist",
   "@atlasSidingTitle": {
     "description": "English: Left or right, and which way up (Heading on a bone page)"
   },
@@ -2280,7 +2280,7 @@
   "@settingsAppLanguage": {
     "description": "English: App language (Row in the Language group)"
   },
-  "settingsLanguageFooter": "Du kannst auch jederzeit über den Globus oben auf jedem Tab wechseln.",
+  "settingsLanguageFooter": "Du kannst auch jederzeit über das Globus-Symbol oben in jedem Tab wechseln.",
   "@settingsLanguageFooter": {
     "description": "English: You can also switch any time with the globe at the top of each tab."
   },
@@ -2332,7 +2332,7 @@
   "@settingsStatus": {
     "description": "English: Analyzer status (Row that opens the status screen)"
   },
-  "settingsStatusSub": "Ist sie bereit und verbunden?",
+  "settingsStatusSub": "Bereit und verbunden?",
   "@settingsStatusSub": {
     "description": "English: Is it ready, and is it connected"
   },
@@ -2360,7 +2360,7 @@
   "@settingsAutoSave": {
     "description": "English: Save analyses automatically"
   },
-  "settingsAutoSaveBody": "Ausgeschaltet bleibt ein Bericht nur, wenn du ihn selbst speicherst.",
+  "settingsAutoSaveBody": "Wenn aus, bleibt ein Bericht nur erhalten, wenn du ihn selbst speicherst.",
   "@settingsAutoSaveBody": {
     "description": "English: Off means each report is kept only if you save it."
   },
@@ -2485,6 +2485,19 @@
     "description": "English: None collected."
   },
   "aboutWarning": "Die Ergebnisse sind eine beste Schätzung, keine endgültige Antwort. Nutze sie nicht für medizinische, rechtliche oder polizeiliche Entscheidungen, ohne dass eine Fachperson den Knochen selbst prüft.",
+  "settingsPrivacyPolicy": "Datenschutzerklärung",
+  "privacyTitle": "Datenschutzerklärung",
+  "privacyUpdated": "Zuletzt geändert am 24. Oktober 2026",
+  "privacyShortTitle": "Kurz gesagt",
+  "privacyShortBody": "Ossia sammelt nichts über dich. Es gibt keine Konten, keine Werbung, keine Nutzungsstatistik und kein Tracking, und nichts wird an andere weitergegeben.",
+  "privacyPhotosTitle": "Fotos und Berichte",
+  "privacyPhotosBody": "Fotos, die du aufnimmst oder auswählst, werden auf diesem Handy analysiert. Gespeicherte Berichte bleiben samt Fotos und allen Namen oder Notizen, die du hinzufügst, in Ossia auf diesem Handy. Wenn du einen Bericht oder die App löschst, sind sie weg. Ein Bericht kommt nur in die Zwischenablage, wenn du ihn kopierst.",
+  "privacyOnlineTitle": "Online-Analyse",
+  "privacyOnlineBody": "Die Online-Analyse ist aus, bis du sie in den Einstellungen einschaltest. Dann werden die Fotos, die du analysierst, und eine eingegebene Länge an die Adresse geschickt, die du eingetragen hast, also an einen Computer, den du selbst oder deine Gruppe betreibt. Der Entwickler von Ossia betreibt diesen Computer nicht und bekommt deine Fotos nie.",
+  "privacyPermissionsTitle": "Worum Ossia bittet",
+  "privacyPermissionsBody": "Kamera: um einen Knochen zu fotografieren. Fotos: Ossia sieht nur die Fotos, die du auswählst. Lokales Netzwerk: um deinen Computer für die Online-Analyse zu erreichen, falls dein Handy danach fragt. Ossia nimmt nie Ton auf und nutzt nie deinen Standort.",
+  "privacyChangesTitle": "Änderungen und Fragen",
+  "privacyChangesBody": "Wenn sich diese Erklärung ändert, steht die neue Fassung hier in der App und auf github.com/BigDonalds/Ossia-AI-Bone-Analyzer. Fragen kannst du dort stellen oder per E-Mail an danesh.amir2001@gmail.com schicken.",
   "@aboutWarning": {
     "description": "English: Results are a best guess, not a final answer. Don’t use them for medical, legal or police decisions without a bone expert checking the bone in person."
   },
@@ -2504,7 +2517,7 @@
   "@msShort": {
     "description": "English: {ms} ms (Milliseconds, in a small bubble)"
   },
-  "statusChecked": "geprüft {when}",
+  "statusChecked": "{when} geprüft",
   "@statusChecked": {
     "description": "English: checked {when} (When the connection was last checked, e.g. \"checked 5 min ago\")"
   },

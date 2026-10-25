@@ -12,9 +12,9 @@
   "@tabStash": {
     "description": "English: Stash (Tab: every bone you have saved)"
   },
-  "tabAtlas": "الأطلس",
-  "@tabAtlas": {
-    "description": "English: Atlas (Tab: a guide to each bone the app knows)"
+  "tabBones": "العظام",
+  "@tabBones": {
+    "description": "English: Bones (Tab: a guide to each bone the app knows)"
   },
   "tabSettings": "الإعدادات",
   "@tabSettings": {
@@ -108,7 +108,7 @@
   "@accentLime": {
     "description": "English: Lime (Accent colour name: yellow-green)"
   },
-  "accentBubblegum": "وردي علكة",
+  "accentBubblegum": "وردي فاقع",
   "@accentBubblegum": {
     "description": "English: Bubblegum (Accent colour name: bright pink)"
   },
@@ -164,7 +164,7 @@
   "@languageSheetMessage": {
     "description": "English: Everything switches straight away, saved finds too."
   },
-  "languageMatchPhone": "مثل هاتفي",
+  "languageMatchPhone": "لغة هاتفي",
   "@languageMatchPhone": {
     "description": "English: Match my phone (Option: always use the phone's own language)"
   },
@@ -188,7 +188,7 @@
   "@languageNameArabic": {
     "description": "English: Arabic (The language's name inside a sentence, e.g. \"Right now that's Arabic\")"
   },
-  "languageNowSpeaking": "Ossia يتحدث العربية الآن",
+  "languageNowSpeaking": "يتحدث Ossia العربية الآن",
   "@languageNowSpeaking": {
     "description": "English: Ossia speaks English now (Little pop-up after switching, always in the new language)"
   },
@@ -220,7 +220,7 @@
   "@boneFemur": {
     "description": "English: Femur (Bone type name)"
   },
-  "boneFemurMeaning": "أطول عظم في الساق، من الورك إلى الركبة",
+  "boneFemurMeaning": "العظم الممتد من الورك إلى الركبة",
   "@boneFemurMeaning": {
     "description": "English: the thigh bone"
   },
@@ -268,7 +268,7 @@
   "@boneOsCoxa": {
     "description": "English: Os Coxa (Bone type name: the hip bone)"
   },
-  "boneOsCoxaMeaning": "عظم الحوض على جانب الجسم",
+  "boneOsCoxaMeaning": "نصف الحوض، على أحد جانبي الجسم",
   "@boneOsCoxaMeaning": {
     "description": "English: the hip bone"
   },
@@ -300,7 +300,7 @@
   "@boneCervical": {
     "description": "English: Cervical Vertebrae (Bone type name)"
   },
-  "boneCervicalMeaning": "عظم من الرقبة",
+  "boneCervicalMeaning": "فقرة من الرقبة",
   "@boneCervicalMeaning": {
     "description": "English: a neck bone"
   },
@@ -308,7 +308,7 @@
   "@boneThoracic": {
     "description": "English: Thoracic Vertebrae (Bone type name)"
   },
-  "boneThoracicMeaning": "عظم من أعلى الظهر",
+  "boneThoracicMeaning": "فقرة من أعلى الظهر",
   "@boneThoracicMeaning": {
     "description": "English: a bone from the upper back"
   },
@@ -316,7 +316,7 @@
   "@boneLumbar": {
     "description": "English: Lumbar Vertebrae (Bone type name)"
   },
-  "boneLumbarMeaning": "عظم من أسفل الظهر",
+  "boneLumbarMeaning": "فقرة من أسفل الظهر",
   "@boneLumbarMeaning": {
     "description": "English: a bone from the lower back"
   },
@@ -388,7 +388,7 @@
   "@animalLeporid": {
     "description": "English: Leporid (Animal family name (Leporidae))"
   },
-  "animalLeporidMeaning": "الأرانب الأليفة والبرية",
+  "animalLeporidMeaning": "الأرانب والأرانب البرية",
   "@animalLeporidMeaning": {
     "description": "English: rabbits and hares"
   },
@@ -448,7 +448,7 @@
   "@animalUnnamed": {
     "description": "English: Animal (An animal bone with no animal group named)"
   },
-  "animalUnnamedMeaning": "عظم حيوان لم تبرز له أي مجموعة حيوانية",
+  "animalUnnamedMeaning": "عظم حيوان لم تترجّح فيه مجموعة حيوانية بعينها",
   "@animalUnnamedMeaning": {
     "description": "English: an animal bone that no animal group stood out for"
   },
@@ -524,9 +524,9 @@
   "@sourceOnDevice": {
     "description": "English: On this phone"
   },
-  "sourceServer": "خادمك",
+  "sourceServer": "على حاسوب Ossia",
   "@sourceServer": {
-    "description": "English: Your server"
+    "description": "English: On the Ossia computer"
   },
   "regionCranial": "الرأس",
   "@regionCranial": {
@@ -606,459 +606,459 @@
   },
   "atlasSkullBlurb": "القحف والفك السفلي معًا",
   "@atlasSkullBlurb": {
-    "description": "English: Cranium and mandible together (Atlas: one line under the bone name in the list)"
+    "description": "English: Cranium and mandible together (Bones tab: one line under the bone name in the list)"
   },
   "atlasSkullSummary": "الرأس العظمي كاملًا: القحف مع الفك السفلي. اثنان وعشرون عظمًا في المجموع، تربطها دروز متشابكة؛ ولا يتحرك بحرية سوى الفك السفلي.",
   "@atlasSkullSummary": {
-    "description": "English: The complete bony head: the cranium together with the mandible. Twenty-two bones in all, joined by interlocking sutures; only the mandible articulates freely. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The complete bony head: the cranium together with the mandible. Twenty-two bones in all, joined by interlocking sutures; only the mandible articulates freely. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
-  "atlasSkullLm1": "الدروز الإكليلي والسهمي واللامي",
+  "atlasSkullLm1": "الدروز الإكليلي والسهمي واللامي والحرشفي",
   "@atlasSkullLm1": {
-    "description": "English: Coronal, sagittal and lambdoid sutures (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Coronal, sagittal and lambdoid sutures (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasSkullLm2": "محجرا العينين والفتحة الكمثرية (الأنفية)",
   "@atlasSkullLm2": {
-    "description": "English: Orbits and the piriform (nasal) aperture (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Orbits and the piriform (nasal) aperture (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasSkullLm3": "الثقبة العظمى في قاعدة الجمجمة",
   "@atlasSkullLm3": {
-    "description": "English: Foramen magnum on the basicranium (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Foramen magnum on the basicranium (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasSkullLm4": "الناتئان الخشائيان خلف قناتي الأذن",
   "@atlasSkullLm4": {
-    "description": "English: Mastoid processes behind the ear canals (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Mastoid processes behind the ear canals (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasSkullSiding": "متناظرة. يُعرف الاتجاه من العظم الجبهي (في الأمام) وحرشفة العظم القذالي (في الخلف).",
   "@atlasSkullSiding": {
-    "description": "English: Symmetrical. Orientation comes from the frontal bone (anterior) and the occipital squama (posterior). (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Symmetrical. Orientation comes from the frontal bone (anterior) and the occipital squama (posterior). (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasCraniumBlurb": "الجمجمة من دون فكها",
   "@atlasCraniumBlurb": {
-    "description": "English: The skull without its jaw (Atlas: one line under the bone name in the list)"
+    "description": "English: The skull without its jaw (Bones tab: one line under the bone name in the list)"
   },
   "atlasCraniumSummary": "الجمجمة بعد إزالة الفك السفلي. تحيط بالدماغ وتحميه؛ وتتكوّن القبة من العظام الجبهي والجداري والصدغي والقذالي.",
   "@atlasCraniumSummary": {
-    "description": "English: The skull with the mandible removed. Encloses and protects the brain; the vault is made of frontal, parietal, temporal and occipital bones. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The skull with the mandible removed. Encloses and protects the brain; the vault is made of frontal, parietal, temporal and occipital bones. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasCraniumLm1": "الحافتان فوق الحجاجين — أبرز في جماجم الذكور",
   "@atlasCraniumLm1": {
-    "description": "English: Supraorbital ridges — heavier in male crania (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Supraorbital ridges — heavier in male crania (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasCraniumLm2": "الخطوط القفوية على العظم القذالي",
   "@atlasCraniumLm2": {
-    "description": "English: Nuchal lines on the occipital (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Nuchal lines on the occipital (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasCraniumLm3": "الخطوط الصدغية الممتدة عبر العظمين الجداريين",
   "@atlasCraniumLm3": {
-    "description": "English: Temporal lines sweeping across the parietals (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Temporal lines sweeping across the parietals (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasCraniumLm4": "الصماخ السمعي الظاهر",
   "@atlasCraniumLm4": {
-    "description": "English: External auditory meatus (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: External auditory meatus (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasCraniumSiding": "متناظرة حين تكون كاملة. تُحدَّد جهة قطع القبة المنفردة من اتجاه الدروز ونمط أخاديد الأوعية السحائية.",
   "@atlasCraniumSiding": {
-    "description": "English: Symmetrical when complete. Isolated vault fragments are sided by suture direction and meningeal groove patterning. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Symmetrical when complete. Isolated vault fragments are sided by suture direction and meningeal groove patterning. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasCraniumAka": "القلنسوة (القبة فقط)",
   "@atlasCraniumAka": {
-    "description": "English: Calvarium (vault only) (Atlas: another name for this bone)"
+    "description": "English: Calvarium (vault only) (Bones tab: another name for this bone)"
   },
   "atlasMandibleBlurb": "الفك السفلي؛ كثيف ومتين",
   "@atlasMandibleBlurb": {
-    "description": "English: Lower jaw; dense and durable (Atlas: one line under the bone name in the list)"
+    "description": "English: Lower jaw; dense and durable (Bones tab: one line under the bone name in the list)"
   },
   "atlasMandibleSummary": "الفك السفلي — العظم الوحيد المتحرك بحرية في الجمجمة. كثيف ومتماسك، لذا يصمد أمام الدفن والحرق أكثر من معظم العظام.",
   "@atlasMandibleSummary": {
-    "description": "English: The lower jaw — the only freely mobile bone of the skull. Dense and compact, so it survives burial and burning better than most. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The lower jaw — the only freely mobile bone of the skull. Dense and compact, so it survives burial and burning better than most. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasMandibleLm1": "البروز الذقني (الذقن)",
   "@atlasMandibleLm1": {
-    "description": "English: Mental protuberance (the chin) (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Mental protuberance (the chin) (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasMandibleLm2": "زاوية الفك حيث يلتقي الفرع بالجسم",
   "@atlasMandibleLm2": {
-    "description": "English: Gonial angle where ramus meets body (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Gonial angle where ramus meets body (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasMandibleLm3": "لقمة الفك والناتئ الإكليلي",
   "@atlasMandibleLm3": {
-    "description": "English: Mandibular condyle and coronoid process (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Mandibular condyle and coronoid process (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasMandibleLm4": "الثقبة الذقنية أسفل الضواحك",
   "@atlasMandibleLm4": {
-    "description": "English: Mental foramen below the premolars (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Mental foramen below the premolars (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasMandibleSiding": "متناظر حين يكون كاملًا. يُحدَّد جانب نصف الفك من اتجاه صعود الفرع ومن جهة انحناء صف الأسنان.",
   "@atlasMandibleSiding": {
-    "description": "English: Symmetrical when whole. A half-mandible is sided by the direction the ramus rises and by which way the tooth row curves. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Symmetrical when whole. A half-mandible is sided by the direction the ramus rises and by which way the tooth row curves. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasFemurBlurb": "عظم الفخذ؛ أفضل مؤشر على طول القامة",
   "@atlasFemurBlurb": {
-    "description": "English: Thigh bone; best stature indicator (Atlas: one line under the bone name in the list)"
+    "description": "English: Thigh bone; best stature indicator (Bones tab: one line under the bone name in the list)"
   },
   "atlasFemurSummary": "عظم الفخذ — أطول عظام الجسم وأقواها. طوله الأقصى هو الأوثق ارتباطًا بطول القامة في الحياة.",
   "@atlasFemurSummary": {
-    "description": "English: The thigh bone — the longest and strongest bone in the body. Its maximum length carries the tightest correlation with living stature. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The thigh bone — the longest and strongest bone in the body. Its maximum length carries the tightest correlation with living stature. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasFemurLm1": "رأس كروي فيه نُقرة الرأس",
   "@atlasFemurLm1": {
-    "description": "English: Spherical head with the fovea capitis (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Spherical head with the fovea capitis (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasFemurLm2": "المدوّران الكبير والصغير",
   "@atlasFemurLm2": {
-    "description": "English: Greater and lesser trochanters (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Greater and lesser trochanters (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasFemurLm3": "الخط الخشن على الوجه الخلفي لجسم العظم",
   "@atlasFemurLm3": {
-    "description": "English: Linea aspera ridging the posterior shaft (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Linea aspera ridging the posterior shaft (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasFemurLm4": "اللقمتان الإنسية والوحشية عند الركبة",
   "@atlasFemurLm4": {
-    "description": "English: Medial and lateral condyles at the knee (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Medial and lateral condyles at the knee (Bones tab: one thing an expert looks for on this bone)"
   },
-  "atlasFemurSiding": "أمسك العظم عموديًا: يتجه الرأس نحو الداخل ويكون الخط الخشن إلى الخلف. الجهة التي يشير إليها الرأس هي جهة الجسم.",
+  "atlasFemurSiding": "أمسك العظم عموديًا والرأس في الأعلى، بحيث يكون الخط الخشن بعيدًا عنك. عندها يشير الرأس إلى جهة الجسم التي جاء منها العظم.",
   "@atlasFemurSiding": {
-    "description": "English: Hold the bone upright: the head points medially and the linea aspera faces posteriorly. The side the head points to is the side of the body. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Hold the bone upright: the head points medially and the linea aspera faces posteriorly. The side the head points to is the side of the body. (Bones tab: how to tell left from right, or the place in a series)"
   },
-  "atlasTibiaBlurb": "عظم الساق؛ جسم مثلث المقطع",
+  "atlasTibiaBlurb": "عظم القصبة؛ جسم مثلث المقطع",
   "@atlasTibiaBlurb": {
-    "description": "English: Shin bone; triangular shaft (Atlas: one line under the bone name in the list)"
+    "description": "English: Shin bone; triangular shaft (Bones tab: one line under the bone name in the list)"
   },
-  "atlasTibiaSummary": "عظم القصبة، الإنسي والحامل للوزن في أسفل الساق. جسمه المثلث المقطع مميز حتى في القطع المكسورة.",
+  "atlasTibiaSummary": "عظم القصبة، العظم الإنسي الحامل للوزن في الساق. جسمه المثلث المقطع مميز حتى في القطع المكسورة.",
   "@atlasTibiaSummary": {
-    "description": "English: The shin bone, medial and weight-bearing in the lower leg. Its triangular shaft is distinctive even in fragments. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The shin bone, medial and weight-bearing in the lower leg. Its triangular shaft is distinctive even in fragments. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasTibiaLm1": "الحدبة الظنبوبية في مقدمة الجزء العلوي من الجسم",
   "@atlasTibiaLm1": {
-    "description": "English: Tibial tuberosity on the anterior proximal shaft (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Tibial tuberosity on the anterior proximal shaft (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasTibiaLm2": "حافة أمامية حادة",
   "@atlasTibiaLm2": {
-    "description": "English: Sharp anterior crest (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Sharp anterior crest (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasTibiaLm3": "الكعب الإنسي عند الكاحل",
   "@atlasTibiaLm3": {
-    "description": "English: Medial malleolus at the ankle (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Medial malleolus at the ankle (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasTibiaLm4": "لقمتان إنسية ووحشية مسطحتان",
   "@atlasTibiaLm4": {
-    "description": "English: Flat medial and lateral condyles (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Flat medial and lateral condyles (Bones tab: one thing an expert looks for on this bone)"
   },
-  "atlasTibiaSiding": "يبرز الكعب الإنسي في الجهة نفسها من الجسم التي جاء منها العظم؛ وتحدد الحدبة الظنبوبية الجهة الأمامية.",
+  "atlasTibiaSiding": "أمسكه عموديًا والحدبة الظنبوبية مواجهة لك والكعب في الأسفل. عندها يشير الكعب الإنسي إلى جهة الجسم التي جاء منها العظم.",
   "@atlasTibiaSiding": {
-    "description": "English: The medial malleolus projects on the same side as the body it came from; the tibial tuberosity marks the front. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: The medial malleolus projects on the same side as the body it came from; the tibial tuberosity marks the front. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasHumerusBlurb": "أعلى الذراع، من الكتف إلى المرفق",
   "@atlasHumerusBlurb": {
-    "description": "English: Upper arm, shoulder to elbow (Atlas: one line under the bone name in the list)"
+    "description": "English: Upper arm, shoulder to elbow (Bones tab: one line under the bone name in the list)"
   },
-  "atlasHumerusSummary": "عظم أعلى الذراع، يمتد من مفصل الكتف إلى المرفق. لا يفوقه طولًا إلا عظم الفخذ.",
+  "atlasHumerusSummary": "عظم أعلى الذراع، يمتد من مفصل الكتف إلى المرفق. وهو أطول عظام الذراع.",
   "@atlasHumerusSummary": {
-    "description": "English: The upper arm bone, running from the shoulder joint to the elbow. Second only to the femur in length. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The upper arm bone, running from the shoulder joint to the elbow. Second only to the femur in length. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasHumerusLm1": "رأس مستدير مع الحديبتين الكبرى والصغرى",
   "@atlasHumerusLm1": {
-    "description": "English: Rounded head with greater and lesser tubercles (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Rounded head with greater and lesser tubercles (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasHumerusLm2": "الحدبة الدالية في منتصف الجسم",
   "@atlasHumerusLm2": {
-    "description": "English: Deltoid tuberosity mid-shaft (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Deltoid tuberosity mid-shaft (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasHumerusLm3": "الحفرة الزُّجّية في الخلف عند الطرف البعيد",
   "@atlasHumerusLm3": {
-    "description": "English: Olecranon fossa on the posterior distal end (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Olecranon fossa on the posterior distal end (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasHumerusLm4": "البكرة والرُّؤيس تشكّلان مفصل المرفق",
   "@atlasHumerusLm4": {
-    "description": "English: Trochlea and capitulum forming the elbow (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Trochlea and capitulum forming the elbow (Bones tab: one thing an expert looks for on this bone)"
   },
-  "atlasHumerusSiding": "أوقفه عموديًا ورأسه مواجه لك: تقع الحفرة الزجية في الخلف، ويتجه الرأس نحو الداخل باتجاه خط منتصف الجسم.",
+  "atlasHumerusSiding": "أمسكه عموديًا والرأس في الأعلى، بحيث تكون الحفرة الزجية بعيدة عنك. عندها يشير الرأس إلى جهة الجسم التي جاء منها العظم.",
   "@atlasHumerusSiding": {
-    "description": "English: Stand it upright with the head facing you: the olecranon fossa sits posteriorly, and the head turns medially toward the body midline. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Stand it upright with the head facing you: the olecranon fossa sits posteriorly, and the head turns medially toward the body midline. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasRadiusBlurb": "العظم الوحشي في الساعد، في جهة الإبهام",
   "@atlasRadiusBlurb": {
-    "description": "English: Lateral forearm, on the thumb side (Atlas: one line under the bone name in the list)"
+    "description": "English: Lateral forearm, on the thumb side (Bones tab: one line under the bone name in the list)"
   },
   "atlasRadiusSummary": "عظم الساعد الوحشي، في جهة الإبهام. يدور فوق الزند ليقلب راحة اليد.",
   "@atlasRadiusSummary": {
-    "description": "English: The lateral forearm bone, on the thumb side. It rotates over the ulna to turn the palm. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The lateral forearm bone, on the thumb side. It rotates over the ulna to turn the palm. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasRadiusLm1": "رأس قرصي الشكل في الطرف القريب",
   "@atlasRadiusLm1": {
-    "description": "English: Disc-shaped proximal head (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Disc-shaped proximal head (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRadiusLm2": "الحدبة الكعبرية أسفل العنق مباشرة",
   "@atlasRadiusLm2": {
-    "description": "English: Radial tuberosity just below the neck (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Radial tuberosity just below the neck (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRadiusLm3": "طرف بعيد عريض ومتسع",
   "@atlasRadiusLm3": {
-    "description": "English: Broad, flared distal end (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Broad, flared distal end (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRadiusLm4": "الناتئ الإبري عند الرسغ",
   "@atlasRadiusLm4": {
-    "description": "English: Styloid process at the wrist (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Styloid process at the wrist (Bones tab: one thing an expert looks for on this bone)"
   },
-  "atlasRadiusSiding": "الرأس الصغير هو الطرف القريب والطرف العريض هو البعيد؛ ويتجه الناتئ الإبري نحو الخارج، بعيدًا عن خط المنتصف.",
+  "atlasRadiusSiding": "أمسكه والرأس الصغير في الأعلى، والوجه المسطح للطرف العريض (جهة راحة اليد) مواجهًا لك. عندها يشير الناتئ الإبري إلى الجهة المعاكسة: إلى اليسار في الكعبرة اليمنى.",
   "@atlasRadiusSiding": {
-    "description": "English: The small head is proximal and the broad end distal; the styloid process points laterally, away from the midline. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: The small head is proximal and the broad end distal; the styloid process points laterally, away from the midline. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasUlnaBlurb": "العظم الإنسي في الساعد؛ رأس المرفق",
   "@atlasUlnaBlurb": {
-    "description": "English: Medial forearm; point of the elbow (Atlas: one line under the bone name in the list)"
+    "description": "English: Medial forearm; point of the elbow (Bones tab: one line under the bone name in the list)"
   },
-  "atlasUlnaSummary": "عظم الساعد الإنسي، في جهة الخنصر. يشكّل مفصل المرفق الرزّي، وهو الشريك الثابت الذي تدور حوله الكعبرة.",
+  "atlasUlnaSummary": "عظم الساعد الإنسي، في جهة الخنصر. يشكّل المفصل الرزّي للمرفق، وهو الشريك الثابت الذي تدور حوله الكعبرة.",
   "@atlasUlnaSummary": {
-    "description": "English: The medial forearm bone, on the little-finger side. Forms the hinge of the elbow and is the stable partner the radius rotates around. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The medial forearm bone, on the little-finger side. Forms the hinge of the elbow and is the stable partner the radius rotates around. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasUlnaLm1": "الناتئ الزُّجّي — رأس المرفق",
   "@atlasUlnaLm1": {
-    "description": "English: Olecranon process — the point of the elbow (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Olecranon process — the point of the elbow (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasUlnaLm2": "الثلمة البكرية التي تمسك بعظم العضد",
   "@atlasUlnaLm2": {
-    "description": "English: Trochlear notch gripping the humerus (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Trochlear notch gripping the humerus (Bones tab: one thing an expert looks for on this bone)"
   },
-  "atlasUlnaLm3": "الناتئ المنقاري أسفل الثلمة",
+  "atlasUlnaLm3": "الناتئ الإكليلي أسفل الثلمة",
   "@atlasUlnaLm3": {
-    "description": "English: Coronoid process below the notch (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Coronoid process below the notch (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasUlnaLm4": "رأس بعيد نحيل مع ناتئ إبري",
   "@atlasUlnaLm4": {
-    "description": "English: Slender distal head with styloid process (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Slender distal head with styloid process (Bones tab: one thing an expert looks for on this bone)"
   },
-  "atlasUlnaSiding": "تنفتح الثلمة البكرية نحو الأمام؛ وحين يكون الزُّج في الأعلى والثلمة مواجهة لك، ينحني جسم العظم نحو جهة الجسم.",
+  "atlasUlnaSiding": "أمسكه والزُّج في الأعلى والثلمة البكرية مواجهة لك. عندها تتجه الثلمة الكعبرية، حيث تستقر الكعبرة، إلى الجهة المعاكسة: إلى اليسار في الزند الأيمن.",
   "@atlasUlnaSiding": {
-    "description": "English: The trochlear notch opens anteriorly; with the olecranon up and the notch facing you, the shaft curves toward the body side. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: The trochlear notch opens anteriorly; with the olecranon up and the notch facing you, the shaft curves toward the body side. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasScapulaBlurb": "لوح الكتف؛ صفيحة رقيقة مثلثة",
   "@atlasScapulaBlurb": {
-    "description": "English: Shoulder blade; thin triangular plate (Atlas: one line under the bone name in the list)"
+    "description": "English: Shoulder blade; thin triangular plate (Bones tab: one line under the bone name in the list)"
   },
   "atlasScapulaSummary": "لوح الكتف — صفيحة مثلثة رقيقة تستقر على ظهر القفص الصدري. رقيقة لدرجة أنها كثيرًا ما تبقى على شكل قطع فقط.",
   "@atlasScapulaSummary": {
-    "description": "English: The shoulder blade — a thin triangular plate riding on the back of the ribcage. Thin enough that the blade often survives only as fragments. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The shoulder blade — a thin triangular plate riding on the back of the ribcage. Thin enough that the blade often survives only as fragments. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasScapulaLm1": "الشوكة الممتدة عبر السطح الخلفي",
   "@atlasScapulaLm1": {
-    "description": "English: Spine running across the posterior surface (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Spine running across the posterior surface (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasScapulaLm2": "الناتئ الأخرمي عند طرف الكتف",
   "@atlasScapulaLm2": {
-    "description": "English: Acromion process at the shoulder tip (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Acromion process at the shoulder tip (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasScapulaLm3": "الناتئ الغرابي المعقوف في الأمام",
   "@atlasScapulaLm3": {
-    "description": "English: Hooked coracoid process anteriorly (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Hooked coracoid process anteriorly (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasScapulaLm4": "الحفرة العنابية التي يستقر فيها رأس العضد",
   "@atlasScapulaLm4": {
-    "description": "English: Glenoid fossa receiving the humeral head (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Glenoid fossa receiving the humeral head (Bones tab: one thing an expert looks for on this bone)"
   },
-  "atlasScapulaSiding": "تتجه الحفرة العنابية نحو الخارج وتقع الشوكة على السطح الخلفي؛ والجهة التي تواجهها الحفرة هي جهة الجسم.",
+  "atlasScapulaSiding": "أمسكه والشوكة مواجهة لك والأخرم في الأعلى. عندها تشير الحفرة العنابية إلى جهة الجسم التي جاء منها العظم.",
   "@atlasScapulaSiding": {
-    "description": "English: The glenoid fossa faces laterally and the spine sits on the posterior surface; the side the fossa faces is the side of the body. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: The glenoid fossa faces laterally and the spine sits on the posterior surface; the side the fossa faces is the side of the body. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasOsCoxaBlurb": "عظم الورك؛ أفضل مؤشر على الجنس",
   "@atlasOsCoxaBlurb": {
-    "description": "English: Hip bone; best indicator of sex (Atlas: one line under the bone name in the list)"
+    "description": "English: Hip bone; best indicator of sex (Bones tab: one line under the bone name in the list)"
   },
   "atlasOsCoxaSummary": "عظم الورك: الحرقفة والإسك والعانة ملتحمة عند الحُق. أوثق عظم منفرد لتقدير الجنس وعمر البالغين.",
   "@atlasOsCoxaSummary": {
-    "description": "English: The hip bone: ilium, ischium and pubis fused at the acetabulum. The single most reliable element for estimating sex and adult age. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The hip bone: ilium, ischium and pubis fused at the acetabulum. The single most reliable element for estimating sex and adult age. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasOsCoxaLm1": "الثلمة الوركية الكبرى — عريضة عند الإناث وضيقة عند الذكور",
   "@atlasOsCoxaLm1": {
-    "description": "English: Greater sciatic notch — broad in females, narrow in males (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Greater sciatic notch — broad in females, narrow in males (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasOsCoxaLm2": "الزاوية تحت العانة والقوس البطني",
   "@atlasOsCoxaLm2": {
-    "description": "English: Subpubic angle and the ventral arc (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Subpubic angle and the ventral arc (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasOsCoxaLm3": "السطح الأذيني، يُستخدم لتقدير العمر عند الوفاة",
   "@atlasOsCoxaLm3": {
-    "description": "English: Auricular surface, used for age-at-death (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Auricular surface, used for age-at-death (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasOsCoxaLm4": "الحُق الذي يستقر فيه رأس الفخذ",
   "@atlasOsCoxaLm4": {
-    "description": "English: Acetabulum receiving the femoral head (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Acetabulum receiving the femoral head (Bones tab: one thing an expert looks for on this bone)"
   },
-  "atlasOsCoxaSiding": "وجّه جناح الحرقفة إلى الأعلى والحُق إلى الخارج: تقع العانة في الأمام وتنفتح الثلمة الوركية نحو الخلف.",
+  "atlasOsCoxaSiding": "وجّه جناح الحرقفة إلى الأعلى والحُق إلى الخارج: تقع العانة في الأمام وتنفتح الثلمة الوركية نحو الخلف. وإذا أمسكته هكذا على وركك، طابق الجهة التي جاء منها.",
   "@atlasOsCoxaSiding": {
-    "description": "English: Point the iliac blade up and the acetabulum out: the pubis sits anteriorly and the sciatic notch opens posteriorly. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Point the iliac blade up and the acetabulum out: the pubis sits anteriorly and the sciatic notch opens posteriorly. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasOsCoxaAka": "العظم الغُفل، عظم الورك",
   "@atlasOsCoxaAka": {
-    "description": "English: Innominate, hip bone (Atlas: another name for this bone)"
+    "description": "English: Innominate, hip bone (Bones tab: another name for this bone)"
   },
   "atlasRib12Blurb": "ضلوع غير نموذجية؛ مسطحة وشديدة الانحناء",
   "@atlasRib12Blurb": {
-    "description": "English: Atypical ribs; flat and sharply curved (Atlas: one line under the bone name in the list)"
+    "description": "English: Atypical ribs; flat and sharply curved (Bones tab: one line under the bone name in the list)"
   },
   "atlasRib12Summary": "الضلعان الأولان غير نموذجيين. الضلع 1 هو الأقصر والأعرض والأشد انحناءً؛ والضلع 2 أطول لكنه يحتفظ بالشكل المسطح نفسه.",
   "@atlasRib12Summary": {
-    "description": "English: The first two ribs are atypical. Rib 1 is the shortest, broadest and most sharply curved; rib 2 is longer but keeps the same flattened set. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The first two ribs are atypical. Rib 1 is the shortest, broadest and most sharply curved; rib 2 is longer but keeps the same flattened set. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasRib12Lm1": "الضلع 1 مسطح، له سطح علوي وسطح سفلي",
   "@atlasRib12Lm1": {
-    "description": "English: Rib 1 lies flat, with superior and inferior surfaces (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Rib 1 lies flat, with superior and inferior surfaces (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRib12Lm2": "الحديبة الأخمعية مع أخاديد للأوعية تحت الترقوة",
   "@atlasRib12Lm2": {
-    "description": "English: Scalene tubercle with grooves for the subclavian vessels (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Scalene tubercle with grooves for the subclavian vessels (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRib12Lm3": "يحمل الضلع 2 حدبة للعضلة المنشارية الأمامية",
   "@atlasRib12Lm3": {
-    "description": "English: Rib 2 carries a tuberosity for serratus anterior (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Rib 2 carries a tuberosity for serratus anterior (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRib12Lm4": "وجيه مفصلي واحد على رأس الضلع 1",
   "@atlasRib12Lm4": {
-    "description": "English: Single articular facet on the head of rib 1 (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Single articular facet on the head of rib 1 (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRib12Siding": "ضع الضلع مسطحًا ورأسه إلى الخلف: يتجه السطح الداخلي المقعّر نحو خط المنتصف، فيدلّ على الجهة.",
   "@atlasRib12Siding": {
-    "description": "English: Lay the rib flat with the head backward: the concave inner surface faces the midline, giving the side. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Lay the rib flat with the head backward: the concave inner surface faces the midline, giving the side. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasTypicalRibBlurb": "الضلوع 3–9؛ رأس وحديبة وأخدود ضلعي",
   "@atlasTypicalRibBlurb": {
-    "description": "English: Ribs 3–9; head, tubercle, costal groove (Atlas: one line under the bone name in the list)"
+    "description": "English: Ribs 3–9; head, tubercle, costal groove (Bones tab: one line under the bone name in the list)"
   },
   "atlasTypicalRibSummary": "تشترك الضلوع من 3 إلى 9 في تصميم واحد: رأس وعنق وحديبة وجسم طويل منحنٍ يلتوي عند الزاوية.",
   "@atlasTypicalRibSummary": {
-    "description": "English: Ribs 3 through 9 share one plan: a head, neck, tubercle and a long curving body that twists at the angle. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: Ribs 3 through 9 share one plan: a head, neck, tubercle and a long curving body that twists at the angle. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasTypicalRibLm1": "نصفا وجيه مفصلي على الرأس",
   "@atlasTypicalRibLm1": {
-    "description": "English: Two demifacets on the head (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Two demifacets on the head (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasTypicalRibLm2": "حديبة تتمفصل مع ناتئ مستعرض",
   "@atlasTypicalRibLm2": {
-    "description": "English: Tubercle articulating with a transverse process (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Tubercle articulating with a transverse process (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasTypicalRibLm3": "زاوية يتغير عندها اتجاه جسم الضلع",
   "@atlasTypicalRibLm3": {
-    "description": "English: Angle where the shaft changes direction (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Angle where the shaft changes direction (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasTypicalRibLm4": "الأخدود الضلعي على امتداد الحافة السفلية الداخلية",
   "@atlasTypicalRibLm4": {
-    "description": "English: Costal groove along the inner inferior border (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Costal groove along the inner inferior border (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasTypicalRibSiding": "يمتد الأخدود الضلعي على الحافة السفلية الداخلية؛ وحين يكون الأخدود في الأسفل والداخل، يشير الرأس إلى الخلف ويدلّ على الجهة.",
   "@atlasTypicalRibSiding": {
-    "description": "English: The costal groove runs on the internal inferior edge; with the groove down and inside, the head points to the back and gives the side. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: The costal groove runs on the internal inferior edge; with the groove down and inside, the head points to the back and gives the side. (Bones tab: how to tell left from right, or the place in a series)"
   },
-  "atlasRib1112Blurb": "الضلوع العائمة؛ قصيرة وغير متصلة",
+  "atlasRib1112Blurb": "الضلوع العائمة؛ قصيرة وغير متصلة بعظم القص",
   "@atlasRib1112Blurb": {
-    "description": "English: Floating ribs; short and unattached (Atlas: one line under the bone name in the list)"
+    "description": "English: Floating ribs; short and unattached (Bones tab: one line under the bone name in the list)"
   },
-  "atlasRib1112Summary": "الضلوع العائمة. قصيرة ومستدقة وغير متصلة من الأمام، ولهذا تفتقر إلى معظم ملامح الضلع النموذجي.",
+  "atlasRib1112Summary": "الضلوع العائمة. قصيرة ومستدقة وغير متصلة بعظم القص، ولهذا تفتقر إلى معظم ملامح الضلع النموذجي.",
   "@atlasRib1112Summary": {
-    "description": "English: The floating ribs. Short, tapering and unattached at the front, which is why they lack most of the features a typical rib carries. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The floating ribs. Short, tapering and unattached at the front, which is why they lack most of the features a typical rib carries. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasRib1112Lm1": "وجيه مفصلي واحد على الرأس",
   "@atlasRib1112Lm1": {
-    "description": "English: Single articular facet on the head (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Single articular facet on the head (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRib1112Lm2": "لا عنق ولا حديبة",
   "@atlasRib1112Lm2": {
-    "description": "English: No neck and no tubercle (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: No neck and no tubercle (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRib1112Lm3": "أخدود ضلعي ضعيف أو معدوم",
   "@atlasRib1112Lm3": {
-    "description": "English: Little or no costal groove (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Little or no costal groove (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRib1112Lm4": "طرف أمامي مدبب ينتهي بغضروف",
   "@atlasRib1112Lm4": {
-    "description": "English: Pointed, cartilage-tipped anterior end (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Pointed, cartilage-tipped anterior end (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasRib1112Siding": "الانحناء وحده يدلّ على الجهة: يتجه السطح المقعّر نحو خط المنتصف.",
   "@atlasRib1112Siding": {
-    "description": "English: Curvature alone gives the side: the concave surface faces the midline. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Curvature alone gives the side: the concave surface faces the midline. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasCervicalBlurb": "C1–C7؛ الوحيدة ذات الثقوب المستعرضة",
   "@atlasCervicalBlurb": {
-    "description": "English: C1–C7; the only ones with transverse foramina (Atlas: one line under the bone name in the list)"
+    "description": "English: C1–C7; the only ones with transverse foramina (Bones tab: one line under the bone name in the list)"
   },
   "atlasCervicalSummary": "فقرات الرقبة السبع، C1–C7. أصغر أجسام في العمود الفقري، والفقرات الوحيدة التي في نواتئها المستعرضة ثقوب.",
   "@atlasCervicalSummary": {
-    "description": "English: The seven neck vertebrae, C1–C7. Smallest bodies in the column and the only vertebrae with holes in the transverse processes. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The seven neck vertebrae, C1–C7. Smallest bodies in the column and the only vertebrae with holes in the transverse processes. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasCervicalLm1": "الثقوب المستعرضة — علامة مميزة لهذه المنطقة",
   "@atlasCervicalLm1": {
-    "description": "English: Transverse foramina — diagnostic for the region (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Transverse foramina — diagnostic for the region (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasCervicalLm2": "ليس للفقرة C1 (الفهقة) جسم؛ وتحمل C2 (المحور) الناتئ السني",
   "@atlasCervicalLm2": {
-    "description": "English: C1 (atlas) has no body; C2 (axis) carries the dens (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: C1 (atlas) has no body; C2 (axis) carries the dens (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasCervicalLm3": "نواتئ شوكية مشقوقة في C2–C6",
   "@atlasCervicalLm3": {
-    "description": "English: Bifid spinous processes on C2–C6 (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Bifid spinous processes on C2–C6 (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasCervicalLm4": "ثقبة فقرية كبيرة مثلثة",
   "@atlasCervicalLm4": {
-    "description": "English: Large triangular vertebral foramen (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Large triangular vertebral foramen (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasCervicalSiding": "متناظرة. يُعرف موقعها في السلسلة من الناتئ الشوكي وحجم جسم الفقرة؛ وللفقرة C7 شوكة طويلة غير مشقوقة تُعرف بـ«البارزة».",
   "@atlasCervicalSiding": {
-    "description": "English: Symmetrical. Position in the series is read from the spinous process and body size; C7 has the long, unsplit \"prominens\" spine. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Symmetrical. Position in the series is read from the spinous process and body size; C7 has the long, unsplit \"prominens\" spine. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasThoracicBlurb": "T1–T12؛ تحمل الوجيهات الضلعية",
   "@atlasThoracicBlurb": {
-    "description": "English: T1–T12; carry the costal facets (Atlas: one line under the bone name in the list)"
+    "description": "English: T1–T12; carry the costal facets (Bones tab: one line under the bone name in the list)"
   },
   "atlasThoracicSummary": "فقرات أعلى الظهر الاثنتا عشرة، T1–T12. تتمفصل كل واحدة مع زوج من الضلوع، والوجيهات الخاصة بتلك الضلوع تميّز هذه المنطقة.",
   "@atlasThoracicSummary": {
-    "description": "English: The twelve vertebrae of the upper back, T1–T12. Each one articulates with a pair of ribs, and the facets for those ribs identify the region. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The twelve vertebrae of the upper back, T1–T12. Each one articulates with a pair of ribs, and the facets for those ribs identify the region. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasThoracicLm1": "وجيهات ضلعية على الجسم والنواتئ المستعرضة",
   "@atlasThoracicLm1": {
-    "description": "English: Costal facets on the body and transverse processes (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Costal facets on the body and transverse processes (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasThoracicLm2": "أجسام فقرية على شكل قلب",
   "@atlasThoracicLm2": {
-    "description": "English: Heart-shaped vertebral bodies (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Heart-shaped vertebral bodies (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasThoracicLm3": "نواتئ شوكية طويلة مائلة بشدة نحو الأسفل",
   "@atlasThoracicLm3": {
-    "description": "English: Long spinous processes angled steeply downward (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Long spinous processes angled steeply downward (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasThoracicLm4": "ثقبة فقرية دائرية",
   "@atlasThoracicLm4": {
-    "description": "English: Circular vertebral foramen (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Circular vertebral foramen (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasThoracicSiding": "متناظرة. يُستدل على الترتيب من حجم جسم الفقرة ومن مدى تراكب الناتئ الشوكي على الفقرة التي تحته.",
   "@atlasThoracicSiding": {
-    "description": "English: Symmetrical. Sequence is judged from body size and how far the spinous process overlaps the vertebra below. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Symmetrical. Sequence is judged from body size and how far the spinous process overlaps the vertebra below. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "atlasLumbarBlurb": "L1–L5؛ الأثقل في العمود الفقري",
   "@atlasLumbarBlurb": {
-    "description": "English: L1–L5; the heaviest in the column (Atlas: one line under the bone name in the list)"
+    "description": "English: L1–L5; the heaviest in the column (Bones tab: one line under the bone name in the list)"
   },
   "atlasLumbarSummary": "فقرات أسفل الظهر الخمس، L1–L5. الأكبر والأمتن في العمود الفقري، مصممة لتحمّل الوزن لا للحركة.",
   "@atlasLumbarSummary": {
-    "description": "English: The five vertebrae of the lower back, L1–L5. The largest and most robust in the column, built for load rather than movement. (Atlas, anatomy text for experts. Keep the Latin terms where your language uses them)"
+    "description": "English: The five vertebrae of the lower back, L1–L5. The largest and most robust in the column, built for load rather than movement. (Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them)"
   },
   "atlasLumbarLm1": "أجسام ضخمة على شكل كلية",
   "@atlasLumbarLm1": {
-    "description": "English: Massive kidney-shaped bodies (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Massive kidney-shaped bodies (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasLumbarLm2": "لا ثقوب مستعرضة ولا وجيهات ضلعية",
   "@atlasLumbarLm2": {
-    "description": "English: No transverse foramina and no costal facets (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: No transverse foramina and no costal facets (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasLumbarLm3": "نواتئ شوكية قصيرة كليلة على شكل فأس",
   "@atlasLumbarLm3": {
-    "description": "English: Short, blunt, hatchet-shaped spinous processes (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Short, blunt, hatchet-shaped spinous processes (Bones tab: one thing an expert looks for on this bone)"
   },
-  "atlasLumbarLm4": "نواتئ حلمية على الوجيهات المفصلية العلوية",
+  "atlasLumbarLm4": "نواتئ حلمية على النواتئ المفصلية العلوية",
   "@atlasLumbarLm4": {
-    "description": "English: Mammillary processes on the superior articular facets (Atlas: one thing an expert looks for on this bone)"
+    "description": "English: Mammillary processes on the superior articular facets (Bones tab: one thing an expert looks for on this bone)"
   },
   "atlasLumbarSiding": "متناظرة. تُعرف الفقرة L5 بشكلها الإسفيني، فارتفاعها من الأمام أكبر منه من الخلف حيث تلتقي بالعجز.",
   "@atlasLumbarSiding": {
-    "description": "English: Symmetrical. L5 is recognised by its wedge shape, deeper in front than behind, where it meets the sacrum. (Atlas: how to tell left from right, or the place in a series)"
+    "description": "English: Symmetrical. L5 is recognised by its wedge shape, deeper in front than behind, where it meets the sacrum. (Bones tab: how to tell left from right, or the place in a series)"
   },
   "phaseDoc1Title": "هل يوجد عظم؟",
   "@phaseDoc1Title": {
@@ -1112,7 +1112,7 @@
   "@phaseDoc7Title": {
     "description": "English: Which animal? (How analysis works: step title)"
   },
-  "phaseDoc7Detail": "لعظام الحيوانات: ثديي أو طائر أو زاحف. وللثدييات أيضًا الفصيلة، مثل فصيلة الكلاب أو الأيائل أو البقر أو الخنازير أو القطط أو الدببة أو الأرانب أو الراكون أو الخيل، أو القوارض. ولا تُسمّى الفصيلة إلا حين يستطيع العظم إظهارها، كالجمجمة أو الفك أو عظم ساق كامل.",
+  "phaseDoc7Detail": "لعظام الحيوانات: ثديي أو طائر أو زاحف. وللثدييات أيضًا الفصيلة، مثل فصيلة الكلاب أو الأيائل أو البقر أو الخنازير أو القطط أو الدببة أو الأرانب أو الراكون أو الخيل، أو القوارض. ولا تُسمّى الفصيلة إلا حين يستطيع العظم إظهارها، كالجمجمة أو الفك أو عظم كامل من عظام القوائم.",
   "@phaseDoc7Detail": {
     "description": "English: For animal bones: mammal, bird or reptile. For mammals, also the family, like the dog, deer, cattle, pig, cat, bear, rabbit, raccoon or horse family, or a rodent. The family is only named when the bone can show it, such as a skull, a jaw or a whole leg bone. (How analysis works: what this step does)"
   },
@@ -1848,7 +1848,7 @@
   "@quipMissingBits": {
     "description": "English: Checking if any bits went missing. (Joke line for the whole-or-broken stage)"
   },
-  "quipMarks": "أبحث عن الكسور والجروح والأجزاء المحروقة.",
+  "quipMarks": "أبحث عن الشقوق وآثار القطع والأجزاء المحروقة.",
   "@quipMarks": {
     "description": "English: Looking for cracks, cuts and crispy bits. (Joke line for the marks stage (fractures, cut marks, burning))"
   },
@@ -1984,7 +1984,7 @@
   "@resultAngles": {
     "description": "English: {count} angles (Sticker: how many photos of the bone were read; always 2 or more)"
   },
-  "resultAnglesWithBone": "العظمة ظاهرة في {seen} من {count}",
+  "resultAnglesWithBone": "العظمة ظاهرة في {seen} من الصور الـ{count}",
   "@resultAnglesWithBone": {
     "description": "English: Bone in {seen} of {count} photos (Sticker in place of the angle count when some photos showed no bone; only those that did were read)"
   },
@@ -2096,7 +2096,7 @@
   "@resultMeasurements": {
     "description": "English: Measurements (Section title)"
   },
-  "resultLengthChanged": "غيّر الطول الجواب",
+  "resultLengthChanged": "الطول غيّر الإجابة",
   "@resultLengthChanged": {
     "description": "English: Length changed the answer (Sticker when the measured length changed which bone or animal was picked)"
   },
@@ -2142,11 +2142,11 @@
   },
   "resultReference": "المرجع",
   "@resultReference": {
-    "description": "English: Reference (Section title above a link to the bone’s Atlas page)"
+    "description": "English: Reference (Section title above a link to the bone’s page on the Bones tab)"
   },
   "resultAtlasSubtitle": "{region} · ما تبحث عنه، وأيمن أم أيسر",
   "@resultAtlasSubtitle": {
-    "description": "English: {region} · what to look for, and left or right (Under the bone’s name in the Atlas link)"
+    "description": "English: {region} · what to look for, and left or right (Under the bone’s name in the link to the Bones tab)"
   },
   "resultDisclaimer": "يقدّم Ossia أفضل تخمين، لا جوابًا نهائيًا. لا تعتمد عليه في قرارات طبية أو قانونية أو أمنية من دون أن يفحص خبير عظام العظمةَ بنفسه.",
   "@resultDisclaimer": {
@@ -2226,11 +2226,11 @@
   },
   "atlasSubtitle": "{count, plural, =0{لا عظام بعد} =1{عظمة واحدة يحفظها الذكاء الاصطناعي عن ظهر قلب} =2{عظمتان يحفظهما الذكاء الاصطناعي عن ظهر قلب} few{{count} عظام يحفظها الذكاء الاصطناعي عن ظهر قلب} many{{count} عظمة يحفظها الذكاء الاصطناعي عن ظهر قلب} other{{count} عظمة يحفظها الذكاء الاصطناعي عن ظهر قلب}}",
   "@atlasSubtitle": {
-    "description": "English: {count} bones the AI knows by heart (Line under the Atlas title)"
+    "description": "English: {count} bones the AI knows by heart (Line under the Bones tab’s title)"
   },
   "atlasHowCardTitle": "كيف يفكر الذكاء الاصطناعي",
   "@atlasHowCardTitle": {
-    "description": "English: How the AI thinks (Card at the top of the Atlas that opens \"How analysis works\")"
+    "description": "English: How the AI thinks (Card at the top of the Bones tab that opens \"How analysis works\")"
   },
   "atlasHowCardBody": "المراحل التسع التي تمر بها كل صورة، وأيّها يمكنك الوثوق به.",
   "@atlasHowCardBody": {
@@ -2484,7 +2484,20 @@
   "@aboutAnalyticsBody": {
     "description": "English: None collected."
   },
-  "aboutWarning": "النتائج أفضل تخمين، وليست إجابة نهائية. لا تعتمد عليها في قرارات طبية أو قانونية أو شُرَطية من دون أن يفحص خبير العظام العظمة بنفسه.",
+  "aboutWarning": "النتائج أفضل تخمين، وليست إجابة نهائية. لا تعتمد عليها في قرارات طبية أو قانونية أو أمنية من دون أن يفحص خبيرُ عظام العظمةَ بنفسه.",
+  "settingsPrivacyPolicy": "سياسة الخصوصية",
+  "privacyTitle": "سياسة الخصوصية",
+  "privacyUpdated": "آخر تحديث: 24 أكتوبر 2026",
+  "privacyShortTitle": "باختصار",
+  "privacyShortBody": "لا يجمع Ossia أي معلومات عنك. لا توجد حسابات ولا إعلانات ولا إحصاءات استخدام ولا تتبّع، ولا يُشارَك أي شيء مع أي أحد.",
+  "privacyPhotosTitle": "الصور والتقارير",
+  "privacyPhotosBody": "تُحلَّل الصور التي تلتقطها أو تختارها على هذا الهاتف. تبقى التقارير التي تحفظها، مع صورها وأي أسماء أو ملاحظات تضيفها، داخل Ossia على هذا الهاتف. حذف التقرير أو حذف التطبيق يحذفها. لا يُنسخ التقرير إلى الحافظة إلا عندما تختار نسخه.",
+  "privacyOnlineTitle": "التحليل عبر الإنترنت",
+  "privacyOnlineBody": "التحليل عبر الإنترنت متوقف ما لم تشغّله من الإعدادات. عند تشغيله تُرسَل الصور التي تحللها، والطول إن كتبته، إلى العنوان الذي أدخلته: حاسوب تديره أنت أو مجموعتك. مطوّر Ossia لا يدير ذلك الحاسوب ولا تصله صورك أبدًا.",
+  "privacyPermissionsTitle": "ما يطلبه Ossia",
+  "privacyPermissionsBody": "الكاميرا: لتصوير العظمة. الصور: لا يرى Ossia إلا الصور التي تختارها. الشبكة المحلية: للوصول إلى حاسوبك من أجل التحليل عبر الإنترنت، إذا طلب هاتفك ذلك. لا يسجّل Ossia الصوت أبدًا ولا يستخدم موقعك.",
+  "privacyChangesTitle": "التغييرات والأسئلة",
+  "privacyChangesBody": "إذا تغيّرت هذه السياسة فستجد النسخة الجديدة هنا في التطبيق وعلى صفحة المشروع:\ngithub.com/BigDonalds/Ossia-AI-Bone-Analyzer\nويمكنك طرح أسئلتك هناك أو إرسالها بالبريد إلى:\ndanesh.amir2001@gmail.com",
   "@aboutWarning": {
     "description": "English: Results are a best guess, not a final answer. Don’t use them for medical, legal or police decisions without a bone expert checking the bone in person."
   },

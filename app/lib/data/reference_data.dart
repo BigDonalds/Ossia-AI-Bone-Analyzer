@@ -60,7 +60,7 @@ const List<BoneEntry> kBoneReference = <BoneEntry>[
         'Twenty-two bones in all, joined by interlocking sutures; only the '
         'mandible articulates freely.',
     landmarks: <String>[
-      'Coronal, sagittal and lambdoid sutures',
+      'Coronal, sagittal, lambdoid and squamous sutures',
       'Orbits and the piriform (nasal) aperture',
       'Foramen magnum on the basicranium',
       'Mastoid processes behind the ear canals',
@@ -124,8 +124,9 @@ const List<BoneEntry> kBoneReference = <BoneEntry>[
       'Medial and lateral condyles at the knee',
     ],
     siding:
-        'Hold the bone upright: the head points medially and the linea aspera '
-        'faces posteriorly. The side the head points to is the side of the body.',
+        'Hold the bone upright, head at the top, with the linea aspera facing '
+        'away from you. The head then points to the side of the body the bone '
+        'comes from.',
   ),
   BoneEntry(
     key: 'tibia',
@@ -143,8 +144,9 @@ const List<BoneEntry> kBoneReference = <BoneEntry>[
       'Flat medial and lateral condyles',
     ],
     siding:
-        'The medial malleolus projects on the same side as the body it came '
-        'from; the tibial tuberosity marks the front.',
+        'Hold it upright with the tibial tuberosity facing you and the '
+        'malleolus at the bottom. The medial malleolus then points to the side '
+        'of the body the bone comes from.',
   ),
   BoneEntry(
     key: 'humerus',
@@ -153,8 +155,8 @@ const List<BoneEntry> kBoneReference = <BoneEntry>[
     blurb: 'Upper arm, shoulder to elbow',
     region: BoneRegion.upperLimb,
     summary:
-        'The upper arm bone, running from the shoulder joint to the elbow. '
-        'Second only to the femur in length.',
+        'The upper arm bone, running from the shoulder joint to the elbow. The '
+        'longest bone of the arm.',
     landmarks: <String>[
       'Rounded head with greater and lesser tubercles',
       'Deltoid tuberosity mid-shaft',
@@ -162,8 +164,9 @@ const List<BoneEntry> kBoneReference = <BoneEntry>[
       'Trochlea and capitulum forming the elbow',
     ],
     siding:
-        'Stand it upright with the head facing you: the olecranon fossa sits '
-        'posteriorly, and the head turns medially toward the body midline.',
+        'Hold it upright, head at the top, with the olecranon fossa facing away '
+        'from you. The head then points to the side of the body the bone comes '
+        'from.',
   ),
   BoneEntry(
     key: 'radius',
@@ -181,8 +184,9 @@ const List<BoneEntry> kBoneReference = <BoneEntry>[
       'Styloid process at the wrist',
     ],
     siding:
-        'The small head is proximal and the broad end distal; the styloid '
-        'process points laterally, away from the midline.',
+        'Hold it with the small head up and the flat palm side of the broad end '
+        'facing you. The styloid process then points to the opposite side: left '
+        'for a right radius.',
   ),
   BoneEntry(
     key: 'ulna',
@@ -200,8 +204,9 @@ const List<BoneEntry> kBoneReference = <BoneEntry>[
       'Slender distal head with styloid process',
     ],
     siding:
-        'The trochlear notch opens anteriorly; with the olecranon up and the '
-        'notch facing you, the shaft curves toward the body side.',
+        'Hold it with the olecranon up and the trochlear notch facing you. The '
+        'radial notch, where the radius sits, then faces the opposite side: '
+        'left for a right ulna.',
   ),
   BoneEntry(
     key: 'scapula',
@@ -219,8 +224,8 @@ const List<BoneEntry> kBoneReference = <BoneEntry>[
       'Glenoid fossa receiving the humeral head',
     ],
     siding:
-        'The glenoid fossa faces laterally and the spine sits on the posterior '
-        'surface; the side the fossa faces is the side of the body.',
+        'Hold it with the spine facing you and the acromion at the top. The '
+        'glenoid fossa then points to the side of the body the bone comes from.',
   ),
   BoneEntry(
     key: 'os_coxa',
@@ -239,7 +244,8 @@ const List<BoneEntry> kBoneReference = <BoneEntry>[
     ],
     siding:
         'Point the iliac blade up and the acetabulum out: the pubis sits '
-        'anteriorly and the sciatic notch opens posteriorly.',
+        'anteriorly and the sciatic notch opens posteriorly. Held this way '
+        'against your own hip, it matches the side it comes from.',
     alsoKnownAs: 'Innominate, hip bone',
   ),
   BoneEntry(
@@ -284,11 +290,11 @@ const List<BoneEntry> kBoneReference = <BoneEntry>[
     key: 'rib_11_12',
     name: 'Ribs 11–12',
     code: 'R11',
-    blurb: 'Floating ribs; short and unattached',
+    blurb: 'Floating ribs; short, free of the sternum',
     region: BoneRegion.thoracic,
     summary:
-        'The floating ribs. Short, tapering and unattached at the front, which '
-        'is why they lack most of the features a typical rib carries.',
+        'The floating ribs. Short, tapering and unattached to the sternum, '
+        'which is why they lack most of the features a typical rib carries.',
     landmarks: <String>[
       'Single articular facet on the head',
       'No neck and no tubercle',
@@ -349,7 +355,7 @@ const List<BoneEntry> kBoneReference = <BoneEntry>[
       'Massive kidney-shaped bodies',
       'No transverse foramina and no costal facets',
       'Short, blunt, hatchet-shaped spinous processes',
-      'Mammillary processes on the superior articular facets',
+      'Mammillary processes on the superior articular processes',
     ],
     siding:
         'Symmetrical. L5 is recognised by its wedge shape, deeper in front than '

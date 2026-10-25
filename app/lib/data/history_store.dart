@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'models/analysis.dart';
@@ -11,13 +10,17 @@ import 'models/analysis.dart';
 /// specimen photographs are copied into the app's documents directory so the
 /// originals can move or be deleted without breaking the library.
 class HistoryStore extends ChangeNotifier {
-  HistoryStore(this._prefs) {
+  HistoryStore(this._prefs, this._documents) {
     _load();
   }
 
   static const String _key = 'analysis_history';
 
   final SharedPreferences _prefs;
+
+  /// The app's documents directory. On iOS its path changes with every app
+  /// update, so stored photo paths are pointed back at it on load.
+  final String _documents;
   List<AnalysisRecord> _records = <AnalysisRecord>[];
 
   /// Newest first.
@@ -38,8 +41,12 @@ class HistoryStore extends ChangeNotifier {
     _records = raw
         .map((String s) {
           try {
-            return AnalysisRecord.fromJson(
-                jsonDecode(s) as Map<String, dynamic>);
+            final Map<String, dynamic> j = jsonDecode(s) as Map<String, dynamic>;
+            j['image_path'] = _here(j['image_path'] as String);
+            if (j['extra_image_paths'] case final List<dynamic> extra) {
+              j['extra_image_paths'] = <String>[for (final dynamic p in extra) _here(p as String)];
+            }
+            return AnalysisRecord.fromJson(j);
           } catch (_) {
             return null;
           }
@@ -48,6 +55,14 @@ class HistoryStore extends ChangeNotifier {
         .toList()
       ..sort((AnalysisRecord a, AnalysisRecord b) =>
           b.createdAt.compareTo(a.createdAt));
+  }
+
+  /// [path] moved into today's documents directory, if it is an archived
+  /// photo saved under an older one.
+  String _here(String path) {
+    final List<String> parts = path.split('/');
+    if (parts.length < 2 || parts[parts.length - 2] != 'specimens') return path;
+    return '$_documents/specimens/${parts.last}';
   }
 
   Future<void> _persist() async {
@@ -62,8 +77,7 @@ class HistoryStore extends ChangeNotifier {
   /// order. Photos already there (a saved record's, when angles are added to
   /// it) stay where they are.
   Future<List<String>> archiveImages(List<File> sources, String id) async {
-    final Directory dir = await getApplicationDocumentsDirectory();
-    final Directory specimens = Directory('${dir.path}/specimens');
+    final Directory specimens = Directory('$_documents/specimens');
     if (!await specimens.exists()) {
       await specimens.create(recursive: true);
     }

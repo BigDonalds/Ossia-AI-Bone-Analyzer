@@ -9,7 +9,7 @@ import 'bone_buddy.dart';
 /// same, whatever the result, so the picture itself says what the row is
 /// about.
 enum BoneGlyph {
-  /// A plain bone, for elements with no Atlas drawing.
+  /// A plain bone, for elements with no drawing on the Bones tab.
   bone,
 
   /// Human figure next to a paw print.

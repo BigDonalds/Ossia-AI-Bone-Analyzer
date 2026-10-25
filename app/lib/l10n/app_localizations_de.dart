@@ -18,7 +18,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get tabStash => 'Sammlung';
 
   @override
-  String get tabAtlas => 'Atlas';
+  String get tabBones => 'Knochen';
 
   @override
   String get tabSettings => 'Einstellungen';
@@ -48,7 +48,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get close => 'Schließen';
 
   @override
-  String get tryAgain => 'Nochmal versuchen';
+  String get tryAgain => 'Erneut versuchen';
 
   @override
   String get engineOnDevice => 'Dieses Handy';
@@ -143,11 +143,11 @@ class AppLocalizationsDe extends AppLocalizations {
       'Alles wechselt sofort, auch gespeicherte Funde.';
 
   @override
-  String get languageMatchPhone => 'Wie mein Handy';
+  String get languageMatchPhone => 'Wie auf meinem Handy';
 
   @override
   String languageMatchPhoneHint(String language) {
-    return 'Gerade ist das $language';
+    return 'Aktuell ist das $language';
   }
 
   @override
@@ -297,7 +297,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get animalBovidMeaning =>
-      'die Familie der Rinder (Kühe, Bisons, Schafe, Ziegen und Antilopen)';
+      'die Familie der Hornträger (Rinder, Bisons, Schafe, Ziegen und Antilopen)';
 
   @override
   String get animalSuid => 'Schweine';
@@ -323,7 +323,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get animalLeporid => 'Hasen';
 
   @override
-  String get animalLeporidMeaning => 'Kaninchen und Feldhasen';
+  String get animalLeporidMeaning => 'Kaninchen und Hasen';
 
   @override
   String get animalProcyonid => 'Kleinbären';
@@ -355,7 +355,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get animalMammalMeaning =>
-      'ein Tier mit Fell, das seine Jungen mit Milch säugt. Dieser Knochen zeigt nicht, aus welcher Familie';
+      'ein Tier mit Fell, das seine Jungen mit Milch säugt. Dieser Knochen verrät nicht, aus welcher Familie es stammt';
 
   @override
   String get animalBird => 'Vogel';
@@ -384,10 +384,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get partShaft => 'Mitte (Schaft)';
 
   @override
-  String get partProximal => 'Nahes Ende';
+  String get partProximal => 'Körpernahes Ende';
 
   @override
-  String get partDistal => 'Fernes Ende';
+  String get partDistal => 'Körperfernes Ende';
 
   @override
   String get partFragment => 'Bruchstück';
@@ -434,7 +434,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get sourceOnDevice => 'Auf diesem Handy';
 
   @override
-  String get sourceServer => 'Dein Server';
+  String get sourceServer => 'Auf dem Ossia-Computer';
 
   @override
   String get regionCranial => 'Kopf';
@@ -501,7 +501,7 @@ class AppLocalizationsDe extends AppLocalizations {
       'Der vollständige knöcherne Kopf: das Cranium zusammen mit dem Unterkiefer. Insgesamt zweiundzwanzig Knochen, verbunden durch ineinandergreifende Nähte; nur der Unterkiefer ist frei beweglich.';
 
   @override
-  String get atlasSkullLm1 => 'Kranz-, Pfeil- und Lambdanaht';
+  String get atlasSkullLm1 => 'Kranz-, Pfeil-, Lambda- und Schuppennaht';
 
   @override
   String get atlasSkullLm2 =>
@@ -540,7 +540,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get atlasCraniumSiding =>
-      'Symmetrisch, wenn vollständig. Einzelne Schädeldachfragmente werden über den Verlauf der Nähte und das Muster der Hirnhautgefäßfurchen zugeordnet.';
+      'Symmetrisch, wenn vollständig. Einzelne Schädeldachfragmente werden anhand des Nahtverlaufs und des Musters der Hirnhautgefäßfurchen einer Seite zugeordnet.';
 
   @override
   String get atlasCraniumAka => 'Calvaria (nur Schädeldach)';
@@ -569,7 +569,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get atlasMandibleSiding =>
-      'Symmetrisch, wenn vollständig. Eine Unterkieferhälfte wird daran zugeordnet, in welche Richtung der Ast aufsteigt und wohin sich die Zahnreihe krümmt.';
+      'Symmetrisch, wenn vollständig. Bei einer Unterkieferhälfte zeigen die Richtung, in die der Ast aufsteigt, und die Krümmung der Zahnreihe die Seite an.';
 
   @override
   String get atlasFemurBlurb =>
@@ -594,7 +594,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get atlasFemurSiding =>
-      'Halte den Knochen aufrecht: Der Kopf zeigt nach innen, die Linea aspera nach hinten. Die Seite, zu der der Kopf zeigt, ist die Körperseite.';
+      'Halte den Knochen aufrecht, den Kopf oben und die Linea aspera von dir weg. Der Kopf zeigt dann zur Körperseite, von der der Knochen stammt.';
 
   @override
   String get atlasTibiaBlurb => 'Schienbein; dreieckiger Schaft';
@@ -618,7 +618,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get atlasTibiaSiding =>
-      'Der Innenknöchel ragt auf der Seite hervor, von der der Knochen stammt; der Schienbeinhöcker markiert die Vorderseite.';
+      'Halte ihn aufrecht, den Schienbeinhöcker zu dir und den Innenknöchel unten. Der Innenknöchel zeigt dann zur Körperseite, von der der Knochen stammt.';
 
   @override
   String get atlasHumerusBlurb =>
@@ -626,7 +626,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get atlasHumerusSummary =>
-      'Der Oberarmknochen, vom Schultergelenk bis zum Ellenbogen. In der Länge nur vom Oberschenkelknochen übertroffen.';
+      'Der Oberarmknochen, vom Schultergelenk bis zum Ellenbogen. Der längste Knochen des Arms.';
 
   @override
   String get atlasHumerusLm1 => 'Runder Kopf mit großem und kleinem Höcker';
@@ -643,7 +643,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get atlasHumerusSiding =>
-      'Stell ihn aufrecht, den Kopf zu dir gerichtet: Die Fossa olecrani liegt hinten, und der Kopf dreht sich nach innen zur Körpermitte.';
+      'Halte ihn aufrecht, den Kopf oben und die Fossa olecrani von dir weg. Der Kopf zeigt dann zur Körperseite, von der der Knochen stammt.';
 
   @override
   String get atlasRadiusBlurb => 'Äußerer Unterarmknochen, auf der Daumenseite';
@@ -666,7 +666,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get atlasRadiusSiding =>
-      'Der kleine Kopf liegt oben, das breite Ende unten; der Griffelfortsatz zeigt nach außen, weg von der Körpermitte.';
+      'Halte ihn mit dem kleinen Kopf nach oben und der flachen Handflächenseite des breiten Endes zu dir. Der Griffelfortsatz zeigt dann zur Gegenseite: nach links bei einer rechten Speiche.';
 
   @override
   String get atlasUlnaBlurb => 'Innerer Unterarmknochen; die Ellenbogenspitze';
@@ -691,7 +691,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get atlasUlnaSiding =>
-      'Die Incisura trochlearis öffnet sich nach vorn; mit dem Olecranon oben und der Incisura zu dir gerichtet krümmt sich der Schaft zur Körperseite hin.';
+      'Halte sie mit dem Olecranon nach oben und der Incisura trochlearis zu dir. Die Incisura radialis, in der die Speiche sitzt, zeigt dann zur Gegenseite: nach links bei einer rechten Elle.';
 
   @override
   String get atlasScapulaBlurb => 'Schulterblatt; dünne dreieckige Platte';
@@ -714,7 +714,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get atlasScapulaSiding =>
-      'Die Gelenkpfanne zeigt nach außen, die Gräte liegt auf der Rückseite; die Seite, zu der die Pfanne zeigt, ist die Körperseite.';
+      'Halte es mit der Gräte zu dir und dem Acromion oben. Die Gelenkpfanne zeigt dann zur Körperseite, von der der Knochen stammt.';
 
   @override
   String get atlasOsCoxaBlurb => 'Hüftbein; bester Hinweis auf das Geschlecht';
@@ -732,14 +732,14 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get atlasOsCoxaLm3 =>
-      'Facies auricularis, für das Sterbealter genutzt';
+      'Facies auricularis, zur Schätzung des Sterbealters genutzt';
 
   @override
   String get atlasOsCoxaLm4 => 'Hüftpfanne, die den Oberschenkelkopf aufnimmt';
 
   @override
   String get atlasOsCoxaSiding =>
-      'Richte die Darmbeinschaufel nach oben und die Hüftpfanne nach außen: Das Schambein liegt vorn, die Incisura ischiadica öffnet sich nach hinten.';
+      'Richte die Darmbeinschaufel nach oben und die Hüftpfanne nach außen: Das Schambein liegt vorn, die Incisura ischiadica öffnet sich nach hinten. So an die eigene Hüfte gehalten, passt es zu der Seite, von der es stammt.';
 
   @override
   String get atlasOsCoxaAka => 'Os innominatum, Hüftbein';
@@ -774,7 +774,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get atlasTypicalRibSummary =>
-      'Die Rippen 3 bis 9 folgen einem Bauplan: Kopf, Hals, Höcker und ein langer gebogener Körper, der sich am Rippenwinkel verdreht.';
+      'Die Rippen 3 bis 9 folgen einem gemeinsamen Bauplan: Kopf, Hals, Höcker und ein langer gebogener Körper, der sich am Rippenwinkel verdreht.';
 
   @override
   String get atlasTypicalRibLm1 => 'Zwei halbe Gelenkflächen am Kopf';
@@ -795,11 +795,12 @@ class AppLocalizationsDe extends AppLocalizations {
       'Die Rippenfurche verläuft am inneren unteren Rand; liegt die Furche unten und innen, zeigt der Kopf nach hinten und verrät die Seite.';
 
   @override
-  String get atlasRib1112Blurb => 'Freie Rippen; kurz und vorn nicht befestigt';
+  String get atlasRib1112Blurb =>
+      'Freie Rippen; kurz, ohne Verbindung zum Brustbein';
 
   @override
   String get atlasRib1112Summary =>
-      'Die freien Rippen. Kurz, spitz zulaufend und vorn nicht befestigt – deshalb fehlen ihnen die meisten Merkmale einer typischen Rippe.';
+      'Die freien Rippen. Kurz, spitz zulaufend und nicht mit dem Brustbein verbunden – deshalb fehlen ihnen die meisten Merkmale einer typischen Rippe.';
 
   @override
   String get atlasRib1112Lm1 => 'Eine einzelne Gelenkfläche am Kopf';
@@ -933,7 +934,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get phaseDoc6Detail =>
-      'Brüche, Schnittspuren und Brandspuren werden jeweils einzeln geprüft, ein Knochen kann also alle drei zeigen.';
+      'Brüche, Schnittspuren und Brandspuren werden jeweils einzeln geprüft, sodass ein Knochen auch alle drei zeigen kann.';
 
   @override
   String get phaseDoc7Title => 'Welches Tier?';
@@ -947,10 +948,10 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get phaseDoc8Detail =>
-      'Nur bei menschlichen Knochen. Betrachte das als Hinweis, den du prüfen solltest, nie als fertige Antwort.';
+      'Nur bei menschlichen Knochen. Betrachte beides als Hinweis, den du prüfen solltest, nie als fertige Antwort.';
 
   @override
-  String get phaseDoc9Title => 'Alles zusammen';
+  String get phaseDoc9Title => 'Das Gesamtbild';
 
   @override
   String get phaseDoc9Detail =>
@@ -1784,7 +1785,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String resultTopGuesses(int count) {
-    return 'Top $count Vermutungen';
+    return 'Top-$count-Vermutungen';
   }
 
   @override
@@ -1800,11 +1801,11 @@ class AppLocalizationsDe extends AppLocalizations {
   String get resultCondition => 'Zustand';
 
   @override
-  String get resultNoMarks => 'Keine Spuren gemeldet';
+  String get resultNoMarks => 'Keine Spuren festgestellt';
 
   @override
   String resultMarksFooter(String threshold) {
-    return 'Jede Art von Spur wird einzeln geprüft, ein Knochen kann also mehrere zeigen. Alles ab $threshold wird gemeldet.';
+    return 'Jede Art von Spur wird einzeln geprüft, sodass ein Knochen auch mehrere zeigen kann. Alles ab $threshold wird als auffällig markiert.';
   }
 
   @override
@@ -1975,7 +1976,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get atlasLookFor => 'Worauf du achten kannst';
 
   @override
-  String get atlasSidingTitle => 'Links oder rechts, und wo oben ist';
+  String get atlasSidingTitle => 'Links oder rechts und wo oben ist';
 
   @override
   String get atlasMapTitle => 'Lage im Skelett';
@@ -2010,7 +2011,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get settingsLanguageFooter =>
-      'Du kannst auch jederzeit über den Globus oben auf jedem Tab wechseln.';
+      'Du kannst auch jederzeit über das Globus-Symbol oben in jedem Tab wechseln.';
 
   @override
   String get settingsAppearance => 'Darstellung';
@@ -2052,7 +2053,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get settingsStatus => 'Analyse-Status';
 
   @override
-  String get settingsStatusSub => 'Ist sie bereit und verbunden?';
+  String get settingsStatusSub => 'Bereit und verbunden?';
 
   @override
   String get settingsCutoff => 'Sicherheitsschwelle';
@@ -2076,7 +2077,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get settingsAutoSaveBody =>
-      'Ausgeschaltet bleibt ein Bericht nur, wenn du ihn selbst speicherst.';
+      'Wenn aus, bleibt ein Bericht nur erhalten, wenn du ihn selbst speicherst.';
 
   @override
   String get settingsAutoSnap => 'Auto-Auslöser';
@@ -2199,6 +2200,50 @@ class AppLocalizationsDe extends AppLocalizations {
       'Die Ergebnisse sind eine beste Schätzung, keine endgültige Antwort. Nutze sie nicht für medizinische, rechtliche oder polizeiliche Entscheidungen, ohne dass eine Fachperson den Knochen selbst prüft.';
 
   @override
+  String get settingsPrivacyPolicy => 'Datenschutzerklärung';
+
+  @override
+  String get privacyTitle => 'Datenschutzerklärung';
+
+  @override
+  String get privacyUpdated => 'Zuletzt geändert am 24. Oktober 2026';
+
+  @override
+  String get privacyShortTitle => 'Kurz gesagt';
+
+  @override
+  String get privacyShortBody =>
+      'Ossia sammelt nichts über dich. Es gibt keine Konten, keine Werbung, keine Nutzungsstatistik und kein Tracking, und nichts wird an andere weitergegeben.';
+
+  @override
+  String get privacyPhotosTitle => 'Fotos und Berichte';
+
+  @override
+  String get privacyPhotosBody =>
+      'Fotos, die du aufnimmst oder auswählst, werden auf diesem Handy analysiert. Gespeicherte Berichte bleiben samt Fotos und allen Namen oder Notizen, die du hinzufügst, in Ossia auf diesem Handy. Wenn du einen Bericht oder die App löschst, sind sie weg. Ein Bericht kommt nur in die Zwischenablage, wenn du ihn kopierst.';
+
+  @override
+  String get privacyOnlineTitle => 'Online-Analyse';
+
+  @override
+  String get privacyOnlineBody =>
+      'Die Online-Analyse ist aus, bis du sie in den Einstellungen einschaltest. Dann werden die Fotos, die du analysierst, und eine eingegebene Länge an die Adresse geschickt, die du eingetragen hast, also an einen Computer, den du selbst oder deine Gruppe betreibt. Der Entwickler von Ossia betreibt diesen Computer nicht und bekommt deine Fotos nie.';
+
+  @override
+  String get privacyPermissionsTitle => 'Worum Ossia bittet';
+
+  @override
+  String get privacyPermissionsBody =>
+      'Kamera: um einen Knochen zu fotografieren. Fotos: Ossia sieht nur die Fotos, die du auswählst. Lokales Netzwerk: um deinen Computer für die Online-Analyse zu erreichen, falls dein Handy danach fragt. Ossia nimmt nie Ton auf und nutzt nie deinen Standort.';
+
+  @override
+  String get privacyChangesTitle => 'Änderungen und Fragen';
+
+  @override
+  String get privacyChangesBody =>
+      'Wenn sich diese Erklärung ändert, steht die neue Fassung hier in der App und auf github.com/BigDonalds/Ossia-AI-Bone-Analyzer. Fragen kannst du dort stellen oder per E-Mail an danesh.amir2001@gmail.com schicken.';
+
+  @override
   String get statusYou => 'DU';
 
   @override
@@ -2214,7 +2259,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String statusChecked(String when) {
-    return 'geprüft $when';
+    return '$when geprüft';
   }
 
   @override

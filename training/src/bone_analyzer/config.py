@@ -26,7 +26,7 @@ NO_BONE_RATIO = 1.0
 PRINTED_MARKS_P = 0.35
 
 # --- Labels ---
-# Changing any list changes the model's heads and needs retraining. The app's Atlas mirrors
+# Changing any list changes the model's heads and needs retraining. The app's Bones tab mirrors
 # BONE_TYPES, so keep the two in step.
 
 BONE_TYPES = [

@@ -21,6 +21,7 @@ import '../widgets/bone_buddy.dart';
 import '../widgets/phone_icon.dart';
 import '../widgets/primitives.dart';
 import '../widgets/specimen_image.dart';
+import '../widgets/wide.dart';
 import 'specimen_frame.dart';
 
 class AnalyzingScreen extends StatefulWidget {
@@ -180,7 +181,7 @@ class _AnalyzingScreenState extends State<AnalyzingScreen>
     if (!mounted) return;
     Haptics.success();
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute<void>(
+      WidePageRoute<void>(
         builder: (_) => ResultsScreen(record: record, saved: keep),
       ),
     );

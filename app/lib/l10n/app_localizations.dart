@@ -121,8 +121,8 @@ abstract class AppLocalizations {
   /// Tab: a guide to each bone the app knows
   ///
   /// In en, this message translates to:
-  /// **'Atlas'**
-  String get tabAtlas;
+  /// **'Bones'**
+  String get tabBones;
 
   /// Tab
   ///
@@ -889,7 +889,7 @@ abstract class AppLocalizations {
   /// No description provided for @sourceServer.
   ///
   /// In en, this message translates to:
-  /// **'Your server'**
+  /// **'On the Ossia computer'**
   String get sourceServer;
 
   /// No description provided for @regionCranial.
@@ -1006,685 +1006,685 @@ abstract class AppLocalizations {
   /// **'in'**
   String get unitIn;
 
-  /// Atlas: one line under the bone name in the list
+  /// Bones tab: one line under the bone name in the list
   ///
   /// In en, this message translates to:
   /// **'Cranium and mandible together'**
   String get atlasSkullBlurb;
 
-  /// Atlas, anatomy text for experts. Keep the Latin terms where your language uses them
+  /// Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them
   ///
   /// In en, this message translates to:
   /// **'The complete bony head: the cranium together with the mandible. Twenty-two bones in all, joined by interlocking sutures; only the mandible articulates freely.'**
   String get atlasSkullSummary;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
-  /// **'Coronal, sagittal and lambdoid sutures'**
+  /// **'Coronal, sagittal, lambdoid and squamous sutures'**
   String get atlasSkullLm1;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Orbits and the piriform (nasal) aperture'**
   String get atlasSkullLm2;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Foramen magnum on the basicranium'**
   String get atlasSkullLm3;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Mastoid processes behind the ear canals'**
   String get atlasSkullLm4;
 
-  /// Atlas: how to tell left from right, or the place in a series
+  /// Bones tab: how to tell left from right, or the place in a series
   ///
   /// In en, this message translates to:
   /// **'Symmetrical. Orientation comes from the frontal bone (anterior) and the occipital squama (posterior).'**
   String get atlasSkullSiding;
 
-  /// Atlas: one line under the bone name in the list
+  /// Bones tab: one line under the bone name in the list
   ///
   /// In en, this message translates to:
   /// **'The skull without its jaw'**
   String get atlasCraniumBlurb;
 
-  /// Atlas, anatomy text for experts. Keep the Latin terms where your language uses them
+  /// Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them
   ///
   /// In en, this message translates to:
   /// **'The skull with the mandible removed. Encloses and protects the brain; the vault is made of frontal, parietal, temporal and occipital bones.'**
   String get atlasCraniumSummary;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Supraorbital ridges — heavier in male crania'**
   String get atlasCraniumLm1;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Nuchal lines on the occipital'**
   String get atlasCraniumLm2;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Temporal lines sweeping across the parietals'**
   String get atlasCraniumLm3;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'External auditory meatus'**
   String get atlasCraniumLm4;
 
-  /// Atlas: how to tell left from right, or the place in a series
+  /// Bones tab: how to tell left from right, or the place in a series
   ///
   /// In en, this message translates to:
   /// **'Symmetrical when complete. Isolated vault fragments are sided by suture direction and meningeal groove patterning.'**
   String get atlasCraniumSiding;
 
-  /// Atlas: another name for this bone
+  /// Bones tab: another name for this bone
   ///
   /// In en, this message translates to:
   /// **'Calvarium (vault only)'**
   String get atlasCraniumAka;
 
-  /// Atlas: one line under the bone name in the list
+  /// Bones tab: one line under the bone name in the list
   ///
   /// In en, this message translates to:
   /// **'Lower jaw; dense and durable'**
   String get atlasMandibleBlurb;
 
-  /// Atlas, anatomy text for experts. Keep the Latin terms where your language uses them
+  /// Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them
   ///
   /// In en, this message translates to:
   /// **'The lower jaw — the only freely mobile bone of the skull. Dense and compact, so it survives burial and burning better than most.'**
   String get atlasMandibleSummary;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Mental protuberance (the chin)'**
   String get atlasMandibleLm1;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Gonial angle where ramus meets body'**
   String get atlasMandibleLm2;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Mandibular condyle and coronoid process'**
   String get atlasMandibleLm3;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Mental foramen below the premolars'**
   String get atlasMandibleLm4;
 
-  /// Atlas: how to tell left from right, or the place in a series
+  /// Bones tab: how to tell left from right, or the place in a series
   ///
   /// In en, this message translates to:
   /// **'Symmetrical when whole. A half-mandible is sided by the direction the ramus rises and by which way the tooth row curves.'**
   String get atlasMandibleSiding;
 
-  /// Atlas: one line under the bone name in the list
+  /// Bones tab: one line under the bone name in the list
   ///
   /// In en, this message translates to:
   /// **'Thigh bone; best stature indicator'**
   String get atlasFemurBlurb;
 
-  /// Atlas, anatomy text for experts. Keep the Latin terms where your language uses them
+  /// Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them
   ///
   /// In en, this message translates to:
   /// **'The thigh bone — the longest and strongest bone in the body. Its maximum length carries the tightest correlation with living stature.'**
   String get atlasFemurSummary;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Spherical head with the fovea capitis'**
   String get atlasFemurLm1;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Greater and lesser trochanters'**
   String get atlasFemurLm2;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Linea aspera ridging the posterior shaft'**
   String get atlasFemurLm3;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Medial and lateral condyles at the knee'**
   String get atlasFemurLm4;
 
-  /// Atlas: how to tell left from right, or the place in a series
+  /// Bones tab: how to tell left from right, or the place in a series
   ///
   /// In en, this message translates to:
-  /// **'Hold the bone upright: the head points medially and the linea aspera faces posteriorly. The side the head points to is the side of the body.'**
+  /// **'Hold the bone upright, head at the top, with the linea aspera facing away from you. The head then points to the side of the body the bone comes from.'**
   String get atlasFemurSiding;
 
-  /// Atlas: one line under the bone name in the list
+  /// Bones tab: one line under the bone name in the list
   ///
   /// In en, this message translates to:
   /// **'Shin bone; triangular shaft'**
   String get atlasTibiaBlurb;
 
-  /// Atlas, anatomy text for experts. Keep the Latin terms where your language uses them
+  /// Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them
   ///
   /// In en, this message translates to:
   /// **'The shin bone, medial and weight-bearing in the lower leg. Its triangular shaft is distinctive even in fragments.'**
   String get atlasTibiaSummary;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Tibial tuberosity on the anterior proximal shaft'**
   String get atlasTibiaLm1;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Sharp anterior crest'**
   String get atlasTibiaLm2;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Medial malleolus at the ankle'**
   String get atlasTibiaLm3;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Flat medial and lateral condyles'**
   String get atlasTibiaLm4;
 
-  /// Atlas: how to tell left from right, or the place in a series
+  /// Bones tab: how to tell left from right, or the place in a series
   ///
   /// In en, this message translates to:
-  /// **'The medial malleolus projects on the same side as the body it came from; the tibial tuberosity marks the front.'**
+  /// **'Hold it upright with the tibial tuberosity facing you and the malleolus at the bottom. The medial malleolus then points to the side of the body the bone comes from.'**
   String get atlasTibiaSiding;
 
-  /// Atlas: one line under the bone name in the list
+  /// Bones tab: one line under the bone name in the list
   ///
   /// In en, this message translates to:
   /// **'Upper arm, shoulder to elbow'**
   String get atlasHumerusBlurb;
 
-  /// Atlas, anatomy text for experts. Keep the Latin terms where your language uses them
+  /// Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them
   ///
   /// In en, this message translates to:
-  /// **'The upper arm bone, running from the shoulder joint to the elbow. Second only to the femur in length.'**
+  /// **'The upper arm bone, running from the shoulder joint to the elbow. The longest bone of the arm.'**
   String get atlasHumerusSummary;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Rounded head with greater and lesser tubercles'**
   String get atlasHumerusLm1;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Deltoid tuberosity mid-shaft'**
   String get atlasHumerusLm2;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Olecranon fossa on the posterior distal end'**
   String get atlasHumerusLm3;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Trochlea and capitulum forming the elbow'**
   String get atlasHumerusLm4;
 
-  /// Atlas: how to tell left from right, or the place in a series
+  /// Bones tab: how to tell left from right, or the place in a series
   ///
   /// In en, this message translates to:
-  /// **'Stand it upright with the head facing you: the olecranon fossa sits posteriorly, and the head turns medially toward the body midline.'**
+  /// **'Hold it upright, head at the top, with the olecranon fossa facing away from you. The head then points to the side of the body the bone comes from.'**
   String get atlasHumerusSiding;
 
-  /// Atlas: one line under the bone name in the list
+  /// Bones tab: one line under the bone name in the list
   ///
   /// In en, this message translates to:
   /// **'Lateral forearm, on the thumb side'**
   String get atlasRadiusBlurb;
 
-  /// Atlas, anatomy text for experts. Keep the Latin terms where your language uses them
+  /// Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them
   ///
   /// In en, this message translates to:
   /// **'The lateral forearm bone, on the thumb side. It rotates over the ulna to turn the palm.'**
   String get atlasRadiusSummary;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Disc-shaped proximal head'**
   String get atlasRadiusLm1;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Radial tuberosity just below the neck'**
   String get atlasRadiusLm2;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Broad, flared distal end'**
   String get atlasRadiusLm3;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Styloid process at the wrist'**
   String get atlasRadiusLm4;
 
-  /// Atlas: how to tell left from right, or the place in a series
+  /// Bones tab: how to tell left from right, or the place in a series
   ///
   /// In en, this message translates to:
-  /// **'The small head is proximal and the broad end distal; the styloid process points laterally, away from the midline.'**
+  /// **'Hold it with the small head up and the flat palm side of the broad end facing you. The styloid process then points to the opposite side: left for a right radius.'**
   String get atlasRadiusSiding;
 
-  /// Atlas: one line under the bone name in the list
+  /// Bones tab: one line under the bone name in the list
   ///
   /// In en, this message translates to:
   /// **'Medial forearm; point of the elbow'**
   String get atlasUlnaBlurb;
 
-  /// Atlas, anatomy text for experts. Keep the Latin terms where your language uses them
+  /// Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them
   ///
   /// In en, this message translates to:
   /// **'The medial forearm bone, on the little-finger side. Forms the hinge of the elbow and is the stable partner the radius rotates around.'**
   String get atlasUlnaSummary;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Olecranon process — the point of the elbow'**
   String get atlasUlnaLm1;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Trochlear notch gripping the humerus'**
   String get atlasUlnaLm2;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Coronoid process below the notch'**
   String get atlasUlnaLm3;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Slender distal head with styloid process'**
   String get atlasUlnaLm4;
 
-  /// Atlas: how to tell left from right, or the place in a series
+  /// Bones tab: how to tell left from right, or the place in a series
   ///
   /// In en, this message translates to:
-  /// **'The trochlear notch opens anteriorly; with the olecranon up and the notch facing you, the shaft curves toward the body side.'**
+  /// **'Hold it with the olecranon up and the trochlear notch facing you. The radial notch, where the radius sits, then faces the opposite side: left for a right ulna.'**
   String get atlasUlnaSiding;
 
-  /// Atlas: one line under the bone name in the list
+  /// Bones tab: one line under the bone name in the list
   ///
   /// In en, this message translates to:
   /// **'Shoulder blade; thin triangular plate'**
   String get atlasScapulaBlurb;
 
-  /// Atlas, anatomy text for experts. Keep the Latin terms where your language uses them
+  /// Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them
   ///
   /// In en, this message translates to:
   /// **'The shoulder blade — a thin triangular plate riding on the back of the ribcage. Thin enough that the blade often survives only as fragments.'**
   String get atlasScapulaSummary;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Spine running across the posterior surface'**
   String get atlasScapulaLm1;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Acromion process at the shoulder tip'**
   String get atlasScapulaLm2;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Hooked coracoid process anteriorly'**
   String get atlasScapulaLm3;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Glenoid fossa receiving the humeral head'**
   String get atlasScapulaLm4;
 
-  /// Atlas: how to tell left from right, or the place in a series
+  /// Bones tab: how to tell left from right, or the place in a series
   ///
   /// In en, this message translates to:
-  /// **'The glenoid fossa faces laterally and the spine sits on the posterior surface; the side the fossa faces is the side of the body.'**
+  /// **'Hold it with the spine facing you and the acromion at the top. The glenoid fossa then points to the side of the body the bone comes from.'**
   String get atlasScapulaSiding;
 
-  /// Atlas: one line under the bone name in the list
+  /// Bones tab: one line under the bone name in the list
   ///
   /// In en, this message translates to:
   /// **'Hip bone; best indicator of sex'**
   String get atlasOsCoxaBlurb;
 
-  /// Atlas, anatomy text for experts. Keep the Latin terms where your language uses them
+  /// Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them
   ///
   /// In en, this message translates to:
   /// **'The hip bone: ilium, ischium and pubis fused at the acetabulum. The single most reliable element for estimating sex and adult age.'**
   String get atlasOsCoxaSummary;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Greater sciatic notch — broad in females, narrow in males'**
   String get atlasOsCoxaLm1;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Subpubic angle and the ventral arc'**
   String get atlasOsCoxaLm2;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Auricular surface, used for age-at-death'**
   String get atlasOsCoxaLm3;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Acetabulum receiving the femoral head'**
   String get atlasOsCoxaLm4;
 
-  /// Atlas: how to tell left from right, or the place in a series
+  /// Bones tab: how to tell left from right, or the place in a series
   ///
   /// In en, this message translates to:
-  /// **'Point the iliac blade up and the acetabulum out: the pubis sits anteriorly and the sciatic notch opens posteriorly.'**
+  /// **'Point the iliac blade up and the acetabulum out: the pubis sits anteriorly and the sciatic notch opens posteriorly. Held this way against your own hip, it matches the side it comes from.'**
   String get atlasOsCoxaSiding;
 
-  /// Atlas: another name for this bone
+  /// Bones tab: another name for this bone
   ///
   /// In en, this message translates to:
   /// **'Innominate, hip bone'**
   String get atlasOsCoxaAka;
 
-  /// Atlas: one line under the bone name in the list
+  /// Bones tab: one line under the bone name in the list
   ///
   /// In en, this message translates to:
   /// **'Atypical ribs; flat and sharply curved'**
   String get atlasRib12Blurb;
 
-  /// Atlas, anatomy text for experts. Keep the Latin terms where your language uses them
+  /// Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them
   ///
   /// In en, this message translates to:
   /// **'The first two ribs are atypical. Rib 1 is the shortest, broadest and most sharply curved; rib 2 is longer but keeps the same flattened set.'**
   String get atlasRib12Summary;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Rib 1 lies flat, with superior and inferior surfaces'**
   String get atlasRib12Lm1;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Scalene tubercle with grooves for the subclavian vessels'**
   String get atlasRib12Lm2;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Rib 2 carries a tuberosity for serratus anterior'**
   String get atlasRib12Lm3;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Single articular facet on the head of rib 1'**
   String get atlasRib12Lm4;
 
-  /// Atlas: how to tell left from right, or the place in a series
+  /// Bones tab: how to tell left from right, or the place in a series
   ///
   /// In en, this message translates to:
   /// **'Lay the rib flat with the head backward: the concave inner surface faces the midline, giving the side.'**
   String get atlasRib12Siding;
 
-  /// Atlas: one line under the bone name in the list
+  /// Bones tab: one line under the bone name in the list
   ///
   /// In en, this message translates to:
   /// **'Ribs 3–9; head, tubercle, costal groove'**
   String get atlasTypicalRibBlurb;
 
-  /// Atlas, anatomy text for experts. Keep the Latin terms where your language uses them
+  /// Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them
   ///
   /// In en, this message translates to:
   /// **'Ribs 3 through 9 share one plan: a head, neck, tubercle and a long curving body that twists at the angle.'**
   String get atlasTypicalRibSummary;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Two demifacets on the head'**
   String get atlasTypicalRibLm1;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Tubercle articulating with a transverse process'**
   String get atlasTypicalRibLm2;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Angle where the shaft changes direction'**
   String get atlasTypicalRibLm3;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Costal groove along the inner inferior border'**
   String get atlasTypicalRibLm4;
 
-  /// Atlas: how to tell left from right, or the place in a series
+  /// Bones tab: how to tell left from right, or the place in a series
   ///
   /// In en, this message translates to:
   /// **'The costal groove runs on the internal inferior edge; with the groove down and inside, the head points to the back and gives the side.'**
   String get atlasTypicalRibSiding;
 
-  /// Atlas: one line under the bone name in the list
+  /// Bones tab: one line under the bone name in the list
   ///
   /// In en, this message translates to:
-  /// **'Floating ribs; short and unattached'**
+  /// **'Floating ribs; short, free of the sternum'**
   String get atlasRib1112Blurb;
 
-  /// Atlas, anatomy text for experts. Keep the Latin terms where your language uses them
+  /// Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them
   ///
   /// In en, this message translates to:
-  /// **'The floating ribs. Short, tapering and unattached at the front, which is why they lack most of the features a typical rib carries.'**
+  /// **'The floating ribs. Short, tapering and unattached to the sternum, which is why they lack most of the features a typical rib carries.'**
   String get atlasRib1112Summary;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Single articular facet on the head'**
   String get atlasRib1112Lm1;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'No neck and no tubercle'**
   String get atlasRib1112Lm2;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Little or no costal groove'**
   String get atlasRib1112Lm3;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Pointed, cartilage-tipped anterior end'**
   String get atlasRib1112Lm4;
 
-  /// Atlas: how to tell left from right, or the place in a series
+  /// Bones tab: how to tell left from right, or the place in a series
   ///
   /// In en, this message translates to:
   /// **'Curvature alone gives the side: the concave surface faces the midline.'**
   String get atlasRib1112Siding;
 
-  /// Atlas: one line under the bone name in the list
+  /// Bones tab: one line under the bone name in the list
   ///
   /// In en, this message translates to:
   /// **'C1–C7; the only ones with transverse foramina'**
   String get atlasCervicalBlurb;
 
-  /// Atlas, anatomy text for experts. Keep the Latin terms where your language uses them
+  /// Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them
   ///
   /// In en, this message translates to:
   /// **'The seven neck vertebrae, C1–C7. Smallest bodies in the column and the only vertebrae with holes in the transverse processes.'**
   String get atlasCervicalSummary;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Transverse foramina — diagnostic for the region'**
   String get atlasCervicalLm1;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'C1 (atlas) has no body; C2 (axis) carries the dens'**
   String get atlasCervicalLm2;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Bifid spinous processes on C2–C6'**
   String get atlasCervicalLm3;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Large triangular vertebral foramen'**
   String get atlasCervicalLm4;
 
-  /// Atlas: how to tell left from right, or the place in a series
+  /// Bones tab: how to tell left from right, or the place in a series
   ///
   /// In en, this message translates to:
   /// **'Symmetrical. Position in the series is read from the spinous process and body size; C7 has the long, unsplit \"prominens\" spine.'**
   String get atlasCervicalSiding;
 
-  /// Atlas: one line under the bone name in the list
+  /// Bones tab: one line under the bone name in the list
   ///
   /// In en, this message translates to:
   /// **'T1–T12; carry the costal facets'**
   String get atlasThoracicBlurb;
 
-  /// Atlas, anatomy text for experts. Keep the Latin terms where your language uses them
+  /// Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them
   ///
   /// In en, this message translates to:
   /// **'The twelve vertebrae of the upper back, T1–T12. Each one articulates with a pair of ribs, and the facets for those ribs identify the region.'**
   String get atlasThoracicSummary;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Costal facets on the body and transverse processes'**
   String get atlasThoracicLm1;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Heart-shaped vertebral bodies'**
   String get atlasThoracicLm2;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Long spinous processes angled steeply downward'**
   String get atlasThoracicLm3;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Circular vertebral foramen'**
   String get atlasThoracicLm4;
 
-  /// Atlas: how to tell left from right, or the place in a series
+  /// Bones tab: how to tell left from right, or the place in a series
   ///
   /// In en, this message translates to:
   /// **'Symmetrical. Sequence is judged from body size and how far the spinous process overlaps the vertebra below.'**
   String get atlasThoracicSiding;
 
-  /// Atlas: one line under the bone name in the list
+  /// Bones tab: one line under the bone name in the list
   ///
   /// In en, this message translates to:
   /// **'L1–L5; the heaviest in the column'**
   String get atlasLumbarBlurb;
 
-  /// Atlas, anatomy text for experts. Keep the Latin terms where your language uses them
+  /// Bones tab, anatomy text for experts. Keep the Latin terms where your language uses them
   ///
   /// In en, this message translates to:
   /// **'The five vertebrae of the lower back, L1–L5. The largest and most robust in the column, built for load rather than movement.'**
   String get atlasLumbarSummary;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Massive kidney-shaped bodies'**
   String get atlasLumbarLm1;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'No transverse foramina and no costal facets'**
   String get atlasLumbarLm2;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
   /// **'Short, blunt, hatchet-shaped spinous processes'**
   String get atlasLumbarLm3;
 
-  /// Atlas: one thing an expert looks for on this bone
+  /// Bones tab: one thing an expert looks for on this bone
   ///
   /// In en, this message translates to:
-  /// **'Mammillary processes on the superior articular facets'**
+  /// **'Mammillary processes on the superior articular processes'**
   String get atlasLumbarLm4;
 
-  /// Atlas: how to tell left from right, or the place in a series
+  /// Bones tab: how to tell left from right, or the place in a series
   ///
   /// In en, this message translates to:
   /// **'Symmetrical. L5 is recognised by its wedge shape, deeper in front than behind, where it meets the sacrum.'**
@@ -3310,13 +3310,13 @@ abstract class AppLocalizations {
   /// **'Outside the estimate. Worth a second look.'**
   String get resultOutsideEstimate;
 
-  /// Section title above a link to the bone’s Atlas page
+  /// Section title above a link to the bone’s page on the Bones tab
   ///
   /// In en, this message translates to:
   /// **'Reference'**
   String get resultReference;
 
-  /// Under the bone’s name in the Atlas link
+  /// Under the bone’s name in the link to the Bones tab
   ///
   /// In en, this message translates to:
   /// **'{region} · what to look for, and left or right'**
@@ -3436,13 +3436,13 @@ abstract class AppLocalizations {
   /// **'Try a different filter or clear the search.'**
   String get libNoMatchBody;
 
-  /// Line under the Atlas title
+  /// Line under the Bones tab’s title
   ///
   /// In en, this message translates to:
   /// **'{count} bones the AI knows by heart'**
   String atlasSubtitle(int count);
 
-  /// Card at the top of the Atlas that opens "How analysis works"
+  /// Card at the top of the Bones tab that opens "How analysis works"
   ///
   /// In en, this message translates to:
   /// **'How the AI thinks'**
@@ -3831,6 +3831,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Results are a best guess, not a final answer. Don’t use them for medical, legal or police decisions without a bone expert checking the bone in person.'**
   String get aboutWarning;
+
+  /// No description provided for @settingsPrivacyPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy policy'**
+  String get settingsPrivacyPolicy;
+
+  /// No description provided for @privacyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy policy'**
+  String get privacyTitle;
+
+  /// No description provided for @privacyUpdated.
+  ///
+  /// In en, this message translates to:
+  /// **'Last updated 24 October 2026'**
+  String get privacyUpdated;
+
+  /// No description provided for @privacyShortTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'In short'**
+  String get privacyShortTitle;
+
+  /// No description provided for @privacyShortBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Ossia collects nothing about you. There are no accounts, no ads, no usage statistics and no tracking, and nothing is shared with anyone.'**
+  String get privacyShortBody;
+
+  /// No description provided for @privacyPhotosTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Photos and reports'**
+  String get privacyPhotosTitle;
+
+  /// No description provided for @privacyPhotosBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Photos you take or pick are analyzed on this phone. Reports you save, with their photos and any names or notes you add, stay inside Ossia on this phone. Deleting a report, or the app, deletes them. A report only goes to your clipboard when you choose to copy it.'**
+  String get privacyPhotosBody;
+
+  /// No description provided for @privacyOnlineTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Online analysis'**
+  String get privacyOnlineTitle;
+
+  /// No description provided for @privacyOnlineBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Online analysis is off unless you turn it on in Settings. When it is on, the photos you analyze, and a length if you typed one, are sent to the address you entered: a computer you or your group run. The Ossia developer doesn’t run that computer and never receives your photos.'**
+  String get privacyOnlineBody;
+
+  /// No description provided for @privacyPermissionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What Ossia asks for'**
+  String get privacyPermissionsTitle;
+
+  /// No description provided for @privacyPermissionsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera: to photograph a bone. Photos: Ossia only sees the photos you pick. Local network: to reach your computer for Online analysis, if your phone asks. Ossia never records sound and never uses your location.'**
+  String get privacyPermissionsBody;
+
+  /// No description provided for @privacyChangesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes and questions'**
+  String get privacyChangesTitle;
+
+  /// No description provided for @privacyChangesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'If this policy changes, the new version will be here in the app and at github.com/BigDonalds/Ossia-AI-Bone-Analyzer. You can ask questions there, or email danesh.amir2001@gmail.com.'**
+  String get privacyChangesBody;
 
   /// Small label in capitals under a drawing at the top of the status screen. Keep it very short. Under the phone.
   ///

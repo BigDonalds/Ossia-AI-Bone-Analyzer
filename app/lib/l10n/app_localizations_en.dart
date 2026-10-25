@@ -18,7 +18,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tabStash => 'Stash';
 
   @override
-  String get tabAtlas => 'Atlas';
+  String get tabBones => 'Bones';
 
   @override
   String get tabSettings => 'Settings';
@@ -431,7 +431,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sourceOnDevice => 'On this phone';
 
   @override
-  String get sourceServer => 'Your server';
+  String get sourceServer => 'On the Ossia computer';
 
   @override
   String get regionCranial => 'Cranial';
@@ -498,7 +498,8 @@ class AppLocalizationsEn extends AppLocalizations {
       'The complete bony head: the cranium together with the mandible. Twenty-two bones in all, joined by interlocking sutures; only the mandible articulates freely.';
 
   @override
-  String get atlasSkullLm1 => 'Coronal, sagittal and lambdoid sutures';
+  String get atlasSkullLm1 =>
+      'Coronal, sagittal, lambdoid and squamous sutures';
 
   @override
   String get atlasSkullLm2 => 'Orbits and the piriform (nasal) aperture';
@@ -583,7 +584,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get atlasFemurSiding =>
-      'Hold the bone upright: the head points medially and the linea aspera faces posteriorly. The side the head points to is the side of the body.';
+      'Hold the bone upright, head at the top, with the linea aspera facing away from you. The head then points to the side of the body the bone comes from.';
 
   @override
   String get atlasTibiaBlurb => 'Shin bone; triangular shaft';
@@ -607,14 +608,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get atlasTibiaSiding =>
-      'The medial malleolus projects on the same side as the body it came from; the tibial tuberosity marks the front.';
+      'Hold it upright with the tibial tuberosity facing you and the malleolus at the bottom. The medial malleolus then points to the side of the body the bone comes from.';
 
   @override
   String get atlasHumerusBlurb => 'Upper arm, shoulder to elbow';
 
   @override
   String get atlasHumerusSummary =>
-      'The upper arm bone, running from the shoulder joint to the elbow. Second only to the femur in length.';
+      'The upper arm bone, running from the shoulder joint to the elbow. The longest bone of the arm.';
 
   @override
   String get atlasHumerusLm1 =>
@@ -631,7 +632,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get atlasHumerusSiding =>
-      'Stand it upright with the head facing you: the olecranon fossa sits posteriorly, and the head turns medially toward the body midline.';
+      'Hold it upright, head at the top, with the olecranon fossa facing away from you. The head then points to the side of the body the bone comes from.';
 
   @override
   String get atlasRadiusBlurb => 'Lateral forearm, on the thumb side';
@@ -654,7 +655,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get atlasRadiusSiding =>
-      'The small head is proximal and the broad end distal; the styloid process points laterally, away from the midline.';
+      'Hold it with the small head up and the flat palm side of the broad end facing you. The styloid process then points to the opposite side: left for a right radius.';
 
   @override
   String get atlasUlnaBlurb => 'Medial forearm; point of the elbow';
@@ -677,7 +678,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get atlasUlnaSiding =>
-      'The trochlear notch opens anteriorly; with the olecranon up and the notch facing you, the shaft curves toward the body side.';
+      'Hold it with the olecranon up and the trochlear notch facing you. The radial notch, where the radius sits, then faces the opposite side: left for a right ulna.';
 
   @override
   String get atlasScapulaBlurb => 'Shoulder blade; thin triangular plate';
@@ -700,7 +701,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get atlasScapulaSiding =>
-      'The glenoid fossa faces laterally and the spine sits on the posterior surface; the side the fossa faces is the side of the body.';
+      'Hold it with the spine facing you and the acromion at the top. The glenoid fossa then points to the side of the body the bone comes from.';
 
   @override
   String get atlasOsCoxaBlurb => 'Hip bone; best indicator of sex';
@@ -724,7 +725,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get atlasOsCoxaSiding =>
-      'Point the iliac blade up and the acetabulum out: the pubis sits anteriorly and the sciatic notch opens posteriorly.';
+      'Point the iliac blade up and the acetabulum out: the pubis sits anteriorly and the sciatic notch opens posteriorly. Held this way against your own hip, it matches the side it comes from.';
 
   @override
   String get atlasOsCoxaAka => 'Innominate, hip bone';
@@ -781,11 +782,11 @@ class AppLocalizationsEn extends AppLocalizations {
       'The costal groove runs on the internal inferior edge; with the groove down and inside, the head points to the back and gives the side.';
 
   @override
-  String get atlasRib1112Blurb => 'Floating ribs; short and unattached';
+  String get atlasRib1112Blurb => 'Floating ribs; short, free of the sternum';
 
   @override
   String get atlasRib1112Summary =>
-      'The floating ribs. Short, tapering and unattached at the front, which is why they lack most of the features a typical rib carries.';
+      'The floating ribs. Short, tapering and unattached to the sternum, which is why they lack most of the features a typical rib carries.';
 
   @override
   String get atlasRib1112Lm1 => 'Single articular facet on the head';
@@ -872,7 +873,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get atlasLumbarLm4 =>
-      'Mammillary processes on the superior articular facets';
+      'Mammillary processes on the superior articular processes';
 
   @override
   String get atlasLumbarSiding =>
@@ -2171,6 +2172,50 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get aboutWarning =>
       'Results are a best guess, not a final answer. Don’t use them for medical, legal or police decisions without a bone expert checking the bone in person.';
+
+  @override
+  String get settingsPrivacyPolicy => 'Privacy policy';
+
+  @override
+  String get privacyTitle => 'Privacy policy';
+
+  @override
+  String get privacyUpdated => 'Last updated 24 October 2026';
+
+  @override
+  String get privacyShortTitle => 'In short';
+
+  @override
+  String get privacyShortBody =>
+      'Ossia collects nothing about you. There are no accounts, no ads, no usage statistics and no tracking, and nothing is shared with anyone.';
+
+  @override
+  String get privacyPhotosTitle => 'Photos and reports';
+
+  @override
+  String get privacyPhotosBody =>
+      'Photos you take or pick are analyzed on this phone. Reports you save, with their photos and any names or notes you add, stay inside Ossia on this phone. Deleting a report, or the app, deletes them. A report only goes to your clipboard when you choose to copy it.';
+
+  @override
+  String get privacyOnlineTitle => 'Online analysis';
+
+  @override
+  String get privacyOnlineBody =>
+      'Online analysis is off unless you turn it on in Settings. When it is on, the photos you analyze, and a length if you typed one, are sent to the address you entered: a computer you or your group run. The Ossia developer doesn’t run that computer and never receives your photos.';
+
+  @override
+  String get privacyPermissionsTitle => 'What Ossia asks for';
+
+  @override
+  String get privacyPermissionsBody =>
+      'Camera: to photograph a bone. Photos: Ossia only sees the photos you pick. Local network: to reach your computer for Online analysis, if your phone asks. Ossia never records sound and never uses your location.';
+
+  @override
+  String get privacyChangesTitle => 'Changes and questions';
+
+  @override
+  String get privacyChangesBody =>
+      'If this policy changes, the new version will be here in the app and at github.com/BigDonalds/Ossia-AI-Bone-Analyzer. You can ask questions there, or email danesh.amir2001@gmail.com.';
 
   @override
   String get statusYou => 'YOU';

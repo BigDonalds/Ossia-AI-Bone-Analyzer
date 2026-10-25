@@ -251,7 +251,7 @@ class LengthCheck {
       };
 }
 
-/// Which engine wrote a report: the phone's own model or the user's server.
+/// Which engine wrote a report: the phone's own model or the Ossia computer.
 class AnalysisSource {
   const AnalysisSource({required this.onDevice, this.model, this.elapsedMs});
 
@@ -261,7 +261,7 @@ class AnalysisSource {
   final String? model;
   final int? elapsedMs;
 
-  String get label => onDevice ? 'On this phone' : 'Your server';
+  String get label => onDevice ? 'On this phone' : 'On the Ossia computer';
 
   factory AnalysisSource.fromJson(Map<String, dynamic> j) => AnalysisSource(
         onDevice: j['kind'] == 'on_device',

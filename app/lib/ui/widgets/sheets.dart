@@ -106,50 +106,54 @@ Future<bool> confirm(
       scale: CurvedAnimation(parent: a, curve: Curves.easeOutBack),
       child: FadeTransition(opacity: a, child: child),
     ),
+    // No wider than a phone's, even on a tablet.
     pageBuilder: (BuildContext context, _, _) => Center(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 28),
-        child: Material(
-          type: MaterialType.transparency,
-          child: Chunk(
-            padding: const EdgeInsets.fromLTRB(20, 22, 16, 18),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                BoneBuddy(
-                  size: 92,
-                  mood: destructive ? BuddyMood.wow : BuddyMood.thinking,
-                ),
-                const SizedBox(height: 14),
-                Text(
-                  title,
-                  textAlign: TextAlign.center,
-                  style: AppType.title2.copyWith(color: c.textPrimary),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  message,
-                  textAlign: TextAlign.center,
-                  style: AppType.subhead.copyWith(
-                    color: c.textSecondary,
-                    height: 1.42,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 480),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 28),
+          child: Material(
+            type: MaterialType.transparency,
+            child: Chunk(
+              padding: const EdgeInsets.fromLTRB(20, 22, 16, 18),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  BoneBuddy(
+                    size: 92,
+                    mood: destructive ? BuddyMood.wow : BuddyMood.thinking,
                   ),
-                ),
-                const SizedBox(height: 20),
-                ButtonPair(
-                  secondary: SecondaryButton(
-                    label: context.l10n.nah,
-                    height: 52,
-                    onTap: () => Navigator.pop(context, false),
+                  const SizedBox(height: 14),
+                  Text(
+                    title,
+                    textAlign: TextAlign.center,
+                    style: AppType.title2.copyWith(color: c.textPrimary),
                   ),
-                  primary: PrimaryButton(
-                    label: confirmLabel ?? context.l10n.confirm,
-                    height: 52,
-                    tone: destructive ? c.critical : null,
-                    onTap: () => Navigator.pop(context, true),
+                  const SizedBox(height: 8),
+                  Text(
+                    message,
+                    textAlign: TextAlign.center,
+                    style: AppType.subhead.copyWith(
+                      color: c.textSecondary,
+                      height: 1.42,
+                    ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 20),
+                  ButtonPair(
+                    secondary: SecondaryButton(
+                      label: context.l10n.nah,
+                      height: 52,
+                      onTap: () => Navigator.pop(context, false),
+                    ),
+                    primary: PrimaryButton(
+                      label: confirmLabel ?? context.l10n.confirm,
+                      height: 52,
+                      tone: destructive ? c.critical : null,
+                      onTap: () => Navigator.pop(context, true),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -230,29 +234,46 @@ void showToast(
       context.findRootAncestorStateOfType<ScaffoldState>()?.widget.bottomNavigationBar != null;
   messenger.clearSnackBars();
   messenger.showSnackBar(
+    // The bar itself is see-through and the sticker is drawn inside it, so
+    // on a tablet the sticker can stay phone-wide in the middle.
     SnackBar(
       behavior: SnackBarBehavior.floating,
-      backgroundColor: color ?? c.accent,
+      backgroundColor: Colors.transparent,
       elevation: 0,
+      padding: EdgeInsets.zero,
       duration: const Duration(seconds: 2),
       margin: EdgeInsets.fromLTRB(16, 0, 16, overTabs ? 12 : 96),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-        side: BorderSide(color: c.ink, width: Chunky.border),
-      ),
-      content: Row(
-        children: <Widget>[
-          if (icon != null) ...<Widget>[
-            Icon(icon, size: 20, color: c.onAccent),
-            const SizedBox(width: 10),
-          ],
-          Expanded(
-            child: Text(
-              message,
-              style: AppType.headline.copyWith(color: c.onAccent),
+      shape: const RoundedRectangleBorder(),
+      content: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 520),
+          child: DecoratedBox(
+            decoration: ShapeDecoration(
+              color: color ?? c.accent,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+                side: BorderSide(color: c.ink, width: Chunky.border),
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+              child: Row(
+                children: <Widget>[
+                  if (icon != null) ...<Widget>[
+                    Icon(icon, size: 20, color: c.onAccent),
+                    const SizedBox(width: 10),
+                  ],
+                  Expanded(
+                    child: Text(
+                      message,
+                      style: AppType.headline.copyWith(color: c.onAccent),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ],
+        ),
       ),
     ),
   );

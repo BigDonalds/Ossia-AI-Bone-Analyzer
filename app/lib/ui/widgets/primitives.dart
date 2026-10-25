@@ -229,10 +229,13 @@ class _RevealState extends State<Reveal> with SingleTickerProviderStateMixin {
 
 /// Chunky label that sits above a group of rows.
 class GroupLabel extends StatelessWidget {
-  const GroupLabel(this.text, {super.key, this.trailing});
+  const GroupLabel(this.text, {super.key, this.trailing, this.top = 28});
 
   final String text;
   final Widget? trailing;
+
+  /// Space above the label; less where it starts a column beside a card.
+  final double top;
 
   @override
   Widget build(BuildContext context) {
@@ -241,7 +244,7 @@ class GroupLabel extends StatelessWidget {
       style: AppType.groupHeader.copyWith(color: context.colors.textPrimary),
     );
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 28, 20, 10),
+      padding: EdgeInsets.fromLTRB(20, top, 20, 10),
       // The trailing pill drops under the label when the two don't fit on one
       // line (German, large text).
       child: trailing == null

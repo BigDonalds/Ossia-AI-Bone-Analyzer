@@ -30,9 +30,9 @@ class LanguageBadge extends StatelessWidget {
         border: Border.all(color: c.ink, width: 1.8),
       ),
       alignment: Alignment.center,
-      child: Text(
-        language.badge,
-        textDirection: language.direction,
+      child: _LiftedBadgeText(
+        language: language,
+        lift: 0.1,
         style: AppType.scaleFor(language.code).button.copyWith(
               // Stickers stay pastel in dark mode too, so the ink stays dark.
               color: const Color(0xFF141414),
@@ -41,6 +41,24 @@ class LanguageBadge extends StatelessWidget {
             ),
       ),
     );
+  }
+}
+
+/// A badge's text. The Arabic letter's tail hangs below the line, so in a
+/// right-to-left language it's raised by [lift] times its size to sit in the
+/// middle of its badge.
+class _LiftedBadgeText extends StatelessWidget {
+  const _LiftedBadgeText({required this.language, required this.lift, required this.style});
+
+  final AppLanguage language;
+  final double lift;
+  final TextStyle style;
+
+  @override
+  Widget build(BuildContext context) {
+    final Widget text = Text(language.badge, textDirection: language.direction, style: style);
+    if (!language.rtl) return text;
+    return Transform.translate(offset: Offset(0, -(style.fontSize ?? 14) * lift), child: text);
   }
 }
 
@@ -260,14 +278,14 @@ class _GlobeButtonState extends State<GlobeButton> {
                       borderRadius: BorderRadius.circular(99),
                       border: Border.all(color: c.ink, width: 1.5),
                     ),
-                    child: Text(
-                      language.badge,
-                      textDirection: language.direction,
+                    child: _LiftedBadgeText(
+                      language: language,
+                      lift: 0.4,
                       style: AppType.scaleFor(language.code).caption2.copyWith(
                             color: c.onAccent,
                             fontWeight: FontWeight.w800,
-                            fontSize: language.rtl ? 12 : 9.5,
-                            height: 1.1,
+                            fontSize: language.rtl ? 11 : 9.5,
+                            height: language.rtl ? 1 : 1.1,
                           ),
                     ),
                   ),

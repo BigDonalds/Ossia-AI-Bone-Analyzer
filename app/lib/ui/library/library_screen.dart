@@ -16,6 +16,8 @@ import '../widgets/nav.dart';
 import '../widgets/primitives.dart';
 import '../widgets/sheets.dart';
 import '../widgets/specimen_image.dart';
+import '../widgets/wide.dart';
+import 'find_card.dart';
 import 'record_detail_screen.dart';
 
 enum LibraryFilter { all, human, faunal, flagged }
@@ -93,6 +95,50 @@ class _LibraryScreenState extends State<LibraryScreen> {
     return out;
   }
 
+  /// On a tablet each group is a grid of photo cards, like the recent finds
+  /// on Scan. Deleting is in a report's options there, not a swipe.
+  List<Widget> _grid(BuildContext context, Map<String, List<AnalysisRecord>> groups) {
+    final AppLocalizations l = context.l10n;
+    final TextStyle titleStyle = FindCard.titleStyle(context.colors);
+    // Inside the grid's padding of 16 and 12.
+    final double room = MediaQuery.sizeOf(context).width - 2 * Wide.inset(context) - 28;
+    final int columns = FindCard.columnsIn(room);
+    final double card = FindCard.widthIn(room, columns);
+    final List<String> titles = <String>[
+      for (final List<AnalysisRecord> g in groups.values)
+        for (final AnalysisRecord r in g) l.recordTitle(r),
+    ];
+    final int titleLines = FindCard.linesFor(context, titles, titleStyle, card);
+    final double lineHeight = FindCard.measureLine(context, titleStyle, titles);
+    int index = 0;
+    return <Widget>[
+      for (final MapEntry<String, List<AnalysisRecord>> g in groups.entries) ...<Widget>[
+        SliverToBoxAdapter(child: GroupLabel(g.key)),
+        SliverPadding(
+          padding: const EdgeInsets.fromLTRB(16, 0, 12, 0),
+          sliver: SliverGrid.list(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: columns,
+              crossAxisSpacing: 8,
+              mainAxisSpacing: 10,
+              mainAxisExtent: FindCard.height(card, titleLines, lineHeight),
+            ),
+            children: <Widget>[
+              for (final AnalysisRecord r in g.value)
+                FindCard(
+                  record: r,
+                  index: index++,
+                  titleLines: titleLines,
+                  lineHeight: lineHeight,
+                  width: null,
+                ),
+            ],
+          ),
+        ),
+      ],
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     final AppColors c = context.colors;
@@ -102,6 +148,21 @@ class _LibraryScreenState extends State<LibraryScreen> {
     final List<AnalysisRecord> shown =
         all.where((AnalysisRecord r) => _matches(l, r)).toList();
     final Map<String, List<AnalysisRecord>> groups = _grouped(l, shown);
+    final bool wide = Wide.of(context);
+    final Widget search = _SearchField(
+      controller: _search,
+      onChanged: (String v) => setState(() => _query = v),
+    );
+    final Widget filter = SegmentedControl<LibraryFilter>(
+      value: _filter,
+      onChanged: (LibraryFilter v) => setState(() => _filter = v),
+      segments: <LibraryFilter, String>{
+        LibraryFilter.all: l.libFilterAll,
+        LibraryFilter.human: l.libFilterHuman,
+        LibraryFilter.faunal: l.libFilterAnimal,
+        LibraryFilter.flagged: l.libFilterFlagged,
+      },
+    );
 
     return Scaffold(
       backgroundColor: c.canvas,
@@ -112,29 +173,30 @@ class _LibraryScreenState extends State<LibraryScreen> {
             : '${l.libBonesCollected(all.length)} · '
                 '${l.libHumanCount(history.humanCount)}',
         slivers: <Widget>[
-          if (all.isNotEmpty) ...<Widget>[
+          if (all.isNotEmpty && wide)
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(child: search),
+                    const SizedBox(width: 12),
+                    Expanded(child: filter),
+                  ],
+                ),
+              ),
+            )
+          else if (all.isNotEmpty) ...<Widget>[
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-                child: _SearchField(
-                  controller: _search,
-                  onChanged: (String v) => setState(() => _query = v),
-                ),
+                child: search,
               ),
             ),
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
-                child: SegmentedControl<LibraryFilter>(
-                  value: _filter,
-                  onChanged: (LibraryFilter v) => setState(() => _filter = v),
-                  segments: <LibraryFilter, String>{
-                    LibraryFilter.all: l.libFilterAll,
-                    LibraryFilter.human: l.libFilterHuman,
-                    LibraryFilter.faunal: l.libFilterAnimal,
-                    LibraryFilter.flagged: l.libFilterFlagged,
-                  },
-                ),
+                child: filter,
               ),
             ),
           ],
@@ -170,6 +232,8 @@ class _LibraryScreenState extends State<LibraryScreen> {
                 ),
               ),
             )
+          else if (wide)
+            ..._grid(context, groups)
           else
             ...groups.entries.expand(
               (MapEntry<String, List<AnalysisRecord>> g) => <Widget>[
@@ -281,7 +345,7 @@ class _RecordRow extends StatelessWidget {
         minHeight: 76,
         chevron: true,
         onTap: () => Navigator.of(context).push(
-          MaterialPageRoute<void>(
+          WidePageRoute<void>(
             builder: (_) => RecordDetailScreen(recordId: record.id),
           ),
         ),

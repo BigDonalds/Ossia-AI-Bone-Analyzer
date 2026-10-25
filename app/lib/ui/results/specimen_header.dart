@@ -57,11 +57,17 @@ class SpecimenHeader extends SliverPersistentHeaderDelegate {
   /// leave the answer in view below it. Phone photos are usually 3:4. On a
   /// wide screen (tablet on its side) the height limit wins.
   static double photoHeight(Size screen, double? aspect, {required bool several}) {
-    final double print = screen.width - 2 * _side - Chunky.shadow;
-    final double room = _above + _below(several) + Chunky.shadow;
     final double tallest = screen.height * 0.52;
     final double shortest = (screen.width * 0.62).clamp(0.0, tallest).toDouble();
-    return (print / (aspect ?? 0.75) + room).clamp(shortest, tallest).toDouble();
+    return printHeight(screen.width, aspect, several: several).clamp(shortest, tallest).toDouble();
+  }
+
+  /// Height that shows the whole first print, with the air around it, across
+  /// a column [width] wide.
+  static double printHeight(double width, double? aspect, {required bool several}) {
+    final double print = width - 2 * _side - Chunky.shadow;
+    final double room = _above + _below(several) + Chunky.shadow;
+    return print / (aspect ?? 0.75) + room;
   }
 
   @override
@@ -175,6 +181,25 @@ class SpecimenHeader extends SliverPersistentHeaderDelegate {
       old.colors != colors ||
       old.topPadding != topPadding ||
       old.expandedHeight != expandedHeight;
+}
+
+/// The photos as prints on the page rather than in a header, [height] tall:
+/// the top of a tablet report's first column.
+class SpecimenPrints extends StatelessWidget {
+  const SpecimenPrints({super.key, required this.paths, required this.height});
+
+  final List<String> paths;
+  final double height;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: height,
+      child: paths.length == 1
+          ? _Photo(path: paths.single, top: 0, bottom: SpecimenHeader._below(false))
+          : _PhotoPager(paths: paths, colors: context.colors, top: 0),
+    );
+  }
 }
 
 /// One photo, whole, as a print with an ink border and a hard shadow: the

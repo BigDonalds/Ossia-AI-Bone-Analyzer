@@ -12,9 +12,11 @@ import '../../l10n/l10n.dart';
 import '../../l10n/labels.dart';
 import '../scan/review_screen.dart';
 import '../widgets/inset_group.dart';
+import '../widgets/nav.dart';
 import '../widgets/primitives.dart';
 import '../widgets/sheets.dart';
 import '../widgets/specimen_image.dart';
+import '../widgets/wide.dart';
 import 'result_sections.dart';
 import 'specimen_header.dart';
 
@@ -238,10 +240,104 @@ class _ReportPageState extends State<ReportPage> {
     );
   }
 
+  /// On a tablet: the photos, the verdict and the buttons on the left, the
+  /// findings on the right, each column scrolling on its own.
+  Widget _wide(BuildContext context, Widget buttons) {
+    final AppColors c = context.colors;
+    final AppLocalizations l = context.l10n;
+    final MediaQueryData media = MediaQuery.of(context);
+    final double inset = Wide.inset(context);
+    final double column = (media.size.width - 2 * inset) / 2;
+    final double prints = SpecimenHeader.printHeight(column, _aspect,
+            several: _record.imagePaths.length > 1)
+        .clamp(0.0, media.size.height * 0.52)
+        .toDouble();
+    const ScrollPhysics physics = BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics());
+    final double bottom = 40 + media.padding.bottom;
+
+    return Scaffold(
+      backgroundColor: c.canvas,
+      body: Column(
+        children: <Widget>[
+          DetailBar(
+            title: l.recordTitle(_record),
+            backLabel: widget.backLabel,
+            trailing: HeaderAction(
+              icon: Icons.more_horiz_rounded,
+              tooltip: l.reportOptions,
+              t: 1,
+              colors: c,
+              onTap: _openActions,
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: inset),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Expanded(
+                    child: ListView(
+                      physics: physics,
+                      padding: EdgeInsets.only(top: 20, bottom: bottom),
+                      children: <Widget>[
+                        SpecimenPrints(paths: _record.imagePaths, height: prints),
+                        VerdictBlock(record: _record),
+                        buttons,
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: ListView(
+                      physics: physics,
+                      padding: EdgeInsets.only(bottom: bottom),
+                      children: <Widget>[
+                        ResultSections(record: _record),
+                        const ResultDisclaimer(),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final AppColors c = context.colors;
     final AppLocalizations l = context.l10n;
+    final Widget buttons = Padding(
+      padding: const EdgeInsets.fromLTRB(16, 26, 16, 0),
+      child: Column(
+        children: <Widget>[
+          if (!_saved)
+            PrimaryButton(
+              label: l.reportSave,
+              icon: Icons.inventory_2_outlined,
+              onTap: _save,
+            ),
+          if (!_saved) const SizedBox(height: 10),
+          SecondaryButton(
+            label: l.reportAddAngle,
+            icon: Icons.add_a_photo_outlined,
+            onTap: _addAngles,
+          ),
+          if (widget.showAnalyzeAnother) const SizedBox(height: 10),
+          if (widget.showAnalyzeAnother)
+            SecondaryButton(
+              label: l.reportAnalyzeAnother,
+              icon: Icons.camera_alt_outlined,
+              onTap: () => Navigator.of(context).pop(),
+            ),
+        ],
+      ),
+    );
+    if (Wide.of(context)) return _wide(context, buttons);
+
     final Size screen = MediaQuery.sizeOf(context);
     final double top = MediaQuery.paddingOf(context).top;
     final double photo =
@@ -276,34 +372,7 @@ class _ReportPageState extends State<ReportPage> {
           ),
           SliverToBoxAdapter(child: VerdictBlock(record: _record)),
           SliverToBoxAdapter(child: ResultSections(record: _record)),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(16, 26, 16, 0),
-              child: Column(
-                children: <Widget>[
-                  if (!_saved)
-                    PrimaryButton(
-                      label: l.reportSave,
-                      icon: Icons.inventory_2_outlined,
-                      onTap: _save,
-                    ),
-                  if (!_saved) const SizedBox(height: 10),
-                  SecondaryButton(
-                    label: l.reportAddAngle,
-                    icon: Icons.add_a_photo_outlined,
-                    onTap: _addAngles,
-                  ),
-                  if (widget.showAnalyzeAnother) const SizedBox(height: 10),
-                  if (widget.showAnalyzeAnother)
-                    SecondaryButton(
-                      label: l.reportAnalyzeAnother,
-                      icon: Icons.camera_alt_outlined,
-                      onTap: () => Navigator.of(context).pop(),
-                    ),
-                ],
-              ),
-            ),
-          ),
+          SliverToBoxAdapter(child: buttons),
           const SliverToBoxAdapter(child: ResultDisclaimer()),
           SliverToBoxAdapter(
             child: SizedBox(height: 40 + MediaQuery.paddingOf(context).bottom),

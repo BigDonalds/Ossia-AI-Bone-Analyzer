@@ -17,6 +17,7 @@ import '../../data/settings_controller.dart';
 import '../../l10n/l10n.dart';
 import '../widgets/bone_buddy.dart';
 import '../widgets/primitives.dart';
+import '../widgets/wide.dart';
 import 'auto_snap_fx.dart';
 import 'bone_guide.dart';
 import 'bone_spotter.dart';
@@ -37,7 +38,8 @@ Future<List<File>?> captureAnotherAngle(BuildContext context,
 PageRouteBuilder<T> _cameraRoute<T>(Widget screen) => PageRouteBuilder<T>(
       transitionDuration: Motion.base,
       reverseTransitionDuration: Motion.quick,
-      pageBuilder: (_, _, _) => screen,
+      // A phone-wide column on a tablet, black beside it like the viewfinder.
+      pageBuilder: (_, _, _) => PhoneColumn(color: Colors.black, child: screen),
       transitionsBuilder: (_, Animation<double> a, _, Widget child) =>
           FadeTransition(
         opacity: a,
@@ -274,9 +276,12 @@ class _CameraScreenState extends State<CameraScreen>
       await next.dispose();
       return;
     }
-    try {
-      await next.lockCaptureOrientation(DeviceOrientation.portraitUp);
-    } catch (_) {}
+    // On an iPad the whole app turns with the device, so its camera turns too.
+    if (!_turnsWithDevice) {
+      try {
+        await next.lockCaptureOrientation(DeviceOrientation.portraitUp);
+      } catch (_) {}
+    }
     try {
       await next.setFlashMode(_flash);
     } catch (_) {}
@@ -886,23 +891,38 @@ class _CameraScreenState extends State<CameraScreen>
         ),
       );
     }
-    return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints box) {
-        // The sensor reports a landscape aspect; in portrait the preview is its
-        // inverse. Cover the screen and crop the overflow.
-        final double sensor = ctrl.value.aspectRatio;
-        return ClipRect(
-          child: FittedBox(
-            fit: BoxFit.cover,
-            child: SizedBox(
-              width: box.maxWidth,
-              height: box.maxWidth * sensor,
-              child: CameraPreview(ctrl),
+    return ValueListenableBuilder<CameraValue>(
+      valueListenable: ctrl,
+      builder: (BuildContext context, CameraValue value, _) => LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints box) {
+          // The sensor reports a landscape aspect; held upright the preview is
+          // its inverse. Cover the screen and crop the overflow.
+          final DeviceOrientation turned =
+              value.lockedCaptureOrientation ?? value.deviceOrientation;
+          final bool sideways = turned == DeviceOrientation.landscapeLeft ||
+              turned == DeviceOrientation.landscapeRight;
+          final double sensor = value.aspectRatio;
+          return ClipRect(
+            child: FittedBox(
+              fit: BoxFit.cover,
+              child: SizedBox(
+                width: box.maxWidth,
+                height: sideways ? box.maxWidth / sensor : box.maxWidth * sensor,
+                child: CameraPreview(ctrl),
+              ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
+  }
+
+  /// iPadOS ignores the app's portrait lock, so on an iPad the screen turns
+  /// with the device and the camera has to follow it.
+  bool get _turnsWithDevice {
+    if (!Platform.isIOS) return false;
+    final double side = View.of(context).display.size.shortestSide;
+    return side / View.of(context).display.devicePixelRatio >= 600;
   }
 
   Widget _focusRing(Offset at) {

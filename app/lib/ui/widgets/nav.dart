@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import '../../core/theme/motion.dart';
@@ -7,10 +9,12 @@ import '../../l10n/l10n.dart';
 import '../language/language_picker.dart';
 import 'primitives.dart';
 import 'text_fit.dart';
+import 'wide.dart';
 
 /// A scroll view with a big chunky title that collapses into a solid bar as
 /// content scrolls under it. The bar carries the language globe unless
-/// [globe] is off.
+/// [globe] is off. On a very wide screen the title and [slivers] keep within
+/// [Wide.maxContent].
 class LargeTitleScrollView extends StatelessWidget {
   const LargeTitleScrollView({
     super.key,
@@ -37,7 +41,8 @@ class LargeTitleScrollView extends StatelessWidget {
   Widget build(BuildContext context) {
     // The large title area grows with the text, so a subtitle that wraps
     // (German counts) or a bigger font size is never cut off.
-    final double room = MediaQuery.sizeOf(context).width - 40;
+    final double inset = Wide.inset(context);
+    final double room = MediaQuery.sizeOf(context).width - 2 * inset - 40;
     double largeArea =
         TextFit.height(context, title, _LargeTitleHeader.titleStyle, maxWidth: room, maxLines: 1) + 18;
     if (subtitle != null) {
@@ -63,9 +68,14 @@ class LargeTitleScrollView extends StatelessWidget {
             colors: context.colors,
             topPadding: MediaQuery.paddingOf(context).top,
             largeArea: largeArea.ceilToDouble(),
+            inset: inset,
           ),
         ),
-        ...slivers,
+        for (final Widget sliver in slivers)
+          SliverPadding(
+            padding: EdgeInsets.symmetric(horizontal: inset),
+            sliver: sliver,
+          ),
       ],
     );
   }
@@ -81,6 +91,7 @@ class _LargeTitleHeader extends SliverPersistentHeaderDelegate {
     required this.colors,
     required this.topPadding,
     required this.largeArea,
+    required this.inset,
   });
 
   final String title;
@@ -93,6 +104,9 @@ class _LargeTitleHeader extends SliverPersistentHeaderDelegate {
 
   /// Height of the large title and subtitle, measured by the scroll view.
   final double largeArea;
+
+  /// Extra margin on each side, on a very wide screen.
+  final double inset;
 
   static const double _barHeight = 52;
 
@@ -128,8 +142,8 @@ class _LargeTitleHeader extends SliverPersistentHeaderDelegate {
           // Collapsed bar: title at the start, actions pinned to the top row.
           Positioned(
             top: topPadding,
-            left: 0,
-            right: 0,
+            left: inset,
+            right: inset,
             height: _barHeight,
             child: Row(
               children: <Widget>[
@@ -159,8 +173,8 @@ class _LargeTitleHeader extends SliverPersistentHeaderDelegate {
           ),
           // Expanded title, faded away as the header shrinks.
           Positioned(
-            left: 20,
-            right: 20,
+            left: 20 + inset,
+            right: 20 + inset,
             bottom: 10,
             child: IgnorePointer(
               child: Opacity(
@@ -204,7 +218,8 @@ class _LargeTitleHeader extends SliverPersistentHeaderDelegate {
       old.globe != globe ||
       old.colors != colors ||
       old.topPadding != topPadding ||
-      old.largeArea != largeArea;
+      old.largeArea != largeArea ||
+      old.inset != inset;
 }
 
 /// Back button and title for pushed screens.
@@ -212,10 +227,19 @@ class _LargeTitleHeader extends SliverPersistentHeaderDelegate {
 /// The back button is pinned to the start edge and the title is inset past it,
 /// so the two can never overlap however long the title is.
 class DetailBar extends StatelessWidget implements PreferredSizeWidget {
-  const DetailBar({super.key, this.title, this.trailing, this.transparent = false});
+  const DetailBar({
+    super.key,
+    this.title,
+    this.trailing,
+    this.transparent = false,
+    this.backLabel,
+  });
 
   final String? title;
   final Widget? trailing;
+
+  /// What a screen reader calls the back button; "Back" when null.
+  final String? backLabel;
 
   /// Used over photography, where a solid bar would fight the image.
   final bool transparent;
@@ -246,7 +270,7 @@ class DetailBar extends StatelessWidget implements PreferredSizeWidget {
           RoundButton(
             icon: Icons.arrow_back_rounded,
             size: 42,
-            tooltip: context.l10n.back,
+            tooltip: backLabel ?? context.l10n.back,
             onTap: () => Navigator.of(context).maybePop(),
           ),
           const SizedBox(width: 12),
@@ -294,9 +318,11 @@ class AppTabBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppColors c = context.colors;
     final double bottom = MediaQuery.paddingOf(context).bottom;
+    // No wider than [_maxWidth] on a tablet, in the middle.
+    final double side = math.max(14, (MediaQuery.sizeOf(context).width - _maxWidth) / 2);
 
     return Padding(
-      padding: EdgeInsets.fromLTRB(14, 0, 14, bottom > 0 ? bottom : 12),
+      padding: EdgeInsets.fromLTRB(side, 0, side, bottom > 0 ? bottom : 12),
       child: Chunk(
         radius: 26,
         color: c.surface,
@@ -321,49 +347,57 @@ class AppTabBar extends StatelessWidget {
                 final bool active = i == index;
                 return SizedBox(
                   width: active ? activeWidth : iconWidth,
-                  child: Pressable(
-                    scale: 0.9,
+                  // Icon-only tabs still need their name read out.
+                  child: Semantics(
+                    button: true,
+                    selected: active,
+                    label: d.label,
+                    excludeSemantics: true,
                     onTap: () => onChanged(i),
-                    child: AnimatedContainer(
-                      duration: Motion.base,
-                      curve: Curves.easeOutBack,
-                      height: 50,
-                      // Keeps a long label off the pill's outline.
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      decoration: BoxDecoration(
-                        color: active ? c.accent : Colors.transparent,
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          color: active ? c.ink : Colors.transparent,
-                          width: 2,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            active ? d.activeIcon : d.icon,
-                            size: 24,
-                            color: active ? c.onAccent : c.textSecondary,
+                    child: Pressable(
+                      scale: 0.9,
+                      onTap: () => onChanged(i),
+                      child: AnimatedContainer(
+                        duration: Motion.base,
+                        curve: Curves.easeOutBack,
+                        height: 50,
+                        // Keeps a long label off the pill's outline.
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        decoration: BoxDecoration(
+                          color: active ? c.accent : Colors.transparent,
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            color: active ? c.ink : Colors.transparent,
+                            width: 2,
                           ),
-                          if (active) ...<Widget>[
-                            const SizedBox(width: 6),
-                            // Only shrinks when even the widest share is too
-                            // narrow (very large system text), rather than
-                            // losing its last letters.
-                            Flexible(
-                              child: FittedBox(
-                                fit: BoxFit.scaleDown,
-                                child: Text(
-                                  d.label,
-                                  maxLines: 1,
-                                  softWrap: false,
-                                  style: _labelStyle.copyWith(color: c.onAccent),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(
+                              active ? d.activeIcon : d.icon,
+                              size: 24,
+                              color: active ? c.onAccent : c.textSecondary,
+                            ),
+                            if (active) ...<Widget>[
+                              const SizedBox(width: 6),
+                              // Only shrinks when even the widest share is too
+                              // narrow (very large system text), rather than
+                              // losing its last letters.
+                              Flexible(
+                                child: FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Text(
+                                    d.label,
+                                    maxLines: 1,
+                                    softWrap: false,
+                                    style: _labelStyle.copyWith(color: c.onAccent),
+                                  ),
                                 ),
                               ),
-                            ),
+                            ],
                           ],
-                        ],
+                        ),
                       ),
                     ),
                   ),
@@ -378,6 +412,8 @@ class AppTabBar extends StatelessWidget {
 
   /// Least width an icon-only tab keeps when the active label needs room.
   static const double _iconRoom = 48;
+
+  static const double _maxWidth = 520;
 
   static TextStyle get _labelStyle => AppType.button.copyWith(fontSize: 14.5);
 }

@@ -217,7 +217,7 @@ void main() {
 
   test('every model bone class has a reference entry', () {
     // The bone types of the model bundled with the app — a class the model
-    // can predict but the Atlas cannot explain is a gap in the app.
+    // can predict but the Bones tab cannot explain is a gap in the app.
     final Map<String, dynamic> spec = jsonDecode(
             File('assets/model/ossia_model.json').readAsStringSync())
         as Map<String, dynamic>;

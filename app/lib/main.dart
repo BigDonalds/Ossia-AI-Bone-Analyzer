@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -19,6 +20,7 @@ import 'l10n/l10n.dart';
 import 'ui/language/welcome_screen.dart';
 import 'ui/root_shell.dart';
 import 'ui/status/status_toaster.dart';
+import 'ui/widgets/wide.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +33,9 @@ Future<void> main() async {
   LicenseRegistry.addLicense(_fontLicence);
 
   final SharedPreferences prefs = await SharedPreferences.getInstance();
+  // The web build is only a preview and has no documents directory.
+  final String documents =
+      kIsWeb ? '' : (await getApplicationDocumentsDirectory()).path;
 
   runApp(
     MultiProvider(
@@ -39,7 +44,7 @@ Future<void> main() async {
           create: (_) => SettingsController(prefs),
         ),
         ChangeNotifierProvider<HistoryStore>(
-          create: (_) => HistoryStore(prefs),
+          create: (_) => HistoryStore(prefs, documents),
         ),
         // Loads the bundled model on first use, then keeps it for every scan.
         ChangeNotifierProvider<OnDeviceModel>(create: (_) => OnDeviceModel()),
@@ -134,8 +139,8 @@ class _OssiaAppState extends State<OssiaApp> {
       supportedLocales: <Locale>[for (final AppLanguage l in kLanguages) l.locale],
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       themeMode: settings.themeMode,
-      theme: AppTheme.build(Brightness.light, settings.accent),
-      darkTheme: AppTheme.build(Brightness.dark, settings.accent),
+      theme: AppTheme.build(Brightness.light, settings.accent, pages: const ColumnPageTransitions()),
+      darkTheme: AppTheme.build(Brightness.dark, settings.accent, pages: const ColumnPageTransitions()),
       builder: (BuildContext context, Widget? child) {
         final Brightness b = Theme.of(context).brightness;
         return AnnotatedRegion<SystemUiOverlayStyle>(
@@ -177,9 +182,11 @@ class _Home extends StatelessWidget {
           child: child,
         ),
       ),
+      // The language picker keeps to a phone-wide column on a tablet; the
+      // tabs lay themselves out for the width.
       child: chosen
           ? const RootShell(key: ValueKey<String>('app'))
-          : const WelcomeScreen(key: ValueKey<String>('welcome')),
+          : const PhoneColumn(key: ValueKey<String>('welcome'), child: WelcomeScreen()),
     );
   }
 }

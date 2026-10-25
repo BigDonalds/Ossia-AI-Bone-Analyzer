@@ -46,7 +46,7 @@ class _RootShellState extends State<RootShell> {
     final List<TabDestination> destinations = <TabDestination>[
       TabDestination(Icons.camera_alt_outlined, Icons.camera_alt_rounded, l.tabScan),
       TabDestination(Icons.grid_view_outlined, Icons.grid_view_rounded, l.tabStash),
-      TabDestination(Icons.auto_stories_outlined, Icons.auto_stories_rounded, l.tabAtlas),
+      TabDestination(Icons.auto_stories_outlined, Icons.auto_stories_rounded, l.tabBones),
       TabDestination(Icons.tune_outlined, Icons.tune_rounded, l.tabSettings),
     ];
 

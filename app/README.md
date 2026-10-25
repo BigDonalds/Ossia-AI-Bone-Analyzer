@@ -31,10 +31,35 @@ flutter build apk --release --split-per-abi
 ```
 
 The APKs land in `build/app/outputs/flutter-apk/`;
-`app-arm64-v8a-release.apk` is the one for a modern phone. Release builds are
-signed with the debug key until a release key is configured in
-`android/app/build.gradle.kts`, which is fine for sideloading but not for the
-Play Store.
+`app-arm64-v8a-release.apk` is the one for a modern phone.
+
+Google Play takes an app bundle signed with your own upload key instead. Make
+the key once and keep it, with its passwords, somewhere safe outside the
+repository (Play can't accept updates without it):
+
+```bash
+keytool -genkey -v -keystore ossia-upload.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+```
+
+Then create `android/key.properties` (ignored by git) pointing at it:
+
+```
+storeFile=C:/path/to/ossia-upload.jks
+storePassword=...
+keyAlias=upload
+keyPassword=...
+```
+
+and build the bundle, which lands in `build/app/outputs/bundle/release/`:
+
+```bash
+flutter build appbundle --release
+```
+
+Without `key.properties`, release builds are signed with the debug key, which
+is fine for sideloading but refused by the Play Store. A phone with a
+debug-signed APK installed has to uninstall it before it can install the store
+version.
 
 Before building, export a model into `assets/model/` (see
 [Where the analysis runs](#where-the-analysis-runs)).
@@ -47,7 +72,7 @@ Four tabs:
   pic* the photo library, plus capture tips and recent finds.
 - **Stash**: every saved analysis, grouped by date, searchable and filterable
   by human / faunal / flagged. Swipe a row to delete it.
-- **Atlas**: a field reference for the sixteen bone types the model knows, each
+- **Bones**: a field reference for the sixteen bone types the model knows, each
   shown lit on a whole skeleton from the front and the back, and a walkthrough
   of the nine analysis stages.
 - **Settings**: language, theme and accent, where analysis runs (this phone or
@@ -67,7 +92,7 @@ name and note.
 **Reports** show the photos (swipe for the other angles), a headline verdict,
 which engine read it, an overall confidence (the weakest of detection, species
 and bone type), then sections for identification, condition, biological profile
-or taxon, and measurements, with a link to the bone's Atlas entry. Reports can
+or taxon, and measurements, with a link to the bone's page on the Bones tab. Reports can
 be named, annotated and copied out as JSON.
 
 **Model status** (`lib/ui/status/`) opens from the status pill on the home
@@ -86,7 +111,7 @@ mirrors to right-to-left.
 - **First launch** asks for a language before anything else. The phone's own
   language is preselected when the app has it; otherwise English is shown.
   Nothing is saved until *Let's go*.
-- **The globe** at the top of the Scan, Stash, Atlas and Settings screens shows
+- **The globe** at the top of the Scan, Stash, Bones and Settings screens shows
   the current language (EN, DE, ع) and opens the language sheet.
 - **Settings → Language → App language** opens the same sheet. *Match my phone*
   follows the phone's language, including changes while the app is open.
@@ -155,9 +180,15 @@ entry in `kLanguages` (`lib/l10n/l10n.dart`), the code in `locales_config.xml`,
 `ios/Runner/<code>.lproj/InfoPlist.strings`. A script the bundled fonts don't
 cover needs its own font (see `pubspec.yaml`).
 
-The permission messages iOS shows (camera, photos, local network) are in
-`ios/Runner/<code>.lproj/InfoPlist.strings`, with the English copy also in
-`Info.plist` as the fallback. Keep the two English versions the same.
+The permission messages iOS shows (camera, photos, local network, and a
+microphone line the camera plugin makes Apple ask for, though Ossia never
+records sound) are in `ios/Runner/<code>.lproj/InfoPlist.strings`, with the
+English copy also in `Info.plist` as the fallback. Keep the two English
+versions the same.
+
+The privacy policy under Settings → Privacy policy (`privacy*` lines) is also
+in `PRIVACY.md` at the top of the repository, which is the address the store
+listings link to. Change both together.
 
 ## Where the analysis runs
 
@@ -228,13 +259,27 @@ Plain `http://` on a local network needs `NSAllowsLocalNetworking` on iOS and
 ## iOS notes
 
 - `IPHONEOS_DEPLOYMENT_TARGET` is 16.0, the minimum ONNX Runtime supports. The
-  bundle ID is `com.ossia.ossia`.
+  bundle ID is `io.github.bigdonalds.ossia`, the same as the Android
+  application ID.
 - `ios/Podfile` is checked in: ONNX Runtime needs `platform :ios, '16.0'` and
   `use_frameworks! :linkage => :static`, which the generated one lacks. On
   Android, `android/app/proguard-rules.pro` keeps ONNX Runtime's classes
   through R8.
-- The camera, photo library and local-network usage strings are in
+- The camera, photo library, microphone and local-network usage strings are in
   `ios/Runner/Info.plist` and in each `ios/Runner/<code>.lproj/InfoPlist.strings`.
+- The app runs on iPhone and iPad (`TARGETED_DEVICE_FAMILY = "1,2"`). Phones
+  stay upright, but iPadOS 26 ignores that lock, so on an iPad the app turns
+  with the device, and the camera stops locking itself upright there. On any
+  screen 720 points wide or more (`lib/ui/widgets/wide.dart`), the four tabs
+  and the report lay themselves out in two columns or grids, up to 1200 points
+  wide. Other pages keep to a phone-wide 680 column in the middle, and dialogs
+  and toasts stay phone-sized. The App Store needs iPad screenshots as well as
+  iPhone ones.
+- `ios/Runner/PrivacyInfo.xcprivacy` is the app's privacy manifest: no tracking,
+  no data collected, and the reasons for the settings store and file dates.
+  `ITSAppUsesNonExemptEncryption` is false in `Info.plist` (the app only uses
+  the system's HTTPS), so App Store Connect doesn't ask about encryption for
+  every build.
 
 The app icon is generated for iOS and Android. To change it, edit
 `tool/make_icon.py`, then run:
@@ -244,7 +289,7 @@ python tool/make_icon.py
 dart run flutter_launcher_icons
 ```
 
-The skeleton on the Atlas pages is drawn by `tool/make_skeleton.py`, which
+The skeleton on the Bones pages is drawn by `tool/make_skeleton.py`, which
 writes `lib/data/skeleton_geometry.dart`. To change it, edit the script and run:
 
 ```bash
@@ -277,7 +322,7 @@ lib/
     scan/       home, Bone Cam and outline guides, review and tape measure, analysing
     results/    report page, sections, collapsing photo header
     library/    saved analyses
-    reference/  atlas and pipeline explainer
+    reference/  Bones tab and pipeline explainer
     settings/   settings and about
     status/     model status page, status pill and toasts
     widgets/    grouped rows, nav bars, sheets, primitives, the mascot

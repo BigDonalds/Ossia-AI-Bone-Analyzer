@@ -18,7 +18,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get tabStash => 'مجموعتي';
 
   @override
-  String get tabAtlas => 'الأطلس';
+  String get tabBones => 'العظام';
 
   @override
   String get tabSettings => 'الإعدادات';
@@ -128,7 +128,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get accentLime => 'أخضر ليموني';
 
   @override
-  String get accentBubblegum => 'وردي علكة';
+  String get accentBubblegum => 'وردي فاقع';
 
   @override
   String get accentTangerine => 'برتقالي';
@@ -172,7 +172,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get languageSheetMessage => 'يتغير كل شيء فورًا، حتى ما حفظته.';
 
   @override
-  String get languageMatchPhone => 'مثل هاتفي';
+  String get languageMatchPhone => 'لغة هاتفي';
 
   @override
   String languageMatchPhoneHint(String language) {
@@ -194,7 +194,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get languageNameArabic => 'العربية';
 
   @override
-  String get languageNowSpeaking => 'Ossia يتحدث العربية الآن';
+  String get languageNowSpeaking => 'يتحدث Ossia العربية الآن';
 
   @override
   String get boneSkull => 'الجمجمة';
@@ -218,7 +218,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get boneFemur => 'عظم الفخذ';
 
   @override
-  String get boneFemurMeaning => 'أطول عظم في الساق، من الورك إلى الركبة';
+  String get boneFemurMeaning => 'العظم الممتد من الورك إلى الركبة';
 
   @override
   String get boneTibia => 'الظنبوب';
@@ -255,7 +255,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get boneOsCoxa => 'عظم الورك';
 
   @override
-  String get boneOsCoxaMeaning => 'عظم الحوض على جانب الجسم';
+  String get boneOsCoxaMeaning => 'نصف الحوض، على أحد جانبي الجسم';
 
   @override
   String get boneRib12 => 'الضلعان 1–2';
@@ -279,19 +279,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get boneCervical => 'الفقرات العنقية';
 
   @override
-  String get boneCervicalMeaning => 'عظم من الرقبة';
+  String get boneCervicalMeaning => 'فقرة من الرقبة';
 
   @override
   String get boneThoracic => 'الفقرات الصدرية';
 
   @override
-  String get boneThoracicMeaning => 'عظم من أعلى الظهر';
+  String get boneThoracicMeaning => 'فقرة من أعلى الظهر';
 
   @override
   String get boneLumbar => 'الفقرات القطنية';
 
   @override
-  String get boneLumbarMeaning => 'عظم من أسفل الظهر';
+  String get boneLumbarMeaning => 'فقرة من أسفل الظهر';
 
   @override
   String get boneUnidentified => 'غير محدد';
@@ -349,7 +349,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get animalLeporid => 'الأرنبيات';
 
   @override
-  String get animalLeporidMeaning => 'الأرانب الأليفة والبرية';
+  String get animalLeporidMeaning => 'الأرانب والأرانب البرية';
 
   @override
   String get animalProcyonid => 'الراكونيات';
@@ -399,7 +399,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get animalUnnamed => 'حيوان';
 
   @override
-  String get animalUnnamedMeaning => 'عظم حيوان لم تبرز له أي مجموعة حيوانية';
+  String get animalUnnamedMeaning =>
+      'عظم حيوان لم تترجّح فيه مجموعة حيوانية بعينها';
 
   @override
   String get partComplete => 'عظم كامل';
@@ -458,7 +459,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get sourceOnDevice => 'على هذا الهاتف';
 
   @override
-  String get sourceServer => 'خادمك';
+  String get sourceServer => 'على حاسوب Ossia';
 
   @override
   String get regionCranial => 'الرأس';
@@ -525,7 +526,7 @@ class AppLocalizationsAr extends AppLocalizations {
       'الرأس العظمي كاملًا: القحف مع الفك السفلي. اثنان وعشرون عظمًا في المجموع، تربطها دروز متشابكة؛ ولا يتحرك بحرية سوى الفك السفلي.';
 
   @override
-  String get atlasSkullLm1 => 'الدروز الإكليلي والسهمي واللامي';
+  String get atlasSkullLm1 => 'الدروز الإكليلي والسهمي واللامي والحرشفي';
 
   @override
   String get atlasSkullLm2 => 'محجرا العينين والفتحة الكمثرية (الأنفية)';
@@ -610,14 +611,14 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get atlasFemurSiding =>
-      'أمسك العظم عموديًا: يتجه الرأس نحو الداخل ويكون الخط الخشن إلى الخلف. الجهة التي يشير إليها الرأس هي جهة الجسم.';
+      'أمسك العظم عموديًا والرأس في الأعلى، بحيث يكون الخط الخشن بعيدًا عنك. عندها يشير الرأس إلى جهة الجسم التي جاء منها العظم.';
 
   @override
-  String get atlasTibiaBlurb => 'عظم الساق؛ جسم مثلث المقطع';
+  String get atlasTibiaBlurb => 'عظم القصبة؛ جسم مثلث المقطع';
 
   @override
   String get atlasTibiaSummary =>
-      'عظم القصبة، الإنسي والحامل للوزن في أسفل الساق. جسمه المثلث المقطع مميز حتى في القطع المكسورة.';
+      'عظم القصبة، العظم الإنسي الحامل للوزن في الساق. جسمه المثلث المقطع مميز حتى في القطع المكسورة.';
 
   @override
   String get atlasTibiaLm1 => 'الحدبة الظنبوبية في مقدمة الجزء العلوي من الجسم';
@@ -633,14 +634,14 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get atlasTibiaSiding =>
-      'يبرز الكعب الإنسي في الجهة نفسها من الجسم التي جاء منها العظم؛ وتحدد الحدبة الظنبوبية الجهة الأمامية.';
+      'أمسكه عموديًا والحدبة الظنبوبية مواجهة لك والكعب في الأسفل. عندها يشير الكعب الإنسي إلى جهة الجسم التي جاء منها العظم.';
 
   @override
   String get atlasHumerusBlurb => 'أعلى الذراع، من الكتف إلى المرفق';
 
   @override
   String get atlasHumerusSummary =>
-      'عظم أعلى الذراع، يمتد من مفصل الكتف إلى المرفق. لا يفوقه طولًا إلا عظم الفخذ.';
+      'عظم أعلى الذراع، يمتد من مفصل الكتف إلى المرفق. وهو أطول عظام الذراع.';
 
   @override
   String get atlasHumerusLm1 => 'رأس مستدير مع الحديبتين الكبرى والصغرى';
@@ -656,7 +657,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get atlasHumerusSiding =>
-      'أوقفه عموديًا ورأسه مواجه لك: تقع الحفرة الزجية في الخلف، ويتجه الرأس نحو الداخل باتجاه خط منتصف الجسم.';
+      'أمسكه عموديًا والرأس في الأعلى، بحيث تكون الحفرة الزجية بعيدة عنك. عندها يشير الرأس إلى جهة الجسم التي جاء منها العظم.';
 
   @override
   String get atlasRadiusBlurb => 'العظم الوحشي في الساعد، في جهة الإبهام';
@@ -679,14 +680,14 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get atlasRadiusSiding =>
-      'الرأس الصغير هو الطرف القريب والطرف العريض هو البعيد؛ ويتجه الناتئ الإبري نحو الخارج، بعيدًا عن خط المنتصف.';
+      'أمسكه والرأس الصغير في الأعلى، والوجه المسطح للطرف العريض (جهة راحة اليد) مواجهًا لك. عندها يشير الناتئ الإبري إلى الجهة المعاكسة: إلى اليسار في الكعبرة اليمنى.';
 
   @override
   String get atlasUlnaBlurb => 'العظم الإنسي في الساعد؛ رأس المرفق';
 
   @override
   String get atlasUlnaSummary =>
-      'عظم الساعد الإنسي، في جهة الخنصر. يشكّل مفصل المرفق الرزّي، وهو الشريك الثابت الذي تدور حوله الكعبرة.';
+      'عظم الساعد الإنسي، في جهة الخنصر. يشكّل المفصل الرزّي للمرفق، وهو الشريك الثابت الذي تدور حوله الكعبرة.';
 
   @override
   String get atlasUlnaLm1 => 'الناتئ الزُّجّي — رأس المرفق';
@@ -695,14 +696,14 @@ class AppLocalizationsAr extends AppLocalizations {
   String get atlasUlnaLm2 => 'الثلمة البكرية التي تمسك بعظم العضد';
 
   @override
-  String get atlasUlnaLm3 => 'الناتئ المنقاري أسفل الثلمة';
+  String get atlasUlnaLm3 => 'الناتئ الإكليلي أسفل الثلمة';
 
   @override
   String get atlasUlnaLm4 => 'رأس بعيد نحيل مع ناتئ إبري';
 
   @override
   String get atlasUlnaSiding =>
-      'تنفتح الثلمة البكرية نحو الأمام؛ وحين يكون الزُّج في الأعلى والثلمة مواجهة لك، ينحني جسم العظم نحو جهة الجسم.';
+      'أمسكه والزُّج في الأعلى والثلمة البكرية مواجهة لك. عندها تتجه الثلمة الكعبرية، حيث تستقر الكعبرة، إلى الجهة المعاكسة: إلى اليسار في الزند الأيمن.';
 
   @override
   String get atlasScapulaBlurb => 'لوح الكتف؛ صفيحة رقيقة مثلثة';
@@ -725,7 +726,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get atlasScapulaSiding =>
-      'تتجه الحفرة العنابية نحو الخارج وتقع الشوكة على السطح الخلفي؛ والجهة التي تواجهها الحفرة هي جهة الجسم.';
+      'أمسكه والشوكة مواجهة لك والأخرم في الأعلى. عندها تشير الحفرة العنابية إلى جهة الجسم التي جاء منها العظم.';
 
   @override
   String get atlasOsCoxaBlurb => 'عظم الورك؛ أفضل مؤشر على الجنس';
@@ -749,7 +750,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get atlasOsCoxaSiding =>
-      'وجّه جناح الحرقفة إلى الأعلى والحُق إلى الخارج: تقع العانة في الأمام وتنفتح الثلمة الوركية نحو الخلف.';
+      'وجّه جناح الحرقفة إلى الأعلى والحُق إلى الخارج: تقع العانة في الأمام وتنفتح الثلمة الوركية نحو الخلف. وإذا أمسكته هكذا على وركك، طابق الجهة التي جاء منها.';
 
   @override
   String get atlasOsCoxaAka => 'العظم الغُفل، عظم الورك';
@@ -802,11 +803,11 @@ class AppLocalizationsAr extends AppLocalizations {
       'يمتد الأخدود الضلعي على الحافة السفلية الداخلية؛ وحين يكون الأخدود في الأسفل والداخل، يشير الرأس إلى الخلف ويدلّ على الجهة.';
 
   @override
-  String get atlasRib1112Blurb => 'الضلوع العائمة؛ قصيرة وغير متصلة';
+  String get atlasRib1112Blurb => 'الضلوع العائمة؛ قصيرة وغير متصلة بعظم القص';
 
   @override
   String get atlasRib1112Summary =>
-      'الضلوع العائمة. قصيرة ومستدقة وغير متصلة من الأمام، ولهذا تفتقر إلى معظم ملامح الضلع النموذجي.';
+      'الضلوع العائمة. قصيرة ومستدقة وغير متصلة بعظم القص، ولهذا تفتقر إلى معظم ملامح الضلع النموذجي.';
 
   @override
   String get atlasRib1112Lm1 => 'وجيه مفصلي واحد على الرأس';
@@ -888,7 +889,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get atlasLumbarLm3 => 'نواتئ شوكية قصيرة كليلة على شكل فأس';
 
   @override
-  String get atlasLumbarLm4 => 'نواتئ حلمية على الوجيهات المفصلية العلوية';
+  String get atlasLumbarLm4 => 'نواتئ حلمية على النواتئ المفصلية العلوية';
 
   @override
   String get atlasLumbarSiding =>
@@ -941,7 +942,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get phaseDoc7Detail =>
-      'لعظام الحيوانات: ثديي أو طائر أو زاحف. وللثدييات أيضًا الفصيلة، مثل فصيلة الكلاب أو الأيائل أو البقر أو الخنازير أو القطط أو الدببة أو الأرانب أو الراكون أو الخيل، أو القوارض. ولا تُسمّى الفصيلة إلا حين يستطيع العظم إظهارها، كالجمجمة أو الفك أو عظم ساق كامل.';
+      'لعظام الحيوانات: ثديي أو طائر أو زاحف. وللثدييات أيضًا الفصيلة، مثل فصيلة الكلاب أو الأيائل أو البقر أو الخنازير أو القطط أو الدببة أو الأرانب أو الراكون أو الخيل، أو القوارض. ولا تُسمّى الفصيلة إلا حين يستطيع العظم إظهارها، كالجمجمة أو الفك أو عظم كامل من عظام القوائم.';
 
   @override
   String get phaseDoc8Title => 'العمر والجنس';
@@ -1666,7 +1667,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get quipMissingBits => 'أتحقق إن كانت هناك أجزاء ناقصة.';
 
   @override
-  String get quipMarks => 'أبحث عن الكسور والجروح والأجزاء المحروقة.';
+  String get quipMarks => 'أبحث عن الشقوق وآثار القطع والأجزاء المحروقة.';
 
   @override
   String get quipWhose => 'أضيّق الاحتمالات: لمن كانت هذه العظمة؟';
@@ -1795,7 +1796,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String resultAnglesWithBone(int seen, int count) {
-    return 'العظمة ظاهرة في $seen من $count';
+    return 'العظمة ظاهرة في $seen من الصور الـ$count';
   }
 
   @override
@@ -1900,7 +1901,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resultMeasurements => 'القياسات';
 
   @override
-  String get resultLengthChanged => 'غيّر الطول الجواب';
+  String get resultLengthChanged => 'الطول غيّر الإجابة';
 
   @override
   String get resultTypicalLength => 'الطول المعتاد';
@@ -2277,7 +2278,51 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get aboutWarning =>
-      'النتائج أفضل تخمين، وليست إجابة نهائية. لا تعتمد عليها في قرارات طبية أو قانونية أو شُرَطية من دون أن يفحص خبير العظام العظمة بنفسه.';
+      'النتائج أفضل تخمين، وليست إجابة نهائية. لا تعتمد عليها في قرارات طبية أو قانونية أو أمنية من دون أن يفحص خبيرُ عظام العظمةَ بنفسه.';
+
+  @override
+  String get settingsPrivacyPolicy => 'سياسة الخصوصية';
+
+  @override
+  String get privacyTitle => 'سياسة الخصوصية';
+
+  @override
+  String get privacyUpdated => 'آخر تحديث: 24 أكتوبر 2026';
+
+  @override
+  String get privacyShortTitle => 'باختصار';
+
+  @override
+  String get privacyShortBody =>
+      'لا يجمع Ossia أي معلومات عنك. لا توجد حسابات ولا إعلانات ولا إحصاءات استخدام ولا تتبّع، ولا يُشارَك أي شيء مع أي أحد.';
+
+  @override
+  String get privacyPhotosTitle => 'الصور والتقارير';
+
+  @override
+  String get privacyPhotosBody =>
+      'تُحلَّل الصور التي تلتقطها أو تختارها على هذا الهاتف. تبقى التقارير التي تحفظها، مع صورها وأي أسماء أو ملاحظات تضيفها، داخل Ossia على هذا الهاتف. حذف التقرير أو حذف التطبيق يحذفها. لا يُنسخ التقرير إلى الحافظة إلا عندما تختار نسخه.';
+
+  @override
+  String get privacyOnlineTitle => 'التحليل عبر الإنترنت';
+
+  @override
+  String get privacyOnlineBody =>
+      'التحليل عبر الإنترنت متوقف ما لم تشغّله من الإعدادات. عند تشغيله تُرسَل الصور التي تحللها، والطول إن كتبته، إلى العنوان الذي أدخلته: حاسوب تديره أنت أو مجموعتك. مطوّر Ossia لا يدير ذلك الحاسوب ولا تصله صورك أبدًا.';
+
+  @override
+  String get privacyPermissionsTitle => 'ما يطلبه Ossia';
+
+  @override
+  String get privacyPermissionsBody =>
+      'الكاميرا: لتصوير العظمة. الصور: لا يرى Ossia إلا الصور التي تختارها. الشبكة المحلية: للوصول إلى حاسوبك من أجل التحليل عبر الإنترنت، إذا طلب هاتفك ذلك. لا يسجّل Ossia الصوت أبدًا ولا يستخدم موقعك.';
+
+  @override
+  String get privacyChangesTitle => 'التغييرات والأسئلة';
+
+  @override
+  String get privacyChangesBody =>
+      'إذا تغيّرت هذه السياسة فستجد النسخة الجديدة هنا في التطبيق وعلى صفحة المشروع:\ngithub.com/BigDonalds/Ossia-AI-Bone-Analyzer\nويمكنك طرح أسئلتك هناك أو إرسالها بالبريد إلى:\ndanesh.amir2001@gmail.com';
 
   @override
   String get statusYou => 'أنت';

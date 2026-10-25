@@ -6,7 +6,13 @@ import 'palette.dart';
 import 'typography.dart';
 
 abstract final class AppTheme {
-  static ThemeData build(Brightness brightness, AccentTone tone) {
+  /// [pages] slides pages in and out; the app passes one that also keeps
+  /// pushed pages to a phone-wide column on tablets.
+  static ThemeData build(
+    Brightness brightness,
+    AccentTone tone, {
+    PageTransitionsBuilder pages = const CupertinoPageTransitionsBuilder(),
+  }) {
     final bool dark = brightness == Brightness.dark;
     final Color accent = tone.resolve(brightness);
     final AppColors c = dark ? AppColors.dark(accent) : AppColors.light(accent);
@@ -54,12 +60,12 @@ abstract final class AppTheme {
         selectionColor: accent.withValues(alpha: 0.5),
         selectionHandleColor: c.textPrimary,
       ),
-      pageTransitionsTheme: const PageTransitionsTheme(
+      pageTransitionsTheme: PageTransitionsTheme(
         builders: <TargetPlatform, PageTransitionsBuilder>{
-          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-          TargetPlatform.android: CupertinoPageTransitionsBuilder(),
-          TargetPlatform.macOS: CupertinoPageTransitionsBuilder(),
-          TargetPlatform.windows: CupertinoPageTransitionsBuilder(),
+          TargetPlatform.iOS: pages,
+          TargetPlatform.android: pages,
+          TargetPlatform.macOS: pages,
+          TargetPlatform.windows: pages,
         },
       ),
       cupertinoOverrideTheme: CupertinoThemeData(

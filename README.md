@@ -47,7 +47,8 @@ app/
   test/, tool/         tests and check scripts
 ```
 
-`training/README.md` and `app/README.md` cover each part in detail.
+`training/README.md` and `app/README.md` cover each part in detail, and
+`PRIVACY.md` is the app's privacy policy.
 
 ## Quick start
 

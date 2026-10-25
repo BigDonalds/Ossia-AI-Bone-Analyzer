@@ -20,7 +20,9 @@ import '../widgets/inset_group.dart';
 import '../widgets/nav.dart';
 import '../widgets/primitives.dart';
 import '../widgets/sheets.dart';
+import '../widgets/wide.dart';
 import 'about_screen.dart';
+import 'privacy_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -31,264 +33,284 @@ class SettingsScreen extends StatelessWidget {
     final AppLocalizations l = context.l10n;
     final SettingsController s = context.watch<SettingsController>();
     final HistoryStore history = context.watch<HistoryStore>();
-    final AppLanguage language = s.language;
+    final AppLanguage current = s.language;
+
+    final List<Widget> language = <Widget>[
+      GroupLabel(l.languageTitle),
+      InsetGroup(
+        children: <Widget>[
+          InsetRow(
+            leading: LanguageBadge(language: current, size: 34),
+            title: l.settingsAppLanguage,
+            value: s.followsPhone
+                ? l.languageFollowingPhone(current.nameIn(l))
+                : current.nativeName,
+            chevron: true,
+            onTap: () => showLanguageSheet(context),
+          ),
+        ],
+      ),
+      GroupFooter(l.settingsLanguageFooter),
+    ];
+
+    final List<Widget> appearance = <Widget>[
+      GroupLabel(l.settingsAppearance),
+      InsetGroup(
+        children: <Widget>[
+          _StackedRow(
+            title: l.settingsTheme,
+            child: SegmentedControl<ThemeMode>(
+              value: s.themeMode,
+              onChanged: (ThemeMode v) {
+                Haptics.tap();
+                s.setThemeMode(v);
+              },
+              segments: <ThemeMode, String>{
+                ThemeMode.system: l.themeSystem,
+                ThemeMode.light: l.themeLight,
+                ThemeMode.dark: l.themeDark,
+              },
+            ),
+          ),
+          _StackedRow(
+            title: l.settingsAccent,
+            trailingText: l.accentName(s.accent),
+            child: _AccentPicker(
+              value: s.accent,
+              onChanged: (AccentTone t) {
+                Haptics.tap();
+                s.setAccent(t);
+              },
+            ),
+          ),
+        ],
+      ),
+    ];
+
+    final List<Widget> analysis = <Widget>[
+      GroupLabel(l.settingsAnalysis),
+      InsetGroup(
+        children: <Widget>[
+          _StackedRow(
+            title: l.engineAnalyzeOn,
+            description: s.onDevice
+                ? l.settingsOnDeviceBody
+                : l.settingsOnlineBody,
+            child: EngineToggle(value: s.engine, onChanged: s.setEngine),
+          ),
+          if (!s.onDevice)
+            InsetRow(
+              title: l.settingsOnlineAddress,
+              value: s.serverUrl,
+              chevron: true,
+              onTap: () async {
+                final String? url = await promptForText(
+                  context,
+                  title: l.settingsOnlineAddress,
+                  message: l.settingsOnlineAddressBody,
+                  initial: s.serverUrl,
+                  placeholder: 'https://…',
+                  keyboard: TextInputType.url,
+                );
+                if (url != null && url.trim().isNotEmpty) {
+                  s.setServerUrl(url);
+                }
+              },
+            ),
+          InsetRow(
+            leading: const LinkDot(size: 11),
+            title: l.settingsStatus,
+            subtitle: l.settingsStatusSub,
+            value: linkLook(context, context.watch<ServerMonitor>()).$2,
+            chevron: true,
+            onTap: () => openModelStatus(context),
+          ),
+        ],
+      ),
+      InsetGroup(
+        margin: const EdgeInsets.fromLTRB(16, 14, 16, 0),
+        children: <Widget>[
+          _StackedRow(
+            title: l.settingsCutoff,
+            trailingText: percent(s.confidenceFloor),
+            description: l.settingsCutoffBody,
+            child: _FloorSlider(
+              value: s.confidenceFloor,
+              onChanged: s.setConfidenceFloor,
+            ),
+          ),
+          InsetSwitchRow(
+            title: l.settingsHideUnlikely,
+            subtitle: l.settingsHideUnlikelyBody,
+            value: s.hideLowConfidence,
+            onChanged: s.setHideLowConfidence,
+          ),
+        ],
+      ),
+    ];
+
+    final List<Widget> capture = <Widget>[
+      GroupLabel(l.settingsCapture),
+      InsetGroup(
+        children: <Widget>[
+          InsetSwitchRow(
+            title: l.settingsAutoSave,
+            subtitle: l.settingsAutoSaveBody,
+            value: s.autoSave,
+            onChanged: s.setAutoSave,
+          ),
+          if (OnDeviceModel.supported)
+            InsetSwitchRow(
+              title: l.settingsAutoSnap,
+              subtitle: l.settingsAutoSnapBody,
+              value: s.autoSnap,
+              onChanged: s.setAutoSnap,
+            ),
+          _StackedRow(
+            title: l.settingsUnits,
+            child: SegmentedControl<LengthUnit>(
+              value: s.unit,
+              onChanged: (LengthUnit v) {
+                Haptics.tap();
+                s.setUnit(v);
+              },
+              segments: <LengthUnit, String>{
+                for (final LengthUnit u in LengthUnit.values)
+                  u: l.unitName(u),
+              },
+            ),
+          ),
+          InsetSwitchRow(
+            title: l.settingsHaptics,
+            value: s.haptics,
+            onChanged: s.setHaptics,
+          ),
+        ],
+      ),
+    ];
+
+    final List<Widget> library = <Widget>[
+      GroupLabel(l.settingsLibrary),
+      InsetGroup(
+        children: <Widget>[
+          InsetRow(
+            title: l.settingsSavedCount,
+            value: '${history.records.length}',
+          ),
+          InsetRow(
+            title: l.settingsCopyAll,
+            chevron: true,
+            onTap: history.isEmpty
+                ? null
+                : () async {
+                    await Clipboard.setData(
+                      ClipboardData(text: history.exportJson()),
+                    );
+                    if (!context.mounted) return;
+                    Haptics.light();
+                    showToast(
+                      context,
+                      l.settingsCopiedCount(history.records.length),
+                      icon: Icons.check_rounded,
+                    );
+                  },
+          ),
+          InsetRow(
+            title: l.settingsDeleteAll,
+            tint: history.isEmpty ? c.textTertiary : c.critical,
+            onTap: history.isEmpty
+                ? null
+                : () async {
+                    final bool ok = await confirm(
+                      context,
+                      title: l.settingsDeleteAllTitle,
+                      message: l.settingsDeleteAllBody(
+                        history.records.length,
+                      ),
+                      confirmLabel: l.settingsDeleteAllConfirm,
+                      destructive: true,
+                    );
+                    if (!ok) return;
+                    await history.clear();
+                    if (!context.mounted) return;
+                    showToast(context, l.settingsLibraryCleared);
+                  },
+          ),
+        ],
+      ),
+      GroupFooter(l.settingsPrivacyFooter),
+    ];
+
+    final List<Widget> about = <Widget>[
+      GroupLabel(l.settingsAbout),
+      InsetGroup(
+        children: <Widget>[
+          InsetRow(
+            title: l.howTitle,
+            chevron: true,
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => const PipelineScreen(),
+              ),
+            ),
+          ),
+          InsetRow(
+            title: l.settingsAboutOssia,
+            chevron: true,
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => const AboutScreen(),
+              ),
+            ),
+          ),
+          InsetRow(
+            title: l.settingsPrivacyPolicy,
+            chevron: true,
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => const PrivacyScreen(),
+              ),
+            ),
+          ),
+          InsetRow(title: l.settingsVersion, value: kAppVersion),
+        ],
+      ),
+    ];
+
+    final Widget disclaimer = Padding(
+      padding: const EdgeInsets.fromLTRB(20, 34, 20, 0),
+      child: Text(
+        l.settingsDisclaimer,
+        textAlign: TextAlign.center,
+        style: AppType.caption.copyWith(color: c.textTertiary, height: 1.45),
+      ),
+    );
 
     return Scaffold(
       backgroundColor: c.canvas,
       body: LargeTitleScrollView(
         title: l.tabSettings,
         slivers: <Widget>[
-          // ── Language ──────────────────────────────────────────────────
-          SliverToBoxAdapter(child: GroupLabel(l.languageTitle)),
-          SliverToBoxAdapter(
-            child: InsetGroup(
-              children: <Widget>[
-                InsetRow(
-                  leading: LanguageBadge(language: language, size: 34),
-                  title: l.settingsAppLanguage,
-                  value: s.followsPhone
-                      ? l.languageFollowingPhone(language.nameIn(l))
-                      : language.nativeName,
-                  chevron: true,
-                  onTap: () => showLanguageSheet(context),
-                ),
-              ],
-            ),
-          ),
-          SliverToBoxAdapter(child: GroupFooter(l.settingsLanguageFooter)),
-
-          // ── Appearance ────────────────────────────────────────────────
-          SliverToBoxAdapter(child: GroupLabel(l.settingsAppearance)),
-          SliverToBoxAdapter(
-            child: InsetGroup(
-              children: <Widget>[
-                _StackedRow(
-                  title: l.settingsTheme,
-                  child: SegmentedControl<ThemeMode>(
-                    value: s.themeMode,
-                    onChanged: (ThemeMode v) {
-                      Haptics.tap();
-                      s.setThemeMode(v);
-                    },
-                    segments: <ThemeMode, String>{
-                      ThemeMode.system: l.themeSystem,
-                      ThemeMode.light: l.themeLight,
-                      ThemeMode.dark: l.themeDark,
-                    },
-                  ),
-                ),
-                _StackedRow(
-                  title: l.settingsAccent,
-                  trailingText: l.accentName(s.accent),
-                  child: _AccentPicker(
-                    value: s.accent,
-                    onChanged: (AccentTone t) {
-                      Haptics.tap();
-                      s.setAccent(t);
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          // ── Analysis ──────────────────────────────────────────────────
-          SliverToBoxAdapter(child: GroupLabel(l.settingsAnalysis)),
-          SliverToBoxAdapter(
-            child: InsetGroup(
-              children: <Widget>[
-                _StackedRow(
-                  title: l.engineAnalyzeOn,
-                  description: s.onDevice
-                      ? l.settingsOnDeviceBody
-                      : l.settingsOnlineBody,
-                  child: EngineToggle(value: s.engine, onChanged: s.setEngine),
-                ),
-                if (!s.onDevice)
-                  InsetRow(
-                    title: l.settingsOnlineAddress,
-                    value: s.serverUrl,
-                    chevron: true,
-                    onTap: () async {
-                      final String? url = await promptForText(
-                        context,
-                        title: l.settingsOnlineAddress,
-                        message: l.settingsOnlineAddressBody,
-                        initial: s.serverUrl,
-                        placeholder: 'https://…',
-                        keyboard: TextInputType.url,
-                      );
-                      if (url != null && url.trim().isNotEmpty) {
-                        s.setServerUrl(url);
-                      }
-                    },
-                  ),
-                InsetRow(
-                  leading: const LinkDot(size: 11),
-                  title: l.settingsStatus,
-                  subtitle: l.settingsStatusSub,
-                  value: linkLook(context, context.watch<ServerMonitor>()).$2,
-                  chevron: true,
-                  onTap: () => openModelStatus(context),
-                ),
-              ],
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: InsetGroup(
-              margin: const EdgeInsets.fromLTRB(16, 14, 16, 0),
-              children: <Widget>[
-                _StackedRow(
-                  title: l.settingsCutoff,
-                  trailingText: percent(s.confidenceFloor),
-                  description: l.settingsCutoffBody,
-                  child: _FloorSlider(
-                    value: s.confidenceFloor,
-                    onChanged: s.setConfidenceFloor,
-                  ),
-                ),
-                InsetSwitchRow(
-                  title: l.settingsHideUnlikely,
-                  subtitle: l.settingsHideUnlikelyBody,
-                  value: s.hideLowConfidence,
-                  onChanged: s.setHideLowConfidence,
-                ),
-              ],
-            ),
-          ),
-
-          // ── Capture ───────────────────────────────────────────────────
-          SliverToBoxAdapter(child: GroupLabel(l.settingsCapture)),
-          SliverToBoxAdapter(
-            child: InsetGroup(
-              children: <Widget>[
-                InsetSwitchRow(
-                  title: l.settingsAutoSave,
-                  subtitle: l.settingsAutoSaveBody,
-                  value: s.autoSave,
-                  onChanged: s.setAutoSave,
-                ),
-                if (OnDeviceModel.supported)
-                  InsetSwitchRow(
-                    title: l.settingsAutoSnap,
-                    subtitle: l.settingsAutoSnapBody,
-                    value: s.autoSnap,
-                    onChanged: s.setAutoSnap,
-                  ),
-                _StackedRow(
-                  title: l.settingsUnits,
-                  child: SegmentedControl<LengthUnit>(
-                    value: s.unit,
-                    onChanged: (LengthUnit v) {
-                      Haptics.tap();
-                      s.setUnit(v);
-                    },
-                    segments: <LengthUnit, String>{
-                      for (final LengthUnit u in LengthUnit.values)
-                        u: l.unitName(u),
-                    },
-                  ),
-                ),
-                InsetSwitchRow(
-                  title: l.settingsHaptics,
-                  value: s.haptics,
-                  onChanged: s.setHaptics,
-                ),
-              ],
-            ),
-          ),
-
-          // ── Library ───────────────────────────────────────────────────
-          SliverToBoxAdapter(child: GroupLabel(l.settingsLibrary)),
-          SliverToBoxAdapter(
-            child: InsetGroup(
-              children: <Widget>[
-                InsetRow(
-                  title: l.settingsSavedCount,
-                  value: '${history.records.length}',
-                ),
-                InsetRow(
-                  title: l.settingsCopyAll,
-                  chevron: true,
-                  onTap: history.isEmpty
-                      ? null
-                      : () async {
-                          await Clipboard.setData(
-                            ClipboardData(text: history.exportJson()),
-                          );
-                          if (!context.mounted) return;
-                          Haptics.light();
-                          showToast(
-                            context,
-                            l.settingsCopiedCount(history.records.length),
-                            icon: Icons.check_rounded,
-                          );
-                        },
-                ),
-                InsetRow(
-                  title: l.settingsDeleteAll,
-                  tint: history.isEmpty ? c.textTertiary : c.critical,
-                  onTap: history.isEmpty
-                      ? null
-                      : () async {
-                          final bool ok = await confirm(
-                            context,
-                            title: l.settingsDeleteAllTitle,
-                            message: l.settingsDeleteAllBody(
-                              history.records.length,
-                            ),
-                            confirmLabel: l.settingsDeleteAllConfirm,
-                            destructive: true,
-                          );
-                          if (!ok) return;
-                          await history.clear();
-                          if (!context.mounted) return;
-                          showToast(context, l.settingsLibraryCleared);
-                        },
-                ),
-              ],
-            ),
-          ),
-          SliverToBoxAdapter(child: GroupFooter(l.settingsPrivacyFooter)),
-
-          // ── About ─────────────────────────────────────────────────────
-          SliverToBoxAdapter(child: GroupLabel(l.settingsAbout)),
-          SliverToBoxAdapter(
-            child: InsetGroup(
-              children: <Widget>[
-                InsetRow(
-                  title: l.howTitle,
-                  chevron: true,
-                  onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute<void>(
-                      builder: (_) => const PipelineScreen(),
-                    ),
-                  ),
-                ),
-                InsetRow(
-                  title: l.settingsAboutOssia,
-                  chevron: true,
-                  onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute<void>(
-                      builder: (_) => const AboutScreen(),
-                    ),
-                  ),
-                ),
-                InsetRow(title: l.settingsVersion, value: kAppVersion),
-              ],
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 34, 20, 0),
-              child: Text(
-                l.settingsDisclaimer,
-                textAlign: TextAlign.center,
-                style: AppType.caption
-                    .copyWith(color: c.textTertiary, height: 1.45),
+          // On a tablet the first three sections sit beside the last three.
+          if (Wide.of(context))
+            SliverToBoxAdapter(
+              child: TwoColumns(
+                start: <Widget>[...language, ...appearance, ...analysis],
+                end: <Widget>[...capture, ...library, ...about],
               ),
+            )
+          else
+            SliverList.list(
+              children: <Widget>[
+                ...language,
+                ...appearance,
+                ...analysis,
+                ...capture,
+                ...library,
+                ...about,
+              ],
             ),
-          ),
+          SliverToBoxAdapter(child: disclaimer),
           const SliverToBoxAdapter(child: SizedBox(height: 120)),
         ],
       ),
