@@ -265,8 +265,9 @@ Plain `http://` on a local network needs `NSAllowsLocalNetworking` on iOS and
 - `IPHONEOS_DEPLOYMENT_TARGET` is 16.0, the minimum ONNX Runtime supports. The
   bundle ID is `io.github.bigdonalds.ossia`, the same as the Android
   application ID.
-- `ios/Podfile` is checked in: ONNX Runtime needs `platform :ios, '16.0'` and
-  `use_frameworks! :linkage => :static`, which the generated one lacks. On
+- Every iOS plugin, ONNX Runtime included, comes in as a Swift package, so
+  there's no Podfile. Adding one back makes Flutter run CocoaPods, and the
+  build then fails with "The sandbox is not in sync with the Podfile.lock". On
   Android, `android/app/proguard-rules.pro` keeps ONNX Runtime's classes
   through R8.
 - The camera, photo library, microphone and local-network usage strings are in
