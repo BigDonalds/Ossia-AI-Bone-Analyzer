@@ -15,8 +15,12 @@ flutter run -d android
 flutter run -d ios
 ```
 
-iOS builds need a Mac with Xcode. On Windows or Linux the layout can be
-previewed in the browser (narrow the window, or use device emulation at
+iOS builds need a Mac with Xcode. Without one, the iOS build workflow
+(`../.github/workflows/ios.yml`) builds the app on a GitHub macOS machine on
+every push to main that changes `app/`, or from the Actions tab. For now it
+builds unsigned and without the on-device model, which isn't in the
+repository, so it only checks that the app compiles for iOS. On Windows or
+Linux the layout can be previewed in the browser (narrow the window, or use device emulation at
 393 × 852). On the web there is no file system, so photos show as a
 placeholder:
 

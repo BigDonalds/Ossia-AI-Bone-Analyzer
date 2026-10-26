@@ -1,0 +1,56 @@
+# Builds the iPhone and iPad app on one of GitHub's macOS machines, since iOS
+# apps can only be built on a Mac. Runs on every push to main that touches the
+# app, or by hand from the Actions tab (Run workflow).
+#
+# The build is unsigned for now: it checks that the app compiles for iOS.
+# Signing and the App Store Connect upload are added once the Apple Developer
+# account exists.
+
+name: iOS build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'app/**'
+      - '.github/workflows/ios.yml'
+
+concurrency:
+  group: ios-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: macos-26
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.44.4
+          cache: true
+
+      - name: Tool versions
+        run: |
+          xcodebuild -version
+          flutter --version
+
+      - name: Resolve packages
+        run: flutter pub get
+
+      # The on-device model is kept out of the repository (see ../.gitignore),
+      # so this build can't analyse photos. It still shows whether the app builds.
+      - name: Check for the model
+        run: |
+          if [ ! -f assets/model/ossia.onnx ]; then
+            echo "::warning::assets/model/ossia.onnx isn't in the repository, so this build has no model."
+          fi
+
+      - name: Build (unsigned)
+        run: flutter build ios --release --no-codesign
