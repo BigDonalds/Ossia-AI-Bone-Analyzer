@@ -7,9 +7,6 @@
 *.pt
 *.pth
 
-# The exported on-device model (about 51 MB); written by training/scripts/export_mobile.py
-/app/assets/model/ossia.onnx
-
 # Python
 __pycache__/
 *.py[cod]

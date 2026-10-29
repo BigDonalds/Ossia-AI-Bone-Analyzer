@@ -75,10 +75,12 @@ come from many sources under different licences, so they can't be
 redistributed together. `training/README.md` describes the folder layout and the
 annotation format, so a dataset can be assembled in the same shape.
 
-The exported model (`app/assets/model/ossia.onnx`, about 51 MB) is not checked
-in either. Export one from a trained checkpoint before building the app.
-Without it the app still builds and runs, but only the Online engine (the
-server in `training/`) can analyse photos.
+The exported model (`app/assets/model/ossia.onnx`, about 55 MB) is in the
+repository through Git LFS, so install Git LFS (`git lfs install`) before
+cloning; otherwise the file arrives as a short pointer instead of the model.
+Exporting from a newer checkpoint replaces it. Without a real model file the
+app still builds and runs, but only the Online engine (the server in
+`training/`) can analyse photos.
 
 ## Not a diagnosis
 

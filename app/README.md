@@ -17,9 +17,11 @@ flutter run -d ios
 
 iOS builds need a Mac with Xcode. Without one, the iOS build workflow
 (`../.github/workflows/ios.yml`) builds the app on a GitHub macOS machine on
-every push to main that changes `app/`, or from the Actions tab. For now it
-builds unsigned and without the on-device model, which isn't in the
-repository, so it only checks that the app compiles for iOS. On Windows or
+every push to main that changes `app/`, or from the Actions tab. Without the
+Apple secrets listed at the top of that file it builds unsigned, which only
+checks that the app compiles. With them it signs the build with the App Store
+distribution certificate and uploads it to App Store Connect, where it appears
+in TestFlight; that build needs `assets/model/ossia.onnx` in the repository. On Windows or
 Linux the layout can be previewed in the browser (narrow the window, or use device emulation at
 393 × 852). On the web there is no file system, so photos show as a
 placeholder:
@@ -219,7 +221,7 @@ cd ../training
 python scripts/export_mobile.py checkpoints/bone_analyzer.pt
 ```
 
-This writes `assets/model/ossia.onnx` (about 51 MB, not checked in),
+This writes `assets/model/ossia.onnx` (about 55 MB, stored with Git LFS),
 `ossia_model.json`, `length_reference.json` and the test fixtures, and checks
 that the exported model gives the same answers as PyTorch. After training a
 new model, export again and rebuild the app. The app copies the model out of its
