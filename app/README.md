@@ -17,11 +17,11 @@ flutter run -d ios
 
 iOS builds need a Mac with Xcode. Without one, the iOS build workflow
 (`../.github/workflows/ios.yml`) builds the app on a GitHub macOS machine on
-every push to main that changes `app/`, or from the Actions tab. Without the
-Apple secrets listed at the top of that file it builds unsigned, which only
-checks that the app compiles. With them it signs the build with the App Store
-distribution certificate and uploads it to App Store Connect, where it appears
-in TestFlight; that build needs `assets/model/ossia.onnx` in the repository. On Windows or
+every push to main that changes `app/`, or from the Actions tab. A push builds
+unsigned, which only checks that the app compiles. Started by hand from the
+Actions tab, with the Apple secrets listed at the top of that file in place, it
+signs the build with the App Store distribution certificate and uploads it to
+App Store Connect, where it appears in TestFlight. On Windows or
 Linux the layout can be previewed in the browser (narrow the window, or use device emulation at
 393 × 852). On the web there is no file system, so photos show as a
 placeholder:
@@ -67,7 +67,8 @@ is fine for sideloading but refused by the Play Store. A phone with a
 debug-signed APK installed has to uninstall it before it can install the store
 version.
 
-Before building, export a model into `assets/model/` (see
+The model in `assets/model/` comes with the repository (through Git LFS). To
+ship a newly trained one, export it first (see
 [Where the analysis runs](#where-the-analysis-runs)).
 
 ## What is in it
@@ -221,11 +222,12 @@ cd ../training
 python scripts/export_mobile.py checkpoints/bone_analyzer.pt
 ```
 
-This writes `assets/model/ossia.onnx` (about 55 MB, stored with Git LFS),
-`ossia_model.json`, `length_reference.json` and the test fixtures, and checks
-that the exported model gives the same answers as PyTorch. After training a
-new model, export again and rebuild the app. The app copies the model out of its
-bundle once per model version, so an update never runs a stale copy.
+This writes `assets/model/ossia.onnx` (about 55 MB, tracked with Git LFS so it
+can live in the repository), `ossia_model.json`, `length_reference.json` and
+the test fixtures, and checks that the exported model gives the same answers as
+PyTorch. After training a new model, export again, commit the new files and
+rebuild the app. The app copies the model out of its bundle once per model
+version, so an update never runs a stale copy.
 
 ### Online
 

@@ -2,11 +2,11 @@
 # apps can only be built on a Mac. Runs on every push to main that touches the
 # app, or by hand from the Actions tab (Run workflow).
 #
-# Without the Apple secrets below the build is unsigned and only checks that
-# the app compiles. With them it is signed with the App Store distribution
-# certificate and uploaded to App Store Connect, where it shows up in
-# TestFlight a few minutes later. The secrets (Settings → Secrets and
-# variables → Actions):
+# A push only checks that the app compiles: the build is unsigned and thrown
+# away. Started by hand (Run workflow) with the Apple secrets below in place,
+# it is instead signed with the App Store distribution certificate and
+# uploaded to App Store Connect, where it shows up in TestFlight a few minutes
+# later. The secrets (Settings → Secrets and variables → Actions):
 #
 #   APPLE_TEAM_ID            the 10-character team ID (developer.apple.com → Membership details)
 #   APPSTORE_ISSUER_ID       App Store Connect → Users and Access → Integrations → Team Keys
@@ -40,7 +40,7 @@ jobs:
       run:
         working-directory: app
     env:
-      SIGNED: ${{ secrets.APPSTORE_KEY_ID != '' }}
+      SIGNED: ${{ github.event_name == 'workflow_dispatch' && secrets.APPSTORE_KEY_ID != '' }}
     steps:
       - uses: actions/checkout@v5
         with:

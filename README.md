@@ -45,12 +45,21 @@ app/
   lib/                 the Flutter app
   assets/model/        the exported model (written by training/scripts/export_mobile.py)
   test/, tool/         tests and check scripts
+.github/workflows/     builds the iOS app on GitHub's Macs (see app/README.md)
 ```
 
 `training/README.md` and `app/README.md` cover each part in detail, and
 `PRIVACY.md` is the app's privacy policy.
 
 ## Quick start
+
+The exported model is stored with Git LFS, so install that before cloning or
+the model arrives as a short pointer file:
+
+```bash
+git lfs install
+git clone https://github.com/BigDonalds/Ossia-AI-Bone-Analyzer.git
+```
 
 Train and export (Python 3.10 or newer):
 
@@ -76,11 +85,10 @@ redistributed together. `training/README.md` describes the folder layout and the
 annotation format, so a dataset can be assembled in the same shape.
 
 The exported model (`app/assets/model/ossia.onnx`, about 55 MB) is in the
-repository through Git LFS, so install Git LFS (`git lfs install`) before
-cloning; otherwise the file arrives as a short pointer instead of the model.
-Exporting from a newer checkpoint replaces it. Without a real model file the
-app still builds and runs, but only the Online engine (the server in
-`training/`) can analyse photos.
+repository, so the app can be built straight after cloning. Exporting from a
+newer checkpoint replaces it. Without a real model file the app still builds
+and runs, but only the Online engine (the server in `training/`) can analyse
+photos.
 
 ## Not a diagnosis
 

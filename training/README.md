@@ -216,7 +216,8 @@ Writes into `../app` (or `--app PATH`):
 
 - `assets/model/ossia.onnx`: the network with normalisation, calibration and
   the final softmax or sigmoid built in. Large weights are stored as float16
-  and widened back to float32 when the app loads them.
+  and widened back to float32 when the app loads them. The file is tracked
+  with Git LFS, so a new export shows up as an ordinary changed file to commit.
 - `assets/model/ossia_model.json`: label lists, the family rule and the
   length-check settings.
 - `assets/model/length_reference.json`: a copy of the reference sizes.
