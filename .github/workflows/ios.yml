@@ -103,11 +103,15 @@ jobs:
           security list-keychain -d user -s "$KEYCHAIN"
           security find-identity -v -p codesigning "$KEYCHAIN"
           mkdir -p "$(dirname "$KEY_FILE")"
-          # The key is pasted into the secret from Windows, so drop any carriage
-          # returns and make sure the file ends with a line break, or Xcode
-          # rejects it as an invalid PEM document.
-          printf '%s\n' "$PRIVATE_KEY" | tr -d '\r' > "$KEY_FILE"
-          openssl pkey -in "$KEY_FILE" -noout && echo "App Store Connect key reads fine"
+          # The key is pasted into the secret by hand, so rebuild the file from the
+          # base64 text alone: Windows line endings, one long line or stray spaces
+          # would all make Xcode reject it as an invalid PEM document.
+          BODY=$(printf '%s' "$PRIVATE_KEY" | tr -d '\r' | grep -v -- '-----' | tr -d ' \t\n')
+          { echo '-----BEGIN PRIVATE KEY-----'; printf '%s\n' "$BODY" | fold -w 64; echo '-----END PRIVATE KEY-----'; } > "$KEY_FILE"
+          openssl pkey -in "$KEY_FILE" -noout && echo "App Store Connect key reads fine" || {
+            echo "::error::APPSTORE_PRIVATE_KEY doesn't hold a readable key ($(printf '%s' "$BODY" | wc -c | tr -d ' ') characters of key text). Paste the whole .p8 file again."
+            exit 1
+          }
 
       - name: Archive (signed)
         if: env.SIGNED == 'true'
