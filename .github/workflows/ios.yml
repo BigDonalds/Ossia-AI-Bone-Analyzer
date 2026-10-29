@@ -14,6 +14,7 @@
 #   APPSTORE_PRIVATE_KEY     the whole text of the downloaded AuthKey_<KEY_ID>.p8 file
 #   IOS_DIST_CERT_P12        the Apple Distribution certificate and its private key as a .p12, base64
 #   IOS_DIST_CERT_PASSWORD   the password the .p12 was exported with
+#   IOS_PROVISIONING_PROFILE the App Store provisioning profile for the app (.mobileprovision), base64
 #
 # The signed build needs the on-device model, assets/model/ossia.onnx, in the
 # repository; it fails early when it is missing.
@@ -84,6 +85,7 @@ jobs:
           P12_PASSWORD: ${{ secrets.IOS_DIST_CERT_PASSWORD }}
           PRIVATE_KEY: ${{ secrets.APPSTORE_PRIVATE_KEY }}
           APPSTORE_KEY_ID: ${{ secrets.APPSTORE_KEY_ID }}
+          PROFILE_BASE64: ${{ secrets.IOS_PROVISIONING_PROFILE }}
         run: |
           KEY_FILE="$RUNNER_TEMP/private_keys/AuthKey_$APPSTORE_KEY_ID.p8"
           echo "KEY_FILE=$KEY_FILE" >> "$GITHUB_ENV"
@@ -102,6 +104,20 @@ jobs:
           security set-key-partition-list -S apple-tool:,apple: -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN"
           security list-keychain -d user -s "$KEYCHAIN"
           security find-identity -v -p codesigning "$KEYCHAIN"
+          # The provisioning profile goes where Xcode looks for profiles, named by its UUID
+          if [ -z "$PROFILE_BASE64" ]; then
+            echo "::error::The IOS_PROVISIONING_PROFILE secret is missing."
+            exit 1
+          fi
+          PROFILE="$RUNNER_TEMP/ossia.mobileprovision"
+          echo -n "$PROFILE_BASE64" | base64 --decode -o "$PROFILE"
+          security cms -D -i "$PROFILE" > "$RUNNER_TEMP/profile.plist"
+          PROFILE_UUID=$(/usr/libexec/PlistBuddy -c 'Print :UUID' "$RUNNER_TEMP/profile.plist")
+          PROFILE_NAME=$(/usr/libexec/PlistBuddy -c 'Print :Name' "$RUNNER_TEMP/profile.plist")
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          cp "$PROFILE" ~/Library/MobileDevice/Provisioning\ Profiles/"$PROFILE_UUID.mobileprovision"
+          echo "PROFILE_NAME=$PROFILE_NAME" >> "$GITHUB_ENV"
+          echo "Profile: $PROFILE_NAME"
           mkdir -p "$(dirname "$KEY_FILE")"
           # The key is pasted into the secret by hand, so rebuild the file from the
           # base64 text alone: Windows line endings, one long line or stray spaces
@@ -122,18 +138,7 @@ jobs:
         run: |
           # The build number must go up with every upload; the run number does.
           flutter build ios --release --config-only --no-codesign --build-number "$GITHUB_RUN_NUMBER"
-          xcodebuild archive \
-            -workspace ios/Runner.xcworkspace \
-            -scheme Runner \
-            -configuration Release \
-            -destination 'generic/platform=iOS' \
-            -archivePath build/ios/Runner.xcarchive \
-            DEVELOPMENT_TEAM="$APPLE_TEAM_ID" \
-            CODE_SIGN_STYLE=Automatic \
-            -allowProvisioningUpdates \
-            -authenticationKeyPath "$KEY_FILE" \
-            -authenticationKeyID "$APPSTORE_KEY_ID" \
-            -authenticationKeyIssuerID "$APPSTORE_ISSUER_ID"
+          xcodebuild archive -workspace ios/Runner.xcworkspace -scheme Runner -configuration Release -destination 'generic/platform=iOS' -archivePath build/ios/Runner.xcarchive DEVELOPMENT_TEAM="$APPLE_TEAM_ID" CODE_SIGN_STYLE=Manual CODE_SIGN_IDENTITY="Apple Distribution" PROVISIONING_PROFILE_SPECIFIER="$PROFILE_NAME"
 
       - name: Export the .ipa
         if: env.SIGNED == 'true'
@@ -152,7 +157,14 @@ jobs:
             <key>destination</key>
             <string>export</string>
             <key>signingStyle</key>
-            <string>automatic</string>
+            <string>manual</string>
+            <key>signingCertificate</key>
+            <string>Apple Distribution</string>
+            <key>provisioningProfiles</key>
+            <dict>
+              <key>io.github.bigdonalds.ossia</key>
+              <string>$PROFILE_NAME</string>
+            </dict>
             <key>teamID</key>
             <string>$APPLE_TEAM_ID</string>
             <key>uploadSymbols</key>
@@ -162,14 +174,7 @@ jobs:
           </dict>
           </plist>
           PLIST
-          xcodebuild -exportArchive \
-            -archivePath build/ios/Runner.xcarchive \
-            -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist" \
-            -exportPath build/ios/ipa \
-            -allowProvisioningUpdates \
-            -authenticationKeyPath "$KEY_FILE" \
-            -authenticationKeyID "$APPSTORE_KEY_ID" \
-            -authenticationKeyIssuerID "$APPSTORE_ISSUER_ID"
+          xcodebuild -exportArchive -archivePath build/ios/Runner.xcarchive -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist" -exportPath build/ios/ipa
           ls -l build/ios/ipa
 
       - name: Upload to App Store Connect
