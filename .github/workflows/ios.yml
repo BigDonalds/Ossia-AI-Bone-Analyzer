@@ -103,7 +103,12 @@ jobs:
           security list-keychain -d user -s "$KEYCHAIN"
           security find-identity -v -p codesigning "$KEYCHAIN"
           mkdir -p "$(dirname "$KEY_FILE")"
-          echo -n "$PRIVATE_KEY" > "$KEY_FILE"
+          # The key is pasted into the secret from Windows, so drop any carriage
+          # returns and make sure the file ends with a line break, or Xcode
+          # rejects it as an invalid PEM document.
+          printf '%s
+' "$PRIVATE_KEY" | tr -d '' > "$KEY_FILE"
+          openssl pkey -in "$KEY_FILE" -noout && echo "App Store Connect key reads fine"
 
       - name: Archive (signed)
         if: env.SIGNED == 'true'
