@@ -75,9 +75,7 @@ enum GuideShape {
           ..moveTo(p(0.5, 0.6).dx, p(0.5, 0.6).dy)
           ..lineTo(p(0.44, 0.7).dx, p(0.44, 0.7).dy)
           ..lineTo(p(0.56, 0.7).dx, p(0.56, 0.7).dy)
-          ..close()
-          ..moveTo(p(0.36, 0.86).dx, p(0.36, 0.86).dy)
-          ..lineTo(p(0.64, 0.86).dx, p(0.64, 0.86).dy);
+          ..close();
       case GuideShape.flat:
         return Path()
           ..moveTo(p(0.2, 0.3).dx, p(0.2, 0.3).dy)
@@ -89,19 +87,27 @@ enum GuideShape {
     }
   }
 
-  /// Where the cartoon face sits, or null for shapes with their own features.
-  Offset? faceAt(Rect r) {
+  /// Where the cartoon face sits.
+  Offset faceAt(Rect r) {
     switch (this) {
       case GuideShape.longBone:
         return r.center;
       case GuideShape.skull:
-        return null;
+        return Offset(r.left + r.width * 0.5, r.top + r.height * 0.62);
       case GuideShape.flat:
         return Offset(r.left + r.width * 0.46, r.top + r.height * 0.5);
       case GuideShape.small:
         return Offset(r.left + r.width * 0.5, r.top + r.height * 0.74);
     }
   }
+
+  /// How the face is laid out, in fractions of the shape's smaller side:
+  /// eye offset from the face centre, eye radius, half-width and offset of the
+  /// smile. The skull's eyes sit in its sockets, so they are set wide apart.
+  ({Offset eye, double eyeR, double smileDx, double smileDy}) get faceLayout =>
+      this == GuideShape.skull
+          ? (eye: const Offset(0.18, -0.18), eyeR: 0.06, smileDx: 0.12, smileDy: 0.16)
+          : (eye: const Offset(0.12, -0.05), eyeR: 0.05, smileDx: 0.07, smileDy: 0.06);
 }
 
 Path _vertical(Rect r, Path Function(Rect) horizontal) {
@@ -243,8 +249,8 @@ class BoneGuidePainter extends CustomPainter {
     _dashed(canvas, shape.details(inner), 9, 7, 3, Colors.white.withValues(alpha: 0.85),
         shadow: true);
 
-    final Offset? face = shape.faceAt(inner);
-    if (face != null) _face(canvas, face, math.min(inner.width, inner.height));
+    _face(canvas, shape.faceAt(inner), math.min(inner.width, inner.height),
+        shape.faceLayout);
 
     _lengthArrow(canvas, box);
   }
@@ -278,18 +284,21 @@ class BoneGuidePainter extends CustomPainter {
     }
   }
 
-  void _face(Canvas canvas, Offset c, double scale) {
-    final double eye = scale * 0.05;
+  void _face(Canvas canvas, Offset c, double scale,
+      ({Offset eye, double eyeR, double smileDx, double smileDy}) lay) {
+    final double eye = scale * lay.eyeR;
     final Paint white = Paint()..color = Colors.white.withValues(alpha: 0.9);
     final Paint ink = Paint()..color = _ink.withValues(alpha: 0.85);
     for (final double sx in <double>[-1, 1]) {
-      final Offset e = c + Offset(sx * scale * 0.12, -scale * 0.05);
+      final Offset e = c + Offset(sx * lay.eye.dx, lay.eye.dy) * scale;
       canvas.drawCircle(e, eye, white);
       canvas.drawCircle(e + Offset(0, eye * 0.2), eye * 0.5, ink);
     }
+    final double sx = scale * lay.smileDx;
+    final double sy = c.dy + scale * lay.smileDy;
     final Path smile = Path()
-      ..moveTo(c.dx - scale * 0.07, c.dy + scale * 0.06)
-      ..quadraticBezierTo(c.dx, c.dy + scale * 0.14, c.dx + scale * 0.07, c.dy + scale * 0.06);
+      ..moveTo(c.dx - sx, sy)
+      ..quadraticBezierTo(c.dx, sy + sx * 1.15, c.dx + sx, sy);
     canvas.drawPath(
       smile,
       Paint()

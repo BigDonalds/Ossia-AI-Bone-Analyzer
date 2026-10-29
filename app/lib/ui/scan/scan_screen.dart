@@ -262,7 +262,7 @@ class _HeroCard extends StatelessWidget {
             alignment: AlignmentDirectional.centerEnd,
             child: Padding(
               padding: EdgeInsetsDirectional.only(end: 4),
-              child: BoneBuddy(size: 150, mood: BuddyMood.wink, tilt: 0.12),
+              child: BoneBuddy(size: 150, mood: BuddyMood.happy, tilt: 0.12),
             ),
           ),
           const SizedBox(height: 10),

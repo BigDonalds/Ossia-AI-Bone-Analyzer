@@ -155,13 +155,21 @@ class RemoteEngine implements AnalysisEngine {
 
   @override
   Stream<AnalysisEvent> analyze(List<File> images, {double? lengthCm}) async* {
+    const bool web = bool.fromEnvironment('dart.library.js_interop');
     final Uri uri;
     final http.MultipartRequest request;
     try {
       uri = endpointFor(baseUrl);
       request = http.MultipartRequest('POST', uri);
       for (final File image in images) {
-        request.files.add(await http.MultipartFile.fromPath('image', image.path));
+        if (web) {
+          // A photo picked in the browser has a blob URL for a path and no file
+          // behind it, so its bytes are fetched instead.
+          final http.Response photo = await http.get(Uri.parse(image.path));
+          request.files.add(http.MultipartFile.fromBytes('image', photo.bodyBytes, filename: 'photo.jpg'));
+        } else {
+          request.files.add(await http.MultipartFile.fromPath('image', image.path));
+        }
       }
     } on FormatException {
       yield AnalysisFailed((AppLocalizations l) => l.errBadOnlineAddress);

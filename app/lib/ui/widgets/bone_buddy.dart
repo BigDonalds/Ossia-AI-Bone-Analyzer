@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/theme/palette.dart';
 
+/// [wink] winks one eye now and then instead of blinking both.
 enum BuddyMood { happy, wow, thinking, sad, wink }
 
 /// The classic cartoon dog-bone outline, fitted to [r]: a shaft with a pair of
@@ -196,7 +197,7 @@ class _BuddyPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round;
 
     void eye(Offset o, {bool closed = false}) {
-      if (closed || blink) {
+      if (closed) {
         canvas.drawArc(
           Rect.fromCircle(center: o, radius: eyeR * 0.8),
           math.pi * 0.15,
@@ -216,8 +217,9 @@ class _BuddyPainter extends CustomPainter {
       inkLine.strokeWidth = stroke * 0.8;
     }
 
-    eye(le);
-    eye(re, closed: mood == BuddyMood.wink);
+    // A blink closes both eyes; a wink is a blink of one eye only.
+    eye(le, closed: blink && mood != BuddyMood.wink);
+    eye(re, closed: blink);
 
     // Cheeks.
     final Paint blush = Paint()..color = _blush.withValues(alpha: 0.75);
