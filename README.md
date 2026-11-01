@@ -97,6 +97,12 @@ qualified osteologist, and its output must not be used for medical, legal or
 forensic decisions. Age and sex in particular come from the least certain
 stages of the pipeline.
 
+## Acknowledgements
+
+Part of the training data comes from the
+[Russell Bone Atlas](https://www.russellboneatlas.com), used with the kind
+permission of its author. Thank you.
+
 ## License
 
 The code is released under the [MIT License](LICENSE). The fonts in
