@@ -2161,7 +2161,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get aboutIntro =>
-      'Fotografiere einen Knochen, und Ossia sagt dir, was es ist: welcher Knochen, Mensch oder Tier, welches Tier und welche Spuren er trägt. Jede Antwort zeigt, wie sicher sie ist, damit du selbst urteilen kannst.';
+      'Ossia wurde für Orte entwickelt, an denen es kaum Knochenfachleute, keine Vergleichssammlungen und kein zuverlässiges Internet gibt und sich schwer klären lässt, ob ein gefundener Knochen von einem Menschen stammt. Es funktioniert offline, und nutzen kann es auch jeder andere.\n\nFotografiere einen Knochen, und Ossia sagt dir, was es ist: welcher Knochen, Mensch oder Tier, welches Tier und welche Spuren er trägt. Jede Antwort zeigt, wie sicher sie ist, damit du selbst urteilen kannst.';
 
   @override
   String get aboutKnows => 'Was Ossia kennt';

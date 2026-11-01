@@ -3763,7 +3763,7 @@ abstract class AppLocalizations {
   /// No description provided for @aboutIntro.
   ///
   /// In en, this message translates to:
-  /// **'Take a photo of a bone and Ossia tells you what it is: which bone, human or animal, which animal, and any marks on it. Every answer shows how sure it is, so you can judge it for yourself.'**
+  /// **'Ossia was made for places with few bone specialists, no reference collections and unreliable internet, where it is hard to learn whether a found bone is human. It works offline, and anyone else can use it too.\n\nTake a photo of a bone and Ossia tells you what it is: which bone, human or animal, which animal, and any marks on it. Every answer shows how sure it is, so you can judge it for yourself.'**
   String get aboutIntro;
 
   /// Group heading
