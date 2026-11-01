@@ -1,10 +1,12 @@
 # Ossia
 
-The phone app for the bone analyzer, built in Flutter. Photograph a bone (from
-as many angles as you like) and the app walks the nine analysis stages and
-reports what the model saw, with the confidence behind every call shown. The
-model runs on the phone itself, or on a computer through the server in
-`../training`; both give the same report. The app is in English, German and
+The phone app for the bone analyzer, built in Flutter. It was made for places
+where forensic help is hard to reach (few bone specialists, no reference
+collections, unreliable internet), and anyone else can use it too. Photograph a
+bone (from as many angles as you like) and the app walks the nine analysis
+stages and reports what the model saw, with the confidence behind every call
+shown. The model runs on the phone itself, or on a computer through the server
+in `../training`; both give the same report. The app is in English, German and
 Arabic, and works with no signal.
 
 ## Running it

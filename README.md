@@ -1,8 +1,14 @@
 # Ossia: AI Bone Analyzer
 
-Identifies a bone from a photograph. One network reads the photo and answers
-nine questions about it, from "is this a bone at all?" down to the taxon and,
-for human bones, an age group and sex. The project has two parts:
+Ossia identifies a bone from a photograph. It was made for places where
+forensic help is hard to reach (few bone specialists, no reference collections,
+unreliable internet), so that someone who finds a bone there can get a first
+answer on the spot, offline, including whether it is human. Anyone else can use
+it too.
+
+One network reads the photo and answers nine questions about it, from "is this
+a bone at all?" down to the taxon and, for human bones, an age group and sex.
+The project has two parts:
 
 - **`training/`** is the Python package `bone_analyzer`. It trains the model,
   calibrates its confidence, serves it over HTTP and exports it for phones.
