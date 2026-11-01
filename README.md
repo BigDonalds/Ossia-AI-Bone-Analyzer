@@ -101,7 +101,7 @@ stages of the pipeline.
 
 Part of the training data comes from the
 [Russell Bone Atlas](https://www.russellboneatlas.com), used with the kind
-permission of its author. Thank you.
+permission of its author, Jim Russell. Thank you.
 
 ## License
 
