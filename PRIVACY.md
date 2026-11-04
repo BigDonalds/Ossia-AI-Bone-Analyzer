@@ -9,7 +9,7 @@ app, under Settings → Privacy policy.
 
 Ossia collects nothing about you. There are no accounts, no ads, no usage
 statistics and no tracking, and nothing is shared with anyone. Links to the
-app's store page open outside the app, and the app sends nothing by itself.
+app's store page open outside the app.
 
 ## Photos and reports
 

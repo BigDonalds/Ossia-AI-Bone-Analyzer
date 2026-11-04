@@ -2237,7 +2237,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get privacyShortBody =>
-      'Ossia sammelt nichts über dich. Es gibt keine Konten, keine Werbung, keine Nutzungsstatistik und kein Tracking, und nichts wird an andere weitergegeben. Links zur Store-Seite der App öffnen sich außerhalb der App, und die App sendet von sich aus nichts.';
+      'Ossia sammelt nichts über dich. Es gibt keine Konten, keine Werbung, keine Nutzungsstatistik und kein Tracking, und nichts wird an andere weitergegeben. Links zur Store-Seite der App öffnen sich außerhalb der App.';
 
   @override
   String get privacyPhotosTitle => 'Fotos und Berichte';

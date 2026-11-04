@@ -3901,7 +3901,7 @@ abstract class AppLocalizations {
   /// No description provided for @privacyShortBody.
   ///
   /// In en, this message translates to:
-  /// **'Ossia collects nothing about you. There are no accounts, no ads, no usage statistics and no tracking, and nothing is shared with anyone. Links to the app’s store page open outside the app, and the app sends nothing by itself.'**
+  /// **'Ossia collects nothing about you. There are no accounts, no ads, no usage statistics and no tracking, and nothing is shared with anyone. Links to the app’s store page open outside the app.'**
   String get privacyShortBody;
 
   /// No description provided for @privacyPhotosTitle.
