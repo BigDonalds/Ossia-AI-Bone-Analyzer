@@ -10,6 +10,7 @@ import '../../l10n/l10n.dart';
 import '../widgets/phone_icon.dart';
 import '../widgets/primitives.dart';
 import '../widgets/sheets.dart';
+import '../widgets/text_fit.dart';
 
 /// A language's badge ("EN", "DE", "ع") on a round sticker.
 class LanguageBadge extends StatelessWidget {
@@ -56,7 +57,12 @@ class _LiftedBadgeText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Widget text = Text(language.badge, textDirection: language.direction, style: style);
+    final Widget text = Text(
+      language.badge,
+      textDirection: language.direction,
+      textScaler: TextFit.tiny(context),
+      style: style,
+    );
     if (!language.rtl) return text;
     return Transform.translate(offset: Offset(0, -(style.fontSize ?? 14) * lift), child: text);
   }
@@ -100,56 +106,82 @@ class LanguageChoice extends StatelessWidget {
     final AppColors c = context.colors;
     final TypeScale type = language == null ? AppType.current : AppType.scaleFor(language!.code);
     final Color fg = selected ? c.onAccent : c.textPrimary;
+    final TextStyle titleStyle = (big ? type.title2 : type.headline).copyWith(color: fg);
+    final TextStyle subtitleStyle = type.footnote.copyWith(
+      color: selected ? c.onAccent.withValues(alpha: 0.75) : c.textSecondary,
+    );
 
-    Widget content = Row(
+    final Widget words = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        leading,
-        SizedBox(width: big ? 14 : 12),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text(title, style: (big ? type.title2 : type.headline).copyWith(color: fg)),
-              const SizedBox(height: 2),
-              Text(
-                subtitle,
-                style: type.footnote.copyWith(
-                  color: selected ? c.onAccent.withValues(alpha: 0.75) : c.textSecondary,
-                ),
-              ),
-              if (tag != null) ...<Widget>[
-                const SizedBox(height: 7),
-                Container(
-                  padding: const EdgeInsetsDirectional.fromSTEB(7, 3, 10, 3.5),
-                  decoration: BoxDecoration(
-                    color: c.surface,
-                    borderRadius: BorderRadius.circular(99),
-                    border: Border.all(color: c.ink, width: 1.5),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      PhoneIcon(size: 13, color: c.textPrimary),
-                      const SizedBox(width: 4),
-                      Text(
-                        tag!,
-                        style: type.caption.copyWith(
-                          color: c.textPrimary,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ],
+        Text(title, style: titleStyle),
+        const SizedBox(height: 2),
+        Text(subtitle, style: subtitleStyle),
+        if (tag != null) ...<Widget>[
+          const SizedBox(height: 7),
+          Container(
+            padding: const EdgeInsetsDirectional.fromSTEB(7, 3, 10, 3.5),
+            decoration: BoxDecoration(
+              color: c.surface,
+              borderRadius: BorderRadius.circular(TextFit.large(context) ? 20 : 99),
+              border: Border.all(color: c.ink, width: 1.5),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                PhoneIcon(size: 13, color: c.textPrimary),
+                const SizedBox(width: 4),
+                Flexible(
+                  child: Text(
+                    tag!,
+                    style: type.caption.copyWith(
+                      color: c.textPrimary,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
               ],
-            ],
+            ),
           ),
-        ),
-        const SizedBox(width: 10),
-        _Tick(selected: selected),
+        ],
       ],
     );
+
+    // Under large text the badge and tick take a line of their own above the
+    // words when a word wouldn't fit between them. This sits inside a
+    // first-run page that measures its height, so it goes by the screen's
+    // width: the card is nearly as wide, less margins, padding and those two.
+    final double room = MediaQuery.sizeOf(context).width - 72 - (big ? 50 + 14 : 40 + 12) - 38;
+    final bool stack = TextFit.large(context) &&
+        (TextFit.longestWord(context, title, titleStyle) > room ||
+            TextFit.longestWord(context, subtitle, subtitleStyle) > room);
+
+    Widget content = stack
+        ? Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  leading,
+                  const Spacer(),
+                  _Tick(selected: selected),
+                ],
+              ),
+              const SizedBox(height: 8),
+              words,
+            ],
+          )
+        : Row(
+            children: <Widget>[
+              leading,
+              SizedBox(width: big ? 14 : 12),
+              Expanded(child: words),
+              const SizedBox(width: 10),
+              _Tick(selected: selected),
+            ],
+          );
     if (language != null) {
       content = Directionality(textDirection: language!.direction, child: content);
     }

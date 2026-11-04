@@ -20,6 +20,7 @@ import '../widgets/inset_group.dart';
 import '../widgets/nav.dart';
 import '../widgets/primitives.dart';
 import '../widgets/sheets.dart';
+import '../widgets/text_fit.dart';
 import '../widgets/wide.dart';
 import 'about_screen.dart';
 import 'privacy_screen.dart';
@@ -360,23 +361,41 @@ class _StackedRow extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: Text(
-                  title,
-                  style: AppType.body.copyWith(color: c.textPrimary),
-                ),
+          // Under large text the value goes under the title when they don't
+          // fit on one line.
+          if (trailingText != null && TextFit.large(context))
+            SizedBox(
+              width: double.infinity,
+              child: Wrap(
+                alignment: WrapAlignment.spaceBetween,
+                spacing: 8,
+                children: <Widget>[
+                  Text(title, style: AppType.body.copyWith(color: c.textPrimary)),
+                  Text(
+                    trailingText!,
+                    style: AppType.subhead.copyWith(color: c.textSecondary),
+                  ),
+                ],
               ),
-              if (trailingText != null) ...<Widget>[
-                const SizedBox(width: 8),
-                Text(
-                  trailingText!,
-                  style: AppType.subhead.copyWith(color: c.textSecondary),
+            )
+          else
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: Text(
+                    title,
+                    style: AppType.body.copyWith(color: c.textPrimary),
+                  ),
                 ),
+                if (trailingText != null) ...<Widget>[
+                  const SizedBox(width: 8),
+                  Text(
+                    trailingText!,
+                    style: AppType.subhead.copyWith(color: c.textSecondary),
+                  ),
+                ],
               ],
-            ],
-          ),
+            ),
           if (description != null) ...<Widget>[
             const SizedBox(height: 3),
             Text(
@@ -402,7 +421,9 @@ class _AccentPicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Brightness b = Theme.of(context).brightness;
-    return Row(
+    // A second line on a narrow phone.
+    return Wrap(
+      runSpacing: 10,
       children: AccentTone.values.map((AccentTone t) {
         final bool active = t == value;
         final Color colour = t.resolve(b);

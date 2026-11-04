@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:math' as math;
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ import '../../data/settings_controller.dart';
 import '../../l10n/l10n.dart';
 import '../widgets/bone_buddy.dart';
 import '../widgets/primitives.dart';
+import '../widgets/text_fit.dart';
 import '../widgets/wide.dart';
 import 'auto_snap_fx.dart';
 import 'bone_guide.dart';
@@ -623,14 +625,19 @@ class _CameraScreenState extends State<CameraScreen>
               child: LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints box) {
                   final Size screen = box.biggest;
+                  // Under large text the tip below may need more room.
                   final Rect band = Rect.fromLTRB(
                     0,
                     safe.top + 116,
                     screen.width,
-                    screen.height - safe.bottom - 214,
+                    screen.height - safe.bottom - math.max(214, 12 + 95 + 16 + _tipBlock(screen)),
                   );
-                  final Rect guide = _guideRect(band);
+                  final double chip = _chipHeight(screen.width);
+                  final Rect guide = _guideRect(band, chip);
                   _guide = guide;
+                  // Large text explaining why there is no camera can leave no
+                  // room for an outline, and then there's no use for one.
+                  final bool roomy = guide.height >= 60;
                   return GestureDetector(
                     behavior: HitTestBehavior.opaque,
                     onTapUp: (TapUpDetails d) => _focusAt(d, screen),
@@ -641,20 +648,21 @@ class _CameraScreenState extends State<CameraScreen>
                     child: Stack(
                       clipBehavior: Clip.none,
                       children: <Widget>[
-                        Positioned.fill(
-                          child: AnimatedBuilder(
-                            animation: Listenable.merge(<Listenable>[_ants, _pop]),
-                            builder: (BuildContext context, _) => CustomPaint(
-                              painter: BoneGuidePainter(
-                                shape: _shape,
-                                box: guide,
-                                phase: _ants.value,
-                                accent: c.accent,
-                                pop: _pop.value,
+                        if (roomy)
+                          Positioned.fill(
+                            child: AnimatedBuilder(
+                              animation: Listenable.merge(<Listenable>[_ants, _pop]),
+                              builder: (BuildContext context, _) => CustomPaint(
+                                painter: BoneGuidePainter(
+                                  shape: _shape,
+                                  box: guide,
+                                  phase: _ants.value,
+                                  accent: c.accent,
+                                  pop: _pop.value,
+                                ),
                               ),
                             ),
                           ),
-                        ),
                         if (autoLive)
                           Positioned.fill(
                             child: IgnorePointer(
@@ -691,12 +699,13 @@ class _CameraScreenState extends State<CameraScreen>
                             ),
                           ),
                         // Distance cue, pinned under the guide.
-                        Positioned(
-                          left: 0,
-                          right: 0,
-                          top: guide.bottom + 12,
-                          child: Center(child: _distanceChip(c)),
-                        ),
+                        if (roomy)
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            top: guide.bottom + 12,
+                            child: Center(child: _distanceChip(c)),
+                          ),
                       ],
                     ),
                   );
@@ -739,6 +748,7 @@ class _CameraScreenState extends State<CameraScreen>
                               widget.angle == null
                                   ? context.l10n.camTitle
                                   : context.l10n.camAngle(widget.angle!),
+                              textScaler: TextFit.tiny(context),
                               style: AppType.button.copyWith(
                                 color: c.onAccent,
                                 fontSize: 14,
@@ -752,31 +762,38 @@ class _CameraScreenState extends State<CameraScreen>
                   ),
                   SizedBox(
                     width: 96,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        if (OnDeviceModel.supported) ...<Widget>[
+                    height: 47,
+                    // With their shadows the two buttons are a little wider
+                    // than this, and hang over its end.
+                    child: OverflowBox(
+                      alignment: AlignmentDirectional.centerStart,
+                      maxWidth: 102,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          if (OnDeviceModel.supported) ...<Widget>[
+                            RoundButton(
+                              icon: Icons.motion_photos_auto_rounded,
+                              color: _auto ? c.accent : null,
+                              iconColor: _auto ? c.onAccent : null,
+                              tooltip: context.l10n.camAuto,
+                              onTap: _toggleAuto,
+                            ),
+                            const SizedBox(width: 8),
+                          ],
                           RoundButton(
-                            icon: Icons.motion_photos_auto_rounded,
-                            color: _auto ? c.accent : null,
-                            iconColor: _auto ? c.onAccent : null,
-                            tooltip: context.l10n.camAuto,
-                            onTap: _toggleAuto,
+                            icon: switch (_flash) {
+                              FlashMode.auto => Icons.flash_auto_rounded,
+                              FlashMode.always => Icons.flash_on_rounded,
+                              _ => Icons.flash_off_rounded,
+                            },
+                            color: _flash == FlashMode.off ? null : c.accent,
+                            iconColor: _flash == FlashMode.off ? null : c.onAccent,
+                            tooltip: context.l10n.camFlash,
+                            onTap: _status == _CamStatus.ready ? _cycleFlash : null,
                           ),
-                          const SizedBox(width: 8),
                         ],
-                        RoundButton(
-                          icon: switch (_flash) {
-                            FlashMode.auto => Icons.flash_auto_rounded,
-                            FlashMode.always => Icons.flash_on_rounded,
-                            _ => Icons.flash_off_rounded,
-                          },
-                          color: _flash == FlashMode.off ? null : c.accent,
-                          iconColor: _flash == FlashMode.off ? null : c.onAccent,
-                          tooltip: context.l10n.camFlash,
-                          onTap: _status == _CamStatus.ready ? _cycleFlash : null,
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 ],
@@ -861,9 +878,9 @@ class _CameraScreenState extends State<CameraScreen>
 
   /// Largest box of the current shape's aspect that fits [band], leaving room
   /// underneath for the distance chip.
-  Rect _guideRect(Rect band) {
+  Rect _guideRect(Rect band, double chip) {
     final double maxW = band.width * 0.78;
-    final double maxH = (band.height - 44) * 0.94;
+    final double maxH = math.max(0.0, (band.height - chip) * 0.94);
     double w = maxW;
     double h = w / _shape.aspect;
     if (h > maxH) {
@@ -871,11 +888,69 @@ class _CameraScreenState extends State<CameraScreen>
       w = h * _shape.aspect;
     }
     return Rect.fromCenter(
-      center: Offset(band.center.dx, band.top + (band.height - 44) / 2),
+      center: Offset(band.center.dx, band.top + (band.height - chip) / 2),
       width: w,
       height: h,
     );
   }
+
+  /// Width of the words in the tip's bubble: the screen less its margins, the
+  /// buddy and the bubble's own padding.
+  double _tipRoom(double width) => width - 32 - 72 - 4 - 42;
+
+  /// Tallest the tip's words may get before they scroll in their bubble, so
+  /// the outline keeps some of the screen. Without a camera to aim, what went
+  /// wrong may take more.
+  double _tipLimit(Size screen) =>
+      screen.height * (_status == _CamStatus.denied || _status == _CamStatus.unavailable ? 0.34 : 0.2);
+
+  /// Space the tip takes above the shutter. Zero at normal text size, where
+  /// the layout has always left it enough; under large text it fits the
+  /// longest thing the buddy can say, so the outline doesn't jump between tips.
+  double _tipBlock(Size screen) {
+    if (!TextFit.large(context)) return 0;
+    final AppLocalizations l = context.l10n;
+    if (_status == _CamStatus.denied || _status == _CamStatus.unavailable) {
+      // The card: the buddy's line, the words at most this tall, and the card.
+      return 64 + 8 + _tipLimit(screen) + 24 + 2 * Chunky.border + Chunky.shadow;
+    }
+    final List<String> tips = <String>[
+      for (final GuideShape s in GuideShape.values) s.tip(l),
+      l.camAnotherAngleTip,
+      l.camWarmingUp,
+      l.camAutoOnTip,
+      l.camAutoOffTip,
+      l.camAutoFound,
+      l.camAutoHolding,
+      l.camAutoRearm,
+    ];
+    final double words = tips
+        .map((String t) => TextFit.height(context, t, _tipStyle, maxWidth: _tipRoom(screen.width)))
+        .reduce(math.max);
+    return math.min(words, _tipLimit(screen)) + 26;
+  }
+
+  TextStyle get _tipStyle => AppType.footnote.copyWith(fontWeight: FontWeight.w600, height: 1.3);
+
+  /// Room left under the outline for the distance chip. As it has always been,
+  /// unless the capped chip wraps under large text.
+  double _chipHeight(double width) {
+    if (!TextFit.large(context)) return 44;
+    final double words = TextFit.height(
+      context,
+      context.l10n.camHold(_shape.distanceCm),
+      _chipStyle,
+      maxWidth: width - 24 - 28 - 22,
+      scaler: TextFit.tiny(context),
+    );
+    return math.max(44, words + 13 + 4 + 12);
+  }
+
+  TextStyle get _chipStyle => AppType.caption.copyWith(
+        color: const Color(0xFF141414),
+        fontWeight: FontWeight.w700,
+        fontSize: 12.5,
+      );
 
   Widget _preview() {
     final CameraController? ctrl = _controller;
@@ -956,6 +1031,7 @@ class _CameraScreenState extends State<CameraScreen>
 
   Widget _distanceChip(AppColors c) {
     return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 12),
       padding: const EdgeInsetsDirectional.fromSTEB(10, 6, 12, 7),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -970,12 +1046,11 @@ class _CameraScreenState extends State<CameraScreen>
         children: <Widget>[
           const Icon(Icons.straighten_rounded, size: 16, color: Color(0xFF141414)),
           const SizedBox(width: 6),
-          Text(
-            context.l10n.camHold(_shape.distanceCm),
-            style: AppType.caption.copyWith(
-              color: const Color(0xFF141414),
-              fontWeight: FontWeight.w700,
-              fontSize: 12.5,
+          Flexible(
+            child: Text(
+              context.l10n.camHold(_shape.distanceCm),
+              textScaler: TextFit.tiny(context),
+              style: _chipStyle,
             ),
           ),
         ],
@@ -1015,15 +1090,15 @@ class _CameraScreenState extends State<CameraScreen>
           Expanded(
             child: SpeechBubble(
               color: locked ? kLockGreen : null,
-              child: AnimatedSwitcher(
-                duration: Motion.quick,
-                child: Text(
-                  text,
-                  key: ValueKey<String>(text),
-                  style: AppType.footnote.copyWith(
-                    color: locked ? const Color(0xFF141414) : context.colors.textPrimary,
-                    fontWeight: FontWeight.w600,
-                    height: 1.3,
+              child: _limitTip(
+                AnimatedSwitcher(
+                  duration: Motion.quick,
+                  child: Text(
+                    text,
+                    key: ValueKey<String>(text),
+                    style: _tipStyle.copyWith(
+                      color: locked ? const Color(0xFF141414) : context.colors.textPrimary,
+                    ),
                   ),
                 ),
               ),
@@ -1034,43 +1109,71 @@ class _CameraScreenState extends State<CameraScreen>
     );
   }
 
+  /// Under large text a tip longer than its share of the screen scrolls in
+  /// the bubble.
+  Widget _limitTip(Widget tip) {
+    if (!TextFit.large(context)) return tip;
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxHeight: _tipLimit(MediaQuery.sizeOf(context))),
+      child: SingleChildScrollView(child: tip),
+    );
+  }
+
   Widget _problemCard(AppColors c) {
     final bool denied = _status == _CamStatus.denied;
     final AppLocalizations l = context.l10n;
+    final Widget words = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Text(
+          denied ? l.camNoAccess : l.camNapping,
+          style: AppType.headline.copyWith(color: c.textPrimary),
+        ),
+        const SizedBox(height: 2),
+        Text(
+          denied ? l.camNoAccessBody : l.camNappingBody,
+          style: AppType.caption.copyWith(color: c.textSecondary, height: 1.35),
+        ),
+      ],
+    );
+    const Widget buddy = BoneBuddy(size: 64, mood: BuddyMood.sad, animate: false);
+    final Widget retry = RoundButton(
+      icon: Icons.refresh_rounded,
+      size: 40,
+      tooltip: l.tryAgain,
+      onTap: _start,
+    );
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Chunk(
         padding: const EdgeInsetsDirectional.fromSTEB(14, 12, 12, 12),
-        child: Row(
-          children: <Widget>[
-            const BoneBuddy(size: 64, mood: BuddyMood.sad, animate: false),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+        // Under large text the words get the whole width, and scroll if they
+        // are still too long to leave the screen's controls in view.
+        child: TextFit.large(context)
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Text(
-                    denied ? l.camNoAccess : l.camNapping,
-                    style: AppType.headline.copyWith(color: c.textPrimary),
+                  Row(
+                    children: <Widget>[buddy, const Spacer(), retry],
                   ),
-                  const SizedBox(height: 2),
-                  Text(
-                    denied ? l.camNoAccessBody : l.camNappingBody,
-                    style: AppType.caption.copyWith(color: c.textSecondary, height: 1.35),
+                  const SizedBox(height: 8),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(maxHeight: _tipLimit(MediaQuery.sizeOf(context))),
+                    child: SingleChildScrollView(child: words),
                   ),
                 ],
+              )
+            : Row(
+                children: <Widget>[
+                  buddy,
+                  const SizedBox(width: 10),
+                  Expanded(child: words),
+                  const SizedBox(width: 6),
+                  retry,
+                ],
               ),
-            ),
-            const SizedBox(width: 6),
-            RoundButton(
-              icon: Icons.refresh_rounded,
-              size: 40,
-              tooltip: l.tryAgain,
-              onTap: _start,
-            ),
-          ],
-        ),
       ),
     );
   }
@@ -1190,6 +1293,7 @@ class _ShapePicker extends StatelessWidget {
                     const SizedBox(width: 6),
                     Text(
                       s.label(context.l10n),
+                      textScaler: TextFit.tiny(context),
                       style: AppType.footnote.copyWith(
                         color: const Color(0xFF141414),
                         fontWeight: FontWeight.w800,

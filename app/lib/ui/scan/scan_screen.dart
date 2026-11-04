@@ -35,7 +35,7 @@ class ScanScreen extends StatelessWidget {
     // padding of 16 and 12, instead of one row that scrolls sideways.
     final double room = MediaQuery.sizeOf(context).width - 2 * inset - 28;
     final int columns = FindCard.columnsIn(room);
-    final double card = wide ? FindCard.widthIn(room, columns) : FindCard.rowWidth;
+    final double card = wide ? FindCard.widthIn(room, columns) : FindCard.rowWidthFor(context);
     final List<AnalysisRecord> recent = history.records.take(wide ? columns * 2 : 8).toList();
     // A title too long for one line (German, or a name the user gave) gets a
     // second on every card, and the row grows by that line so the photos
@@ -97,7 +97,7 @@ class ScanScreen extends StatelessWidget {
                       crossAxisCount: columns,
                       crossAxisSpacing: 8,
                       mainAxisSpacing: 10,
-                      mainAxisExtent: FindCard.height(card, titleLines, lineHeight),
+                      mainAxisExtent: FindCard.height(context, card, titleLines, lineHeight),
                     ),
                     children: <Widget>[
                       for (int i = 0; i < recent.length; i++)
@@ -111,7 +111,7 @@ class ScanScreen extends StatelessWidget {
                     ],
                   )
                 : SizedBox(
-                    height: FindCard.height(FindCard.rowWidth, titleLines, lineHeight),
+                    height: FindCard.height(context, card, titleLines, lineHeight),
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
                       physics: const BouncingScrollPhysics(),
@@ -123,6 +123,7 @@ class ScanScreen extends StatelessWidget {
                         index: i,
                         titleLines: titleLines,
                         lineHeight: lineHeight,
+                        width: card,
                       ),
                     ),
                   ),
@@ -241,6 +242,29 @@ class _Header extends StatelessWidget {
           final double label = LinkPill.widestLabel(context);
           final bool chevron = label + LinkPill.chrome(chevron: true) <= room;
           final bool beside = chevron || label + LinkPill.chrome(chevron: false) <= room;
+          // Under very large text the wordmark takes a whole line, with the
+          // pill and the globe under it.
+          if (TextFit.width(context, 'ossia', markStyle) + 14 + _globeWidth > box.maxWidth) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                wordmark,
+                const SizedBox(height: 6),
+                Row(
+                  children: <Widget>[
+                    const Expanded(
+                      child: Align(
+                        alignment: AlignmentDirectional.centerStart,
+                        child: LinkPill(),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    const GlobeButton(),
+                  ],
+                ),
+              ],
+            );
+          }
           if (!beside) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -301,7 +325,7 @@ class _HeroCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Expanded(
-                child: Text(
+                child: HeadingText(
                   l.scanHeroTitle,
                   style: AppType.title1.copyWith(
                     color: c.onAccent,

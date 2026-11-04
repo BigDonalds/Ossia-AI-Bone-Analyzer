@@ -43,7 +43,7 @@ class BoneDetailScreen extends StatelessWidget {
                       final Widget info = Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(
+                          HeadingText(
                             text.name,
                             style: AppType.title1.copyWith(color: c.textPrimary),
                           ),

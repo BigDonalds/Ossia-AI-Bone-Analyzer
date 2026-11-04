@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import '../../core/theme/palette.dart';
@@ -5,6 +7,7 @@ import '../../core/theme/typography.dart';
 import '../../l10n/l10n.dart';
 import 'bone_buddy.dart';
 import 'primitives.dart';
+import 'text_fit.dart';
 
 /// Bottom sheet with a chunky grabber and an outlined top edge.
 Future<T?> showAppSheet<T>(
@@ -19,6 +22,8 @@ Future<T?> showAppSheet<T>(
     // Above the tab bar, which floats over each tab's own navigator and
     // would otherwise cover the bottom of the sheet.
     useRootNavigator: true,
+    // A sheet that grows to the whole height stays below the status bar.
+    useSafeArea: true,
     backgroundColor: Colors.transparent,
     barrierColor: c.scrim,
     isScrollControlled: true,
@@ -41,44 +46,48 @@ Future<T?> showAppSheet<T>(
         child: SafeArea(
           top: false,
           bottom: false,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              const SizedBox(height: 10),
-              Container(
-                width: 44,
-                height: 6,
-                decoration: BoxDecoration(
-                  color: c.ink,
-                  borderRadius: BorderRadius.circular(3),
-                ),
-              ),
-              const SizedBox(height: 18),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Text(
-                  title,
-                  textAlign: TextAlign.center,
-                  style: AppType.title2.copyWith(color: c.textPrimary),
-                ),
-              ),
-              if (message != null) ...<Widget>[
-                const SizedBox(height: 6),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 32),
-                  child: Text(
-                    message,
-                    textAlign: TextAlign.center,
-                    style: AppType.subhead.copyWith(
-                      color: c.textSecondary,
-                      height: 1.4,
-                    ),
+          // The whole sheet scrolls when large text or the keyboard leaves it
+          // too little room.
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                const SizedBox(height: 10),
+                Container(
+                  width: 44,
+                  height: 6,
+                  decoration: BoxDecoration(
+                    color: c.ink,
+                    borderRadius: BorderRadius.circular(3),
                   ),
                 ),
+                const SizedBox(height: 18),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: HeadingText(
+                    title,
+                    textAlign: TextAlign.center,
+                    style: AppType.title2.copyWith(color: c.textPrimary),
+                  ),
+                ),
+                if (message != null) ...<Widget>[
+                  const SizedBox(height: 6),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 32),
+                    child: Text(
+                      message,
+                      textAlign: TextAlign.center,
+                      style: AppType.subhead.copyWith(
+                        color: c.textSecondary,
+                        height: 1.4,
+                      ),
+                    ),
+                  ),
+                ],
+                const SizedBox(height: 20),
+                builder(context),
               ],
-              const SizedBox(height: 20),
-              Flexible(child: builder(context)),
-            ],
+            ),
           ),
         ),
       );
@@ -106,53 +115,60 @@ Future<bool> confirm(
       scale: CurvedAnimation(parent: a, curve: Curves.easeOutBack),
       child: FadeTransition(opacity: a, child: child),
     ),
-    // No wider than a phone's, even on a tablet.
+    // No wider than a phone's, even on a tablet. It scrolls when large text
+    // makes it taller than the screen, clear of the status bar and home bar
+    // but in the middle of the whole screen.
     pageBuilder: (BuildContext context, _, _) => Center(
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 480),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 28),
-          child: Material(
-            type: MaterialType.transparency,
-            child: Chunk(
-              padding: const EdgeInsets.fromLTRB(20, 22, 16, 18),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  BoneBuddy(
-                    size: 92,
-                    mood: destructive ? BuddyMood.wow : BuddyMood.thinking,
-                  ),
-                  const SizedBox(height: 14),
-                  Text(
-                    title,
-                    textAlign: TextAlign.center,
-                    style: AppType.title2.copyWith(color: c.textPrimary),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    message,
-                    textAlign: TextAlign.center,
-                    style: AppType.subhead.copyWith(
-                      color: c.textSecondary,
-                      height: 1.42,
+      child: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(
+          vertical: math.max(MediaQuery.paddingOf(context).top, MediaQuery.paddingOf(context).bottom),
+        ),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 480),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 28),
+            child: Material(
+              type: MaterialType.transparency,
+              child: Chunk(
+                padding: const EdgeInsets.fromLTRB(20, 22, 16, 18),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    BoneBuddy(
+                      size: 92,
+                      mood: destructive ? BuddyMood.wow : BuddyMood.thinking,
                     ),
-                  ),
-                  const SizedBox(height: 20),
-                  ButtonPair(
-                    secondary: SecondaryButton(
-                      label: context.l10n.nah,
-                      height: 52,
-                      onTap: () => Navigator.pop(context, false),
+                    const SizedBox(height: 14),
+                    HeadingText(
+                      title,
+                      textAlign: TextAlign.center,
+                      style: AppType.title2.copyWith(color: c.textPrimary),
                     ),
-                    primary: PrimaryButton(
-                      label: confirmLabel ?? context.l10n.confirm,
-                      height: 52,
-                      tone: destructive ? c.critical : null,
-                      onTap: () => Navigator.pop(context, true),
+                    const SizedBox(height: 8),
+                    Text(
+                      message,
+                      textAlign: TextAlign.center,
+                      style: AppType.subhead.copyWith(
+                        color: c.textSecondary,
+                        height: 1.42,
+                      ),
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 20),
+                    ButtonPair(
+                      secondary: SecondaryButton(
+                        label: context.l10n.nah,
+                        height: 52,
+                        onTap: () => Navigator.pop(context, false),
+                      ),
+                      primary: PrimaryButton(
+                        label: confirmLabel ?? context.l10n.confirm,
+                        height: 52,
+                        tone: destructive ? c.critical : null,
+                        onTap: () => Navigator.pop(context, true),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -174,15 +190,51 @@ Future<String?> promptForText(
   String? actionLabel,
   TextInputType keyboard = TextInputType.text,
 }) {
-  final TextEditingController controller =
-      TextEditingController(text: initial);
-  final AppColors c = context.colors;
-
   return showAppSheet<String>(
     context,
     title: title,
     message: message,
-    builder: (BuildContext context) => Padding(
+    builder: (BuildContext context) => _TextPrompt(
+      initial: initial,
+      placeholder: placeholder,
+      actionLabel: actionLabel,
+      keyboard: keyboard,
+    ),
+  );
+}
+
+/// The field and button of [promptForText]. Keeps its controller until the
+/// sheet has slid away: the field is still on screen until then.
+class _TextPrompt extends StatefulWidget {
+  const _TextPrompt({
+    required this.initial,
+    required this.placeholder,
+    required this.actionLabel,
+    required this.keyboard,
+  });
+
+  final String initial;
+  final String placeholder;
+  final String? actionLabel;
+  final TextInputType keyboard;
+
+  @override
+  State<_TextPrompt> createState() => _TextPromptState();
+}
+
+class _TextPromptState extends State<_TextPrompt> {
+  late final TextEditingController _controller = TextEditingController(text: widget.initial);
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final AppColors c = context.colors;
+    return Padding(
       padding: const EdgeInsets.fromLTRB(16, 0, 12, 8),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -192,14 +244,15 @@ Future<String?> promptForText(
             shadow: 3,
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
             child: TextField(
-              controller: controller,
+              controller: _controller,
               autofocus: true,
-              keyboardType: keyboard,
+              keyboardType: widget.keyboard,
               autocorrect: false,
               style: AppType.body.copyWith(color: c.textPrimary),
               decoration: InputDecoration(
                 border: InputBorder.none,
-                hintText: placeholder,
+                hintText: widget.placeholder,
+                hintMaxLines: TextFit.large(context) ? 4 : null,
                 hintStyle: AppType.body.copyWith(color: c.textTertiary),
               ),
               onSubmitted: (String v) => Navigator.pop(context, v),
@@ -207,13 +260,13 @@ Future<String?> promptForText(
           ),
           const SizedBox(height: 14),
           PrimaryButton(
-            label: actionLabel ?? context.l10n.save,
-            onTap: () => Navigator.pop(context, controller.text),
+            label: widget.actionLabel ?? context.l10n.save,
+            onTap: () => Navigator.pop(context, _controller.text),
           ),
         ],
       ),
-    ),
-  ).whenComplete(controller.dispose);
+    );
+  }
 }
 
 /// Sticker toast near the bottom of the screen. Inside the tabs the scaffold

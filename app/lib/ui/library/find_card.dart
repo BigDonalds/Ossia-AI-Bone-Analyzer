@@ -50,14 +50,46 @@ class FindCard extends StatelessWidget {
   /// The title's width on a card [width] wide: less its outline and padding.
   static double titleRoom(double width) => width - Chunky.border * 2 - 20;
 
-  /// Lines kept for [titles] on cards [width] wide: two when any needs them.
-  static int linesFor(BuildContext context, List<String> titles, TextStyle style, double width) =>
-      titles.any((String t) => TextFit.width(context, t, style) > titleRoom(width)) ? 2 : 1;
+  /// A card's width in the sideways row: wider under large text, so the row
+  /// reads as cards rather than one word a line, up to most of the screen.
+  static double rowWidthFor(BuildContext context) {
+    if (!TextFit.large(context)) return rowWidth;
+    return math.min(rowWidth * TextFit.scale(context), MediaQuery.sizeOf(context).width - 56);
+  }
+
+  /// Lines kept for [titles] on cards [width] wide: two when any needs them,
+  /// and under large text as many as the longest takes.
+  static int linesFor(BuildContext context, List<String> titles, TextStyle style, double width) {
+    if (TextFit.large(context)) {
+      final double one = measureLine(context, style, titles);
+      return titles
+          .map((String t) =>
+              (TextFit.height(context, t, style, maxWidth: titleRoom(width)) / one).ceil())
+          .fold(1, math.max);
+    }
+    return titles.any((String t) => TextFit.width(context, t, style) > titleRoom(width)) ? 2 : 1;
+  }
 
   /// A card's height, its shadow included, when it is [width] wide: the photo
-  /// stays about square and the info strip below it keeps its size.
-  static double height(double width, int titleLines, double lineHeight) =>
-      width + 56 + (titleLines - 1) * lineHeight;
+  /// stays about square and the info strip below it keeps its size, or under
+  /// large text grows by what its words grow by.
+  static double height(
+    BuildContext context,
+    double width,
+    int titleLines,
+    double lineHeight,
+  ) {
+    final double plain = width + 56 + (titleLines - 1) * lineHeight;
+    if (!TextFit.large(context)) return plain;
+    double grown(TextStyle style) {
+      final double big = TextFit.height(context, 'Ag', style, maxWidth: double.infinity);
+      final double normal =
+          TextFit.height(context, 'Ag', style, maxWidth: double.infinity, scaler: const TextScaler.linear(1));
+      return big - normal;
+    }
+
+    return plain + grown(AppType.headline.copyWith(fontSize: 14.5)) + grown(AppType.caption);
+  }
 
   static TextStyle titleStyle(AppColors c) =>
       AppType.headline.copyWith(color: c.textPrimary, fontSize: 14.5);

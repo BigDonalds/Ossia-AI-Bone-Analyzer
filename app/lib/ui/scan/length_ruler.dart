@@ -9,6 +9,7 @@ import '../../core/util/haptics.dart';
 import '../../data/settings_controller.dart';
 import '../widgets/bone_buddy.dart';
 import '../widgets/primitives.dart';
+import '../widgets/text_fit.dart';
 
 /// A tape measure you flick sideways. Ticks every tenth of a unit, snaps to
 /// the nearest tick when released, and clicks on every whole unit.
@@ -327,8 +328,16 @@ class StretchyBone extends StatelessWidget {
                       math.log(1 + 60))
                   .clamp(0.0, 1.0);
         final double width = 70 + (box.maxWidth - 70) * t;
+        final TextStyle captionStyle = AppType.caption.copyWith(
+          color: c.textSecondary,
+          fontWeight: FontWeight.w700,
+        );
+        final bool large = TextFit.large(context);
         return SizedBox(
-          height: 96,
+          // Under large text the caption takes what it needs above the bone.
+          height: large
+              ? math.max(96, 66 + TextFit.height(context, caption, captionStyle, maxWidth: box.maxWidth))
+              : 96,
           child: Stack(
             alignment: Alignment.bottomCenter,
             children: <Widget>[
@@ -349,15 +358,15 @@ class StretchyBone extends StatelessWidget {
               ),
               Positioned(
                 top: 0,
+                left: large ? 0 : null,
+                right: large ? 0 : null,
                 child: AnimatedSwitcher(
                   duration: const Duration(milliseconds: 150),
                   child: Text(
                     caption,
                     key: ValueKey<bool>(valueCm == null),
-                    style: AppType.caption.copyWith(
-                      color: c.textSecondary,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    textAlign: large ? TextAlign.center : null,
+                    style: captionStyle,
                   ),
                 ),
               ),

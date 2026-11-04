@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +22,7 @@ import '../widgets/bone_buddy.dart';
 import '../widgets/phone_icon.dart';
 import '../widgets/primitives.dart';
 import '../widgets/specimen_image.dart';
+import '../widgets/text_fit.dart';
 import '../widgets/wide.dart';
 import 'specimen_frame.dart';
 
@@ -200,46 +202,58 @@ class _AnalyzingScreenState extends State<AnalyzingScreen>
     final AppColors c = context.colors;
     final AppLocalizations l = context.l10n;
     final bool failed = _error != null;
+    final bool large = TextFit.large(context);
+
+    final Widget page = Padding(
+      padding: const EdgeInsets.fromLTRB(16, 8, 12, 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              RoundButton(
+                icon: Icons.close_rounded,
+                tooltip: l.cancel,
+                onTap: () => Navigator.of(context).maybePop(),
+              ),
+              const Spacer(),
+              if (!failed)
+                StatusPill(
+                  l.analyzingStep(_phase + 1, kPhaseCount),
+                  color: c.accent,
+                  filled: true,
+                ),
+              const SizedBox(width: 4),
+            ],
+          ),
+          if (large) const SizedBox(height: 22) else const Spacer(flex: 2),
+          _Specimen(images: widget.images, sweep: _sweep, failed: failed),
+          const SizedBox(height: 26),
+          if (!failed)
+            _Progress(phase: _phase)
+          else
+            _Failure(
+              message: _error!(l),
+              onRetry: _run,
+              onLocal: _offerLocal ? _runLocally : null,
+            ),
+          if (!large) const Spacer(flex: 3),
+        ],
+      ),
+    );
 
     return Scaffold(
       backgroundColor: c.canvas,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 8, 12, 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  RoundButton(
-                    icon: Icons.close_rounded,
-                    tooltip: l.cancel,
-                    onTap: () => Navigator.of(context).maybePop(),
-                  ),
-                  const Spacer(),
-                  if (!failed)
-                    StatusPill(
-                      l.analyzingStep(_phase + 1, kPhaseCount),
-                      color: c.accent,
-                      filled: true,
-                    ),
-                  const SizedBox(width: 4),
-                ],
-              ),
-              const Spacer(flex: 2),
-              _Specimen(images: widget.images, sweep: _sweep, failed: failed),
-              const SizedBox(height: 26),
-              if (!failed)
-                _Progress(phase: _phase)
-              else
-                _Failure(
-                  message: _error!(l),
-                  onRetry: _run,
-                  onLocal: _offerLocal ? _runLocally : null,
-                ),
-              const Spacer(flex: 3),
-            ],
-          ),
+        // Scrolls when large text or a long error make it taller than the
+        // screen; otherwise the spacers share what's left, as they always have.
+        child: CustomScrollView(
+          slivers: <Widget>[
+            if (large)
+              SliverToBoxAdapter(child: page)
+            else
+              SliverFillRemaining(hasScrollBody: false, child: page),
+          ],
         ),
       ),
     );
@@ -380,11 +394,27 @@ class _Progress extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppColors c = context.colors;
     final AppLocalizations l = context.l10n;
+    final List<String> quips = _quips(l);
+    final bool large = TextFit.large(context);
+    final TextStyle quipStyle = AppType.title2.copyWith(color: c.textPrimary);
+    // Room for the longest line, so the page doesn't jump between stages.
+    final double room = MediaQuery.sizeOf(context).width - 44;
+    final double quipHeight = large
+        ? quips
+            .map((String q) => TextFit.height(
+                  context,
+                  q,
+                  quipStyle,
+                  maxWidth: room,
+                  scaler: TextFit.heading(context, q, quipStyle, room),
+                ))
+            .fold(60, math.max)
+        : 60;
 
     return Column(
       children: <Widget>[
         SizedBox(
-          height: 60,
+          height: quipHeight,
           child: AnimatedSwitcher(
             duration: Motion.quick,
             switchOutCurve: Motion.exit,
@@ -405,10 +435,11 @@ class _Progress extends StatelessWidget {
               key: ValueKey<int>(phase),
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Text(
-                _quips(l)[phase],
+                quips[phase],
                 textAlign: TextAlign.center,
-                maxLines: 2,
-                style: AppType.title2.copyWith(color: c.textPrimary),
+                maxLines: large ? null : 2,
+                textScaler: TextFit.heading(context, quips[phase], quipStyle, room),
+                style: quipStyle,
               ),
             ),
           ),
@@ -416,6 +447,7 @@ class _Progress extends StatelessWidget {
         const SizedBox(height: 6),
         Text(
           l.phaseLabel(phase),
+          textAlign: TextAlign.center,
           style: AppType.footnote.copyWith(
             color: c.textSecondary,
             fontWeight: FontWeight.w700,
@@ -471,7 +503,7 @@ class _Failure extends StatelessWidget {
     final AppLocalizations l = context.l10n;
     return Column(
       children: <Widget>[
-        Text(
+        HeadingText(
           l.analyzingFailedTitle,
           textAlign: TextAlign.center,
           style: AppType.title1.copyWith(color: c.textPrimary),

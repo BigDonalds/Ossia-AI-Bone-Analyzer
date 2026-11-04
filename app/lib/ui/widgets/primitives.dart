@@ -89,6 +89,7 @@ class Chunk extends StatefulWidget {
     this.clip = true,
     this.width,
     this.height,
+    this.minHeight,
   });
 
   final Widget child;
@@ -100,6 +101,9 @@ class Chunk extends StatefulWidget {
   final bool clip;
   final double? width;
   final double? height;
+
+  /// In place of [height], for a card that may grow with its words.
+  final double? minHeight;
 
   @override
   State<Chunk> createState() => _ChunkState();
@@ -134,6 +138,7 @@ class _ChunkState extends State<Chunk> {
       curve: Motion.standard,
       width: widget.width,
       height: widget.height,
+      constraints: widget.minHeight == null ? null : BoxConstraints(minHeight: widget.minHeight!),
       transform: Matrix4.translationValues(travel, travel, 0),
       decoration: BoxDecoration(
         color: widget.color ?? c.surface,
@@ -303,6 +308,45 @@ class ConfidenceBar extends StatelessWidget {
   final String? label;
   final bool dimmed;
 
+  /// The label with the percentage at its far end. Under large text the
+  /// percentage drops to a line of its own when the two don't fit together.
+  Widget _heading(BuildContext context, AppColors c) {
+    final Widget? name = label == null
+        ? null
+        : Text(
+            label!,
+            style: AppType.callout.copyWith(
+              color: dimmed ? c.textTertiary : c.textPrimary,
+              fontWeight: FontWeight.w600,
+            ),
+          );
+    final Widget? score = !showValue
+        ? null
+        : Text(
+            percent(value),
+            style: AppType.metric.copyWith(
+              fontSize: 15,
+              color: dimmed ? c.textTertiary : c.textPrimary,
+            ),
+          );
+    if (name != null && score != null && TextFit.large(context)) {
+      return SizedBox(
+        width: double.infinity,
+        child: Wrap(
+          alignment: WrapAlignment.spaceBetween,
+          spacing: 8,
+          children: <Widget>[name, score],
+        ),
+      );
+    }
+    return Row(
+      children: <Widget>[
+        if (name != null) Expanded(child: name) else const Spacer(),
+        ?score,
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final AppColors c = context.colors;
@@ -315,30 +359,7 @@ class ConfidenceBar extends StatelessWidget {
         if (label != null || showValue)
           Padding(
             padding: const EdgeInsets.only(bottom: 7),
-            child: Row(
-              children: <Widget>[
-                if (label != null)
-                  Expanded(
-                    child: Text(
-                      label!,
-                      style: AppType.callout.copyWith(
-                        color: dimmed ? c.textTertiary : c.textPrimary,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  )
-                else
-                  const Spacer(),
-                if (showValue)
-                  Text(
-                    percent(value),
-                    style: AppType.metric.copyWith(
-                      fontSize: 15,
-                      color: dimmed ? c.textTertiary : c.textPrimary,
-                    ),
-                  ),
-              ],
-            ),
+            child: _heading(context, c),
           ),
         Container(
           height: height + track * 2,
@@ -416,7 +437,8 @@ class StatusPill extends StatelessWidget {
           icon == null && leading == null ? 10 : 7, 4, 10, 4.5),
       decoration: BoxDecoration(
         color: bg,
-        borderRadius: BorderRadius.circular(99),
+        // Fully round, unless large text may take it over a few lines.
+        borderRadius: BorderRadius.circular(TextFit.large(context) ? 20 : 99),
         border: Border.all(color: c.ink, width: 1.6),
       ),
       // One rich text rather than a row: it sizes to the label where the
@@ -439,14 +461,79 @@ class StatusPill extends StatelessWidget {
             TextSpan(text: text),
           ],
         ),
-        maxLines: maxLines,
-        overflow: TextOverflow.ellipsis,
+        // Under large text the label wraps however long it is.
+        maxLines: TextFit.large(context) ? null : maxLines,
+        overflow: TextFit.large(context) ? null : TextOverflow.ellipsis,
         style: AppType.caption.copyWith(
           color: fg,
           fontWeight: FontWeight.w700,
           letterSpacing: 0.1,
         ),
       ),
+    );
+  }
+}
+
+/// A button's icon and label. At normal text size the label stays on one line
+/// and shrinks a little if it must; the button keeps its height. Under large
+/// text the button grows instead: the icon goes above a label too long to sit
+/// beside it, and the label wraps.
+class _ButtonContent extends StatelessWidget {
+  const _ButtonContent({
+    required this.label,
+    required this.color,
+    this.icon,
+    this.mainAxisSize = MainAxisSize.max,
+  });
+
+  final String label;
+  final Color color;
+  final Widget? icon;
+  final MainAxisSize mainAxisSize;
+
+  @override
+  Widget build(BuildContext context) {
+    final TextStyle style = AppType.button.copyWith(color: color);
+    if (TextFit.large(context)) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 7),
+        child: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints box) => Wrap(
+            alignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            runAlignment: WrapAlignment.center,
+            spacing: 9,
+            runSpacing: 4,
+            children: <Widget>[
+              ?icon,
+              Text(
+                label,
+                textAlign: TextAlign.center,
+                textScaler: TextFit.heading(context, label, style, box.maxWidth),
+                style: style,
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+    return Row(
+      mainAxisSize: mainAxisSize,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        if (icon != null) ...<Widget>[
+          icon!,
+          const SizedBox(width: 9),
+        ],
+        // A label too long for the button (German likes long words) shrinks
+        // a little rather than losing its end.
+        Flexible(
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(label, maxLines: 1, style: style),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -498,7 +585,7 @@ class EmptyState extends StatelessWidget {
           children: <Widget>[
             BoneBuddy(size: 130, mood: mood),
             const SizedBox(height: 22),
-            Text(
+            HeadingText(
               title,
               textAlign: TextAlign.center,
               style: AppType.title2.copyWith(color: c.textPrimary),
@@ -548,6 +635,7 @@ class PrimaryButton extends StatelessWidget {
     final Color bg = tone ?? c.accent;
     final Color fg = _inkOn(bg);
     final bool enabled = onTap != null;
+    final bool large = TextFit.large(context);
 
     return Opacity(
       opacity: enabled ? 1 : 0.55,
@@ -556,29 +644,14 @@ class PrimaryButton extends StatelessWidget {
         color: bg,
         radius: 18,
         width: expand ? double.infinity : null,
-        height: height,
+        height: large ? null : height,
+        minHeight: large ? height : null,
         padding: EdgeInsets.symmetric(horizontal: expand ? 16 : 24),
-        child: Row(
+        child: _ButtonContent(
+          label: label,
+          color: fg,
+          icon: icon == null ? null : Icon(icon, size: 21, color: fg),
           mainAxisSize: expand ? MainAxisSize.max : MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            if (icon != null) ...<Widget>[
-              Icon(icon, size: 21, color: fg),
-              const SizedBox(width: 9),
-            ],
-            // A label too long for the button (German likes long words)
-            // shrinks a little rather than losing its end.
-            Flexible(
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Text(
-                  label,
-                  maxLines: 1,
-                  style: AppType.button.copyWith(color: fg),
-                ),
-              ),
-            ),
-          ],
         ),
       ),
     );
@@ -610,35 +683,25 @@ class SecondaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppColors c = context.colors;
     final Color tone = destructive ? c.critical : c.textPrimary;
+    final bool large = TextFit.large(context);
     return Opacity(
       opacity: onTap != null ? 1 : 0.55,
       child: Chunk(
         onTap: onTap,
         radius: 18,
-        height: height,
+        height: large ? null : height,
+        minHeight: large ? height : null,
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            if (leading != null || icon != null) ...<Widget>[
-              IconTheme(
-                data: IconThemeData(size: 21, color: tone),
-                child: leading ?? Icon(icon),
-              ),
-              const SizedBox(width: 9),
-            ],
-            Flexible(
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Text(
-                  label,
-                  maxLines: 1,
-                  style: AppType.button.copyWith(color: tone),
+        child: _ButtonContent(
+          label: label,
+          color: tone,
+          icon: leading == null && icon == null
+              ? null
+              : IconTheme(
+                  data: IconThemeData(size: 21, color: tone),
+                  child: leading ?? Icon(icon),
                 ),
-              ),
-            ),
-          ],
         ),
       ),
     );
@@ -680,7 +743,8 @@ class ButtonPair extends StatelessWidget {
               Chunky.border * 2 -
               pad * 2 -
               (icon ? 30 : 0);
-          return TextFit.width(context, label, AppType.button) * 0.92 <= room;
+          final double shrink = TextFit.large(context) ? 1 : 0.92;
+          return TextFit.width(context, label, AppType.button) * shrink <= room;
         }
 
         final bool side = fits(

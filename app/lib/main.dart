@@ -145,11 +145,12 @@ class _OssiaAppState extends State<OssiaApp> {
         final Brightness b = Theme.of(context).brightness;
         return AnnotatedRegion<SystemUiOverlayStyle>(
           value: AppTheme.overlay(b),
-          // Keep layout predictable regardless of the user's text-size setting
-          // being pushed to the extremes.
+          // Follows the phone's text size up to 200%, which Apple's Larger Text
+          // declaration asks for. Screens make room for it by wrapping,
+          // stacking and scrolling (test/large_text_test.dart checks them all).
           child: MediaQuery.withClampedTextScaling(
             minScaleFactor: 0.85,
-            maxScaleFactor: 1.35,
+            maxScaleFactor: 2.0,
             child: StatusToaster(
               messengerKey: OssiaApp.messengerKey,
               navigatorKey: OssiaApp.navigatorKey,

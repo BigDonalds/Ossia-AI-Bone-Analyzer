@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import '../../core/theme/motion.dart';
@@ -59,6 +61,8 @@ class InsetRow extends StatelessWidget {
     this.chevron = false,
     this.tint,
     this.minHeight = 54,
+    this.leadingWidth = 44,
+    this.trailingWidth = 64,
   });
 
   final String title;
@@ -75,12 +79,22 @@ class InsetRow extends StatelessWidget {
   final Color? tint;
   final double minHeight;
 
+  /// Roughly how wide [leading] and [trailing] are, with their gaps, for
+  /// telling whether the words still fit beside them under large text.
+  final double leadingWidth;
+  final double trailingWidth;
+
   @override
   Widget build(BuildContext context) {
     final AppColors c = context.colors;
     final TextStyle titleStyle = AppType.body.copyWith(
       color: tint ?? c.textPrimary,
       fontWeight: FontWeight.w600,
+    );
+    final TextStyle subtitleStyle = AppType.footnote.copyWith(
+      color: c.textSecondary,
+      fontWeight: FontWeight.w400,
+      height: 1.35,
     );
     final Widget words = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -89,14 +103,7 @@ class InsetRow extends StatelessWidget {
         Text(title, style: titleStyle),
         if (subtitle != null) ...<Widget>[
           const SizedBox(height: 2),
-          Text(
-            subtitle!,
-            style: AppType.footnote.copyWith(
-              color: c.textSecondary,
-              fontWeight: FontWeight.w400,
-              height: 1.35,
-            ),
-          ),
+          Text(subtitle!, style: subtitleStyle),
         ],
       ],
     );
@@ -108,45 +115,86 @@ class InsetRow extends StatelessWidget {
         constraints: BoxConstraints(minHeight: minHeight),
         padding: const EdgeInsetsDirectional.fromSTEB(16, 11, 14, 11),
         child: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints box) => Row(
-            children: <Widget>[
-              if (leading != null) ...<Widget>[
-                IconTheme.merge(
-                  data: IconThemeData(color: tint ?? c.textPrimary),
-                  child: leading!,
-                ),
-                const SizedBox(width: 13),
-              ],
-              Expanded(
-                child: value == null
-                    ? words
-                    : LayoutBuilder(
-                        builder: (BuildContext context, BoxConstraints area) =>
-                            _withValue(context, c, words, titleStyle, box.maxWidth, area.maxWidth),
-                      ),
-              ),
-              if (trailing != null) ...<Widget>[
-                const SizedBox(width: 10),
-                trailing!,
-              ],
-              if (chevron) ...<Widget>[
-                const SizedBox(width: 8),
-                Container(
-                  width: 26,
-                  height: 26,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: c.fill,
+          builder: (BuildContext context, BoxConstraints box) {
+            final Widget? lead = leading == null
+                ? null
+                : IconTheme.merge(
+                    data: IconThemeData(color: tint ?? c.textPrimary),
+                    child: leading!,
+                  );
+            final Widget? arrow = !chevron
+                ? null
+                : Container(
+                    width: 26,
+                    height: 26,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: c.fill,
+                    ),
+                    child: Icon(
+                      Icons.arrow_forward_rounded,
+                      size: 16,
+                      color: c.textPrimary,
+                    ),
+                  );
+            final Widget body = value == null
+                ? words
+                : LayoutBuilder(
+                    builder: (BuildContext context, BoxConstraints area) =>
+                        _withValue(context, c, words, titleStyle, box.maxWidth, area.maxWidth),
+                  );
+
+            // Under large text, when a word wouldn't fit between the icon and
+            // the controls, they take a line of their own above the words.
+            final bool hasSides = lead != null || trailing != null || arrow != null;
+            final double beside = box.maxWidth -
+                (lead != null ? leadingWidth + 13 : 0) -
+                (trailing != null ? trailingWidth + 10 : 0) -
+                (arrow != null ? 34 : 0);
+            if (hasSides &&
+                TextFit.large(context) &&
+                (TextFit.longestWord(context, title, titleStyle) > beside ||
+                    (subtitle != null &&
+                        TextFit.longestWord(context, subtitle!, subtitleStyle) > beside) ||
+                    (value != null &&
+                        TextFit.longestWord(context, value!, AppType.callout) > beside))) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      ?lead,
+                      const Spacer(),
+                      if (trailing != null) ...<Widget>[
+                        trailing!,
+                        if (arrow != null) const SizedBox(width: 8),
+                      ],
+                      ?arrow,
+                    ],
                   ),
-                  child: Icon(
-                    Icons.arrow_forward_rounded,
-                    size: 16,
-                    color: c.textPrimary,
-                  ),
-                ),
+                  const SizedBox(height: 8),
+                  body,
+                ],
+              );
+            }
+            return Row(
+              children: <Widget>[
+                if (lead != null) ...<Widget>[
+                  lead,
+                  const SizedBox(width: 13),
+                ],
+                Expanded(child: body),
+                if (trailing != null) ...<Widget>[
+                  const SizedBox(width: 10),
+                  trailing!,
+                ],
+                if (arrow != null) ...<Widget>[
+                  const SizedBox(width: 8),
+                  arrow,
+                ],
               ],
-            ],
-          ),
+            );
+          },
         ),
       ),
     );
@@ -186,7 +234,12 @@ class InsetRow extends StatelessWidget {
       children: <Widget>[
         words,
         const SizedBox(height: 2),
-        Text(value!, maxLines: 2, overflow: TextOverflow.ellipsis, style: style),
+        Text(
+          value!,
+          maxLines: TextFit.large(context) ? null : 2,
+          overflow: TextFit.large(context) ? null : TextOverflow.ellipsis,
+          style: style,
+        ),
       ],
     );
   }
@@ -287,8 +340,70 @@ class SegmentedControl<T> extends StatelessWidget {
     final List<T> keys = segments.keys.toList();
     final int index = keys.indexOf(value);
 
+    if (TextFit.large(context)) {
+      return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints box) {
+          TextStyle style(T k) => _labelStyle(c, k == value);
+          // Beside each other while every label fits its share, else one
+          // option a line.
+          final double share = (box.maxWidth - 4) / keys.length - 12;
+          final bool fits = keys.every((T k) => TextFit.width(context, segments[k]!, style(k)) <= share);
+          if (fits) {
+            final double height = keys
+                    .map((T k) => TextFit.height(context, segments[k]!, style(k), maxWidth: share))
+                    .reduce(math.max) +
+                14;
+            return _slider(context, c, keys, index, math.max(42, height));
+          }
+          return Container(
+            padding: const EdgeInsets.all(3),
+            decoration: BoxDecoration(
+              color: c.surface,
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(color: c.ink, width: 2),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                for (final T k in keys)
+                  Pressable(
+                    scale: 0.94,
+                    onTap: () => onChanged(k),
+                    child: AnimatedContainer(
+                      duration: Motion.base,
+                      constraints: const BoxConstraints(minHeight: 36),
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: k == value ? c.accent : Colors.transparent,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: k == value ? c.ink : Colors.transparent,
+                          width: 1.8,
+                        ),
+                      ),
+                      child: Text(segments[k]!, textAlign: TextAlign.center, style: style(k)),
+                    ),
+                  ),
+              ],
+            ),
+          );
+        },
+      );
+    }
+    return _slider(context, c, keys, index, 42);
+  }
+
+  TextStyle _labelStyle(AppColors c, bool active) => AppType.footnote.copyWith(
+        fontSize: 13.5,
+        fontWeight: FontWeight.w700,
+        color: active ? c.onAccent : c.textSecondary,
+      );
+
+  Widget _slider(BuildContext context, AppColors c, List<T> keys, int index, double height) {
     return Container(
-      height: 42,
+      height: height,
       decoration: BoxDecoration(
         color: c.surface,
         borderRadius: BorderRadius.circular(14),
@@ -329,11 +444,7 @@ class SegmentedControl<T> extends StatelessWidget {
                           segments[k]!,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: AppType.footnote.copyWith(
-                            fontSize: 13.5,
-                            fontWeight: FontWeight.w700,
-                            color: active ? c.onAccent : c.textSecondary,
-                          ),
+                          style: _labelStyle(c, active),
                         ),
                       ),
                     ),

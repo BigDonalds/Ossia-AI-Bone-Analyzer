@@ -9,6 +9,7 @@ import '../../core/theme/typography.dart';
 import '../../data/skeleton_geometry.dart';
 import '../../l10n/l10n.dart';
 import 'primitives.dart';
+import 'text_fit.dart';
 
 /// A whole skeleton from the front and from the back with one atlas bone lit
 /// in the accent colour, so a bone page shows where the bone sits in the body.
@@ -114,7 +115,12 @@ class _SkeletonMapState extends State<SkeletonMap>
                   ),
                 ),
                 const SizedBox(height: 10),
-                ExcludeSemantics(child: StatusPill(caption)),
+                // Under large text the sticker wraps to stay under its figure.
+                ExcludeSemantics(
+                  child: TextFit.large(context)
+                      ? SizedBox(width: size.width, child: Center(child: StatusPill(caption)))
+                      : StatusPill(caption),
+                ),
               ],
             );
 

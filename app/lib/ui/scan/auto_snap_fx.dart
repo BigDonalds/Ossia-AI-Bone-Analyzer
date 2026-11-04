@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/theme/typography.dart';
 import '../widgets/bone_buddy.dart';
+import '../widgets/text_fit.dart';
 
 /// Bright colours that read on any camera picture, light theme or dark.
 const List<Color> kNeon = <Color>[
@@ -495,6 +496,7 @@ class SpottedBadge extends StatelessWidget {
             const SizedBox(width: 5),
             Text(
               label,
+              textScaler: TextFit.tiny(context),
               style: AppType.button.copyWith(
                 color: _ink,
                 fontSize: 13,
@@ -539,6 +541,7 @@ class SnapStamp extends StatelessWidget {
             ),
             child: Text(
               label,
+              textScaler: TextFit.tiny(context),
               style: AppType.button.copyWith(
                 color: _ink,
                 fontSize: 30,

@@ -21,6 +21,7 @@ import '../widgets/nav.dart';
 import '../widgets/primitives.dart';
 import '../widgets/sheets.dart';
 import '../widgets/stat_icon.dart';
+import '../widgets/text_fit.dart';
 import 'link_pill.dart';
 
 /// Is Ossia ready to analyze? Switches between analyzing on this phone and
@@ -382,6 +383,7 @@ class _LinkSceneState extends State<_LinkScene> with TickerProviderStateMixin {
                                 ),
                                 child: Text(
                                   l.msShort(_bubbleMs!),
+                                  textScaler: TextFit.tiny(context),
                                   style: AppType.metric.copyWith(
                                     color: const Color(0xFF141414),
                                     fontSize: 14,
@@ -433,6 +435,7 @@ class _NodeLabel extends StatelessWidget {
         text,
         maxLines: 1,
         textAlign: TextAlign.center,
+        textScaler: TextFit.tiny(context),
         style: AppType.button.copyWith(
           color: const Color(0xFF141414),
           fontSize: 12,
@@ -914,7 +917,7 @@ class _Headline extends StatelessWidget {
           const SizedBox(height: 10),
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 250),
-            child: Text(
+            child: HeadingText(
               title,
               key: ValueKey<String>(title),
               style: AppType.title1.copyWith(color: c.textPrimary),
@@ -969,49 +972,68 @@ class _Checklist extends StatelessWidget {
         for (final (int i, CheckStep step) in monitor.steps.indexed)
           Padding(
             padding: const EdgeInsets.fromLTRB(14, 11, 14, 11),
-            child: Row(
-              children: <Widget>[
-                StatIcon(icon: _icons[step.id]!, color: c.sticker(i)),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        step.title(l),
-                        style: AppType.body.copyWith(
-                          color: step.status == StepStatus.skipped
-                              ? c.textTertiary
-                              : c.textPrimary,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      AnimatedSize(
-                        duration: const Duration(milliseconds: 200),
-                        alignment: AlignmentDirectional.topStart,
-                        child: step.detail == null
-                            ? const SizedBox(width: double.infinity)
-                            : Padding(
-                                padding: const EdgeInsets.only(top: 2),
-                                child: Text(
-                                  step.detail!(l),
-                                  style: AppType.footnote.copyWith(
-                                    color: step.status == StepStatus.failed
-                                        ? c.critical
-                                        : c.textSecondary,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                      ),
-                    ],
+            child: _stepRow(context, i, step, c, l),
+          ),
+      ],
+    );
+  }
+
+  /// The icon and result either side of a step's words, or under large text
+  /// on a line of their own above them.
+  Widget _stepRow(BuildContext context, int i, CheckStep step, AppColors c, AppLocalizations l) {
+    final Widget icon = StatIcon(icon: _icons[step.id]!, color: c.sticker(i));
+    final Widget badge = _StepBadge(status: step.status);
+    final Widget words = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          step.title(l),
+          style: AppType.body.copyWith(
+            color: step.status == StepStatus.skipped
+                ? c.textTertiary
+                : c.textPrimary,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        AnimatedSize(
+          duration: const Duration(milliseconds: 200),
+          alignment: AlignmentDirectional.topStart,
+          child: step.detail == null
+              ? const SizedBox(width: double.infinity)
+              : Padding(
+                  padding: const EdgeInsets.only(top: 2),
+                  child: Text(
+                    step.detail!(l),
+                    style: AppType.footnote.copyWith(
+                      color: step.status == StepStatus.failed
+                          ? c.critical
+                          : c.textSecondary,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
-                const SizedBox(width: 10),
-                _StepBadge(status: step.status),
-              ],
-            ),
+        ),
+      ],
+    );
+    if (TextFit.large(context)) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Row(
+            children: <Widget>[icon, const Spacer(), badge],
           ),
+          const SizedBox(height: 6),
+          words,
+        ],
+      );
+    }
+    return Row(
+      children: <Widget>[
+        icon,
+        const SizedBox(width: 12),
+        Expanded(child: words),
+        const SizedBox(width: 10),
+        badge,
       ],
     );
   }
@@ -1027,14 +1049,17 @@ class _StepBadge extends StatefulWidget {
 }
 
 class _StepBadgeState extends State<_StepBadge> with SingleTickerProviderStateMixin {
-  late final AnimationController _spin = AnimationController(
-    vsync: this,
-    duration: const Duration(milliseconds: 900),
-  )..repeat();
+  /// Made the first time a step runs: a step that was skipped never needs it.
+  AnimationController? _spinner;
+
+  AnimationController get _spin => _spinner ??= AnimationController(
+        vsync: this,
+        duration: const Duration(milliseconds: 900),
+      )..repeat();
 
   @override
   void dispose() {
-    _spin.dispose();
+    _spinner?.dispose();
     super.dispose();
   }
 
@@ -1131,24 +1156,37 @@ class _StatsGrid extends StatelessWidget {
     final AppLocalizations l = context.l10n;
     final ServerMonitor m = monitor;
     final bool live = m.state == LinkState.online;
+    final Widget speed = _StatTile(
+      index: 0,
+      icon: Icons.speed_rounded,
+      label: l.checkSpeed,
+      value: live && m.latencyMs != null
+          ? l.checkPing(m.latencyMs!, l.pingWord(m.latencyMs!))
+          : '--',
+    );
+    final Widget running = _StatTile(
+      index: 1,
+      icon: Icons.timer_rounded,
+      label: l.statusRunningFor,
+      value: live ? l.uptime(m.uptimeSeconds) : '--',
+    );
 
+    // One under the other under large text, so the numbers can wrap whole.
+    if (TextFit.large(context)) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          speed,
+          const SizedBox(height: 6),
+          running,
+        ],
+      );
+    }
     return Row(
       children: <Widget>[
-        _StatTile(
-          index: 0,
-          icon: Icons.speed_rounded,
-          label: l.checkSpeed,
-          value: live && m.latencyMs != null
-              ? l.checkPing(m.latencyMs!, l.pingWord(m.latencyMs!))
-              : '--',
-        ),
+        Expanded(child: speed),
         const SizedBox(width: 6),
-        _StatTile(
-          index: 1,
-          icon: Icons.timer_rounded,
-          label: l.statusRunningFor,
-          value: live ? l.uptime(m.uptimeSeconds) : '--',
-        ),
+        Expanded(child: running),
       ],
     );
   }
@@ -1170,29 +1208,32 @@ class _StatTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppColors c = context.colors;
-    return Expanded(
-      child: Chunk(
-        color: c.surface,
-        padding: const EdgeInsetsDirectional.fromSTEB(12, 12, 10, 12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                StatIcon(icon: icon, color: c.sticker(index), size: 30),
-                const SizedBox(width: 8),
-                Flexible(
-                  child: Text(
-                    label,
-                    style: AppType.caption.copyWith(
-                      color: c.textSecondary,
-                      fontWeight: FontWeight.w700,
-                    ),
+    final TextStyle valueStyle = AppType.title2.copyWith(color: c.textPrimary);
+    return Chunk(
+      color: c.surface,
+      padding: const EdgeInsetsDirectional.fromSTEB(12, 12, 10, 12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              StatIcon(icon: icon, color: c.sticker(index), size: 30),
+              const SizedBox(width: 8),
+              Flexible(
+                child: Text(
+                  label,
+                  style: AppType.caption.copyWith(
+                    color: c.textSecondary,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
-              ],
-            ),
-            const SizedBox(height: 10),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          if (TextFit.large(context))
+            Text(value, style: valueStyle)
+          else
             // Fixed height, so a long value shrunk to fit doesn't make its
             // tile shorter than the one beside it.
             SizedBox(
@@ -1200,15 +1241,10 @@ class _StatTile extends StatelessWidget {
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 alignment: AlignmentDirectional.centerStart,
-                child: Text(
-                  value,
-                  maxLines: 1,
-                  style: AppType.title2.copyWith(color: c.textPrimary),
-                ),
+                child: Text(value, maxLines: 1, style: valueStyle),
               ),
             ),
-          ],
-        ),
+        ],
       ),
     );
   }
@@ -1271,11 +1307,13 @@ class _PingHistory extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 6),
-                    Text(
-                      next == null ? l.statusAutoPaused : l.statusNextIn(left),
-                      style: AppType.caption.copyWith(
-                        color: c.textSecondary,
-                        fontWeight: FontWeight.w700,
+                    Flexible(
+                      child: Text(
+                        next == null ? l.statusAutoPaused : l.statusNextIn(left),
+                        style: AppType.caption.copyWith(
+                          color: c.textSecondary,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                   ],
@@ -1284,12 +1322,16 @@ class _PingHistory extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          SizedBox(
-            height: 64,
+          ConstrainedBox(
+            constraints: h.isEmpty && TextFit.large(context)
+                ? const BoxConstraints(minHeight: 64)
+                : const BoxConstraints.tightFor(height: 64),
             child: h.isEmpty
                 ? Center(
+                    heightFactor: 1,
                     child: Text(
                       l.statusNoChecks,
+                      textAlign: TextAlign.center,
                       style: AppType.footnote.copyWith(color: c.textTertiary),
                     ),
                   )

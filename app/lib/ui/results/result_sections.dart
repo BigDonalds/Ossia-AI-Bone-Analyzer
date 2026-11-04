@@ -49,12 +49,54 @@ class VerdictBlock extends StatelessWidget {
     final AppLocalizations l = context.l10n;
     final AnalysisResult r = record.result;
     final double conf = r.overallConfidence;
+    final bool large = TextFit.large(context);
+    final String? name = record.label?.trim();
+    final Widget score = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          l.resultHowSure,
+          style: AppType.footnote.copyWith(
+            color: c.textSecondary,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        const SizedBox(height: 2),
+        Text(
+          percent(conf),
+          style: AppType.metricLarge.copyWith(
+            color: c.textPrimary,
+            fontSize: 48,
+          ),
+        ),
+        const SizedBox(height: 6),
+        StatusPill(
+          confidenceWord(l, conf),
+          color: confidenceTone(context, conf),
+          filled: true,
+        ),
+      ],
+    );
+    final Widget buddy = BoneBuddy(
+      size: 104,
+      tilt: 0.1,
+      mood: conf >= 0.7
+          ? BuddyMood.happy
+          : conf >= 0.5
+          ? BuddyMood.thinking
+          : BuddyMood.wow,
+    );
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 22, 16, 4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          // The bar above can't always hold a typed name under large text.
+          if (large && name != null && name.isNotEmpty) ...<Widget>[
+            Text(name, style: AppType.title2.copyWith(color: c.textPrimary)),
+            const SizedBox(height: 12),
+          ],
           Wrap(
             spacing: 8,
             runSpacing: 8,
@@ -89,7 +131,7 @@ class VerdictBlock extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 14),
-          Text(
+          HeadingText(
             l.resultHeadline(r),
             style: AppType.title1.copyWith(color: c.textPrimary, fontSize: 32),
           ),
@@ -140,48 +182,23 @@ class VerdictBlock extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            l.resultHowSure,
-                            style: AppType.footnote.copyWith(
-                              color: c.textSecondary,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            percent(conf),
-                            style: AppType.metricLarge.copyWith(
-                              color: c.textPrimary,
-                              fontSize: 48,
-                            ),
-                          ),
-                          const SizedBox(height: 6),
-                          StatusPill(
-                            confidenceWord(l, conf),
-                            color: confidenceTone(context, conf),
-                            filled: true,
-                          ),
-                        ],
-                      ),
-                    ),
-                    BoneBuddy(
-                      size: 104,
-                      tilt: 0.1,
-                      mood: conf >= 0.7
-                          ? BuddyMood.happy
-                          : conf >= 0.5
-                          ? BuddyMood.thinking
-                          : BuddyMood.wow,
-                    ),
-                  ],
-                ),
+                // Under large text the big number needs the whole width.
+                if (large)
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      score,
+                      Align(alignment: AlignmentDirectional.centerEnd, child: buddy),
+                    ],
+                  )
+                else
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Expanded(child: score),
+                      buddy,
+                    ],
+                  ),
                 const SizedBox(height: 14),
                 ConfidenceBar(
                   value: conf,
@@ -378,25 +395,11 @@ class _IdentificationGroup extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Text(
-                          l.resultWhichBone,
-                          style: AppType.body.copyWith(
-                            color: c.textPrimary,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        candidates.length > 1
-                            ? l.resultTopGuesses(candidates.length)
-                            : l.resultOnlyGuess,
-                        style: AppType.footnote.copyWith(color: c.textTertiary),
-                      ),
-                    ],
+                  _BoneHeading(
+                    title: l.resultWhichBone,
+                    hint: candidates.length > 1
+                        ? l.resultTopGuesses(candidates.length)
+                        : l.resultOnlyGuess,
                   ),
                   const SizedBox(height: 14),
                   ...candidates.asMap().entries.map((MapEntry<int, Scored> e) {
@@ -407,24 +410,18 @@ class _IdentificationGroup extends StatelessWidget {
                       padding: EdgeInsets.only(
                         bottom: e.key == candidates.length - 1 ? 0 : 14,
                       ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: <Widget>[
-                          bone != null
-                              ? BoneSketch(entry: bone, size: 38)
-                              : const StatIcon(glyph: BoneGlyph.bone),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: ConfidenceBar(
-                              label: l.boneName(e.value.label),
-                              value: e.value.confidence,
-                              color: e.key == 0
-                                  ? confidenceTone(context, e.value.confidence)
-                                  : c.textTertiary,
-                              dimmed: dim,
-                            ),
-                          ),
-                        ],
+                      child: _IconBar(
+                        icon: bone != null
+                            ? BoneSketch(entry: bone, size: 38)
+                            : const StatIcon(glyph: BoneGlyph.bone),
+                        bar: ConfidenceBar(
+                          label: l.boneName(e.value.label),
+                          value: e.value.confidence,
+                          color: e.key == 0
+                              ? confidenceTone(context, e.value.confidence)
+                              : c.textTertiary,
+                          dimmed: dim,
+                        ),
                       ),
                     );
                   }),
@@ -448,6 +445,79 @@ class _IdentificationGroup extends StatelessWidget {
             ),
           ],
         ),
+      ],
+    );
+  }
+}
+
+/// A sticker or sketch beside a labelled bar, or under large text above it,
+/// which gives the label the whole width.
+class _IconBar extends StatelessWidget {
+  const _IconBar({required this.icon, required this.bar});
+
+  final Widget icon;
+  final Widget bar;
+
+  @override
+  Widget build(BuildContext context) {
+    if (TextFit.large(context)) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          icon,
+          const SizedBox(height: 6),
+          bar,
+        ],
+      );
+    }
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: <Widget>[
+        icon,
+        const SizedBox(width: 12),
+        Expanded(child: bar),
+      ],
+    );
+  }
+}
+
+/// "Which bone" with how many guesses follow: on one line, or under large
+/// text wherever they fit.
+class _BoneHeading extends StatelessWidget {
+  const _BoneHeading({required this.title, required this.hint});
+
+  final String title;
+  final String hint;
+
+  @override
+  Widget build(BuildContext context) {
+    final AppColors c = context.colors;
+    final Widget heading = Text(
+      title,
+      style: AppType.body.copyWith(
+        color: c.textPrimary,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+    final Widget guesses = Text(
+      hint,
+      style: AppType.footnote.copyWith(color: c.textTertiary),
+    );
+    if (TextFit.large(context)) {
+      return SizedBox(
+        width: double.infinity,
+        child: Wrap(
+          alignment: WrapAlignment.spaceBetween,
+          spacing: 8,
+          children: <Widget>[heading, guesses],
+        ),
+      );
+    }
+    return Row(
+      children: <Widget>[
+        Expanded(child: heading),
+        const SizedBox(width: 8),
+        guesses,
       ],
     );
   }
@@ -492,31 +562,25 @@ class _ConditionGroup extends StatelessWidget {
                     padding: EdgeInsets.only(
                       bottom: e.key == 'burn_signs' ? 0 : 15,
                     ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: <Widget>[
-                        StatIcon(
-                          glyph: switch (e.key) {
-                            'fracture' => BoneGlyph.fracture,
-                            'cut_marks' => BoneGlyph.cutMarks,
-                            _ => BoneGlyph.burn,
-                          },
-                          color: switch (e.key) {
-                            'fracture' => c.sticker(3),
-                            'cut_marks' => c.sticker(0),
-                            _ => c.sticker(1),
-                          },
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: ConfidenceBar(
-                            label: l.damageName(e.key),
-                            value: e.value,
-                            color: hit ? c.caution : c.textTertiary,
-                            dimmed: !hit,
-                          ),
-                        ),
-                      ],
+                    child: _IconBar(
+                      icon: StatIcon(
+                        glyph: switch (e.key) {
+                          'fracture' => BoneGlyph.fracture,
+                          'cut_marks' => BoneGlyph.cutMarks,
+                          _ => BoneGlyph.burn,
+                        },
+                        color: switch (e.key) {
+                          'fracture' => c.sticker(3),
+                          'cut_marks' => c.sticker(0),
+                          _ => c.sticker(1),
+                        },
+                      ),
+                      bar: ConfidenceBar(
+                        label: l.damageName(e.key),
+                        value: e.value,
+                        color: hit ? c.caution : c.textTertiary,
+                        dimmed: !hit,
+                      ),
                     ),
                   );
                 }).toList(),
@@ -785,6 +849,30 @@ class _MetricRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppColors c = context.colors;
+    // Under large text the icon and score have a line of their own, and the
+    // words get the whole width under them.
+    if (TextFit.large(context)) {
+      return Padding(
+        padding: const EdgeInsets.fromLTRB(16, 13, 16, 14),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                leading,
+                const Spacer(),
+                Text(
+                  percent(confidence),
+                  style: AppType.metric.copyWith(color: c.textPrimary, fontSize: 14),
+                ),
+              ],
+            ),
+            const SizedBox(height: 6),
+            _metric(c, context),
+          ],
+        ),
+      );
+    }
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 13, 16, 14),
       child: Row(
@@ -817,57 +905,62 @@ class _MetricRow extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints box) {
-            const double valueMax = 150;
-            final double room = box.maxWidth - 8 - 46;
-            final double valueWidth =
-                TextFit.width(context, value, valueStyle).clamp(0.0, valueMax);
-            // The value sits beside the label while both still fit without
-            // a word broken in two; a long German or Arabic pair puts the
-            // value under the label instead.
-            final bool beside =
-                TextFit.longestWord(context, label, labelStyle) + 8 + valueWidth <= room &&
-                    TextFit.longestWord(context, value, valueStyle) <= valueMax;
-            if (!beside) {
+        if (TextFit.large(context)) ...<Widget>[
+          Text(label, style: labelStyle),
+          const SizedBox(height: 2),
+          Text(value, style: valueStyle),
+        ] else
+          LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints box) {
+              const double valueMax = 150;
+              final double room = box.maxWidth - 8 - 46;
+              final double valueWidth =
+                  TextFit.width(context, value, valueStyle).clamp(0.0, valueMax);
+              // The value sits beside the label while both still fit without
+              // a word broken in two; a long German or Arabic pair puts the
+              // value under the label instead.
+              final bool beside =
+                  TextFit.longestWord(context, label, labelStyle) + 8 + valueWidth <= room &&
+                      TextFit.longestWord(context, value, valueStyle) <= valueMax;
+              if (!beside) {
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(label, style: labelStyle),
+                          const SizedBox(height: 2),
+                          Text(value, style: valueStyle),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    score,
+                  ],
+                );
+              }
               return Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(label, style: labelStyle),
-                        const SizedBox(height: 2),
-                        Text(value, style: valueStyle),
-                      ],
+                  Expanded(child: Text(label, style: labelStyle)),
+                  const SizedBox(width: 8),
+                  // A long value wraps past this width rather than crowding
+                  // the label.
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: valueMax),
+                    child: Text(
+                      value,
+                      textAlign: TextAlign.end,
+                      style: valueStyle,
                     ),
                   ),
                   const SizedBox(width: 8),
                   score,
                 ],
               );
-            }
-            return Row(
-              children: <Widget>[
-                Expanded(child: Text(label, style: labelStyle)),
-                const SizedBox(width: 8),
-                // A long value wraps past this width rather than crowding
-                // the label.
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: valueMax),
-                  child: Text(
-                    value,
-                    textAlign: TextAlign.end,
-                    style: valueStyle,
-                  ),
-                ),
-                const SizedBox(width: 8),
-                score,
-              ],
-            );
-          },
-        ),
+            },
+          ),
         if (subtitle != null) ...<Widget>[
           const SizedBox(height: 2),
           Text(

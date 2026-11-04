@@ -26,6 +26,7 @@ class SpecimenHeader extends SliverPersistentHeaderDelegate {
     this.onBack,
     this.actions,
     required this.backLabel,
+    this.barHeight = _bar,
   });
 
   final List<String> imagePaths;
@@ -42,6 +43,24 @@ class SpecimenHeader extends SliverPersistentHeaderDelegate {
   final String backLabel;
 
   static const double _bar = 60;
+
+  /// Height of the bar once collapsed: under large text it grows to hold the
+  /// title, up to two lines. A longer title (a typed name) stays out of the
+  /// bar, and the report shows it in full instead (see [VerdictBlock]).
+  final double barHeight;
+
+  /// The bar's height for [title], in a bar [screenWidth] wide. Null when the
+  /// title is too long for the bar under large text.
+  static double? barHeightFor(BuildContext context, String title, double screenWidth) {
+    if (!TextFit.large(context)) return _bar;
+    // Beside the title: its margins and the two round buttons.
+    final double room = screenWidth - 14 - 45 - 12 - 45 - 10;
+    final TextStyle style = AppType.title3;
+    final double line = TextFit.height(context, 'Ag', style, maxWidth: double.infinity);
+    final double height = FittedTitle.heightIn(context, title, style, room);
+    if (height > line * 2 + 1) return null;
+    return math.max(_bar, height + 12);
+  }
 
   /// How far down the photo starts: below the status bar and the buttons.
   static double photoTop(double topPadding) => topPadding + _bar;
@@ -71,10 +90,10 @@ class SpecimenHeader extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get minExtent => topPadding + _bar;
+  double get minExtent => topPadding + barHeight;
 
   @override
-  double get maxExtent => expandedHeight;
+  double get maxExtent => math.max(expandedHeight, minExtent);
 
   @override
   OverScrollHeaderStretchConfiguration get stretchConfiguration =>
@@ -87,6 +106,7 @@ class SpecimenHeader extends SliverPersistentHeaderDelegate {
     final double t = (shrinkOffset / range).clamp(0.0, 1.0);
     final double solid = ((t - 0.55) / 0.35).clamp(0.0, 1.0);
     final double inset = photoTop(topPadding);
+    final bool tall = barHeight > _bar;
 
     return Stack(
       fit: StackFit.expand,
@@ -144,27 +164,42 @@ class SpecimenHeader extends SliverPersistentHeaderDelegate {
           top: topPadding,
           left: 0,
           right: 0,
-          height: _bar,
+          height: barHeight,
           child: Row(
+            // A bar made taller by its title keeps the buttons at the top, on
+            // the photo's upper edge, until it has collapsed.
+            crossAxisAlignment: tall ? CrossAxisAlignment.start : CrossAxisAlignment.center,
             children: <Widget>[
               const SizedBox(width: 14),
-              RoundButton(
-                icon: Icons.arrow_back_rounded,
-                size: 42,
-                tooltip: backLabel,
-                onTap: onBack ?? () => Navigator.of(context).maybePop(),
+              Padding(
+                padding: EdgeInsets.only(top: tall ? 8 : 0),
+                child: RoundButton(
+                  icon: Icons.arrow_back_rounded,
+                  size: 42,
+                  tooltip: backLabel,
+                  onTap: onBack ?? () => Navigator.of(context).maybePop(),
+                ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: Opacity(
                   opacity: solid,
-                  child: FittedTitle(
-                    title,
-                    style: AppType.title3.copyWith(color: colors.textPrimary),
+                  child: Padding(
+                    padding: EdgeInsets.only(top: tall ? 6 : 0),
+                    child: title.isEmpty
+                        ? const SizedBox.shrink()
+                        : FittedTitle(
+                            title,
+                            style: AppType.title3.copyWith(color: colors.textPrimary),
+                          ),
                   ),
                 ),
               ),
-              if (actions != null) ...actions!(t),
+              if (actions != null)
+                Padding(
+                  padding: EdgeInsets.only(top: tall ? 8 : 0),
+                  child: Row(mainAxisSize: MainAxisSize.min, children: actions!(t)),
+                ),
               const SizedBox(width: 10),
             ],
           ),
@@ -180,7 +215,8 @@ class SpecimenHeader extends SliverPersistentHeaderDelegate {
       old.backLabel != backLabel ||
       old.colors != colors ||
       old.topPadding != topPadding ||
-      old.expandedHeight != expandedHeight;
+      old.expandedHeight != expandedHeight ||
+      old.barHeight != barHeight;
 }
 
 /// The photos as prints on the page rather than in a header, [height] tall:

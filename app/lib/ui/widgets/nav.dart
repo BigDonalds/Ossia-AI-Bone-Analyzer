@@ -42,14 +42,24 @@ class LargeTitleScrollView extends StatelessWidget {
     // The large title area grows with the text, so a subtitle that wraps
     // (German counts) or a bigger font size is never cut off.
     final double inset = Wide.inset(context);
-    final double room = MediaQuery.sizeOf(context).width - 2 * inset - 40;
-    double largeArea =
-        TextFit.height(context, title, _LargeTitleHeader.titleStyle, maxWidth: room, maxLines: 1) + 18;
+    final double width = MediaQuery.sizeOf(context).width - 2 * inset;
+    final double room = width - 40;
+    final bool large = TextFit.large(context);
+    double largeArea = FittedTitle.heightIn(context, title, _LargeTitleHeader.titleStyle, room) + 18;
     if (subtitle != null) {
       largeArea += 4 +
           TextFit.height(context, subtitle!, _LargeTitleHeader.subtitleStyle,
-              maxWidth: room, maxLines: 2);
+              maxWidth: room, maxLines: large ? null : 2);
     }
+    // The bar it collapses into grows too when the title wraps under large
+    // text. Beside it: the side margins and the globe with its gap.
+    final double barRoom = width - 36 - (globe ? 8 + 48 : 0);
+    final double barHeight = large
+        ? math.max(
+            _LargeTitleHeader._barHeight,
+            FittedTitle.heightIn(context, title, _LargeTitleHeader.barTitleStyle, barRoom) + 12,
+          )
+        : _LargeTitleHeader._barHeight;
 
     return CustomScrollView(
       controller: controller,
@@ -68,6 +78,7 @@ class LargeTitleScrollView extends StatelessWidget {
             colors: context.colors,
             topPadding: MediaQuery.paddingOf(context).top,
             largeArea: largeArea.ceilToDouble(),
+            barHeight: barHeight.ceilToDouble(),
             inset: inset,
           ),
         ),
@@ -91,6 +102,7 @@ class _LargeTitleHeader extends SliverPersistentHeaderDelegate {
     required this.colors,
     required this.topPadding,
     required this.largeArea,
+    required this.barHeight,
     required this.inset,
   });
 
@@ -105,20 +117,24 @@ class _LargeTitleHeader extends SliverPersistentHeaderDelegate {
   /// Height of the large title and subtitle, measured by the scroll view.
   final double largeArea;
 
+  /// Height of the collapsed bar, measured by the scroll view.
+  final double barHeight;
+
   /// Extra margin on each side, on a very wide screen.
   final double inset;
 
   static const double _barHeight = 52;
 
   static TextStyle get titleStyle => AppType.largeTitle;
+  static TextStyle get barTitleStyle => AppType.title3;
   static TextStyle get subtitleStyle =>
       AppType.subhead.copyWith(fontWeight: FontWeight.w600);
 
   @override
-  double get minExtent => topPadding + _barHeight;
+  double get minExtent => topPadding + barHeight;
 
   @override
-  double get maxExtent => topPadding + _barHeight + largeArea;
+  double get maxExtent => topPadding + barHeight + largeArea;
 
   @override
   Widget build(
@@ -144,7 +160,7 @@ class _LargeTitleHeader extends SliverPersistentHeaderDelegate {
             top: topPadding,
             left: inset,
             right: inset,
-            height: _barHeight,
+            height: barHeight,
             child: Row(
               children: <Widget>[
                 const SizedBox(width: 12),
@@ -158,7 +174,7 @@ class _LargeTitleHeader extends SliverPersistentHeaderDelegate {
                     opacity: smallOpacity,
                     child: FittedTitle(
                       title,
-                      style: AppType.title3.copyWith(color: colors.textPrimary),
+                      style: barTitleStyle.copyWith(color: colors.textPrimary),
                     ),
                   ),
                 ),
@@ -193,8 +209,8 @@ class _LargeTitleHeader extends SliverPersistentHeaderDelegate {
                         const SizedBox(height: 4),
                         Text(
                           subtitle!,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
+                          maxLines: TextFit.large(context) ? null : 2,
+                          overflow: TextFit.large(context) ? null : TextOverflow.ellipsis,
                           style: subtitleStyle.copyWith(color: colors.textSecondary),
                         ),
                       ],
@@ -219,6 +235,7 @@ class _LargeTitleHeader extends SliverPersistentHeaderDelegate {
       old.colors != colors ||
       old.topPadding != topPadding ||
       old.largeArea != largeArea ||
+      old.barHeight != barHeight ||
       old.inset != inset;
 }
 
@@ -253,10 +270,13 @@ class DetailBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final AppColors c = context.colors;
     final double top = MediaQuery.paddingOf(context).top;
+    final bool large = TextFit.large(context);
 
     return Container(
       width: double.infinity,
-      height: top + _height,
+      // Under large text a title that wraps makes the bar taller.
+      height: large ? null : top + _height,
+      constraints: large ? BoxConstraints(minHeight: top + _height) : null,
       padding: EdgeInsets.only(top: top),
       decoration: BoxDecoration(
         color: transparent ? Colors.transparent : c.canvas,
@@ -277,9 +297,12 @@ class DetailBar extends StatelessWidget implements PreferredSizeWidget {
           Expanded(
             child: title == null
                 ? const SizedBox.shrink()
-                : FittedTitle(
-                    title!,
-                    style: AppType.title3.copyWith(color: c.textPrimary),
+                : Padding(
+                    padding: EdgeInsets.symmetric(vertical: large ? 6 : 0),
+                    child: FittedTitle(
+                      title!,
+                      style: AppType.title3.copyWith(color: c.textPrimary),
+                    ),
                   ),
           ),
           if (trailing != null) ...<Widget>[
@@ -335,8 +358,11 @@ class AppTabBar extends StatelessWidget {
             // [_iconRoom] each.
             final int others = destinations.length - 1;
             final double share = box.maxWidth * 6 / (6 + 3 * others);
-            final double needed = TextFit.width(context, destinations[index].label, _labelStyle) +
-                24 + 6 + 8 * 2 + 2 * 2 + 1;
+            // The bar is one row at a fixed height, so its label is capped.
+            final TextScaler scaler = TextFit.tiny(context);
+            final double needed =
+                TextFit.width(context, destinations[index].label, _labelStyle, scaler: scaler) +
+                    24 + 6 + 8 * 2 + 2 * 2 + 1;
             final double activeWidth = others == 0
                 ? box.maxWidth
                 : needed.clamp(share, (box.maxWidth - others * _iconRoom).clamp(share, box.maxWidth));
@@ -391,6 +417,7 @@ class AppTabBar extends StatelessWidget {
                                     d.label,
                                     maxLines: 1,
                                     softWrap: false,
+                                    textScaler: scaler,
                                     style: _labelStyle.copyWith(color: c.onAccent),
                                   ),
                                 ),

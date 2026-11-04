@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,6 +21,7 @@ import '../widgets/inset_group.dart';
 import '../widgets/primitives.dart';
 import '../widgets/sheets.dart';
 import '../widgets/specimen_image.dart';
+import '../widgets/text_fit.dart';
 import 'analyzing_screen.dart';
 import 'camera_screen.dart';
 import 'length_ruler.dart';
@@ -161,6 +163,93 @@ class _ReviewScreenState extends State<ReviewScreen> {
     final int n = _images.length;
     final bool retake = widget.fromCamera && !_changed;
 
+    final Widget heading = Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 14),
+      child: Row(
+        children: <Widget>[
+          RoundButton(
+            icon: Icons.arrow_back_rounded,
+            tooltip: retake ? l.reviewRetake : l.back,
+            onTap: () => Navigator.of(context).maybePop(),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: HeadingText(
+              widget.revising != null
+                  ? l.reviewTitleRevising
+                  : n > 1
+                      ? l.reviewTitleAngles(n)
+                      : widget.fromCamera
+                          ? l.reviewNiceShot
+                          : l.reviewLookingGood,
+              style: AppType.title2.copyWith(color: c.textPrimary),
+            ),
+          ),
+        ],
+      ),
+    );
+    final List<Widget> cards = <Widget>[
+      Reveal(
+        child: _Polaroid(
+          image: _images[_shown],
+          caption: widget.revising != null
+              ? l.recordTitle(widget.revising!)
+              : l.reviewMysteryBone(
+                  (_images.first.path.hashCode % 900 + 100).abs(),
+                ),
+          counter: n > 1 ? '${_shown + 1}/$n' : null,
+        ),
+      ),
+      const SizedBox(height: 22),
+      Reveal(
+        delay: const Duration(milliseconds: 60),
+        child: _AnglesCard(
+          images: _images,
+          shown: _shown,
+          onShow: (int i) => setState(() => _shown = i),
+          onRemove: _remove,
+          onSnap: _snap,
+          onUpload: _upload,
+        ),
+      ),
+      const SizedBox(height: 22),
+      Reveal(
+        delay: const Duration(milliseconds: 120),
+        child: _LengthCard(
+          lengthCm: _lengthCm,
+          unit: unit,
+          onChanged: (double v) => setState(() => _lengthCm = v),
+          onClear: () {
+            Haptics.tap();
+            setState(() => _lengthCm = null);
+          },
+          onType: () => _typeLength(unit),
+          onUnit: (LengthUnit u) {
+            Haptics.tap();
+            settings.setUnit(u);
+          },
+        ),
+      ),
+    ];
+    final Widget buttons = ButtonPair(
+      secondaryFlex: 2,
+      primaryFlex: 3,
+      secondary: SecondaryButton(
+        label: retake ? l.reviewRetake : l.back,
+        icon: retake ? Icons.refresh_rounded : null,
+        onTap: _leave,
+      ),
+      primary: PrimaryButton(
+        label: n > 1
+            ? l.reviewAnalyzeCount(n)
+            : _lengthCm == null
+                ? l.reviewSkipAnalyze
+                : l.reviewAnalyzeIt,
+        icon: Icons.auto_awesome_rounded,
+        onTap: _analyze,
+      ),
+    );
+
     return PopScope(
       canPop: !_changed,
       onPopInvokedWithResult: (bool didPop, Object? _) {
@@ -170,112 +259,63 @@ class _ReviewScreenState extends State<ReviewScreen> {
         value: context.isDark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark,
         child: Scaffold(
           backgroundColor: c.canvas,
-          body: Column(
-            children: <Widget>[
-              SizedBox(height: safe.top + 8),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 14),
-                child: Row(
-                  children: <Widget>[
-                    RoundButton(
-                      icon: Icons.arrow_back_rounded,
-                      tooltip: retake ? l.reviewRetake : l.back,
-                      onTap: () => Navigator.of(context).maybePop(),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Text(
-                        widget.revising != null
-                            ? l.reviewTitleRevising
-                            : n > 1
-                                ? l.reviewTitleAngles(n)
-                                : widget.fromCamera
-                                    ? l.reviewNiceShot
-                                    : l.reviewLookingGood,
-                        style: AppType.title2.copyWith(color: c.textPrimary),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: ListView(
-                  physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.fromLTRB(16, 18, 12, 24),
-                  children: <Widget>[
-                    Reveal(
-                      child: _Polaroid(
-                        image: _images[_shown],
-                        caption: widget.revising != null
-                            ? l.recordTitle(widget.revising!)
-                            : l.reviewMysteryBone(
-                                (_images.first.path.hashCode % 900 + 100).abs(),
-                              ),
-                        counter: n > 1 ? '${_shown + 1}/$n' : null,
-                      ),
-                    ),
-                    const SizedBox(height: 22),
-                    Reveal(
-                      delay: const Duration(milliseconds: 60),
-                      child: _AnglesCard(
-                        images: _images,
-                        shown: _shown,
-                        onShow: (int i) => setState(() => _shown = i),
-                        onRemove: _remove,
-                        onSnap: _snap,
-                        onUpload: _upload,
-                      ),
-                    ),
-                    const SizedBox(height: 22),
-                    Reveal(
-                      delay: const Duration(milliseconds: 120),
-                      child: _LengthCard(
-                        lengthCm: _lengthCm,
-                        unit: unit,
-                        onChanged: (double v) => setState(() => _lengthCm = v),
-                        onClear: () {
-                          Haptics.tap();
-                          setState(() => _lengthCm = null);
-                        },
-                        onType: () => _typeLength(unit),
-                        onUnit: (LengthUnit u) {
-                          Haptics.tap();
-                          settings.setUnit(u);
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.fromLTRB(16, 14, 12, safe.bottom + 12),
-                decoration: BoxDecoration(
-                  color: c.canvas,
-                  border: Border(top: BorderSide(color: c.ink, width: Chunky.border)),
-                ),
-                child: ButtonPair(
-                  secondaryFlex: 2,
-                  primaryFlex: 3,
-                  secondary: SecondaryButton(
-                    label: retake ? l.reviewRetake : l.back,
-                    icon: retake ? Icons.refresh_rounded : null,
-                    onTap: _leave,
-                  ),
-                  primary: PrimaryButton(
-                    label: n > 1
-                        ? l.reviewAnalyzeCount(n)
-                        : _lengthCm == null
-                            ? l.reviewSkipAnalyze
-                            : l.reviewAnalyzeIt,
-                    icon: Icons.auto_awesome_rounded,
-                    onTap: _analyze,
-                  ),
-                ),
-              ),
-            ],
-          ),
+          body: _layout(context, safe, c, heading, cards, buttons),
         ),
       ),
+    );
+  }
+
+  /// The heading and buttons stay put around the scrolling cards. Under large
+  /// text they would leave the cards almost no room, so it all scrolls as one
+  /// page.
+  Widget _layout(
+    BuildContext context,
+    EdgeInsets safe,
+    AppColors c,
+    Widget heading,
+    List<Widget> cards,
+    Widget buttons,
+  ) {
+    if (TextFit.large(context)) {
+      return ListView(
+        physics: const BouncingScrollPhysics(),
+        padding: EdgeInsets.only(top: safe.top + 8, bottom: safe.bottom + 12),
+        children: <Widget>[
+          heading,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 18, 12, 24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: cards,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 12, 0),
+            child: buttons,
+          ),
+        ],
+      );
+    }
+    return Column(
+      children: <Widget>[
+        SizedBox(height: safe.top + 8),
+        heading,
+        Expanded(
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.fromLTRB(16, 18, 12, 24),
+            children: cards,
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.fromLTRB(16, 14, 12, safe.bottom + 12),
+          decoration: BoxDecoration(
+            color: c.canvas,
+            border: Border(top: BorderSide(color: c.ink, width: Chunky.border)),
+          ),
+          child: buttons,
+        ),
+      ],
     );
   }
 }
@@ -329,21 +369,36 @@ class _Polaroid extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 42,
-                child: Center(
+              // Under large text the caption wraps and the white edge grows.
+              if (TextFit.large(context))
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 6),
                   child: Text(
                     caption,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
                     style: AppType.title3.copyWith(
                       color: const Color(0xFF141414),
                       fontSize: 17,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
+                )
+              else
+                SizedBox(
+                  height: 42,
+                  child: Center(
+                    child: Text(
+                      caption,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppType.title3.copyWith(
+                        color: const Color(0xFF141414),
+                        fontSize: 17,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
             ],
           ),
         ),
@@ -382,23 +437,16 @@ class _AnglesCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: Text(
-                  n == 1 ? l.reviewMoreAnglesQ : l.reviewAngles,
-                  style: AppType.title2.copyWith(color: c.textPrimary),
-                ),
+          _CardHeading(
+            title: n == 1 ? l.reviewMoreAnglesQ : l.reviewAngles,
+            pill: Transform.rotate(
+              angle: -0.05,
+              child: StatusPill(
+                n == 1 ? l.reviewOptional : l.reviewAnglesOf(n, kMaxPhotos),
+                color: c.stickers[1],
+                filled: true,
               ),
-              Transform.rotate(
-                angle: -0.05,
-                child: StatusPill(
-                  n == 1 ? l.reviewOptional : l.reviewAnglesOf(n, kMaxPhotos),
-                  color: c.stickers[1],
-                  filled: true,
-                ),
-              ),
-            ],
+            ),
           ),
           const SizedBox(height: 6),
           Text(
@@ -407,7 +455,7 @@ class _AnglesCard extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           SizedBox(
-            height: 88,
+            height: 88 + _AddTile.growth(context),
             child: ListView(
               scrollDirection: Axis.horizontal,
               clipBehavior: Clip.none,
@@ -524,6 +572,7 @@ class _Thumb extends StatelessWidget {
                           ),
                           child: Text(
                             '$number',
+                            textScaler: TextFit.tiny(context),
                             style: AppType.caption.copyWith(
                               color: const Color(0xFF141414),
                               fontWeight: FontWeight.w800,
@@ -585,17 +634,28 @@ class _AddTile extends StatelessWidget {
   final Color color;
   final VoidCallback onTap;
 
+  static TextStyle get _style => AppType.caption.copyWith(fontWeight: FontWeight.w800);
+
+  /// How much taller the tile is under large text, to hold its word.
+  static double growth(BuildContext context) {
+    if (!TextFit.large(context)) return 0;
+    return TextFit.height(context, 'Ag', _style, maxWidth: double.infinity) -
+        TextFit.height(context, 'Ag', _style, maxWidth: double.infinity, scaler: TextScaler.noScaling);
+  }
+
   @override
   Widget build(BuildContext context) {
     const Color ink = Color(0xFF141414);
+    final bool large = TextFit.large(context);
     return Padding(
       padding: const EdgeInsets.only(top: 8),
       child: Semantics(
         label: hint,
         button: true,
         child: Chunk(
-          width: 72,
-          height: 72,
+          // Wider under large text, so its word stays whole at full size.
+          width: large ? math.max(72, TextFit.width(context, label, _style) + 16) : 72,
+          height: 72 + growth(context),
           radius: 14,
           shadow: 3,
           color: color,
@@ -612,7 +672,7 @@ class _AddTile extends StatelessWidget {
                   child: Text(
                     label,
                     maxLines: 1,
-                    style: AppType.caption.copyWith(color: ink, fontWeight: FontWeight.w800),
+                    style: _style.copyWith(color: ink),
                   ),
                 ),
               ),
@@ -620,6 +680,39 @@ class _AddTile extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// A card's title with a small sticker at its far end, or under large text
+/// wherever the two fit.
+class _CardHeading extends StatelessWidget {
+  const _CardHeading({required this.title, required this.pill});
+
+  final String title;
+  final Widget pill;
+
+  @override
+  Widget build(BuildContext context) {
+    final Widget heading = HeadingText(
+      title,
+      style: AppType.title2.copyWith(color: context.colors.textPrimary),
+    );
+    if (!TextFit.large(context)) {
+      return Row(
+        children: <Widget>[
+          Expanded(child: heading),
+          pill,
+        ],
+      );
+    }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        heading,
+        const SizedBox(height: 6),
+        pill,
+      ],
     );
   }
 }
@@ -647,25 +740,83 @@ class _LengthCard extends StatelessWidget {
     final AppLocalizations l = context.l10n;
     final bool set = lengthCm != null;
     final String number = set ? fixed(unit.from(lengthCm!), 1) : '--';
+    final Widget reading = Row(
+      crossAxisAlignment: CrossAxisAlignment.baseline,
+      textBaseline: TextBaseline.alphabetic,
+      children: <Widget>[
+        Flexible(
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: AlignmentDirectional.centerStart,
+            child: Text(
+              number,
+              style: AppType.mega.copyWith(
+                color: set ? c.textPrimary : c.textTertiary,
+                fontSize: 52,
+                fontFeatures: const <FontFeature>[
+                  FontFeature.tabularFigures(),
+                ],
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(width: 6),
+        Text(
+          l.unitSymbol(unit),
+          style: AppType.title2.copyWith(color: c.textSecondary),
+        ),
+        const SizedBox(width: 6),
+        Icon(Icons.edit_rounded, size: 16, color: c.textTertiary),
+      ],
+    );
+    final Widget unitSwitch = SegmentedControl<LengthUnit>(
+      value: unit,
+      onChanged: onUnit,
+      segments: <LengthUnit, String>{
+        for (final LengthUnit u in LengthUnit.values) u: l.unitSymbol(u),
+      },
+    );
+    final Widget hint = Row(
+      children: <Widget>[
+        Icon(Icons.swipe_rounded, size: 16, color: c.textTertiary),
+        const SizedBox(width: 6),
+        Expanded(
+          child: Text(
+            set ? l.reviewTapToType : l.reviewFlickTape,
+            style: AppType.caption.copyWith(color: c.textTertiary),
+          ),
+        ),
+      ],
+    );
+    final Widget clear = Pressable(
+      onTap: onClear,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(99),
+          border: Border.all(color: c.ink, width: 1.6),
+        ),
+        child: Text(
+          l.reviewClear,
+          style: AppType.caption.copyWith(
+            color: c.textPrimary,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+      ),
+    );
 
     return Chunk(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 18),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: Text(
-                  l.reviewHowLong,
-                  style: AppType.title2.copyWith(color: c.textPrimary),
-                ),
-              ),
-              Transform.rotate(
-                angle: 0.06,
-                child: StatusPill(l.reviewOptional, color: c.stickers[2], filled: true),
-              ),
-            ],
+          _CardHeading(
+            title: l.reviewHowLong,
+            pill: Transform.rotate(
+              angle: 0.06,
+              child: StatusPill(l.reviewOptional, color: c.stickers[2], filled: true),
+            ),
           ),
           const SizedBox(height: 6),
           Text(
@@ -678,88 +829,45 @@ class _LengthCard extends StatelessWidget {
             caption: set ? l.reviewEndToEnd : l.reviewWaitingNumber,
           ),
           const SizedBox(height: 12),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Expanded(
-                child: Pressable(
-                  onTap: onType,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.baseline,
-                    textBaseline: TextBaseline.alphabetic,
-                    children: <Widget>[
-                      Flexible(
-                        child: FittedBox(
-                          fit: BoxFit.scaleDown,
-                          alignment: AlignmentDirectional.centerStart,
-                          child: Text(
-                            number,
-                            style: AppType.mega.copyWith(
-                              color: set ? c.textPrimary : c.textTertiary,
-                              fontSize: 52,
-                              fontFeatures: const <FontFeature>[
-                                FontFeature.tabularFigures(),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 6),
-                      Text(
-                        l.unitSymbol(unit),
-                        style: AppType.title2.copyWith(color: c.textSecondary),
-                      ),
-                      const SizedBox(width: 6),
-                      Icon(Icons.edit_rounded, size: 16, color: c.textTertiary),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: 108,
-                child: SegmentedControl<LengthUnit>(
-                  value: unit,
-                  onChanged: onUnit,
-                  segments: <LengthUnit, String>{
-                    for (final LengthUnit u in LengthUnit.values) u: l.unitSymbol(u),
-                  },
-                ),
-              ),
-            ],
-          ),
+          if (TextFit.large(context))
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Pressable(onTap: onType, child: reading),
+                const SizedBox(height: 10),
+                unitSwitch,
+              ],
+            )
+          else
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Expanded(child: Pressable(onTap: onType, child: reading)),
+                SizedBox(width: 108, child: unitSwitch),
+              ],
+            ),
           const SizedBox(height: 14),
           LengthRuler(unit: unit, valueCm: lengthCm, onChanged: onChanged),
           const SizedBox(height: 12),
-          Row(
-            children: <Widget>[
-              Icon(Icons.swipe_rounded, size: 16, color: c.textTertiary),
-              const SizedBox(width: 6),
-              Expanded(
-                child: Text(
-                  set ? l.reviewTapToType : l.reviewFlickTape,
-                  style: AppType.caption.copyWith(color: c.textTertiary),
-                ),
-              ),
-              if (set)
-                Pressable(
-                  onTap: onClear,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(99),
-                      border: Border.all(color: c.ink, width: 1.6),
-                    ),
-                    child: Text(
-                      l.reviewClear,
-                      style: AppType.caption.copyWith(
-                        color: c.textPrimary,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                ),
-            ],
-          ),
+          // Under large text the clear button goes under the hint.
+          if (TextFit.large(context))
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                hint,
+                if (set) ...<Widget>[
+                  const SizedBox(height: 8),
+                  clear,
+                ],
+              ],
+            )
+          else
+            Row(
+              children: <Widget>[
+                Expanded(child: hint),
+                if (set) clear,
+              ],
+            ),
         ],
       ),
     );

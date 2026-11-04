@@ -8,6 +8,7 @@ import '../../l10n/l10n.dart';
 import '../../l10n/labels.dart';
 import '../widgets/nav.dart';
 import '../widgets/primitives.dart';
+import '../widgets/text_fit.dart';
 
 /// Walks the nine stages of the pipeline. Written to set expectations: which
 /// stages are dependable and which are not.
@@ -33,7 +34,7 @@ class PipelineScreen extends StatelessWidget {
                   20, 24, 20, 100 + MediaQuery.paddingOf(context).bottom),
               children: <Widget>[
                 Reveal(
-                  child: Text(
+                  child: HeadingText(
                     l.howHeading,
                     style: AppType.title1.copyWith(color: c.textPrimary),
                   ),
@@ -97,6 +98,7 @@ class _PhaseRow extends StatelessWidget {
                 ),
                 child: Text(
                   '${doc.number}',
+                  textScaler: TextFit.tiny(context),
                   style: AppType.metric.copyWith(
                     color: const Color(0xFF141414),
                     fontSize: 15,

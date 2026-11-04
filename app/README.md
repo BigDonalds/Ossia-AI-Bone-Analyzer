@@ -334,7 +334,7 @@ lib/
     results/    report page, sections, collapsing photo header
     library/    saved analyses
     reference/  Bones tab and pipeline explainer
-    settings/   settings and about
+    settings/   settings, about and the store links
     status/     model status page, status pill and toasts
     widgets/    grouped rows, nav bars, sheets, primitives, the mascot
 ```
@@ -361,6 +361,15 @@ Design notes:
   a finished sentence.
 - The navigation bars, tab bar and photo header are custom rather than
   Material's. Back buttons sit at the leading edge (the right, in Arabic).
+- Text follows the phone's text size up to 200%. Up to 135%, the layouts stay
+  as drawn. Above it (`TextFit.large`), fixed heights become minimum heights,
+  things side by side stack, and long content scrolls. Only tiny labels with no
+  room to grow are capped (`TextFit.tiny`), and a heading or button label only
+  comes down for a single word too wide for its line (`TextFit.heading`).
+- Everything that links to the stores (the Rate and Share rows, and the review
+  card on Scan) is behind `kStoreLinksLive` in
+  `lib/ui/settings/store_links.dart`, off until the listings are live. A test
+  build turns it on with `--dart-define=STORE_LINKS=true`.
 
 ## Tests
 
@@ -384,6 +393,12 @@ sets, with lengths chosen to reach every branch of the length check, the report
 built on the phone must equal the one `server.py` produced for the same
 probabilities, and small images must letterbox exactly as in training.
 `export_mobile.py` regenerates these cases with every export.
+
+`test/large_text_test.dart` opens every screen at 200% text in all three
+languages, on phones 320, 360 and 390 wide and on a tablet, with the real fonts,
+and fails on any overflow or on text cut off, off the screen or printed over
+other text. Run it with and without `--dart-define=STORE_LINKS=true`, so the
+store rows and the review card are covered too.
 
 ## Not a diagnosis
 

@@ -142,7 +142,7 @@ class LinkPill extends StatelessWidget {
         padding: const EdgeInsetsDirectional.fromSTEB(3, 2, 11, 3),
         decoration: BoxDecoration(
           color: c.surface,
-          borderRadius: BorderRadius.circular(99),
+          borderRadius: BorderRadius.circular(TextFit.large(context) ? 20 : 99),
           border: Border.all(color: c.ink, width: 1.8),
           boxShadow: <BoxShadow>[
             BoxShadow(color: c.shadow, offset: const Offset(2, 2)),
@@ -159,8 +159,8 @@ class LinkPill extends StatelessWidget {
                 child: Text(
                   label,
                   key: ValueKey<String>(label),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                  maxLines: TextFit.large(context) ? null : 1,
+                  overflow: TextFit.large(context) ? null : TextOverflow.ellipsis,
                   style: _style(c),
                 ),
               ),

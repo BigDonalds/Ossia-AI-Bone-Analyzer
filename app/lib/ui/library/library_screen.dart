@@ -16,6 +16,7 @@ import '../widgets/nav.dart';
 import '../widgets/primitives.dart';
 import '../widgets/sheets.dart';
 import '../widgets/specimen_image.dart';
+import '../widgets/text_fit.dart';
 import '../widgets/wide.dart';
 import 'find_card.dart';
 import 'record_detail_screen.dart';
@@ -95,6 +96,18 @@ class _LibraryScreenState extends State<LibraryScreen> {
     return out;
   }
 
+  /// [state] in the middle of what's left of the page, or under large text,
+  /// where it fills the page anyway, simply below the header.
+  Widget _emptyPage(BuildContext context, Widget state) {
+    final Widget page = Padding(
+      padding: const EdgeInsets.only(bottom: 120),
+      child: state,
+    );
+    return TextFit.large(context)
+        ? SliverToBoxAdapter(child: page)
+        : SliverFillRemaining(hasScrollBody: false, child: page);
+  }
+
   /// On a tablet each group is a grid of photo cards, like the recent finds
   /// on Scan. Deleting is in a report's options there, not a swipe.
   List<Widget> _grid(BuildContext context, Map<String, List<AnalysisRecord>> groups) {
@@ -121,7 +134,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
               crossAxisCount: columns,
               crossAxisSpacing: 8,
               mainAxisSpacing: 10,
-              mainAxisExtent: FindCard.height(card, titleLines, lineHeight),
+              mainAxisExtent: FindCard.height(context, card, titleLines, lineHeight),
             ),
             children: <Widget>[
               for (final AnalysisRecord r in g.value)
@@ -201,35 +214,29 @@ class _LibraryScreenState extends State<LibraryScreen> {
             ),
           ],
           if (all.isEmpty)
-            SliverFillRemaining(
-              hasScrollBody: false,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 120),
-                child: EmptyState(
-                  icon: Icons.inventory_2_outlined,
-                  mood: BuddyMood.sad,
-                  title: l.libEmptyTitle,
-                  message: l.libEmptyBody,
-                  action: PrimaryButton(
-                    label: l.scanSnap,
-                    icon: Icons.camera_alt_rounded,
-                    expand: false,
-                    onTap: () => openBoneCamera(context),
-                  ),
+            _emptyPage(
+              context,
+              EmptyState(
+                icon: Icons.inventory_2_outlined,
+                mood: BuddyMood.sad,
+                title: l.libEmptyTitle,
+                message: l.libEmptyBody,
+                action: PrimaryButton(
+                  label: l.scanSnap,
+                  icon: Icons.camera_alt_rounded,
+                  expand: false,
+                  onTap: () => openBoneCamera(context),
                 ),
               ),
             )
           else if (shown.isEmpty)
-            SliverFillRemaining(
-              hasScrollBody: false,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 120),
-                child: EmptyState(
-                  icon: Icons.filter_list_off_rounded,
-                  mood: BuddyMood.thinking,
-                  title: l.libNoMatchTitle,
-                  message: l.libNoMatchBody,
-                ),
+            _emptyPage(
+              context,
+              EmptyState(
+                icon: Icons.filter_list_off_rounded,
+                mood: BuddyMood.thinking,
+                title: l.libNoMatchTitle,
+                message: l.libNoMatchBody,
               ),
             )
           else if (wide)
@@ -264,8 +271,10 @@ class _SearchField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppColors c = context.colors;
+    final bool large = TextFit.large(context);
     return Container(
-      height: 46,
+      height: large ? null : 46,
+      constraints: large ? const BoxConstraints(minHeight: 46) : null,
       padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
         color: c.surface,
@@ -288,6 +297,7 @@ class _SearchField extends StatelessWidget {
                 border: InputBorder.none,
                 contentPadding: const EdgeInsets.symmetric(vertical: 8),
                 hintText: context.l10n.libSearchHint,
+                hintMaxLines: large ? 4 : null,
                 hintStyle: AppType.callout.copyWith(color: c.textTertiary),
               ),
             ),
@@ -344,6 +354,8 @@ class _RecordRow extends StatelessWidget {
       child: InsetRow(
         minHeight: 76,
         chevron: true,
+        leadingWidth: 56,
+        trailingWidth: 96,
         onTap: () => Navigator.of(context).push(
           WidePageRoute<void>(
             builder: (_) => RecordDetailScreen(recordId: record.id),

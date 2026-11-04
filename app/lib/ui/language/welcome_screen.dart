@@ -12,6 +12,7 @@ import '../../data/settings_controller.dart';
 import '../../l10n/l10n.dart';
 import '../widgets/bone_buddy.dart';
 import '../widgets/primitives.dart';
+import '../widgets/text_fit.dart';
 import 'language_picker.dart';
 
 /// First launch: which language should Ossia speak?
@@ -87,6 +88,53 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     final String selected = context.watch<SettingsController>().localeCode;
     final AppLanguage greeting = _picked ? languageFor(selected) : kLanguages[_hello];
     const List<double> tilts = <double>[-1.4, 1.1, -0.7];
+    final bool large = TextFit.large(context);
+
+    final Widget page = Padding(
+      // The cards' hard shadow sits on their right in every language, so the
+      // right edge is 4 short to look even.
+      padding: const EdgeInsets.fromLTRB(20, 4, 16, 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          _Stage(greeting: greeting, mood: _mood, hops: _hops),
+          const SizedBox(height: 6),
+          _Swap(
+            code: selected,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                HeadingText(
+                  l.welcomeTitle,
+                  style: AppType.title1.copyWith(color: c.textPrimary),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  _phone == null ? l.welcomeSubtitleNoMatch : l.welcomeSubtitle,
+                  style: AppType.subhead.copyWith(color: c.textSecondary),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 22),
+          for (int i = 0; i < kLanguages.length; i++)
+            Reveal(
+              delay: Motion.stagger * (i + 3),
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: _card(kLanguages[i], selected, tilts[i % tilts.length]),
+              ),
+            ),
+          if (!large) const Spacer(),
+          const SizedBox(height: 14),
+          PrimaryButton(
+            label: l.welcomeContinue,
+            icon: Icons.arrow_forward_rounded,
+            onTap: () => _go(selected),
+          ),
+        ],
+      ),
+    );
 
     return Scaffold(
       backgroundColor: c.canvas,
@@ -94,54 +142,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: <Widget>[
-            SliverFillRemaining(
-              hasScrollBody: false,
-              child: Padding(
-                // The cards' hard shadow sits on their right in every
-                // language, so the right edge is 4 short to look even.
-                padding: const EdgeInsets.fromLTRB(20, 4, 16, 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    _Stage(greeting: greeting, mood: _mood, hops: _hops),
-                    const SizedBox(height: 6),
-                    _Swap(
-                      code: selected,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            l.welcomeTitle,
-                            style: AppType.title1.copyWith(color: c.textPrimary),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            _phone == null ? l.welcomeSubtitleNoMatch : l.welcomeSubtitle,
-                            style: AppType.subhead.copyWith(color: c.textSecondary),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 22),
-                    for (int i = 0; i < kLanguages.length; i++)
-                      Reveal(
-                        delay: Motion.stagger * (i + 3),
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 12),
-                          child: _card(kLanguages[i], selected, tilts[i % tilts.length]),
-                        ),
-                      ),
-                    const Spacer(),
-                    const SizedBox(height: 14),
-                    PrimaryButton(
-                      label: l.welcomeContinue,
-                      icon: Icons.arrow_forward_rounded,
-                      onTap: () => _go(selected),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            // The button sits at the bottom of a short page; large text makes
+            // the page long enough that it follows the cards.
+            if (large)
+              SliverToBoxAdapter(child: page)
+            else
+              SliverFillRemaining(hasScrollBody: false, child: page),
           ],
         ),
       ),
@@ -208,41 +214,58 @@ class _Stage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppColors c = context.colors;
+    final Widget buddy = BoneBuddy(size: 124, mood: mood, look: const Offset(0.8, -0.2));
+    final Widget bubble = SpeechBubble(
+      child: AnimatedSize(
+        duration: Motion.quick,
+        curve: Motion.standard,
+        child: AnimatedSwitcher(
+          duration: Motion.quick,
+          switchInCurve: Curves.easeOutBack,
+          transitionBuilder: (Widget child, Animation<double> a) => FadeTransition(
+            opacity: a,
+            child: ScaleTransition(scale: a, child: child),
+          ),
+          child: Text(
+            greeting.hello,
+            key: ValueKey<String>(greeting.code),
+            textDirection: greeting.direction,
+            style: AppType.scaleFor(greeting.code).title2.copyWith(color: c.textPrimary),
+          ),
+        ),
+      ),
+    );
+    // Under large text the buddy says hello from under the bubble when the
+    // widest greeting wouldn't fit beside it, and the stage grows to hold both.
+    double widest = 0;
+    for (final AppLanguage l in kLanguages) {
+      widest = math.max(widest, TextFit.width(context, l.hello, AppType.scaleFor(l.code).title2));
+    }
+    final bool under = TextFit.large(context) &&
+        124 + 2 + widest + 45 > MediaQuery.sizeOf(context).width - 36;
     return SizedBox(
-      height: 214,
+      height: under
+          ? math.max(214.0, 124 + 40 + TextFit.height(context, 'Ag', AppType.title2, maxWidth: double.infinity))
+          : 214,
       child: Stack(
         clipBehavior: Clip.none,
         children: <Widget>[
           Positioned.fill(child: _FloatingLetters(hops: hops)),
           Align(
             alignment: const Alignment(0, 0.08),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                BoneBuddy(size: 124, mood: mood, look: const Offset(0.8, -0.2)),
-                const SizedBox(width: 2),
-                SpeechBubble(
-                  child: AnimatedSize(
-                    duration: Motion.quick,
-                    curve: Motion.standard,
-                    child: AnimatedSwitcher(
-                      duration: Motion.quick,
-                      switchInCurve: Curves.easeOutBack,
-                      transitionBuilder: (Widget child, Animation<double> a) => FadeTransition(
-                        opacity: a,
-                        child: ScaleTransition(scale: a, child: child),
-                      ),
-                      child: Text(
-                        greeting.hello,
-                        key: ValueKey<String>(greeting.code),
-                        textDirection: greeting.direction,
-                        style: AppType.scaleFor(greeting.code).title2.copyWith(color: c.textPrimary),
-                      ),
-                    ),
+            child: under
+                ? Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[bubble, buddy],
+                  )
+                : Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      buddy,
+                      const SizedBox(width: 2),
+                      bubble,
+                    ],
                   ),
-                ),
-              ],
-            ),
           ),
         ],
       ),
@@ -342,9 +365,11 @@ class _FloatingLettersState extends State<_FloatingLetters> with TickerProviderS
               border: Border.all(color: c.ink, width: 1.8),
               boxShadow: <BoxShadow>[BoxShadow(color: c.shadow, offset: const Offset(2.5, 2.5))],
             ),
+            // Part of the drawing, not something to read.
             child: Text(
               text,
               textDirection: languageFor(script).direction,
+              textScaler: TextScaler.noScaling,
               style: AppType.scaleFor(script).title3.copyWith(
                     color: const Color(0xFF141414),
                     fontSize: size * (text.length > 1 ? 0.42 : 0.5),

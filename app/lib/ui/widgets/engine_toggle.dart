@@ -10,6 +10,7 @@ import '../../l10n/l10n.dart';
 import '../../l10n/labels.dart';
 import 'phone_icon.dart';
 import 'primitives.dart';
+import 'text_fit.dart';
 
 /// Where scans are analyzed: a chunky two-way switch whose thumb springs
 /// across, with the chosen side's icon giving a little wiggle as it lands.
@@ -31,6 +32,47 @@ class EngineToggle extends StatelessWidget {
       if (m == value) return;
       Haptics.medium();
       onChanged(m);
+    }
+
+    // Under large text the two sides stack: each needs the full width for its
+    // words.
+    if (TextFit.large(context)) {
+      return Semantics(
+        label: l.engineAnalyzeOn,
+        value: l.engineName(value),
+        child: Container(
+          padding: const EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            color: c.surfaceSunken,
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: c.ink, width: Chunky.border),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              for (final EngineMode m in EngineMode.values)
+                GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () => pick(m),
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 220),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                    decoration: BoxDecoration(
+                      color: m == value ? c.accent : Colors.transparent,
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(
+                        color: m == value ? c.ink : Colors.transparent,
+                        width: Chunky.border,
+                      ),
+                    ),
+                    child: _Side(mode: m, selected: m == value),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      );
     }
 
     return Semantics(
@@ -109,9 +151,10 @@ class _Side extends StatelessWidget {
     final AppColors c = context.colors;
     final Color fg = selected ? c.onAccent : c.textSecondary;
     final bool phone = mode == EngineMode.onDevice;
+    final bool large = TextFit.large(context);
 
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: large ? MainAxisAlignment.start : MainAxisAlignment.center,
       children: <Widget>[
         // Keyed on selection so the wiggle replays each time this side wins.
         TweenAnimationBuilder<double>(
@@ -140,7 +183,11 @@ class _Side extends StatelessWidget {
               AnimatedDefaultTextStyle(
                 duration: const Duration(milliseconds: 220),
                 style: AppType.headline.copyWith(color: fg, fontWeight: FontWeight.w800),
-                child: Text(context.l10n.engineName(mode), maxLines: 2, overflow: TextOverflow.ellipsis),
+                child: Text(
+                  context.l10n.engineName(mode),
+                  maxLines: large ? null : 2,
+                  overflow: large ? null : TextOverflow.ellipsis,
+                ),
               ),
               AnimatedDefaultTextStyle(
                 duration: const Duration(milliseconds: 220),
@@ -150,8 +197,8 @@ class _Side extends StatelessWidget {
                 ),
                 child: Text(
                   phone ? context.l10n.engineWorksOffline : context.l10n.engineUsesInternet,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
+                  maxLines: large ? null : 2,
+                  overflow: large ? null : TextOverflow.ellipsis,
                 ),
               ),
             ],

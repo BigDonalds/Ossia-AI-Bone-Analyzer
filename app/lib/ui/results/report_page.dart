@@ -342,6 +342,8 @@ class _ReportPageState extends State<ReportPage> {
     final double top = MediaQuery.paddingOf(context).top;
     final double photo =
         SpecimenHeader.photoHeight(screen, _aspect, several: _record.imagePaths.length > 1);
+    final String title = l.recordTitle(_record);
+    final double? bar = SpecimenHeader.barHeightFor(context, title, screen.width);
 
     return Scaffold(
       backgroundColor: c.canvas,
@@ -354,7 +356,8 @@ class _ReportPageState extends State<ReportPage> {
             pinned: true,
             delegate: SpecimenHeader(
               imagePaths: _record.imagePaths,
-              title: l.recordTitle(_record),
+              title: bar == null ? '' : title,
+              barHeight: bar ?? SpecimenHeader.barHeightFor(context, '', screen.width)!,
               colors: c,
               backLabel: widget.backLabel ?? l.back,
               topPadding: top,

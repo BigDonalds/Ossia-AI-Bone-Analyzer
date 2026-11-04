@@ -10,9 +10,39 @@ import '../widgets/bone_sketch.dart';
 import '../widgets/inset_group.dart';
 import '../widgets/nav.dart';
 import '../widgets/primitives.dart';
+import '../widgets/text_fit.dart';
 import '../widgets/wide.dart';
 import 'bone_detail_screen.dart';
 import 'pipeline_screen.dart';
+
+/// The how-it-works card's words with the buddy beside them, or under large
+/// text below them.
+class _HowCardBody extends StatelessWidget {
+  const _HowCardBody({required this.words, required this.buddy});
+
+  final Widget words;
+  final Widget buddy;
+
+  @override
+  Widget build(BuildContext context) {
+    if (TextFit.large(context)) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          words,
+          Align(alignment: AlignmentDirectional.centerEnd, child: buddy),
+        ],
+      );
+    }
+    return Row(
+      children: <Widget>[
+        Expanded(child: words),
+        const SizedBox(width: 6),
+        buddy,
+      ],
+    );
+  }
+}
 
 /// Field reference for the sixteen classes the model knows, grouped by region.
 class ReferenceScreen extends StatelessWidget {
@@ -63,36 +93,31 @@ class ReferenceScreen extends StatelessWidget {
           ),
         ),
         padding: const EdgeInsetsDirectional.fromSTEB(18, 16, 12, 16),
-        child: Row(
-          children: <Widget>[
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    l.atlasHowCardTitle,
-                    style: AppType.title2
-                        .copyWith(color: const Color(0xFF141414)),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    l.atlasHowCardBody,
-                    style: AppType.subhead.copyWith(
-                      color: const Color(0xFF141414)
-                          .withValues(alpha: 0.75),
-                      height: 1.4,
-                    ),
-                  ),
-                ],
+        child: _HowCardBody(
+          words: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              HeadingText(
+                l.atlasHowCardTitle,
+                style: AppType.title2
+                    .copyWith(color: const Color(0xFF141414)),
               ),
-            ),
-            const SizedBox(width: 6),
-            const BoneBuddy(
-              size: 92,
-              mood: BuddyMood.thinking,
-              tilt: 0.2,
-            ),
-          ],
+              const SizedBox(height: 4),
+              Text(
+                l.atlasHowCardBody,
+                style: AppType.subhead.copyWith(
+                  color: const Color(0xFF141414)
+                      .withValues(alpha: 0.75),
+                  height: 1.4,
+                ),
+              ),
+            ],
+          ),
+          buddy: const BoneBuddy(
+            size: 92,
+            mood: BuddyMood.thinking,
+            tilt: 0.2,
+          ),
         ),
       ),
     );
