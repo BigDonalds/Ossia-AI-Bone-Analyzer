@@ -2151,6 +2151,30 @@ class AppLocalizationsDe extends AppLocalizations {
   String get settingsVersion => 'Version';
 
   @override
+  String get settingsRate => 'Ossia bewerten';
+
+  @override
+  String get settingsShare => 'Ossia teilen';
+
+  @override
+  String get storeOpenFailed => 'Die Store-Seite ließ sich nicht öffnen';
+
+  @override
+  String get shareFailed => 'Teilen ließ sich nicht öffnen';
+
+  @override
+  String shareText(String appStoreUrl, String playStoreUrl) {
+    return 'Ossia wurde für Orte mit knappen forensischen Mitteln entwickelt, und nutzen kann es auch jeder andere. Es bestimmt einen Knochen anhand eines Fotos, direkt auf dem Handy.\n\niPhone und iPad: $appStoreUrl\nAndroid: $playStoreUrl';
+  }
+
+  @override
+  String get scanReviewTitle => 'Ist Ossia nützlich für dich?';
+
+  @override
+  String get scanReviewBody =>
+      'Eine kurze Bewertung im Store hilft anderen, es zu finden. Tippe, um eine zu schreiben.';
+
+  @override
   String get settingsDisclaimer =>
       'Ossia hilft dir, Knochen zu bestimmen. Es ersetzt keine Fachperson, die sich den Knochen selbst ansieht.';
 
@@ -2206,14 +2230,14 @@ class AppLocalizationsDe extends AppLocalizations {
   String get privacyTitle => 'Datenschutzerklärung';
 
   @override
-  String get privacyUpdated => 'Zuletzt geändert am 24. Oktober 2026';
+  String get privacyUpdated => 'Zuletzt geändert am 4. November 2026';
 
   @override
   String get privacyShortTitle => 'Kurz gesagt';
 
   @override
   String get privacyShortBody =>
-      'Ossia sammelt nichts über dich. Es gibt keine Konten, keine Werbung, keine Nutzungsstatistik und kein Tracking, und nichts wird an andere weitergegeben.';
+      'Ossia sammelt nichts über dich. Es gibt keine Konten, keine Werbung, keine Nutzungsstatistik und kein Tracking, und nichts wird an andere weitergegeben. Links zur Store-Seite der App öffnen sich außerhalb der App, und die App sendet von sich aus nichts.';
 
   @override
   String get privacyPhotosTitle => 'Fotos und Berichte';

@@ -49,6 +49,7 @@ class SettingsController extends ChangeNotifier with WidgetsBindingObserver {
   LengthUnit _unit = LengthUnit.centimetres;
   EngineMode _engine = EngineMode.onDevice;
   String _serverUrl = 'http://192.168.1.10:8000';
+  bool _reviewCardDismissed = false;
 
   /// The language the person picked ([followPhone] to follow the phone), or
   /// null until they have picked one.
@@ -79,6 +80,9 @@ class SettingsController extends ChangeNotifier with WidgetsBindingObserver {
   bool get onDevice => _engine == EngineMode.onDevice;
   String get serverUrl => _serverUrl;
 
+  /// The store review card on Scan was tapped or closed, so it stays away.
+  bool get reviewCardDismissed => _reviewCardDismissed;
+
   /// The language the app is shown in: the person's pick, else the one being
   /// tried on the first-run picker, else the phone's.
   String get localeCode => _locale == null || _locale == followPhone
@@ -105,6 +109,7 @@ class SettingsController extends ChangeNotifier with WidgetsBindingObserver {
     _engine = EngineMode.values.asNameMap()[_prefs.getString('engine')] ??
         EngineMode.onDevice;
     _serverUrl = _prefs.getString('server_url') ?? _serverUrl;
+    _reviewCardDismissed = _prefs.getBool('review_card_dismissed') ?? false;
     final String? saved = _prefs.getString('locale');
     _locale = saved == followPhone || kLanguages.any((AppLanguage l) => l.code == saved)
         ? saved
@@ -164,6 +169,12 @@ class SettingsController extends ChangeNotifier with WidgetsBindingObserver {
   void setEngine(EngineMode v) {
     _engine = v;
     _prefs.setString('engine', v.name);
+    notifyListeners();
+  }
+
+  void dismissReviewCard() {
+    _reviewCardDismissed = true;
+    _prefs.setBool('review_card_dismissed', true);
     notifyListeners();
   }
 

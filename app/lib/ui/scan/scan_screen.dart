@@ -11,6 +11,7 @@ import '../../l10n/l10n.dart';
 import '../../l10n/labels.dart';
 import '../language/language_picker.dart';
 import '../library/find_card.dart';
+import '../settings/store_links.dart';
 import '../widgets/bone_buddy.dart';
 import '../widgets/primitives.dart';
 import '../widgets/text_fit.dart';
@@ -126,7 +127,69 @@ class ScanScreen extends StatelessWidget {
                     ),
                   ),
           ),
+          if (kStoreLinksLive && history.records.length >= 3 && !settings.reviewCardDismissed)
+            Reveal(delay: Motion.stagger * 4, child: const _ReviewCard()),
         ],
+      ),
+    );
+  }
+}
+
+/// Asks once for a store review, after three saved reports, and only here:
+/// never as a popup. Tapping it opens the store page; either that or its
+/// close button puts it away for good.
+class _ReviewCard extends StatelessWidget {
+  const _ReviewCard();
+
+  @override
+  Widget build(BuildContext context) {
+    final AppColors c = context.colors;
+    final AppLocalizations l = context.l10n;
+    final SettingsController settings = context.read<SettingsController>();
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 18, 12, 0),
+      child: Chunk(
+        onTap: () async {
+          if (await openStorePage(context)) settings.dismissReviewCard();
+        },
+        padding: const EdgeInsetsDirectional.fromSTEB(14, 12, 0, 12),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Icon(Icons.star_rounded, size: 22, color: c.textPrimary),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    l.scanReviewTitle,
+                    style: AppType.headline.copyWith(color: c.textPrimary),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    l.scanReviewBody,
+                    style: AppType.footnote.copyWith(color: c.textSecondary),
+                  ),
+                ],
+              ),
+            ),
+            Semantics(
+              button: true,
+              label: l.dismiss,
+              excludeSemantics: true,
+              child: Pressable(
+                scale: 0.85,
+                onTap: settings.dismissReviewCard,
+                // A comfortable target for one tap, with the icon in its corner.
+                child: Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(14, 0, 12, 14),
+                  child: Icon(Icons.close_rounded, size: 18, color: c.textSecondary),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

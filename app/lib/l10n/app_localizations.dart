@@ -3748,6 +3748,48 @@ abstract class AppLocalizations {
   /// **'Version'**
   String get settingsVersion;
 
+  /// No description provided for @settingsRate.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate Ossia'**
+  String get settingsRate;
+
+  /// No description provided for @settingsShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Share Ossia'**
+  String get settingsShare;
+
+  /// Short message when the store page won't open
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn’t open the store page'**
+  String get storeOpenFailed;
+
+  /// Short message when the phone's share sheet won't open
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn’t open sharing'**
+  String get shareFailed;
+
+  /// The text sent when someone shares the app. It opens with the app's aim.
+  ///
+  /// In en, this message translates to:
+  /// **'Ossia is made for places with scarce forensic resources, and anyone else can use it too. It identifies a bone from a photo, right on the phone.\n\niPhone and iPad: {appStoreUrl}\nAndroid: {playStoreUrl}'**
+  String shareText(String appStoreUrl, String playStoreUrl);
+
+  /// Small card on the Scan tab asking for a store review
+  ///
+  /// In en, this message translates to:
+  /// **'Finding Ossia useful?'**
+  String get scanReviewTitle;
+
+  /// No description provided for @scanReviewBody.
+  ///
+  /// In en, this message translates to:
+  /// **'A short store review helps others find it. Tap to write one.'**
+  String get scanReviewBody;
+
   /// No description provided for @settingsDisclaimer.
   ///
   /// In en, this message translates to:
@@ -3847,7 +3889,7 @@ abstract class AppLocalizations {
   /// No description provided for @privacyUpdated.
   ///
   /// In en, this message translates to:
-  /// **'Last updated 24 October 2026'**
+  /// **'Last updated 4 November 2026'**
   String get privacyUpdated;
 
   /// No description provided for @privacyShortTitle.
@@ -3859,7 +3901,7 @@ abstract class AppLocalizations {
   /// No description provided for @privacyShortBody.
   ///
   /// In en, this message translates to:
-  /// **'Ossia collects nothing about you. There are no accounts, no ads, no usage statistics and no tracking, and nothing is shared with anyone.'**
+  /// **'Ossia collects nothing about you. There are no accounts, no ads, no usage statistics and no tracking, and nothing is shared with anyone. Links to the app’s store page open outside the app, and the app sends nothing by itself.'**
   String get privacyShortBody;
 
   /// No description provided for @privacyPhotosTitle.

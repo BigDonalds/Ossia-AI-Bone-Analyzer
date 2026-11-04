@@ -2425,6 +2425,29 @@
   },
   "settingsAboutOssia": "About Ossia",
   "settingsVersion": "Version",
+  "settingsRate": "Rate Ossia",
+  "settingsShare": "Share Ossia",
+  "storeOpenFailed": "Couldn’t open the store page",
+  "@storeOpenFailed": {
+    "description": "Short message when the store page won't open"
+  },
+  "shareFailed": "Couldn’t open sharing",
+  "@shareFailed": {
+    "description": "Short message when the phone's share sheet won't open"
+  },
+  "shareText": "Ossia is made for places with scarce forensic resources, and anyone else can use it too. It identifies a bone from a photo, right on the phone.\n\niPhone and iPad: {appStoreUrl}\nAndroid: {playStoreUrl}",
+  "@shareText": {
+    "description": "The text sent when someone shares the app. It opens with the app's aim.",
+    "placeholders": {
+      "appStoreUrl": { "type": "String" },
+      "playStoreUrl": { "type": "String" }
+    }
+  },
+  "scanReviewTitle": "Finding Ossia useful?",
+  "@scanReviewTitle": {
+    "description": "Small card on the Scan tab asking for a store review"
+  },
+  "scanReviewBody": "A short store review helps others find it. Tap to write one.",
   "settingsDisclaimer": "Ossia helps you identify bones. It is not a replacement for an expert looking at the bone in person.",
   "aboutVersion": "Version {version}",
   "@aboutVersion": {
@@ -2458,9 +2481,9 @@
   "aboutWarning": "Results are a best guess, not a final answer. Don’t use them for medical, legal or police decisions without a bone expert checking the bone in person.",
   "settingsPrivacyPolicy": "Privacy policy",
   "privacyTitle": "Privacy policy",
-  "privacyUpdated": "Last updated 24 October 2026",
+  "privacyUpdated": "Last updated 4 November 2026",
   "privacyShortTitle": "In short",
-  "privacyShortBody": "Ossia collects nothing about you. There are no accounts, no ads, no usage statistics and no tracking, and nothing is shared with anyone.",
+  "privacyShortBody": "Ossia collects nothing about you. There are no accounts, no ads, no usage statistics and no tracking, and nothing is shared with anyone. Links to the app’s store page open outside the app, and the app sends nothing by itself.",
   "privacyPhotosTitle": "Photos and reports",
   "privacyPhotosBody": "Photos you take or pick are analyzed on this phone. Reports you save, with their photos and any names or notes you add, stay inside Ossia on this phone. Deleting a report, or the app, deletes them. A report only goes to your clipboard when you choose to copy it.",
   "privacyOnlineTitle": "Online analysis",

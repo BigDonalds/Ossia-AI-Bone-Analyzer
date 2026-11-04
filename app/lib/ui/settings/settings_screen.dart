@@ -23,6 +23,7 @@ import '../widgets/sheets.dart';
 import '../widgets/wide.dart';
 import 'about_screen.dart';
 import 'privacy_screen.dart';
+import 'store_links.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -272,6 +273,20 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
           ),
+          if (kStoreLinksLive) ...<Widget>[
+            InsetRow(
+              title: l.settingsRate,
+              chevron: true,
+              onTap: () => openStorePage(context),
+            ),
+            Builder(
+              builder: (BuildContext row) => InsetRow(
+                title: l.settingsShare,
+                chevron: true,
+                onTap: () => shareOssia(row),
+              ),
+            ),
+          ],
           InsetRow(title: l.settingsVersion, value: kAppVersion),
         ],
       ),

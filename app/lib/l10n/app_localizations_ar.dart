@@ -2232,6 +2232,30 @@ class AppLocalizationsAr extends AppLocalizations {
   String get settingsVersion => 'الإصدار';
 
   @override
+  String get settingsRate => 'قيّم Ossia';
+
+  @override
+  String get settingsShare => 'شارك Ossia';
+
+  @override
+  String get storeOpenFailed => 'تعذّر فتح صفحة المتجر';
+
+  @override
+  String get shareFailed => 'تعذّر فتح المشاركة';
+
+  @override
+  String shareText(String appStoreUrl, String playStoreUrl) {
+    return 'صُمّم Ossia للأماكن التي تندر فيها موارد الطب الشرعي، ويمكن لأي شخص آخر استخدامه أيضًا. يتعرّف على العظمة من صورة، على الهاتف مباشرة.\n\niPhone وiPad: $appStoreUrl\nAndroid: $playStoreUrl';
+  }
+
+  @override
+  String get scanReviewTitle => 'هل وجدت Ossia مفيدًا؟';
+
+  @override
+  String get scanReviewBody =>
+      'يساعد تقييم قصير في المتجر الآخرين على العثور عليه. اضغط لكتابة تقييم.';
+
+  @override
   String get settingsDisclaimer =>
       'يساعدك Ossia على التعرف على العظام، لكنه لا يغني عن خبير يفحص العظمة بنفسه.';
 
@@ -2287,14 +2311,14 @@ class AppLocalizationsAr extends AppLocalizations {
   String get privacyTitle => 'سياسة الخصوصية';
 
   @override
-  String get privacyUpdated => 'آخر تحديث: 24 أكتوبر 2026';
+  String get privacyUpdated => 'آخر تحديث: 4 نوفمبر 2026';
 
   @override
   String get privacyShortTitle => 'باختصار';
 
   @override
   String get privacyShortBody =>
-      'لا يجمع Ossia أي معلومات عنك. لا توجد حسابات ولا إعلانات ولا إحصاءات استخدام ولا تتبّع، ولا يُشارَك أي شيء مع أي أحد.';
+      'لا يجمع Ossia أي معلومات عنك. لا توجد حسابات ولا إعلانات ولا إحصاءات استخدام ولا تتبّع، ولا يُشارَك أي شيء مع أي أحد. تُفتح روابط صفحة التطبيق في المتجر خارج التطبيق، ولا يرسل التطبيق أي شيء من تلقاء نفسه.';
 
   @override
   String get privacyPhotosTitle => 'الصور والتقارير';

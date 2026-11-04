@@ -2432,6 +2432,38 @@
   "@settingsVersion": {
     "description": "English: Version"
   },
+  "settingsRate": "Ossia bewerten",
+  "@settingsRate": {
+    "description": "English: Rate Ossia"
+  },
+  "settingsShare": "Ossia teilen",
+  "@settingsShare": {
+    "description": "English: Share Ossia"
+  },
+  "storeOpenFailed": "Die Store-Seite ließ sich nicht öffnen",
+  "@storeOpenFailed": {
+    "description": "English: Couldn’t open the store page"
+  },
+  "shareFailed": "Teilen ließ sich nicht öffnen",
+  "@shareFailed": {
+    "description": "English: Couldn’t open sharing"
+  },
+  "shareText": "Ossia wurde für Orte mit knappen forensischen Mitteln entwickelt, und nutzen kann es auch jeder andere. Es bestimmt einen Knochen anhand eines Fotos, direkt auf dem Handy.\n\niPhone und iPad: {appStoreUrl}\nAndroid: {playStoreUrl}",
+  "@shareText": {
+    "description": "English: Ossia is made for places with scarce forensic resources, and anyone else can use it too. It identifies a bone from a photo, right on the phone.",
+    "placeholders": {
+      "appStoreUrl": { "type": "String" },
+      "playStoreUrl": { "type": "String" }
+    }
+  },
+  "scanReviewTitle": "Ist Ossia nützlich für dich?",
+  "@scanReviewTitle": {
+    "description": "English: Finding Ossia useful?"
+  },
+  "scanReviewBody": "Eine kurze Bewertung im Store hilft anderen, es zu finden. Tippe, um eine zu schreiben.",
+  "@scanReviewBody": {
+    "description": "English: A short store review helps others find it. Tap to write one."
+  },
   "settingsDisclaimer": "Ossia hilft dir, Knochen zu bestimmen. Es ersetzt keine Fachperson, die sich den Knochen selbst ansieht.",
   "@settingsDisclaimer": {
     "description": "English: Ossia helps you identify bones. It is not a replacement for an expert looking at the bone in person."
@@ -2487,9 +2519,9 @@
   "aboutWarning": "Die Ergebnisse sind eine beste Schätzung, keine endgültige Antwort. Nutze sie nicht für medizinische, rechtliche oder polizeiliche Entscheidungen, ohne dass eine Fachperson den Knochen selbst prüft.",
   "settingsPrivacyPolicy": "Datenschutzerklärung",
   "privacyTitle": "Datenschutzerklärung",
-  "privacyUpdated": "Zuletzt geändert am 24. Oktober 2026",
+  "privacyUpdated": "Zuletzt geändert am 4. November 2026",
   "privacyShortTitle": "Kurz gesagt",
-  "privacyShortBody": "Ossia sammelt nichts über dich. Es gibt keine Konten, keine Werbung, keine Nutzungsstatistik und kein Tracking, und nichts wird an andere weitergegeben.",
+  "privacyShortBody": "Ossia sammelt nichts über dich. Es gibt keine Konten, keine Werbung, keine Nutzungsstatistik und kein Tracking, und nichts wird an andere weitergegeben. Links zur Store-Seite der App öffnen sich außerhalb der App, und die App sendet von sich aus nichts.",
   "privacyPhotosTitle": "Fotos und Berichte",
   "privacyPhotosBody": "Fotos, die du aufnimmst oder auswählst, werden auf diesem Handy analysiert. Gespeicherte Berichte bleiben samt Fotos und allen Namen oder Notizen, die du hinzufügst, in Ossia auf diesem Handy. Wenn du einen Bericht oder die App löschst, sind sie weg. Ein Bericht kommt nur in die Zwischenablage, wenn du ihn kopierst.",
   "privacyOnlineTitle": "Online-Analyse",

@@ -2432,6 +2432,38 @@
   "@settingsVersion": {
     "description": "English: Version"
   },
+  "settingsRate": "قيّم Ossia",
+  "@settingsRate": {
+    "description": "English: Rate Ossia"
+  },
+  "settingsShare": "شارك Ossia",
+  "@settingsShare": {
+    "description": "English: Share Ossia"
+  },
+  "storeOpenFailed": "تعذّر فتح صفحة المتجر",
+  "@storeOpenFailed": {
+    "description": "English: Couldn’t open the store page"
+  },
+  "shareFailed": "تعذّر فتح المشاركة",
+  "@shareFailed": {
+    "description": "English: Couldn’t open sharing"
+  },
+  "shareText": "صُمّم Ossia للأماكن التي تندر فيها موارد الطب الشرعي، ويمكن لأي شخص آخر استخدامه أيضًا. يتعرّف على العظمة من صورة، على الهاتف مباشرة.\n\niPhone وiPad: {appStoreUrl}\nAndroid: {playStoreUrl}",
+  "@shareText": {
+    "description": "English: Ossia is made for places with scarce forensic resources, and anyone else can use it too. It identifies a bone from a photo, right on the phone.",
+    "placeholders": {
+      "appStoreUrl": { "type": "String" },
+      "playStoreUrl": { "type": "String" }
+    }
+  },
+  "scanReviewTitle": "هل وجدت Ossia مفيدًا؟",
+  "@scanReviewTitle": {
+    "description": "English: Finding Ossia useful?"
+  },
+  "scanReviewBody": "يساعد تقييم قصير في المتجر الآخرين على العثور عليه. اضغط لكتابة تقييم.",
+  "@scanReviewBody": {
+    "description": "English: A short store review helps others find it. Tap to write one."
+  },
   "settingsDisclaimer": "يساعدك Ossia على التعرف على العظام، لكنه لا يغني عن خبير يفحص العظمة بنفسه.",
   "@settingsDisclaimer": {
     "description": "English: Ossia helps you identify bones. It is not a replacement for an expert looking at the bone in person."
@@ -2487,9 +2519,9 @@
   "aboutWarning": "النتائج أفضل تخمين، وليست إجابة نهائية. لا تعتمد عليها في قرارات طبية أو قانونية أو أمنية من دون أن يفحص خبيرُ عظام العظمةَ بنفسه.",
   "settingsPrivacyPolicy": "سياسة الخصوصية",
   "privacyTitle": "سياسة الخصوصية",
-  "privacyUpdated": "آخر تحديث: 24 أكتوبر 2026",
+  "privacyUpdated": "آخر تحديث: 4 نوفمبر 2026",
   "privacyShortTitle": "باختصار",
-  "privacyShortBody": "لا يجمع Ossia أي معلومات عنك. لا توجد حسابات ولا إعلانات ولا إحصاءات استخدام ولا تتبّع، ولا يُشارَك أي شيء مع أي أحد.",
+  "privacyShortBody": "لا يجمع Ossia أي معلومات عنك. لا توجد حسابات ولا إعلانات ولا إحصاءات استخدام ولا تتبّع، ولا يُشارَك أي شيء مع أي أحد. تُفتح روابط صفحة التطبيق في المتجر خارج التطبيق، ولا يرسل التطبيق أي شيء من تلقاء نفسه.",
   "privacyPhotosTitle": "الصور والتقارير",
   "privacyPhotosBody": "تُحلَّل الصور التي تلتقطها أو تختارها على هذا الهاتف. تبقى التقارير التي تحفظها، مع صورها وأي أسماء أو ملاحظات تضيفها، داخل Ossia على هذا الهاتف. حذف التقرير أو حذف التطبيق يحذفها. لا يُنسخ التقرير إلى الحافظة إلا عندما تختار نسخه.",
   "privacyOnlineTitle": "التحليل عبر الإنترنت",

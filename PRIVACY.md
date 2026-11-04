@@ -1,6 +1,6 @@
 # Ossia privacy policy
 
-Last updated 24 October 2026
+Last updated 4 November 2026
 
 This policy covers the Ossia app for Android and iOS. The same text is in the
 app, under Settings → Privacy policy.
@@ -8,7 +8,8 @@ app, under Settings → Privacy policy.
 ## In short
 
 Ossia collects nothing about you. There are no accounts, no ads, no usage
-statistics and no tracking, and nothing is shared with anyone.
+statistics and no tracking, and nothing is shared with anyone. Links to the
+app's store page open outside the app, and the app sends nothing by itself.
 
 ## Photos and reports
 
