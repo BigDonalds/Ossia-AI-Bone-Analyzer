@@ -354,7 +354,6 @@ class _RecordRow extends StatelessWidget {
       child: InsetRow(
         minHeight: 76,
         chevron: true,
-        leadingWidth: 56,
         trailingWidth: 96,
         onTap: () => Navigator.of(context).push(
           WidePageRoute<void>(

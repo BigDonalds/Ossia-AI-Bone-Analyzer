@@ -61,7 +61,7 @@ class InsetRow extends StatelessWidget {
     this.chevron = false,
     this.tint,
     this.minHeight = 54,
-    this.leadingWidth = 44,
+    this.leadingWidth = 56,
     this.trailingWidth = 64,
   });
 
