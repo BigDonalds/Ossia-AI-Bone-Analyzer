@@ -2517,8 +2517,8 @@
     "description": "English: None collected."
   },
   "aboutWarning": "Die Ergebnisse sind eine beste Schätzung, keine endgültige Antwort. Nutze sie nicht für medizinische, rechtliche oder polizeiliche Entscheidungen, ohne dass eine Fachperson den Knochen selbst prüft.",
-  "settingsPrivacyPolicy": "Datenschutzerklärung",
-  "privacyTitle": "Datenschutzerklärung",
+  "settingsPrivacyPolicy": "Datenschutz",
+  "privacyTitle": "Datenschutz\u200berklärung",
   "privacyUpdated": "Zuletzt geändert am 4. November 2026",
   "privacyShortTitle": "Kurz gesagt",
   "privacyShortBody": "Ossia sammelt nichts über dich. Es gibt keine Konten, keine Werbung, keine Nutzungsstatistik und kein Tracking, und nichts wird an andere weitergegeben. Links zur Store-Seite der App öffnen sich außerhalb der App.",
@@ -2609,7 +2609,7 @@
   "@statusRunningFor": {
     "description": "English: Running for (Tile label; the value under it is e.g. \"2h 5m\")"
   },
-  "statusHistory": "Verbindungsverlauf",
+  "statusHistory": "Verbindungs\u200bverlauf",
   "@statusHistory": {
     "description": "English: Connection history"
   },

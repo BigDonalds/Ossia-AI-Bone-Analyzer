@@ -2224,10 +2224,10 @@ class AppLocalizationsDe extends AppLocalizations {
       'Die Ergebnisse sind eine beste Schätzung, keine endgültige Antwort. Nutze sie nicht für medizinische, rechtliche oder polizeiliche Entscheidungen, ohne dass eine Fachperson den Knochen selbst prüft.';
 
   @override
-  String get settingsPrivacyPolicy => 'Datenschutzerklärung';
+  String get settingsPrivacyPolicy => 'Datenschutz';
 
   @override
-  String get privacyTitle => 'Datenschutzerklärung';
+  String get privacyTitle => 'Datenschutz​erklärung';
 
   @override
   String get privacyUpdated => 'Zuletzt geändert am 4. November 2026';
@@ -2338,7 +2338,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get statusRunningFor => 'Läuft seit';
 
   @override
-  String get statusHistory => 'Verbindungsverlauf';
+  String get statusHistory => 'Verbindungs​verlauf';
 
   @override
   String get statusAutoPaused => 'Auto-Prüfung pausiert';
