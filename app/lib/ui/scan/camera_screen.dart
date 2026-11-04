@@ -764,9 +764,9 @@ class _CameraScreenState extends State<CameraScreen>
                     width: 96,
                     height: 47,
                     // With their shadows the two buttons are a little wider
-                    // than this, and hang over its end.
+                    // than this, and hang over its right edge in every language.
                     child: OverflowBox(
-                      alignment: AlignmentDirectional.centerStart,
+                      alignment: Alignment.centerLeft,
                       maxWidth: 102,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
