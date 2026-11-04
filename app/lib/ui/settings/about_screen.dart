@@ -9,7 +9,7 @@ import '../widgets/inset_group.dart';
 import '../widgets/nav.dart';
 import '../widgets/primitives.dart';
 
-const String kAppVersion = '1.0.1';
+const String kAppVersion = '1.0.2';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
