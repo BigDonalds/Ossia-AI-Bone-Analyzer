@@ -1,11 +1,11 @@
 {
  "about": "What the Ossia app needs to run the exported model and build the same report as inference/analyzer.py. Written by scripts/export_mobile.py; do not edit by hand.",
  "model_file": "ossia.onnx",
- "model_sha256": "3232df1528634badb95d353c9087fc697345e52db1287e4002aa11085c324f54",
+ "model_sha256": "60a0db224e707a7038312586821383caa2bf1a425782f8faee32306e07fc3a83",
  "model_bytes": 57592502,
  "checkpoint": "bone_analyzer.pt",
  "epoch": 40,
- "exported": "2026-10-25",
+ "exported": "2026-11-09",
  "img_size": 384,
  "input": {
   "name": "image",
